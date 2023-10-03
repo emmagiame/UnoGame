@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.game.GameFramework.GameMainActivity;
+
+public class MainActivity extends GameMainActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
