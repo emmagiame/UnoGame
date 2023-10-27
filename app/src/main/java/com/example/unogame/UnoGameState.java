@@ -39,10 +39,10 @@ public class UnoGameState extends GameState {
     /**
      * toString
      *
-     * Returns a string representation of the game state, including key properties.
+     * @return type: String
      *
-     * @return A formatted string representation of the game state, including the number of setup turns,
-     *         the current setup turn, player hands, discard pile, draw pile, and player's turn.
+     * the method returns a formatted string representation of the game state, including the number of
+     * setup turns,the current setup turn, player hands, discard pile, draw pile, and player's turn.
      * */
 
     @Override
