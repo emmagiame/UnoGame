@@ -2,6 +2,8 @@ package com.example.game.GameFramework.infoMessage;
 
 import static com.example.game.GameFramework.utilities.Saving.SEPARATOR;
 
+import java.util.Arrays;
+
 /**
  * The state of the game. This class should be subclassed so that it holds
  * all state information for the particular game being implemented. For
@@ -52,6 +54,7 @@ public abstract class GameState extends GameInfo {
      *
      * @return String representation of this instance
      */
+    @Override
     public String toString(){
         return numSetupTurns + SEPARATOR + currentSetupTurn;
     }

@@ -1,5 +1,7 @@
 package com.example.unogame;
 
+import static com.example.game.GameFramework.utilities.Saving.SEPARATOR;
+
 import com.example.game.GameFramework.infoMessage.GameState;
 
 import java.util.ArrayList;
@@ -33,4 +35,19 @@ public class UnoGameState extends GameState {
 
     //player 2 score
     private int player2Score;
+
+    /**
+     * toString
+     *
+     * Returns a string representation of the game state, including key properties.
+     *
+     * @return A formatted string representation of the game state, including the number of setup turns,
+     *         the current setup turn, player hands, discard pile, draw pile, and player's turn.
+     * */
+
+    @Override
+    public String toString(){
+        return numSetupTurns + SEPARATOR + currentSetupTurn + "player0Hand: " + player0Hand + "player1Hand: " + player1Hand +
+                "Player2Hand: " + player2Hand + "discardPile: " + discardPile + "drawPile: " + drawPile + "playerTurn" + playerTurn;
+    }
 }
