@@ -17,6 +17,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -159,6 +160,9 @@ public abstract class GameMainActivity extends Activity implements View.OnClickL
 
         // Initialize the layout
         setContentView(R.layout.game_config_main);
+
+        // setting view to run test Button
+        Button runTest = findViewById(R.id.runTest);
 
         // create the default configuration for this game
         this.config = createDefaultConfig();

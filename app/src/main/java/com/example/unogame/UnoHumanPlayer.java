@@ -1,6 +1,8 @@
 package com.example.unogame;
 
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.game.GameFramework.GameMainActivity;
 import com.example.game.GameFramework.infoMessage.GameInfo;
@@ -10,6 +12,16 @@ public class UnoHumanPlayer extends GameHumanPlayer {
 
     //android activity that we are running
     private GameMainActivity myActivity;
+
+
+    // OnClick for button
+    runTest.setOnClickListener(new View.OnClickListener(){
+        @Override
+        public void onClick(View viewy){
+
+        }
+    });
+
 
     /**
      * constructor
