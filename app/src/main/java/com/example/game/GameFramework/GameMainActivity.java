@@ -161,9 +161,6 @@ public abstract class GameMainActivity extends Activity implements View.OnClickL
         // Initialize the layout
         setContentView(R.layout.game_config_main);
 
-        // setting view to run test Button
-        Button runTest = findViewById(R.id.runTest);
-
         // create the default configuration for this game
         this.config = createDefaultConfig();
 

@@ -8,19 +8,26 @@ import com.example.game.GameFramework.GameMainActivity;
 import com.example.game.GameFramework.infoMessage.GameInfo;
 import com.example.game.GameFramework.players.GameHumanPlayer;
 
-public class UnoHumanPlayer extends GameHumanPlayer {
+public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListener {
 
     //android activity that we are running
     private GameMainActivity myActivity;
+    private EditText editText;
 
 
-    // OnClick for button
-    runTest.setOnClickListener(new View.OnClickListener(){
-        @Override
-        public void onClick(View viewy){
 
-        }
-    });
+
+    /* on click method */
+    public void onClick(View v){
+        // clear text in edit text
+      editText.setText("");
+      UnoGameState firstInstance;
+      UnoGameState secondInstance;
+      // copy of game;
+      firstInstance = new UnoGameState();
+      // copy of copy from perspective of player 1 not sure if using playerNum is right
+      secondInstance = new UnoGameState(firstInstance, playerNum);
+    }
 
 
     /**
@@ -34,8 +41,8 @@ public class UnoHumanPlayer extends GameHumanPlayer {
 
     @Override
     public View getTopView() {
-        //return myActivity.findViewById(R.id.top_layout);
-        return null;
+
+        return myActivity.findViewById(R.id.runTestButtonLayout);
     }
 
     @Override
@@ -45,7 +52,12 @@ public class UnoHumanPlayer extends GameHumanPlayer {
 
     @Override
     public void setAsGui(GameMainActivity activity) {
+        // setting view to run test Button
+        Button runTest = myActivity.findViewById(R.id.runTest);
+        myActivity.findViewById(R.id.editTextTextMultiLine);
 
+        // OnClick for button
+        runTest.setOnClickListener(this);
     }
 
 

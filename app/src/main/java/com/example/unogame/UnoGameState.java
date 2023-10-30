@@ -6,7 +6,7 @@ import com.example.game.GameFramework.infoMessage.GameState;
 
 import java.util.ArrayList;
 
-public class UnoGameState<Player> extends GameState {
+public class UnoGameState extends GameState {
 
     //instance variables
     //player 0's hand
@@ -16,7 +16,7 @@ public class UnoGameState<Player> extends GameState {
     private ArrayList<UnoCard> player1Hand;
 
     //list of players
-    private ArrayList<Player> players;
+    private ArrayList<Integer> players;
 
     //player 3's hand
     private ArrayList<UnoCard> player2Hand;
@@ -54,34 +54,36 @@ public class UnoGameState<Player> extends GameState {
                 "Player2Hand: " + player2Hand + "discardPile: " + discardPile + "drawPile: " + drawPile + "playerTurn" + playerTurn;
     }
 
-    public class unoGameState {
-        private ArrayList<Player> players;
-        private Deck drawPile;
-        private Deck discardPile;
-    }
-
     //constructor for objects of class UnoGameState
-    public UnoGameState(ArrayList<Player> players, Deck drawPile, Deck discardPile) {
+    public UnoGameState() {
+        // i dont think this is done right
         this.players = players;
         this.drawPile = drawPile;
         this.discardPile = discardPile;
     }
 
     //copy constructor for specific player
-    public void unoGameState(unoGameState originalGame, Player specificPlayer) {
+    public UnoGameState(UnoGameState originalGame, int specificPlayer) {
+        //googled deep copy constructor and this was the suggestion not right though
+        /*
+        this(originalGame.discardPile);
+        this(originalGame.drawPile);
+        */
+
         //deep copy of the draw & discard piles
         this.drawPile = new Deck(originalGame.drawPile);
         this.discardPile = new Deck(originalGame.discardPile);
 
         //deep copy of list of players
         this.players = new ArrayList<>();
-        for (Player player : originalGame.players) {
+        for (int player : originalGame.players) {
             if (player == specificPlayer){
                 //copy only the specific player data
-                this.players.add((Player) new UnoPlayers());
+                this.players.add(specificPlayer);
             } else {
                 //if other players, create a player placeholder
-                this.players.add((Player) new UnoPlayers());
+                int otherPlayer = player;
+                this.players.add(otherPlayer);
             }
         }
     }
