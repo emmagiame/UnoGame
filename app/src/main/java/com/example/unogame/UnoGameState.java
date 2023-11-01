@@ -8,6 +8,12 @@ import java.util.ArrayList;
 
 public class UnoGameState extends GameState {
 
+    /*needs methods:
+    getplayerhand
+    getdiscardpile
+    getdrawpiletop
+     */
+
     //instance variables
     //player 0's hand
     private ArrayList<UnoCard> player0Hand;
@@ -15,20 +21,24 @@ public class UnoGameState extends GameState {
     //player 1's hand
     private ArrayList<UnoCard> player1Hand;
 
-    //list of players
+    /*
+    //should be an int of who's turn it is instead of array!!!!!!!
     private ArrayList<Integer> players;
+     */
 
     //player 3's hand
     private ArrayList<UnoCard> player2Hand;
 
     //a list for the discard pile
+    //should be an array list !!!!!!!
     private Deck discardPile;
 
     //a list to hold the draw pile
+    //should be an array List !!!!!!
     private Deck drawPile;
 
     //which players turn it is
-    private int playerTurn;
+    private int playerToMove;
 
     //player 0 score
     private int player0Score;
@@ -56,18 +66,31 @@ public class UnoGameState extends GameState {
 
     //constructor for objects of class UnoGameState
     public UnoGameState() {
-        // i dont think this is done right
-        this.players = players;
+        // i don't think this is done right !!!!!
+
+        this.playerToMove = 0;
         this.drawPile = drawPile;
         this.discardPile = discardPile;
     }
 
     //copy constructor for specific player
-    public UnoGameState(UnoGameState originalGame, int specificPlayer) {
-        //googled deep copy constructor and this was the suggestion not right though
-        /*
-        this(originalGame.discardPile);
-        this(originalGame.drawPile);
+    //should copy game rather than player !!!!!!
+    public UnoGameState(UnoGameState originalGame) {
+
+        /* this is what it looks like in TTT
+
+        //create a new 3x3 array, and copy the values from the original
+        board = new char[3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                board[i][j] = original.board[i][j];
+            }
+        }
+        // copy the player-to-move information
+        playerToMove = original.playerToMove;
+        super.numSetupTurns = original.numSetupTurns;
+        super.currentSetupTurn = original.currentSetupTurn;
+
         */
 
         //deep copy of the draw & discard piles
