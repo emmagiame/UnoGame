@@ -111,7 +111,14 @@ public class UnoGameState extends GameState {
         }
     }
 
-
+    // creates inital arraylist of 7 cards for start of game
+    ArrayList startHand(int playerTurn) {
+        ArrayList<UnoCard> cards = new ArrayList<UnoCard>();
+        for (int i = 0; i <= 7; i++) {
+            cards.add(new UnoCard());
+        }
+        return cards;
+    }
 }
 
 
