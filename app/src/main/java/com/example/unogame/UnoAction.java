@@ -1,4 +1,4 @@
-package com.example.game.GameFramework;
+package com.example.unogame;
 
 import com.example.unogame.UnoGameState;
 

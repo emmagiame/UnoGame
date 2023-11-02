@@ -26,7 +26,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
       // copy of game;
       firstInstance = new UnoGameState();
       // copy of copy from perspective of player 1 not sure if using playerNum is right
-      secondInstance = new UnoGameState(firstInstance);
+      secondInstance = new UnoGameState(firstInstance, playerToMove);
     }
 
 
