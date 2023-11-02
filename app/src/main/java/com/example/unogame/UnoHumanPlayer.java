@@ -19,7 +19,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     /* on click method */
     public void onClick(View v){
-        // clear text in edit text
+      //clear text in edit text
       editText.setText("");
       UnoGameState firstInstance;
       UnoGameState secondInstance;

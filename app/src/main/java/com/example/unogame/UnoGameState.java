@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class UnoGameState extends GameState {
 
     /*needs methods:
-    getplayerhand
+    getplayerhand (0, 1, and 2)
     getdiscardpile
     getdrawpiletop
      */
@@ -21,24 +21,19 @@ public class UnoGameState extends GameState {
     //player 1's hand
     private ArrayList<UnoCard> player1Hand;
 
-    /*
-    //should be an int of who's turn it is instead of array!!!!!!!
-    private ArrayList<Integer> players;
-     */
-
-    //player 3's hand
+    //player 2's hand
     private ArrayList<UnoCard> player2Hand;
 
     //a list for the discard pile
     //should be an array list !!!!!!!
-    private Deck discardPile;
+    private ArrayList<UnoCard> discardPile;
 
     //a list to hold the draw pile
     //should be an array List !!!!!!
-    private Deck drawPile;
+    private ArrayList<UnoCard> drawPile;
 
     //which players turn it is
-    private int playerToMove;
+    private int playerTurn;
 
     //player 0 score
     private int player0Score;
@@ -66,53 +61,34 @@ public class UnoGameState extends GameState {
 
     //constructor for objects of class UnoGameState
     public UnoGameState() {
-        // i don't think this is done right !!!!!
-
-        this.playerToMove = 0;
-        this.drawPile = drawPile;
-        this.discardPile = discardPile;
+        this.playerTurn = 0;
+        this.drawPile = startDrawPile();
+        this.discardPile = startDiscardPile();
     }
 
-    //copy constructor for specific player
-    //should copy game rather than player !!!!!!
+    //deep copy constructor
     public UnoGameState(UnoGameState originalGame) {
 
-        /* this is what it looks like in TTT
+        //copy player turn
+        this.playerTurn = originalGame.playerTurn;
 
-        //create a new 3x3 array, and copy the values from the original
-        board = new char[3][3];
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                board[i][j] = original.board[i][j];
-            }
-        }
-        // copy the player-to-move information
-        playerToMove = original.playerToMove;
-        super.numSetupTurns = original.numSetupTurns;
-        super.currentSetupTurn = original.currentSetupTurn;
+        //copy draw and discard pile
+        this.drawPile = originalGame.drawPile;
+        this.discardPile = originalGame.discardPile;
 
-        */
+        //copy all player hands
+        this.player0Hand = originalGame.player0Hand;
+        this.player1Hand = originalGame.player1Hand;
+        this.player2Hand =  originalGame.player2Hand;
 
-        //deep copy of the draw & discard piles
-        this.drawPile = new Deck(originalGame.drawPile);
-        this.discardPile = new Deck(originalGame.discardPile);
-
-        //deep copy of list of players
-        this.players = new ArrayList<>();
-        for (int player : originalGame.players) {
-            if (player == specificPlayer) {
-                //copy only the specific player data
-                this.players.add(specificPlayer);
-            } else {
-                //if other players, create a player placeholder
-                int otherPlayer = player;
-                this.players.add(otherPlayer);
-            }
-        }
+        //copy all player scores
+        this.player0Score = originalGame.player0Score;
+        this.player1Score = originalGame.player1Score;
+        this.player2Score = originalGame.player2Score;
     }
 
     // creates inital arraylist of 7 cards for start of game
-    ArrayList startHand(int playerTurn) {
+    ArrayList<UnoCard> startHand(int playerTurn) {
         ArrayList<UnoCard> cards = new ArrayList<UnoCard>();
         for (int i = 0; i <= 7; i++) {
             cards.add(new UnoCard());
@@ -121,13 +97,19 @@ public class UnoGameState extends GameState {
     }
     // creates inital draw pile of 87 (max cards used by players initally is 21 bc 7*3
     // and max num of cards is 108 so draw = 108-21) cards for start of game
-    ArrayList startDrawPile() {
+    ArrayList<UnoCard> startDrawPile() {
         ArrayList<UnoCard> cards = new ArrayList<UnoCard>();
 
         for(int i = 0; i <= 87; i++) {
             cards.add(new UnoCard());
         }
         return cards;
+    }
+
+    //starter for discard pile
+    ArrayList<UnoCard> startDiscardPile(){
+        ArrayList<UnoCard> discard = new ArrayList<UnoCard>();
+        return discard;
     }
 
     // getter methods
