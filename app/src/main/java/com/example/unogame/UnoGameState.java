@@ -69,13 +69,13 @@ public class UnoGameState extends GameState {
         // i don't think this is done right !!!!!
 
         this.playerToMove = 0;
-        this.drawPile = drawPile;
+        this.drawPile = ;
         this.discardPile = discardPile;
     }
 
     //copy constructor for specific player
     //should copy game rather than player !!!!!!
-    public UnoGameState(UnoGameState originalGame) {
+    public UnoGameState(UnoGameState originalGame,int playerToMove) {
 
         /* this is what it looks like in TTT
 
