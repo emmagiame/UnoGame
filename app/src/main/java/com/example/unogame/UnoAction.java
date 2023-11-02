@@ -1,7 +1,5 @@
 package com.example.unogame;
 
-import com.example.unogame.UnoGameState;
-
 import java.util.ArrayList;
 
 public class UnoAction {

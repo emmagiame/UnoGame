@@ -21,12 +21,15 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     public void onClick(View v){
       //clear text in edit text
       editText.setText("");
-      UnoGameState firstInstance;
-      UnoGameState secondInstance;
-      // copy of game;
-      firstInstance = new UnoGameState();
-      // copy of copy from perspective of player 1 not sure if using playerNum is right
-      secondInstance = new UnoGameState(firstInstance, playerToMove);
+
+      //make new instance of game state
+      UnoGameState firstInstance = new UnoGameState();
+
+      //make deep copy from the perspective of player one (player 0 in the array)
+      UnoGameState secondInstance = new UnoGameState(firstInstance);
+
+      //call each method in game state class at least once, making a legal move and printing a
+      //description of the action to multiLine EditText
     }
 
 

@@ -25,11 +25,9 @@ public class UnoGameState extends GameState {
     private ArrayList<UnoCard> player2Hand;
 
     //a list for the discard pile
-    //should be an array list !!!!!!!
     private ArrayList<UnoCard> discardPile;
 
     //a list to hold the draw pile
-    //should be an array List !!!!!!
     private ArrayList<UnoCard> drawPile;
 
     //which players turn it is
@@ -54,9 +52,47 @@ public class UnoGameState extends GameState {
      */
 
     @Override
+    //print all variables in the current game state
     public String toString() {
-        return numSetupTurns + SEPARATOR + currentSetupTurn + "player0Hand: " + player0Hand + "player1Hand: " + player1Hand +
-                "Player2Hand: " + player2Hand + "discardPile: " + discardPile + "drawPile: " + drawPile + "playerTurn" + playerTurn;
+        //print scores of all players
+        String p0s = "player 0 score: " + this.player0Score + "\n";
+        String p1s = "player 1 score: " + this.player1Score + "\n";
+        String p2s = "player 2 score: " + this.player2Score + "\n";
+
+        //print player turn
+        String pt = "player turn: " + this.playerTurn + "\n";
+
+        //loop through and print player 0 hand
+        String p0h = "player 0 hand: \n";
+        for(int count = 0; count < this.player0Hand.size(); count++){
+            p0h = p0h +  this.player0Hand.get(count) + "\n";
+        }
+
+        //loop through and print player 1 hand
+        String p1h = "player 1 hand: \n";
+        for(int count = 0; count < this.player1Hand.size(); count++){
+            p1h = p1h = this.player1Hand.get(count) + "\n";
+        }
+
+        //loop through and print player 2 hand
+        String p2h = "player 2 hand: \n";
+        for(int count = 0; count < this.player2Hand.size(); count++){
+            p2h = p2h + this.player2Hand.get(count) + "\n";
+        }
+
+        //loop through and print discard pile
+        String disp = "contents of discard pile: \n";
+        for(int count = 0; count < this.discardPile.size(); count++){
+            disp = disp + this.discardPile.get(count) + "\n";
+        }
+
+        //loop through and print draw pile
+        String drawp = "contents of draw pile: \n";
+        for(int count = 0; count < this.drawPile.size(); count++){
+            drawp = drawp + this.drawPile.get(count) + "\n";
+        }
+
+        return p0s + p1s + p2s + pt + p0h + p1h + p2h + disp + drawp;
     }
 
     //constructor for objects of class UnoGameState
