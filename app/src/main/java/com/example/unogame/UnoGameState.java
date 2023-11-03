@@ -66,7 +66,7 @@ public class UnoGameState extends GameState {
 
         //print if the order is reversed or not
         String isR = "the turn order is ";
-        if(isReversed == true){
+        if(this.isReversed == true){
             isR = isR + "reversed\n";
         }
         else{
@@ -215,6 +215,18 @@ public class UnoGameState extends GameState {
         return playerTurn;
     }
 
+    public char getCurrentPlayableColor(){
+        return currentplayableColor;
+    }
+
+    public int getCurrentPlayableNumber(){
+        return currentPlayableNumber;
+    }
+
+    public boolean getIsReversed(){
+        return isReversed;
+    }
+
     //setters
     public void setPlayer0Score(int score0){
         this.player0Score = score0;
@@ -234,7 +246,7 @@ public class UnoGameState extends GameState {
 
     //do the array lists need setters?
 
-    //method for adding one card to the given players hand (will need to pass a card from drawPile)
+    //method for adding one card to the given players hand
     boolean drawCardFromDrawPile(int playerid, UnoCard card){
         //if it is not that players turn then the move is not valid so return false
         if(playerid != this.playerTurn){

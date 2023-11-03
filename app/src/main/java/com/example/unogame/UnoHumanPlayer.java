@@ -30,10 +30,25 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
       //call each method in game state class at least once, making a legal move and printing a
       //description of the action to multiLine EditText
-        firstInstance.getPlayer0Hand();
-        firstInstance.getPlayer1Hand();
-        firstInstance.getDrawPile();
-        firstInstance.getDiscardPile();
+
+        //draw a card to player 0
+        firstInstance.drawCardFromDrawPile(0, firstInstance.getDrawPile().get(0));
+        editText.append("Player 0 played the first card in their hand (card at index 0)\n");
+
+        //player 0 plays a card
+        firstInstance.playCard(0, firstInstance.getPlayer0Hand().get(0));
+        editText.append("Player 0 drew a card from the draw pile \n");
+
+        //new instance of game state
+        UnoGameState thirdInstance = new UnoGameState();
+
+        //new deep copy from the perspective of player one (player 0 in the array)
+        UnoGameState fourthInstance = new UnoGameState(thirdInstance);
+
+        //call to string and append to text in textview
+        editText.append(secondInstance.toString());
+        editText.append(fourthInstance.toString());
+
 
     }
 
