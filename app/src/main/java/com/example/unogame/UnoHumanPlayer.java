@@ -15,21 +15,6 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private EditText editText;
 
 
-
-
-    /* on click method */
-    public void onClick(View v){
-      //clear text in edit text
-      editText.setText("");
-      UnoGameState firstInstance;
-      UnoGameState secondInstance;
-      // copy of game;
-      firstInstance = new UnoGameState();
-      // copy of copy from perspective of player 1 not sure if using playerNum is right
-      secondInstance = new UnoGameState(firstInstance);
-    }
-
-
     /**
      * constructor
      *
