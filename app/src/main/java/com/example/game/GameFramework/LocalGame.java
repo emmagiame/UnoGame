@@ -68,6 +68,11 @@ public abstract class LocalGame implements Game, Tickable {
     // the game's state
     protected GameState state;
 
+    //getter to get num Players
+    public int getNumPlayers(){
+        return this.players.length;
+    }
+
     /**
      * Returns the game's timer
      *

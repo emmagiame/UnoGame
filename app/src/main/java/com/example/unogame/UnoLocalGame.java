@@ -5,7 +5,10 @@ import com.example.unogame.UnoGameState;
 import java.util.ArrayList;
 
 public class UnoLocalGame {
-
+    //needs to be like ttt, the state will have a variable keeping track of the player whose turn it it and number of players
+        //(x + 2) % 3 will skip a turn
+        //state.setwhosemove() = line above this
+    //
         UnoGameState gameStateRef;
 
         public UnoLocalGame(){
