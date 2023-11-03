@@ -377,7 +377,7 @@ public class UnoGameState extends GameState {
         }
         else if(card instanceof UnoCardSkip){
             //needs an instance of the class, how do I get that?
-            if(state.getNumPlayers()  == 2){
+            if(super.state.getNumPlayers()  == 2){
                 if(playerid == 0){
                     this.playerTurn = 0;
                     return true;
@@ -387,7 +387,7 @@ public class UnoGameState extends GameState {
                     return true;
                 }
             }
-            else if(state.getNumPlayers() == 3){
+            else if(super.state.getNumPlayers() == 3){
                 if(playerid == 0){
                     this.playerTurn = 2;
                     return true;
