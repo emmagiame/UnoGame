@@ -24,6 +24,6 @@ public class UnoLocalGame {
         }
 
          // check if passed in card has at least one
-         // element of card at begnning of discard arraylist
+         // element of card at beginning of discard arraylist
 
 }

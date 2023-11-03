@@ -7,13 +7,6 @@ import com.example.game.GameFramework.infoMessage.GameState;
 import java.util.ArrayList;
 
 public class UnoGameState extends GameState {
-
-    /*needs methods:
-    getplayerhand (0, 1, and 2)
-    getdiscardpile
-    getdrawpiletop
-     */
-
     //instance variables
     //player 0's hand
     private ArrayList<UnoCard> player0Hand;
