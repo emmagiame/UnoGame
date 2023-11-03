@@ -14,45 +14,6 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private GameMainActivity myActivity;
     private EditText editText;
 
-
-
-
-    /* on click method */
-    public void onClick(View v){
-      //clear text in edit text
-      editText.setText("");
-
-      //make new instance of game state
-      UnoGameState firstInstance = new UnoGameState();
-
-      //make deep copy from the perspective of player one (player 0 in the array)
-      UnoGameState secondInstance = new UnoGameState(firstInstance);
-
-      //call each method in game state class at least once, making a legal move and printing a
-      //description of the action to multiLine EditText
-
-        //draw a card to player 0
-        firstInstance.drawCardFromDrawPile(0, firstInstance.getDrawPile().get(0));
-        editText.append("Player 0 played the first card in their hand (card at index 0)\n");
-
-        //player 0 plays a card
-        firstInstance.playCard(0, firstInstance.getPlayer0Hand().get(0));
-        editText.append("Player 0 drew a card from the draw pile \n");
-
-        //new instance of game state
-        UnoGameState thirdInstance = new UnoGameState();
-
-        //new deep copy from the perspective of player one (player 0 in the array)
-        UnoGameState fourthInstance = new UnoGameState(thirdInstance);
-
-        //call to string and append to text in textview
-        editText.append(secondInstance.toString());
-        editText.append(fourthInstance.toString());
-
-
-    }
-
-
     /**
      * constructor
      *
@@ -84,4 +45,39 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     }
 
 
-}
+    @Override
+    public void onClick(View view) {
+        //clear text in edit text
+        editText.setText("");
+
+        //make new instance of game state
+        UnoGameState firstInstance = new UnoGameState();
+
+        //make deep copy from the perspective of player one (player 0 in the array)
+        UnoGameState secondInstance = new UnoGameState(firstInstance);
+
+        //call each method in game state class at least once, making a legal move and printing a
+        //description of the action to multiLine EditText
+
+        //draw a card to player 0
+        firstInstance.drawCardFromDrawPile(0, firstInstance.getDrawPile().get(0));
+        editText.append("Player 0 played the first card in their hand (card at index 0)\n");
+
+        //player 0 plays a card
+        firstInstance.playCard(0, firstInstance.getPlayer0Hand().get(0));
+        editText.append("Player 0 drew a card from the draw pile \n");
+
+        //new instance of game state
+        UnoGameState thirdInstance = new UnoGameState();
+
+        //new deep copy from the perspective of player one (player 0 in the array)
+        UnoGameState fourthInstance = new UnoGameState(thirdInstance);
+
+        //call to string and append to text in textview
+        editText.append(secondInstance.toString());
+        editText.append(fourthInstance.toString());
+
+
+        }
+    }
+
