@@ -2,6 +2,7 @@ package com.example.unogame;
 
 import static com.example.game.GameFramework.utilities.Saving.SEPARATOR;
 
+import com.example.game.GameFramework.LocalGame;
 import com.example.game.GameFramework.infoMessage.GameState;
 
 import java.util.ArrayList;
@@ -42,6 +43,12 @@ public class UnoGameState extends GameState {
     //player 2 score
     private int player2Score;
 
+    private char currentplayableColor;
+
+    private int currentPlayableNumber;
+
+    private boolean isReversed;
+
     /**
      * toString
      *
@@ -54,6 +61,18 @@ public class UnoGameState extends GameState {
     @Override
     //print all variables in the current game state
     public String toString() {
+        //print current playable color and num
+        String color = "current playable color: " + this.currentplayableColor + "\ncurrent playable number: " + this.currentPlayableNumber;
+
+        //print if the order is reversed or not
+        String isR = "the turn order is ";
+        if(isReversed == true){
+            isR = isR + "reversed\n";
+        }
+        else{
+            isR = isR + "not reversed\n";
+        }
+
         //print scores of all players
         String p0s = "player 0 score: " + this.player0Score + "\n";
         String p1s = "player 1 score: " + this.player1Score + "\n";
@@ -92,7 +111,7 @@ public class UnoGameState extends GameState {
             drawp = drawp + this.drawPile.get(count) + "\n";
         }
 
-        return p0s + p1s + p2s + pt + p0h + p1h + p2h + disp + drawp;
+        return color + isR + p0s + p1s + p2s + pt + p0h + p1h + p2h + disp + drawp;
     }
 
     //constructor for objects of class UnoGameState
@@ -100,6 +119,11 @@ public class UnoGameState extends GameState {
         this.playerTurn = 0;
         this.drawPile = startDrawPile();
         this.discardPile = startDiscardPile();
+        this.isReversed = false;
+
+        //need to radomize this
+        this.currentplayableColor = 'y';
+        this.currentPlayableNumber = 1;
     }
 
     //deep copy constructor
@@ -121,6 +145,12 @@ public class UnoGameState extends GameState {
         this.player0Score = originalGame.player0Score;
         this.player1Score = originalGame.player1Score;
         this.player2Score = originalGame.player2Score;
+
+        //copy current color
+        this.currentplayableColor = originalGame.currentplayableColor;
+
+        //copy if reversed or not
+        this.isReversed = originalGame.isReversed;
     }
 
     // creates inital arraylist of 7 cards for start of game
@@ -157,12 +187,235 @@ public class UnoGameState extends GameState {
         return player1Hand;
     }
 
+    public ArrayList<UnoCard> getPlayer2Hand() {
+        return player2Hand;
+    }
+
     public ArrayList<UnoCard> getDrawPile() {
         return drawPile;
     }
 
     public ArrayList<UnoCard> getDiscardPile() {
         return discardPile;
+    }
+
+    public int getPlayer0Score(){
+        return player0Score;
+    }
+
+    public int getPlayer1Score(){
+        return player1Score;
+    }
+
+    public int getPlayer2Score(){
+        return player2Score;
+    }
+
+    public int getPlayerTurn(){
+        return playerTurn;
+    }
+
+    //setters
+    public void setPlayer0Score(int score0){
+        this.player0Score = score0;
+    }
+
+    public void setPlayer1Score(int score1){
+        this.player1Score = score1;
+    }
+
+    public void setPlayer2Score(int score2){
+        this.player2Score = score2;
+    }
+
+    public void setPlayerTurn(int turn){
+        this.playerTurn = turn;
+    }
+
+    //do the array lists need setters?
+
+    //method for adding one card to the given players hand (will need to pass a card from drawPile)
+    boolean drawCardFromDrawPile(int playerid, UnoCard card){
+        //if it is not that players turn then the move is not valid so return false
+        if(playerid != this.playerTurn){
+            return false;
+        }
+
+        //check who's turn it is and add a card to their hand
+        if(playerid == 0){
+            this.player0Hand.add(card);
+            return true;
+        }
+        else if(playerid == 1){
+            this.player1Hand.add(card);
+            return true;
+        }
+
+        else if(playerid == 2){
+            this.player2Hand.add(card);
+            return true;
+        }
+    }
+
+    boolean playCard(int playerid, UnoCard card){
+        //if it is not that players turn then the move is not valid so return false also
+        //update whose turn it is
+        if((playerid != this.playerTurn) || (card.cardColor != this.currentplayableColor) || (card.cardNumber != this.currentPlayableNumber)){
+            return false;
+        }
+        this.discardPile.add(card);
+
+        //if wild card
+        if(card instanceof UnoCardWild){
+            //if its the wild card that adds
+            if(card.cardNumber == 4){
+                if(playerid == 0){
+                    drawCardFromDrawPile(1, this.drawPile.get(0));
+                    drawCardFromDrawPile(1, this.drawPile.get(0));
+                    drawCardFromDrawPile(1, this.drawPile.get(0));
+                    drawCardFromDrawPile(1, this.drawPile.get(0));
+                    this.playerTurn = 1;
+                }
+                else if(playerid == 1){
+                    drawCardFromDrawPile(2, this.drawPile.get(0));
+                    drawCardFromDrawPile(2, this.drawPile.get(0));
+                    drawCardFromDrawPile(2, this.drawPile.get(0));
+                    drawCardFromDrawPile(2, this.drawPile.get(0));
+                    this.playerTurn = 2;
+                }
+                else if(playerid == 2){
+                    drawCardFromDrawPile(0, this.drawPile.get(0));
+                    drawCardFromDrawPile(0, this.drawPile.get(0));
+                    drawCardFromDrawPile(0, this.drawPile.get(0));
+                    drawCardFromDrawPile(0, this.drawPile.get(0));
+                    this.playerTurn = 0;
+                }
+            }
+            //if its the wild card that adds 2
+            else if(card.cardNumber == 2){
+                if(playerid == 0){
+                    drawCardFromDrawPile(1, this.drawPile.get(0));
+                    drawCardFromDrawPile(1, this.drawPile.get(0));
+                    this.playerTurn = 1;
+                }
+                else if(playerid == 1){
+                    drawCardFromDrawPile(2, this.drawPile.get(0));
+                    drawCardFromDrawPile(2, this.drawPile.get(0));
+                    this.playerTurn = 2;
+                }
+                else if(playerid == 2){
+                    drawCardFromDrawPile(0, this.drawPile.get(0));
+                    drawCardFromDrawPile(0, this.drawPile.get(0));
+                    this.playerTurn = 0;
+                }
+            }
+            //change the playable color
+            this.currentplayableColor = card.cardColor;
+
+            return true;
+
+        }
+        else if(card instanceof UnoCardPlus2){
+            if(card.cardNumber == 2){
+                if(playerid == 0){
+                    drawCardFromDrawPile(1, this.drawPile.get(0));
+                    drawCardFromDrawPile(1, this.drawPile.get(0));
+                    this.playerTurn = 1;
+                }
+                else if(playerid == 1){
+                    drawCardFromDrawPile(2, this.drawPile.get(0));
+                    drawCardFromDrawPile(2, this.drawPile.get(0));
+                    this.playerTurn = 2;
+                }
+                else if(playerid == 2){
+                    drawCardFromDrawPile(0, this.drawPile.get(0));
+                    drawCardFromDrawPile(0, this.drawPile.get(0));
+                    this.playerTurn = 0;
+                }
+            }
+            return true;
+        }
+        else if(card instanceof UnoCardPlus4){
+            if(card.cardNumber == 4){
+                if(playerid == 0){
+                    drawCardFromDrawPile(1, this.drawPile.get(0));
+                    drawCardFromDrawPile(1, this.drawPile.get(0));
+                    drawCardFromDrawPile(1, this.drawPile.get(0));
+                    drawCardFromDrawPile(1, this.drawPile.get(0));
+                    this.playerTurn = 1;
+                }
+                else if(playerid == 1){
+                    drawCardFromDrawPile(2, this.drawPile.get(0));
+                    drawCardFromDrawPile(2, this.drawPile.get(0));
+                    drawCardFromDrawPile(2, this.drawPile.get(0));
+                    drawCardFromDrawPile(2, this.drawPile.get(0));
+                    this.playerTurn = 2;
+                }
+                else if(playerid == 2){
+                    drawCardFromDrawPile(0, this.drawPile.get(0));
+                    drawCardFromDrawPile(0, this.drawPile.get(0));
+                    drawCardFromDrawPile(0, this.drawPile.get(0));
+                    drawCardFromDrawPile(0, this.drawPile.get(0));
+                    this.playerTurn = 0;
+                }
+                //change the playable color
+                this.currentplayableColor = card.cardColor;
+                return true;
+            }
+        }
+        else if(card instanceof UnoCardSkip){
+            //needs an instance of the class, how do I get that?
+            if(state.getNumPlayers()  == 2){
+                if(playerid == 0){
+                    this.playerTurn = 0;
+                    return true;
+                }
+                else if(playerid == 1){
+                    this.playerTurn = 1;
+                    return true;
+                }
+            }
+            else if(state.getNumPlayers() == 3){
+                if(playerid == 0){
+                    this.playerTurn = 2;
+                    return true;
+                }
+                else if(playerid == 1){
+                    this.playerTurn = 0;
+                    return true;
+                }
+                else if(playerid == 2){
+                    this.playerTurn = 1;
+                    return true;
+                }
+            }
+
+        }
+        else if(card instanceof UnoCardReverse){
+            //for now just a boolean, not super sure how to implement
+            if(this.isReversed == true){
+                this.isReversed = false;
+                return true;
+            }
+            else if(this.isReversed == false){
+                this.isReversed = true;
+                return true;
+            }
+
+        }
+        else{
+            if(this.currentplayableColor != card.cardColor){
+                this.currentplayableColor = card.cardColor;
+                return true;
+            }
+            else if(this.currentPlayableNumber != card.cardNumber){
+                this.currentPlayableNumber = card.cardNumber;
+                return true;
+            }
+
+        }
+        //something went wrong so return false
+        return false;
     }
 }
 

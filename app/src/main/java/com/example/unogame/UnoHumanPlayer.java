@@ -30,6 +30,11 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
       //call each method in game state class at least once, making a legal move and printing a
       //description of the action to multiLine EditText
+        firstInstance.getPlayer0Hand();
+        firstInstance.getPlayer1Hand();
+        firstInstance.getDrawPile();
+        firstInstance.getDiscardPile();
+
     }
 
 

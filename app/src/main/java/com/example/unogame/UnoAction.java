@@ -1,10 +1,13 @@
 package com.example.unogame;
 
+import com.example.game.GameFramework.actionMessage.GameAction;
+import com.example.game.GameFramework.players.GamePlayer;
+
 import java.util.ArrayList;
 
-public class UnoAction {
+//not sure if this is needed for game state
 
-    UnoGameState gameStateRef;
+public class UnoAction {
 
     boolean isValid(ArrayList card) {
         if(card == gameStateRef.)
