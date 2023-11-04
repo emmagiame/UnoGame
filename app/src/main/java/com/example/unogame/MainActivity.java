@@ -1,9 +1,5 @@
 package com.example.unogame;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-
 import com.example.game.GameFramework.GameMainActivity;
 import com.example.game.GameFramework.LocalGame;
 import com.example.game.GameFramework.gameConfiguration.GameConfig;
@@ -19,12 +15,12 @@ public class MainActivity extends GameMainActivity {
     private static final int PORT_NUMBER = 2278;
 
     /**
-    create default config for Uno
-    -1 Human player vs 1 Computer player
-    -minimum players = 1
-    -maximum players = 3
+     create default config for Uno
+     -1 Human player vs 1 Computer player
+     -minimum players = 1
+     -maximum players = 3
 
-    @return new default config
+     @return new default config
 
      */
     @Override

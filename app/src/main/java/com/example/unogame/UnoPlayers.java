@@ -1,11 +1,15 @@
 package com.example.unogame;
 
 public class UnoPlayers {
-    private String Player;
     //represent players in UNO game & store their names
+    private String player;
+
+    /**
+     * constructor
+     */
     public UnoPlayers() {
     }
-    //this constructor doesn't initialize any values
+
 
 }
 

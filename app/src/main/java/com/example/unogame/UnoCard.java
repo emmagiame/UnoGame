@@ -15,6 +15,12 @@ public class UnoCard {
         cardNumber = randomizeCardNumber();
     }
 
+    /**
+     * randomizes the cards color
+     *
+     * @return
+     *      returns the first char of the color of the card
+     */
     public char randomizeCardColor(){
         //randomize a number 1 through 4
         Random rand = new Random();
@@ -41,6 +47,12 @@ public class UnoCard {
         else return 'n';
     }
 
+    /**
+     * randomizes card number
+     *
+     * @return
+     *      return cards number
+     */
     public int randomizeCardNumber(){
         //randomize a number 0 though 9
         Random rand = new Random();

@@ -7,9 +7,26 @@ import java.util.ArrayList;
 
 //not sure if this is needed for game state
 
-public class UnoAction {
+public class UnoAction extends GameAction {
 
-    boolean isValid(ArrayList card) {
+
+    /**
+     * constructor for GameAction
+     *
+     * @param player the player who created the action
+     */
+    public UnoAction(GamePlayer player) {
+        super(player);
+    }
+
+    /**
+     * checks if card being played is a valid move
+     *
+     * @param card - card being played
+     * @return
+     *      returns true if card can be played, false otherwise
+     */
+    public boolean isValid(ArrayList card) {
         if(card == gameStateRef.)
 
 

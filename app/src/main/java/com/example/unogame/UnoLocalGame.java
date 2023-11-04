@@ -14,9 +14,12 @@ public class UnoLocalGame extends LocalGame {
     //
     private UnoGameState gameStateRef;
 
+    /**
+     * constructor
+     */
     public UnoLocalGame(){
-            gameStateRef = new UnoGameState();
-        }
+        gameStateRef = new UnoGameState();
+    }
 
 
     /**
@@ -33,6 +36,7 @@ public class UnoLocalGame extends LocalGame {
     }
 
     /**
+     * Makes move dependant on the action passed through
      *
      * @param action
      * 			The move that the player has sent to the game

@@ -24,17 +24,33 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         super(name);
     }
 
+    /**
+     * gets top view???
+     *
+     * @return
+     *      returns top view
+     */
     @Override
     public View getTopView() {
 
         return myActivity.findViewById(R.id.runTestButtonLayout);
     }
 
+    /**
+     * receives the info for the current game state
+     *
+     * @param info - state of current game
+     */
     @Override
     public void receiveInfo(GameInfo info) {
 
     }
 
+    /**
+     *
+     *
+     * @param activity
+     */
     @Override
     public void setAsGui(GameMainActivity activity) {
         // setting view to run test Button
@@ -45,7 +61,11 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         runTest.setOnClickListener(this);
     }
 
-
+    /**
+     * onClick method
+     *
+     * @param view
+     */
     @Override
     public void onClick(View view) {
         //clear text in edit text
