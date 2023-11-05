@@ -43,8 +43,9 @@ public class UnoAction extends GameAction {
      *      new hand with drawn card
      */
     public ArrayList drawCard(int player) {
+       /*
         if(isTurn(player) == true) {
-                //   * onClick() will remove card from draw array
+                //   onClick() will remove card from draw array
                 //    and add card to player array
                 //    }
         }
@@ -52,7 +53,7 @@ public class UnoAction extends GameAction {
             //   ArrayList playCard(UnoCard card, int player) {
             //   if(isTurn(player) == true) {
 
-                /*
+
                     * onClick() on card will highlight card
                     * onClick() on discard
                     * isValid()
@@ -60,6 +61,7 @@ public class UnoAction extends GameAction {
                     * onClick() will remove card from player array and insert
                     into discard array
                 */
+
 
         return null;
     }
