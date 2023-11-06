@@ -27,6 +27,9 @@ public class UnoGameState extends GameState {
     //which players turn it is
     private int playerTurn;
 
+    //number of players
+    int numPlayers;
+
     //player 0 score
     private int player0Score;
 
@@ -112,8 +115,9 @@ public class UnoGameState extends GameState {
     /**
      * constructor for objects of class UnoGameState
      */
-    public UnoGameState() {
+    public UnoGameState(int numPlayers) {
         this.playerTurn = 0;
+        this.numPlayers = 0;
         this.drawPile = startDrawPile();
         this.discardPile = startDiscardPile();
         this.isReversed = false;
@@ -155,7 +159,7 @@ public class UnoGameState extends GameState {
         this.isReversed = originalGame.isReversed;
     }
 
-    // creates inital arraylist of 7 cards for start of game
+    // creates initial arraylist of 7 cards for start of game
 
     /**
      *  gives a given player their starting hand

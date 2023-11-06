@@ -18,7 +18,8 @@ public class UnoLocalGame extends LocalGame {
      * constructor
      */
     public UnoLocalGame(){
-        gameStateRef = new UnoGameState();
+        super();
+        gameStateRef = new UnoGameState(players.length);
     }
 
 
