@@ -45,6 +45,7 @@ public class UnoGameState extends GameState {
     //if rotation is reversed
     private boolean isReversed;
 
+
     /**
      * toString
      *
@@ -511,17 +512,10 @@ public class UnoGameState extends GameState {
         }
         else if(card instanceof UnoCardSkip){
             //needs an instance of the class, how do I get that?
-            if(super.state.getNumPlayers()  == 2){
-                if(playerId == 0){
-                    this.playerTurn = 0;
-                    return true;
-                }
-                else if(playerId == 1){
-                    this.playerTurn = 1;
-                    return true;
-                }
+            if(super.gameState.getNumPlayers()  == 2){
+                this.playerTurn = playerId;
             }
-            else if(super.state.getNumPlayers() == 3){
+            else if(super.gameState.getNumPlayers() == 3){
                 if(playerId == 0){
                     this.playerTurn = 2;
                     return true;
