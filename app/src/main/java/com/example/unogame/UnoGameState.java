@@ -146,7 +146,7 @@ public class UnoGameState extends GameState {
         //copy all player hands
         this.player0Hand = originalGame.player0Hand;
         this.player1Hand = originalGame.player1Hand;
-        this.player2Hand =  originalGame.player2Hand;
+        this.player2Hand = originalGame.player2Hand;
 
         //copy all player scores
         this.player0Score = originalGame.player0Score;
@@ -420,46 +420,72 @@ public class UnoGameState extends GameState {
         if(card instanceof UnoCardWild){
             //if its the wild card that adds
             if(card.cardNumber == 4){
-                if(playerId == 0){
-                    drawCardFromDrawPile(1, this.drawPile.get(0));
-                    drawCardFromDrawPile(1, this.drawPile.get(0));
-                    drawCardFromDrawPile(1, this.drawPile.get(0));
-                    drawCardFromDrawPile(1, this.drawPile.get(0));
-                    this.playerTurn = 1;
+                if (this.numPlayers == 3) {
+                    if (playerId == 0) {
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        this.playerTurn = 1;
+                    } else if (playerId == 1) {
+                        drawCardFromDrawPile(2, this.drawPile.get(0));
+                        drawCardFromDrawPile(2, this.drawPile.get(0));
+                        drawCardFromDrawPile(2, this.drawPile.get(0));
+                        drawCardFromDrawPile(2, this.drawPile.get(0));
+                        this.playerTurn = 2;
+                    } else if (playerId == 2) {
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        this.playerTurn = 0;
+                    }
                 }
-                else if(playerId == 1){
-                    drawCardFromDrawPile(2, this.drawPile.get(0));
-                    drawCardFromDrawPile(2, this.drawPile.get(0));
-                    drawCardFromDrawPile(2, this.drawPile.get(0));
-                    drawCardFromDrawPile(2, this.drawPile.get(0));
-                    this.playerTurn = 2;
+                else if(this.numPlayers == 2) {
+                    if (playerId == 0) {
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        this.playerTurn = 1;
+                    } else if (playerId == 1) {
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        this.playerTurn = 0;
+                    }
                 }
-                else if(playerId == 2){
-                    drawCardFromDrawPile(0, this.drawPile.get(0));
-                    drawCardFromDrawPile(0, this.drawPile.get(0));
-                    drawCardFromDrawPile(0, this.drawPile.get(0));
-                    drawCardFromDrawPile(0, this.drawPile.get(0));
-                    this.playerTurn = 0;
+                    //if its the wild card that adds 2
+                    else if(card.cardNumber == 2){
+                        if (this.numPlayers == 3) {
+                            if (playerId == 0) {
+                                drawCardFromDrawPile(1, this.drawPile.get(0));
+                                drawCardFromDrawPile(1, this.drawPile.get(0));
+                                this.playerTurn = 1;
+                            } else if (playerId == 1) {
+                                drawCardFromDrawPile(2, this.drawPile.get(0));
+                                drawCardFromDrawPile(2, this.drawPile.get(0));
+                                this.playerTurn = 2;
+                            } else if (playerId == 2) {
+                                drawCardFromDrawPile(0, this.drawPile.get(0));
+                                drawCardFromDrawPile(0, this.drawPile.get(0));
+                                this.playerTurn = 0;
+                            }
+                        }
+                        else if (this.numPlayers == 2){
+                            if (playerId == 0) {
+                                drawCardFromDrawPile(1, this.drawPile.get(0));
+                                drawCardFromDrawPile(1, this.drawPile.get(0));
+                                this.playerTurn = 1;
+                            } else if (playerId == 1) {
+                                drawCardFromDrawPile(0, this.drawPile.get(0));
+                                drawCardFromDrawPile(0, this.drawPile.get(0));
+                                this.playerTurn = 0;
+                            }
+                        }
+                    }
                 }
-            }
-            //if its the wild card that adds 2
-            else if(card.cardNumber == 2){
-                if(playerId == 0){
-                    drawCardFromDrawPile(1, this.drawPile.get(0));
-                    drawCardFromDrawPile(1, this.drawPile.get(0));
-                    this.playerTurn = 1;
-                }
-                else if(playerId == 1){
-                    drawCardFromDrawPile(2, this.drawPile.get(0));
-                    drawCardFromDrawPile(2, this.drawPile.get(0));
-                    this.playerTurn = 2;
-                }
-                else if(playerId == 2){
-                    drawCardFromDrawPile(0, this.drawPile.get(0));
-                    drawCardFromDrawPile(0, this.drawPile.get(0));
-                    this.playerTurn = 0;
-                }
-            }
             //change the playable color
             this.currentPlayableColor = card.cardColor;
 
@@ -467,47 +493,72 @@ public class UnoGameState extends GameState {
 
         }
         else if(card instanceof UnoCardPlus2){
-            if(card.cardNumber == 2){
-                if(playerId == 0){
-                    drawCardFromDrawPile(1, this.drawPile.get(0));
-                    drawCardFromDrawPile(1, this.drawPile.get(0));
-                    this.playerTurn = 1;
+            if(card.cardNumber == 2) {
+                if (this.numPlayers == 3) {
+                    if (playerId == 0) {
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        this.playerTurn = 1;
+                    } else if (playerId == 1) {
+                        drawCardFromDrawPile(2, this.drawPile.get(0));
+                        drawCardFromDrawPile(2, this.drawPile.get(0));
+                        this.playerTurn = 2;
+                    } else if (playerId == 2) {
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        this.playerTurn = 0;
+                    }
                 }
-                else if(playerId == 1){
-                    drawCardFromDrawPile(2, this.drawPile.get(0));
-                    drawCardFromDrawPile(2, this.drawPile.get(0));
-                    this.playerTurn = 2;
+                else if(this.numPlayers == 2){
+                    if (playerId == 0) {
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        this.playerTurn = 1;
+                    } else if (playerId == 1) {
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        this.playerTurn = 0;
                 }
-                else if(playerId == 2){
-                    drawCardFromDrawPile(0, this.drawPile.get(0));
-                    drawCardFromDrawPile(0, this.drawPile.get(0));
-                    this.playerTurn = 0;
-                }
+            }
             }
             return true;
         }
         else if(card instanceof UnoCardPlus4){
             if(card.cardNumber == 4){
-                if(playerId == 0){
-                    drawCardFromDrawPile(1, this.drawPile.get(0));
-                    drawCardFromDrawPile(1, this.drawPile.get(0));
-                    drawCardFromDrawPile(1, this.drawPile.get(0));
-                    drawCardFromDrawPile(1, this.drawPile.get(0));
-                    this.playerTurn = 1;
+                if(this.numPlayers == 3) {
+                    if (playerId == 0) {
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        this.playerTurn = 1;
+                    } else if (playerId == 1) {
+                        drawCardFromDrawPile(2, this.drawPile.get(0));
+                        drawCardFromDrawPile(2, this.drawPile.get(0));
+                        drawCardFromDrawPile(2, this.drawPile.get(0));
+                        drawCardFromDrawPile(2, this.drawPile.get(0));
+                        this.playerTurn = 2;
+                    } else if (playerId == 2) {
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        this.playerTurn = 0;
+                    }
                 }
-                else if(playerId == 1){
-                    drawCardFromDrawPile(2, this.drawPile.get(0));
-                    drawCardFromDrawPile(2, this.drawPile.get(0));
-                    drawCardFromDrawPile(2, this.drawPile.get(0));
-                    drawCardFromDrawPile(2, this.drawPile.get(0));
-                    this.playerTurn = 2;
-                }
-                else if(playerId == 2){
-                    drawCardFromDrawPile(0, this.drawPile.get(0));
-                    drawCardFromDrawPile(0, this.drawPile.get(0));
-                    drawCardFromDrawPile(0, this.drawPile.get(0));
-                    drawCardFromDrawPile(0, this.drawPile.get(0));
-                    this.playerTurn = 0;
+                else if(this.numPlayers == 2){
+                    if (playerId == 0) {
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        this.playerTurn = 1;
+                    } else if (playerId == 1) {
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        this.playerTurn = 0;
                 }
                 //change the playable color
                 this.currentPlayableColor = card.cardColor;
@@ -516,10 +567,10 @@ public class UnoGameState extends GameState {
         }
         else if(card instanceof UnoCardSkip){
             //needs an instance of the class, how do I get that?
-            if(super.gameState.getNumPlayers()  == 2){
+            if(this.numPlayers == 2){
                 this.playerTurn = playerId;
             }
-            else if(super.gameState.getNumPlayers() == 3){
+            else if(this.numPlayers == 3){
                 if(playerId == 0){
                     this.playerTurn = 2;
                     return true;
@@ -561,6 +612,10 @@ public class UnoGameState extends GameState {
         //something went wrong so return false
         return false;
     }
+        //something went wrong so return false
+        return false;
+}
+
 }
 
 
