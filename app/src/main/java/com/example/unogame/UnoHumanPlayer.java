@@ -72,7 +72,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         editText.setText("");
 
         //make new instance of game state
-        UnoGameState firstInstance = new UnoGameState();
+        UnoGameState firstInstance = new UnoGameState(2);
 
         //make deep copy from the perspective of player one (player 0 in the array)
         UnoGameState secondInstance = new UnoGameState(firstInstance);
@@ -89,7 +89,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         editText.append("Player 0 drew a card from the draw pile \n");
 
         //new instance of game state
-        UnoGameState thirdInstance = new UnoGameState();
+        UnoGameState thirdInstance = new UnoGameState(2);
 
         //new deep copy from the perspective of player one (player 0 in the array)
         UnoGameState fourthInstance = new UnoGameState(thirdInstance);
