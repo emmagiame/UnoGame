@@ -410,6 +410,8 @@ public class UnoGameState extends GameState {
      */
     public boolean playCard(int playerId, UnoCard card) {
         //if it is not that players turn then the move is not valid so return false also
+        //currently this method also changes the player turn but when we implement reverse I think we will want to change the turn outside of this method or write
+        //a method to change the turn and call it in playCard instead
         if (playerId == this.playerTurn && (card.cardColor == this.currentPlayableColor) || (card.cardNumber == this.currentPlayableNumber)) {
 
         // remove card from players hand
