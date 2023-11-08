@@ -410,13 +410,7 @@ public class UnoGameState extends GameState {
      */
     public boolean playCard(int playerId, UnoCard card) {
         //if it is not that players turn then the move is not valid so return false also
-        //update whose turn it is
-
         if (playerId == this.playerTurn && (card.cardColor == this.currentPlayableColor) || (card.cardNumber == this.currentPlayableNumber)) {
-            return true;
-        } else {
-            return false;
-        }
 
         // remove card from players hand
         if (playerId == 0) {
@@ -618,5 +612,8 @@ public class UnoGameState extends GameState {
         }
 
     }
+        //wasn't a playable card
+        return false;
+}
 }
 
