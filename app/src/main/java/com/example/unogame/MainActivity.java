@@ -33,7 +33,7 @@ public class MainActivity extends GameMainActivity {
         playerTypes.add(new GamePlayerType("Human Player") {
             @Override
             public GamePlayer createPlayer(String name) {
-                return new UnoHumanPlayer(name);
+                return new UnoHumanPlayer(name, R.layout.uno_human_player);
             }
         });
 

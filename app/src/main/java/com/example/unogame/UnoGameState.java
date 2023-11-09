@@ -118,10 +118,14 @@ public class UnoGameState extends GameState {
      */
     public UnoGameState(int numPlayers) {
         this.playerTurn = 0;
-        this.numPlayers = 0;
+        this.numPlayers = numPlayers;
         this.drawPile = startDrawPile();
         this.discardPile = startDiscardPile();
+        this.player0Hand = startHand(0);
+        this.player1Hand = startHand(1);
+        this.player2Hand = startHand(2);
         this.isReversed = false;
+
 
         //need to radomize this
         this.currentPlayableColor = 'y';
@@ -140,13 +144,29 @@ public class UnoGameState extends GameState {
         this.playerTurn = originalGame.playerTurn;
 
         //copy draw and discard pile
-        this.drawPile = originalGame.drawPile;
-        this.discardPile = originalGame.discardPile;
+        this.drawPile = new ArrayList<UnoCard>();
+        for(UnoCard card : originalGame.drawPile){
+            drawPile.add(new UnoCard(card));
+        }
+        this.discardPile = new ArrayList<UnoCard>();
+        for(UnoCard card : originalGame.discardPile){
+            discardPile.add(new UnoCard(card));
+        }
 
         //copy all player hands
-        this.player0Hand = originalGame.player0Hand;
-        this.player1Hand = originalGame.player1Hand;
-        this.player2Hand =  originalGame.player2Hand;
+        this.player0Hand = new ArrayList<UnoCard>();
+        for( UnoCard card : originalGame.player0Hand){
+            player0Hand.add(new UnoCard(card));
+        }
+        this.player1Hand = new ArrayList<UnoCard>();
+        for( UnoCard card : originalGame.player1Hand){
+            player1Hand.add(new UnoCard(card));
+        }
+
+        this.player2Hand = new ArrayList<UnoCard>();
+        for( UnoCard card : originalGame.player2Hand){
+            player2Hand.add(new UnoCard(card));
+        }
 
         //copy all player scores
         this.player0Score = originalGame.player0Score;
@@ -160,10 +180,9 @@ public class UnoGameState extends GameState {
         this.isReversed = originalGame.isReversed;
     }
 
-    // creates initial arraylist of 7 cards for start of game
 
     /**
-     *  gives a given player their starting hand
+     *  gives a given player their starting hand of 7 cards
      *
      * @param playerTurn - player who's turn it is
      * @return

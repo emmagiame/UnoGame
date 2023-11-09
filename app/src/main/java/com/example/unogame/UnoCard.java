@@ -10,9 +10,21 @@ public class UnoCard {
     //card number
     protected int cardNumber;
 
+
+
     public UnoCard(){
         cardColor = randomizeCardColor();
         cardNumber = randomizeCardNumber();
+    }
+
+    /**
+     * copy constructor
+     *
+     * @param card - card to copy
+     */
+    public UnoCard(UnoCard card){
+        this.cardColor = card.cardColor;
+        this.cardNumber = card.cardNumber;
     }
 
     /**
@@ -64,6 +76,17 @@ public class UnoCard {
         return num;
     }
 
+    /**
+     * prints current card number and color
+     *
+     * @return
+     *      string description of card color and number
+     */
+    @Override
+    //print current card
+    public String toString() {
+        return "Card Number: " + this.cardNumber + ", Card Color: " + this.cardColor;
+    }
 
 
 }

@@ -14,14 +14,18 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private GameMainActivity myActivity;
     private EditText editText;
 
+    //layout id of given layout
+    private int layoutId;
 
     /**
      * constructor
      *
-     * @param name the name of the player
+     * @param name - name of player
+     * @param id - given player view layout id
      */
-    public UnoHumanPlayer(String name) {
+    public UnoHumanPlayer(String name, int id) {
         super(name);
+        layoutId = id;
     }
 
     /**
@@ -47,18 +51,30 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     }
 
     /**
-     *
+     * finds button and edit text in given player view
      *
      * @param activity
      */
     @Override
     public void setAsGui(GameMainActivity activity) {
+        myActivity = activity;
+        myActivity.setContentView(layoutId);
+
         // setting view to run test Button
-        Button runTest = myActivity.findViewById(R.id.runTest);
-        myActivity.findViewById(R.id.editTextTextMultiLine);
+        Button runTestButton = myActivity.findViewById(R.id.runTestButton);
+        editText = myActivity.findViewById(R.id.editTextTextMultiLine);
+
 
         // OnClick for button
-        runTest.setOnClickListener(this);
+        runTestButton.setOnClickListener(this);
+    }
+
+    /**
+     *
+     */
+    @Override
+    protected void initAfterReady() {
+        super.initAfterReady();
     }
 
     /**

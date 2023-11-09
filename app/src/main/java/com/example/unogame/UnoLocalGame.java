@@ -12,14 +12,20 @@ public class UnoLocalGame extends LocalGame {
         //(x + 2) % 3 will skip a turn
         //state.setwhosemove() = line above this
     //
-    private UnoGameState gameStateRef;
+
 
     /**
      * constructor
      */
     public UnoLocalGame(){
         super();
-        gameStateRef = new UnoGameState(players.length);
+    }
+
+    @Override
+    public void start(GamePlayer[] players)
+    {
+        super.start(players);
+        state = new UnoGameState(getNumPlayers());
     }
 
 
@@ -27,6 +33,7 @@ public class UnoLocalGame extends LocalGame {
      * check if it is given players turn
      */
     protected boolean canMove(int player) {
+        UnoGameState gameStateRef = (UnoGameState)state;
         if(player == gameStateRef.getCurrentSetupTurn()) {
             return true;
         }
