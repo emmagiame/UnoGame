@@ -1,4 +1,4 @@
-package com.example.unogame;
+package com.example.unogame.players;
 
 import android.util.Log;
 import android.view.View;
@@ -8,6 +8,8 @@ import android.widget.EditText;
 import com.example.game.GameFramework.GameMainActivity;
 import com.example.game.GameFramework.infoMessage.GameInfo;
 import com.example.game.GameFramework.players.GameHumanPlayer;
+import com.example.unogame.R;
+import com.example.unogame.info.UnoGameState;
 
 import java.util.logging.Handler;
 

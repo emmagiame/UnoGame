@@ -1,4 +1,4 @@
-package com.example.unogame;
+package com.example.unogame.players;
 
 import com.example.game.GameFramework.infoMessage.GameInfo;
 import com.example.game.GameFramework.players.GameComputerPlayer;

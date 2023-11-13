@@ -6,6 +6,7 @@ import com.example.game.GameFramework.gameConfiguration.GameConfig;
 import com.example.game.GameFramework.gameConfiguration.GamePlayerType;
 import com.example.game.GameFramework.infoMessage.GameState;
 import com.example.game.GameFramework.players.GamePlayer;
+import com.example.unogame.players.UnoHumanPlayer;
 
 import java.util.ArrayList;
 
