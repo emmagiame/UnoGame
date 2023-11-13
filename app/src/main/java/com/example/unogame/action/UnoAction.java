@@ -1,4 +1,4 @@
-package com.example.unogame;
+package com.example.unogame.action;
 
 import com.example.game.GameFramework.actionMessage.GameAction;
 import com.example.game.GameFramework.players.GamePlayer;
