@@ -1,4 +1,4 @@
-package com.example.unogame;
+package com.example.unogame.cards;
 
 import java.util.Random;
 
@@ -25,6 +25,26 @@ public class UnoCard {
     public UnoCard(UnoCard card){
         this.cardColor = card.cardColor;
         this.cardNumber = card.cardNumber;
+    }
+
+    /**
+     *  gets the current cards color
+     *
+     * @return
+     *      the current card color
+     */
+    public char getCardColor() {
+        return this.cardColor;
+    }
+
+    /**
+     *  gets current card number
+     *
+     * @return
+     *      the current card number
+     */
+    public int getCardNumber() {
+        return this.cardNumber;
     }
 
     /**

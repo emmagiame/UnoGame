@@ -1,9 +1,12 @@
-package com.example.unogame;
+package com.example.unogame.info;
 
-import static com.example.game.GameFramework.utilities.Saving.SEPARATOR;
-
-import com.example.game.GameFramework.LocalGame;
 import com.example.game.GameFramework.infoMessage.GameState;
+import com.example.unogame.cards.UnoCard;
+import com.example.unogame.cards.UnoCardPlus2;
+import com.example.unogame.cards.UnoCardPlus4;
+import com.example.unogame.cards.UnoCardReverse;
+import com.example.unogame.cards.UnoCardSkip;
+import com.example.unogame.cards.UnoCardWild;
 
 import java.util.ArrayList;
 
@@ -510,7 +513,7 @@ public class UnoGameState extends GameState {
         //if it is not that players turn then the move is not valid so return false also
         //currently this method also changes the player turn but when we implement reverse I think we will want to change the turn outside of this method or write
         //a method to change the turn and call it in playCard instead
-        if (playerId == this.playerTurn && (card.cardColor == this.currentPlayableColor) || (card.cardNumber == this.currentPlayableNumber)) {
+        if (playerId == this.playerTurn && (card.getCardColor() == this.currentPlayableColor) || (card.getCardNumber() == this.currentPlayableNumber)) {
 
         // remove card from players hand
         if (playerId == 0) {
@@ -525,13 +528,13 @@ public class UnoGameState extends GameState {
         this.discardPile.add(card);
 
         // set new playable color and number
-        currentPlayableColor = card.cardColor;
-        currentPlayableNumber = card.cardNumber;
+        currentPlayableColor = card.getCardColor();
+        currentPlayableNumber = card.getCardNumber();
 
         // if wild card
         if (card instanceof UnoCardWild) {
             //if its the wild card that adds
-            if (card.cardNumber == 4) {
+            if (card.getCardNumber() == 4) {
                 if (this.numPlayers == 3) {
                     if (playerId == 0) {
                         drawCardFromDrawPile(1, this.drawPile.get(0));
@@ -568,7 +571,7 @@ public class UnoGameState extends GameState {
                     }
                 }
                 //if its the wild card that adds 2
-                else if (card.cardNumber == 2) {
+                else if (card.getCardNumber() == 2) {
                     if (this.numPlayers == 3) {
                         if (playerId == 0) {
                             drawCardFromDrawPile(1, this.drawPile.get(0));
@@ -597,12 +600,12 @@ public class UnoGameState extends GameState {
                 }
             }
             //change the playable color
-            this.currentPlayableColor = card.cardColor;
+            this.currentPlayableColor = card.getCardColor();
 
             return true;
 
         } else if (card instanceof UnoCardPlus2) {
-            if (card.cardNumber == 2) {
+            if (card.getCardNumber() == 2) {
                 if (this.numPlayers == 3) {
                     if (playerId == 0) {
                         drawCardFromDrawPile(1, this.drawPile.get(0));
@@ -630,7 +633,7 @@ public class UnoGameState extends GameState {
                 }
                 return true;
             } else if (card instanceof UnoCardPlus4) {
-                if (card.cardNumber == 4) {
+                if (card.getCardNumber() == 4) {
                     if (this.numPlayers == 3) {
                         if (playerId == 0) {
                             drawCardFromDrawPile(1, this.drawPile.get(0));
@@ -666,7 +669,7 @@ public class UnoGameState extends GameState {
                             this.playerTurn = 0;
                         }
                         //change the playable color
-                        this.currentPlayableColor = card.cardColor;
+                        this.currentPlayableColor = card.getCardColor();
                         return true;
                     }
                 } else if (card instanceof UnoCardSkip) {
@@ -697,11 +700,11 @@ public class UnoGameState extends GameState {
                     }
 
                 } else {
-                    if (this.currentPlayableColor != card.cardColor) {
-                        this.currentPlayableColor = card.cardColor;
+                    if (this.currentPlayableColor != card.getCardColor()) {
+                        this.currentPlayableColor = card.getCardColor();
                         return true;
-                    } else if (this.currentPlayableNumber != card.cardNumber) {
-                        this.currentPlayableNumber = card.cardNumber;
+                    } else if (this.currentPlayableNumber != card.getCardNumber()) {
+                        this.currentPlayableNumber = card.getCardNumber();
                         return true;
                     }
 

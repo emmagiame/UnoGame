@@ -3,9 +3,7 @@ package com.example.unogame;
 import com.example.game.GameFramework.LocalGame;
 import com.example.game.GameFramework.actionMessage.GameAction;
 import com.example.game.GameFramework.players.GamePlayer;
-import com.example.unogame.UnoGameState;
-
-import java.util.ArrayList;
+import com.example.unogame.info.UnoGameState;
 
 public class UnoLocalGame extends LocalGame {
     //needs to be like ttt, the state will have a variable keeping track of the player whose turn it it and number of players

@@ -1,4 +1,4 @@
-package com.example.unogame;
+package com.example.unogame.players;
 
 import android.view.View;
 import android.widget.Button;
@@ -7,6 +7,8 @@ import android.widget.EditText;
 import com.example.game.GameFramework.GameMainActivity;
 import com.example.game.GameFramework.infoMessage.GameInfo;
 import com.example.game.GameFramework.players.GameHumanPlayer;
+import com.example.unogame.R;
+import com.example.unogame.info.UnoGameState;
 
 public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListener {
 

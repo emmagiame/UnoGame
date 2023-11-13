@@ -1,4 +1,4 @@
-package com.example.unogame;
+package com.example.unogame.players;
 
 public class UnoDumbAIPlayer {
     //if it has a playable card, play the first playable card it has
