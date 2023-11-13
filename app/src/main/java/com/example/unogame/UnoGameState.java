@@ -407,7 +407,7 @@ public class UnoGameState extends GameState {
             this.player0Hand.add(card);
             return true;
         }
-        else if(playerId == 1){
+        else if(playerId == 1) {
             this.player1Hand.add(card);
             return true;
         }
@@ -417,6 +417,85 @@ public class UnoGameState extends GameState {
             return true;
         }
         return false;
+    }
+
+    /**
+     * allows player to declare uno
+     *
+     * @param playerId - player who's turn it is
+     * @return
+     *      return true if uno was declared
+     */
+
+    public boolean declareUno(int playerId) {
+
+        if(playerId == this.playerTurn) {
+
+            if(playerId == 0 && player0Hand.size() == 1){
+                return true;
+            }
+            else if(playerId == 1 && player1Hand.size() == 1){
+                return true;
+            }
+
+           else if (playerId == 2 && player2Hand.size() == 1){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * allows current player to "call out" previous player if
+     * they have uno but did not declare it on their turn
+     *
+     * @param playerId - player who's turn it is
+     * @param card - card on top of draw pile
+     * @return
+     *      return true if prev player was called out
+     */
+
+    public boolean callOut(int playerId, UnoCard card) {
+
+        // get id of prev player
+        int prevPlayerId = getPrevPlayer(playerId);
+
+        // if the prev player had uno but did not declare it
+        if (playerId == this.playerTurn) {
+            if (prevPlayerId == 0 && player0Hand.size() == 1 && declareUno(prevPlayerId) == false) {
+                // add two cards to their hand
+                this.player0Hand.add(card);
+                this.player0Hand.add(card);
+                return true;
+            } else if (prevPlayerId == 1 && player1Hand.size() == 1 && declareUno(prevPlayerId) == false) {
+                this.player1Hand.add(card);
+                this.player1Hand.add(card);
+                return true;
+            } else if (prevPlayerId == 2 && player1Hand.size() == 2 && declareUno(prevPlayerId) == false) {
+                this.player2Hand.add(card);
+                this.player2Hand.add(card);
+                return true;
+            }
+            return false;
+        }
+    }
+
+    /**
+     * gets id of player who played immedietly before current player
+     *
+     * @param playerId - player who's turn it is
+     * @return
+     *      return id of prev player
+     */
+    public int getPrevPlayer(int playerId){
+
+        int prevPlayerId = playerId - 1;
+
+        if(prevPlayerId == -1) {
+            prevPlayerId = 2;
+        }
+
+        return prevPlayerId;
     }
 
     /**
