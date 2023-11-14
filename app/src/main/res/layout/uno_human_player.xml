@@ -133,7 +133,7 @@
                 android:textColor="#000000"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:layout_marginEnd="300dp" />
+                android:layout_marginEnd="150dp" />
 
             <TextView
                 android:id="@+id/discardpile"
