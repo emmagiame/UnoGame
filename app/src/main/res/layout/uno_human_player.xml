@@ -51,6 +51,7 @@
                 android:textSize="10sp" />
         </LinearLayout>
 
+
     </LinearLayout>
 
     <LinearLayout
@@ -116,6 +117,35 @@
                     app:srcCompat="@drawable/blue3" />
             </LinearLayout>
 
+
+        <LinearLayout
+            android:id="@+id/pileText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left">
+
+            <TextView
+                android:id="@+id/drawpile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Draw Pile"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="300dp" />
+
+            <TextView
+                android:id="@+id/discardpile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="Discard Pile"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
             <!-- The players cards -->
 
             <LinearLayout
@@ -132,8 +162,6 @@
                     android:layout_gravity="bottom"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/blue1" />
-
-
 
                 <ImageView
                     android:id="@+id/imageView4"
