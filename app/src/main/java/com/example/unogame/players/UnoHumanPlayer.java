@@ -96,8 +96,9 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     }
 
+    //
     public void setImage(ImageButton cardSlot, int color, int num, int ability) {
-        if (color == UnoCard.r && ability == -1) {
+        if (color == UnoCard.RED && ability == -1) {
             switch (num) {
                 case 0:
                     cardSlot.setImageResource(R.drawable.red0);
@@ -130,13 +131,13 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     cardSlot.setImageResource(R.drawable.red9);
                     break;
             }
-        } else if (color == UnoCard.r) {
+        } else if (color == UnoCard.RED) {
             switch (ability) {
                 case UnoCard.UnoCardSkip:
                     cardSlot.setImageResource(R.drawable.redskip);
                     break;
                 case UnoSpecialCard.DRAWTWO:
-                    cardSlot.setImageResource(R.drawable.reddrawtwo);
+                    cardSlot.setImageResource(R.drawable.reddraw2);
                     break;
                 case UnoSpecialCard.REVERSE:
                     cardSlot.setImageResource(R.drawable.redreverse);
@@ -181,7 +182,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     cardSlot.setImageResource(R.drawable.greenskip);
                     break;
                 case UnoSpecialCard.DRAWTWO:
-                    cardSlot.setImageResource(R.drawable.greendrawtwo);
+                    cardSlot.setImageResource(R.drawable.greendraw2);
                     break;
                 case UnoSpecialCard.REVERSE:
                     cardSlot.setImageResource(R.drawable.greenreverse);
@@ -283,7 +284,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     cardSlot.setImageResource(R.drawable.wild);
                     break;
                 case UnoSpecialCard.DRAWFOUR:
-                    cardSlot.setImageResource(R.drawable.drawfour);
+                    cardSlot.setImageResource(R.drawable.draw4);
                     break;
             }
         }
