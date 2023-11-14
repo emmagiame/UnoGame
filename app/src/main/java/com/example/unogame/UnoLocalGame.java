@@ -4,6 +4,7 @@ import com.example.game.GameFramework.LocalGame;
 import com.example.game.GameFramework.actionMessage.GameAction;
 import com.example.game.GameFramework.players.GamePlayer;
 import com.example.unogame.info.UnoGameState;
+import com.example.unogame.players.UnoHumanPlayer;
 
 public class UnoLocalGame extends LocalGame {
     //needs to be like ttt, the state will have a variable keeping track of the player whose turn it it and number of players
@@ -11,12 +12,13 @@ public class UnoLocalGame extends LocalGame {
         //state.setwhosemove() = line above this
     //
 
+    private UnoGameState refOfficialGame;
 
     /**
      * constructor
      */
-    public UnoLocalGame(){
-        super();
+    public UnoLocalGame(){ //this wont work past alpha
+        refOfficialGame = new UnoGameState(2);
     }
 
     @Override
@@ -51,7 +53,9 @@ public class UnoLocalGame extends LocalGame {
      */
     @Override
     protected boolean makeMove(GameAction action) {
-        return false;
+        if(action instanceof UnoPlayCardAction){
+            //look at pig
+        }
     }
 
     /**
