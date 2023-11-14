@@ -54,16 +54,16 @@
     </LinearLayout>
 
     <LinearLayout
-            android:id="@+id/playingAreaLayout"
-            android:layout_width="match_parent"
-            android:layout_height="550dp"
-            android:layout_weight="0"
-            android:orientation="vertical"
+        android:id="@+id/playingAreaLayout"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:layout_weight="0"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
-              <!-- The opponent's cards -->
+        <!-- The opponent's cards -->
 
         <LinearLayout
             android:id="@+id/opponentHandLayout"
@@ -72,78 +72,109 @@
             android:layout_gravity="center"
             android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:layout_gravity="bottom"
-                    android:layout_weight="200"
-                    app:srcCompat="@drawable/back" />
-            </LinearLayout>
-
-
-            <!-- The card piles -->
-
-            <LinearLayout
-                android:id="@+id/cardPilesLayout"
+            <ImageView
+                android:id="@+id/imageView"
                 android:layout_width="wrap_content"
-                android:layout_height="200dp"
-                android:layout_gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/drawCardPile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:layout_gravity="bottom"
-                    android:layout_weight="200"
-                    app:srcCompat="@drawable/back" />
-
-                <ImageView
-                    android:id="@+id/discardCardPile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:layout_gravity="bottom"
-                    android:layout_weight="200"
-                    app:srcCompat="@drawable/blue3" />
-            </LinearLayout>
-
-            <!-- The players cards -->
-
-            <LinearLayout
-                android:id="@+id/playerHandLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="100dp"
                 android:layout_gravity="bottom"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:layout_gravity="bottom"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/blue1" />
+                android:layout_weight="200"
+                app:srcCompat="@drawable/back" />
+        </LinearLayout>
 
 
+        <!-- The card piles -->
 
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:layout_gravity="bottom"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/blue2" />
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:layout_gravity="bottom"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/blue4" />
-            </LinearLayout>
+        <LinearLayout
+            android:id="@+id/cardPilesLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/drawCardPile"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_gravity="bottom"
+                android:layout_weight="200"
+                app:srcCompat="@drawable/back" />
+
+            <ImageView
+                android:id="@+id/discardCardPile"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_gravity="bottom"
+                android:layout_weight="200"
+                app:srcCompat="@drawable/blue3" />
+
 
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pileText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left">
+
+            <TextView
+                android:id="@+id/drawpile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Draw Pile"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="300dp" />
+            <!-- Add margin to the right -->
+
+            <TextView
+                android:id="@+id/discardpile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="Discard Pile"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- The players cards -->
+
+        <LinearLayout
+            android:id="@+id/playerHandLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/blue1" />
+
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/blue2" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/blue4" />
+        </LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/playButtonLayout"
