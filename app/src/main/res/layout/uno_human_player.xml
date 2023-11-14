@@ -75,7 +75,7 @@
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="bottom"
                     android:layout_weight="200"
                     app:srcCompat="@drawable/back" />
@@ -94,14 +94,15 @@
                 <ImageView
                     android:id="@+id/drawCardPile"
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="bottom"
                     android:layout_weight="200"
-                    app:srcCompat="@drawable/blue3" />
+                    app:srcCompat="@drawable/back" />
+
                 <ImageView
                     android:id="@+id/discardCardPile"
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="bottom"
                     android:layout_weight="200"
                     app:srcCompat="@drawable/blue3" />
@@ -119,21 +120,24 @@
                 <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="bottom"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/blue1" />
+
+
+
                 <ImageView
                     android:id="@+id/imageView4"
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="bottom"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/blue2" />
                 <ImageView
                     android:id="@+id/imageView5"
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="bottom"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/blue4" />
