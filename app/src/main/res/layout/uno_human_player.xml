@@ -154,6 +154,14 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/UnoButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="UNO!"
+            android:textSize="10sp" />
+
+        <Button
             android:id="@+id/drawButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
