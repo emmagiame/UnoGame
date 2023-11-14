@@ -479,8 +479,9 @@ public class UnoGameState extends GameState {
                 this.player2Hand.add(card);
                 return true;
             }
-            return false;
+
         }
+        return false;
     }
 
     /**
