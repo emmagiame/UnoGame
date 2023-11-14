@@ -1,5 +1,6 @@
-package com.example.unogame;
+package com.example.unogame.players;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -7,6 +8,10 @@ import android.widget.EditText;
 import com.example.game.GameFramework.GameMainActivity;
 import com.example.game.GameFramework.infoMessage.GameInfo;
 import com.example.game.GameFramework.players.GameHumanPlayer;
+import com.example.unogame.R;
+import com.example.unogame.info.UnoGameState;
+
+import java.util.logging.Handler;
 
 public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListener {
 
@@ -49,6 +54,8 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     public void receiveInfo(GameInfo info) {
 
     }
+
+
 
     /**
      * finds button and edit text in given player view
