@@ -4,11 +4,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.example.game.GameFramework.GameMainActivity;
 import com.example.game.GameFramework.infoMessage.GameInfo;
 import com.example.game.GameFramework.players.GameHumanPlayer;
 import com.example.unogame.R;
+import com.example.unogame.cards.UnoCard;
+import com.example.unogame.cards.UnoCardSkip;
 import com.example.unogame.info.UnoGameState;
 
 import java.util.logging.Handler;
@@ -52,9 +55,25 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      */
     @Override
     public void receiveInfo(GameInfo info) {
+        if (info instanceof UnoGameState) {
+            firstInstance = (UnoGameState) info;
+            setCardView();
+            setPlayedCard();
+            System.out.println(((UnoGameState) info).getPlayerID());
+            status.setText("");
+            for(int k = 0; k < firstInstance.getPlayerNum();k++){
+                String playerText = "Player " + k + " hand size: " + firstInstance.getHandArray().get(k).size();
+                status.append(playerText + "\n");
+            }
+            if (firstInstance.getHandArray().get(playerNum).size() <= 2){
+                unoButton.setVisibility(View.VISIBLE);
+            }
+            else{
+                unoButton.setVisibility(View.INVISIBLE);
+            }
+        }
 
     }
-
 
 
     /**
@@ -74,6 +93,203 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
         // OnClick for button
         runTestButton.setOnClickListener(this);
+
+    }
+
+    public void setImage(ImageButton cardSlot, int color, int num, int ability) {
+        if (color == UnoCard.r && ability == -1) {
+            switch (num) {
+                case 0:
+                    cardSlot.setImageResource(R.drawable.red0);
+                    break;
+                case 1:
+                    cardSlot.setImageResource(R.drawable.red1);
+                    break;
+                case 2:
+                    cardSlot.setImageResource(R.drawable.red2);
+                    break;
+                case 3:
+                    cardSlot.setImageResource(R.drawable.red3);
+                    break;
+                case 4:
+                    cardSlot.setImageResource(R.drawable.red4);
+                    break;
+                case 5:
+                    cardSlot.setImageResource(R.drawable.red5);
+                    break;
+                case 6:
+                    cardSlot.setImageResource(R.drawable.red6);
+                    break;
+                case 7:
+                    cardSlot.setImageResource(R.drawable.red7);
+                    break;
+                case 8:
+                    cardSlot.setImageResource(R.drawable.red8);
+                    break;
+                case 9:
+                    cardSlot.setImageResource(R.drawable.red9);
+                    break;
+            }
+        } else if (color == UnoCard.r) {
+            switch (ability) {
+                case UnoCard.UnoCardSkip:
+                    cardSlot.setImageResource(R.drawable.redskip);
+                    break;
+                case UnoSpecialCard.DRAWTWO:
+                    cardSlot.setImageResource(R.drawable.reddrawtwo);
+                    break;
+                case UnoSpecialCard.REVERSE:
+                    cardSlot.setImageResource(R.drawable.redreverse);
+                    break;
+            }
+        } else if (color == UnoCard.GREEN && ability == -1) {
+            switch (num) {
+                case 0:
+                    cardSlot.setImageResource(R.drawable.green0);
+                    break;
+                case 1:
+                    cardSlot.setImageResource(R.drawable.green1);
+                    break;
+                case 2:
+                    cardSlot.setImageResource(R.drawable.green2);
+                    break;
+                case 3:
+                    cardSlot.setImageResource(R.drawable.green3);
+                    break;
+                case 4:
+                    cardSlot.setImageResource(R.drawable.green4);
+                    break;
+                case 5:
+                    cardSlot.setImageResource(R.drawable.green5);
+                    break;
+                case 6:
+                    cardSlot.setImageResource(R.drawable.green6);
+                    break;
+                case 7:
+                    cardSlot.setImageResource(R.drawable.green7);
+                    break;
+                case 8:
+                    cardSlot.setImageResource(R.drawable.green8);
+                    break;
+                case 9:
+                    cardSlot.setImageResource(R.drawable.green9);
+                    break;
+            }
+        } else if (color == UnoCard.GREEN) {
+            switch (ability) {
+                case UnoSpecialCard.SKIP:
+                    cardSlot.setImageResource(R.drawable.greenskip);
+                    break;
+                case UnoSpecialCard.DRAWTWO:
+                    cardSlot.setImageResource(R.drawable.greendrawtwo);
+                    break;
+                case UnoSpecialCard.REVERSE:
+                    cardSlot.setImageResource(R.drawable.greenreverse);
+                    break;
+            }
+        } else if (color == UnoCard.BLUE && ability == -1) {
+            switch (num) {
+                case 0:
+                    cardSlot.setImageResource(R.drawable.blue0);
+                    break;
+                case 1:
+                    cardSlot.setImageResource(R.drawable.blue1);
+                    break;
+                case 2:
+                    cardSlot.setImageResource(R.drawable.blue2);
+                    break;
+                case 3:
+                    cardSlot.setImageResource(R.drawable.blue3);
+                    break;
+                case 4:
+                    cardSlot.setImageResource(R.drawable.blue4);
+                    break;
+                case 5:
+                    cardSlot.setImageResource(R.drawable.blue5);
+                    break;
+                case 6:
+                    cardSlot.setImageResource(R.drawable.blue6);
+                    break;
+                case 7:
+                    cardSlot.setImageResource(R.drawable.blue7);
+                    break;
+                case 8:
+                    cardSlot.setImageResource(R.drawable.blue8);
+                    break;
+                case 9:
+                    cardSlot.setImageResource(R.drawable.blue9);
+                    break;
+            }
+        } else if (color == UnoCard.BLUE) {
+            switch (ability) {
+                case UnoSpecialCard.SKIP:
+                    cardSlot.setImageResource(R.drawable.blueskip);
+                    break;
+                case UnoSpecialCard.DRAWTWO:
+                    cardSlot.setImageResource(R.drawable.bluedraw2);
+                    break;
+                case UnoSpecialCard.REVERSE:
+                    cardSlot.setImageResource(R.drawable.bluereverse);
+                    break;
+            }
+        } else if (color == UnoCard.YELLOW && ability == -1) {
+            switch (num) {
+                case 0:
+                    cardSlot.setImageResource(R.drawable.yellow0);
+                    break;
+                case 1:
+                    cardSlot.setImageResource(R.drawable.yellow1);
+                    break;
+                case 2:
+                    cardSlot.setImageResource(R.drawable.yellow2);
+                    break;
+                case 3:
+                    cardSlot.setImageResource(R.drawable.yellow3);
+                    break;
+                case 4:
+                    cardSlot.setImageResource(R.drawable.yellow4);
+                    break;
+                case 5:
+                    cardSlot.setImageResource(R.drawable.yellow5);
+                    break;
+                case 6:
+                    cardSlot.setImageResource(R.drawable.yellow6);
+                    break;
+                case 7:
+                    cardSlot.setImageResource(R.drawable.yellow7);
+                    break;
+                case 8:
+                    cardSlot.setImageResource(R.drawable.yellow8);
+                    break;
+                case 9:
+                    cardSlot.setImageResource(R.drawable.yellow9);
+                    break;
+            }
+        } else if (color == UnoCard.YELLOW) {
+            switch (ability) {
+                case UnoSpecialCard.SKIP:
+                    cardSlot.setImageResource(R.drawable.yellowskip);
+                    break;
+                case UnoSpecialCard.DRAWTWO:
+                    cardSlot.setImageResource(R.drawable.yellowdraw2);
+                    break;
+                case UnoSpecialCard.REVERSE:
+                    cardSlot.setImageResource(R.drawable.yellowreverse);
+                    break;
+            }
+        } else if (color == UnoCard.COLORLESS) {
+            switch (ability) {
+                case UnoSpecialCard.WILD:
+                    cardSlot.setImageResource(R.drawable.wild);
+                    break;
+                case UnoSpecialCard.DRAWFOUR:
+                    cardSlot.setImageResource(R.drawable.drawfour);
+                    break;
+            }
+        }
+        else{
+            cardSlot.setImageResource(R.drawable.unocard_grey);
+        }
     }
 
     /**
