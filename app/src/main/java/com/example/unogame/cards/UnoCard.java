@@ -10,12 +10,7 @@ public class UnoCard {
     //card number
     protected int cardNumber;
 
-    // These colors are constants that can be referenced anywhere
-    public static final int RED = 1;
-    public static final int GREEN = 2;
-    public static final int BLUE = 3;
-    public static final int YELLOW = 4;
-    public static final int COLORLESS = 5;
+
 
     // instance variables
     protected int color;
@@ -70,19 +65,19 @@ public class UnoCard {
 
         if(num == 1){
             //return r for red
-            return RED;
+            return 'r';
         }
         if(num == 2){
             //return g for green
-            return GREEN;
+            return 'g';
         }
         if(num == 3){
             //return b for blue
-            return BLUE;
+            return 'b';
         }
         if(num == 4){
             //return y for yellow
-            return YELLOW;
+            return 'y';
         }
         //if you hit this theres a problem
         else return 'n';

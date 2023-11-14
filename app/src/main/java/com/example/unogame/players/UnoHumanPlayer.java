@@ -97,8 +97,8 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     }
 
     //
-    public void setImage(ImageButton cardSlot, int color, int num, int ability) {
-        if (color == UnoCard.RED && ability == -1) {
+    public void setImage(ImageButton cardSlot, UnoCard card, char color, int num, int ability) {
+        if (color == card.getCardColor() && ability == -1) {
             switch (num) {
                 case 0:
                     cardSlot.setImageResource(R.drawable.red0);
@@ -131,9 +131,9 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     cardSlot.setImageResource(R.drawable.red9);
                     break;
             }
-        } else if (color == UnoCard.RED) {
+        } else if (color == card.getCardColor()) {
             switch (ability) {
-                case UnoCard.UnoCardSkip:
+                case card.UnoCardSkip:
                     cardSlot.setImageResource(R.drawable.redskip);
                     break;
                 case UnoSpecialCard.DRAWTWO:
@@ -143,7 +143,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     cardSlot.setImageResource(R.drawable.redreverse);
                     break;
             }
-        } else if (color == UnoCard.GREEN && ability == -1) {
+        } else if (color == card.getCardColor() && ability == -1) {
             switch (num) {
                 case 0:
                     cardSlot.setImageResource(R.drawable.green0);
