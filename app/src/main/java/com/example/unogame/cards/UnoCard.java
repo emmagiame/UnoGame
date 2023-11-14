@@ -11,7 +11,9 @@ public class UnoCard {
     protected int cardNumber;
 
 
-
+    /**
+     * constructor
+     */
     public UnoCard(){
         cardColor = randomizeCardColor();
         cardNumber = randomizeCardNumber();
@@ -33,9 +35,7 @@ public class UnoCard {
      * @return
      *      the current card color
      */
-    public char getCardColor() {
-        return this.cardColor;
-    }
+    public char getCardColor() { return this.cardColor; }
 
     /**
      *  gets current card number
@@ -43,12 +43,11 @@ public class UnoCard {
      * @return
      *      the current card number
      */
-    public int getCardNumber() {
-        return this.cardNumber;
-    }
+    public int getCardNumber() { return this.cardNumber; }
 
     /**
      * randomizes the cards color
+     * setter method
      *
      * @return
      *      returns the first char of the color of the card
@@ -81,6 +80,7 @@ public class UnoCard {
 
     /**
      * randomizes card number
+     * setter method
      *
      * @return
      *      return cards number
