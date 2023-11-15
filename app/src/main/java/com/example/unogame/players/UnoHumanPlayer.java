@@ -77,22 +77,9 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             setPlayedCard();
             System.out.println(((UnoGameState) info).getPlayerTurn());
             editText.setText("");
-            for(int k = 0; k < firstInstance.getPlayerNum();k++){
-                String playerText = "Player " + k + " hand size: " + firstInstance.getHandArray().get(k).size();
-                editText.append(playerText + "\n");
-            }
 
-            /* we don't want this because we want the uno button visible at all times
-            if (firstInstance.getHandArray().get(playerNum).size() <= 2){
-                unoButton.setVisibility(View.VISIBLE);
             }
-            else{
-                unoButton.setVisibility(View.INVISIBLE);
-            }
-             */
         }
-
-    }
 
     /**
      *  sends a message to the player
