@@ -30,6 +30,9 @@ public class UnoGameState extends GameState {
     //which players turn it is
     private int playerTurn;
 
+    //location of card in the array
+    protected int indexOfPlayedCard;
+
     //number of players
     int numPlayers;
 
@@ -232,6 +235,14 @@ public class UnoGameState extends GameState {
     // getter methods
 
     /**
+     *  gets location of card in the array
+     *
+     * @return
+     *      - card index in array
+     */
+    public int getIndexOfPlayedCard() { return indexOfPlayedCard; }
+
+    /**
      * gets player 0's hand
      *
      * @return
@@ -350,6 +361,15 @@ public class UnoGameState extends GameState {
     public boolean getIsReversed(){
         return isReversed;
     }
+
+    // setters
+
+    /**
+     *  sets the index of the card to the variable
+     *
+     * @param indexOfPlayedCard - index of played card
+     */
+    public void setIndexOfPlayedCard(int indexOfPlayedCard) { this.indexOfPlayedCard = indexOfPlayedCard; }
 
     /**
      * sets player 0's score
