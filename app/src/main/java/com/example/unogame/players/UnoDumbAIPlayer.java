@@ -7,14 +7,19 @@ import com.example.unogame.UnoPlayCardAction;
 import com.example.unogame.info.UnoGameState;
 
 public class UnoDumbAIPlayer extends GameComputerPlayer {
+
+    //layout id of given layout
+    private int layoutId;
+
     /**
      * constructor
      * This Ai's name is Dory
      *
      * @param name the player's name (e.g., "John")
      */
-    public UnoDumbAIPlayer(String name) {
+    public UnoDumbAIPlayer(String name, int id) {
         super(name);
+        layoutId = id;
     }
 
     @Override

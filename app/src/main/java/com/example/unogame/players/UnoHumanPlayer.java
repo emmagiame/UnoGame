@@ -362,8 +362,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         //call to string and append to text in textview
         editText.append(secondInstance.toString());
         editText.append(fourthInstance.toString());
-
-
-        }
     }
+
+}
 
