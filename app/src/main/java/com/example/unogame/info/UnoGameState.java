@@ -127,9 +127,9 @@ public class UnoGameState extends GameState {
         this.numPlayers = numPlayers;
         this.drawPile = startDrawPile();
         this.discardPile = startDiscardPile();
-        this.player0Hand = startHand(0);
-        this.player1Hand = startHand(1);
-        this.player2Hand = startHand(2);
+        this.player0Hand = startHand();
+        this.player1Hand = startHand();
+        this.player2Hand = startHand();
         this.isReversed = false;
 
 
@@ -190,11 +190,10 @@ public class UnoGameState extends GameState {
     /**
      *  gives a given player their starting hand of 7 cards
      *
-     * @param playerTurn - player who's turn it is
      * @return
      *      players hand
      */
-    public ArrayList<UnoCard> startHand(int playerTurn) {
+    public ArrayList<UnoCard> startHand() {
         ArrayList<UnoCard> playerCards = new ArrayList<UnoCard>();
         for (int i = 0; i <= 7; i++) {
             playerCards.add(new UnoCard());

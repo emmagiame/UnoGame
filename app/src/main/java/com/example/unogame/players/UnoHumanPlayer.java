@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.game.GameFramework.GameMainActivity;
 import com.example.game.GameFramework.infoMessage.GameInfo;
@@ -25,7 +26,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private GameMainActivity myActivity;
     private EditText editText;
 
-    private EditText editTextFun;
+    private TextView textViewFun;
 
     //layout id of given layout
     private int layoutId;
@@ -72,13 +73,12 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     @Override
     public void receiveInfo(GameInfo info) {
         if (info instanceof UnoGameState) {
+            //make an instance of UnoGame based off of info
+            UnoGameState currGame = (UnoGameState) info;
 
-            //similar to onClick below maybe goes there?
-            UnoGameState firstInstance = (UnoGameState) info;
-            //setCardView();
-            //setPlayedCard();
-            System.out.println(((UnoGameState) info).getPlayerTurn());
-            editText.setText("");
+
+
+
         }
     }
 
@@ -107,7 +107,8 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         runTestButton.setOnClickListener(this);
 
         editText = myActivity.findViewById(R.id.editTextTextMultiLine);
-        editTextFun = myActivity.findViewById(R.id.editTextFun);
+        textViewFun = myActivity.findViewById(R.id.textViewFun);
+        textViewFun.setText("Your hand: ");
 
         ImageView drawCardPileButton = myActivity.findViewById(R.id.drawCardPileImage);
         drawCardPileButton.setOnClickListener(this);
@@ -369,13 +370,14 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         else if(view.getId() == R.id.drawButton){
             UnoDrawCardAction actionDraw = new UnoDrawCardAction(this);
             game.sendAction(actionDraw);
-            String inputS = editTextFun.getText().toString();
-            int input = Integer.parseInt(inputS);
-            GameState gamie = game.getGameState();
         }
         else if(view.getId() == R.id.playButton){
             UnoPlayCardAction actionPlay = new UnoPlayCardAction(this);
             game.sendAction(actionPlay);
+            //String inputS = editTextFun.getText().toString();
+            //int input = Integer.parseInt(inputS);
+            UnoGameState gamie = (UnoGameState) game.getGameState();
+            gamie.setIndexOfPlayedCard(0);
         }
         else{
 

@@ -211,9 +211,9 @@
             android:layout_gravity="center"
             android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/editTextFun"
-                android:layout_width="200dp"
+            <TextView
+                android:id="@+id/textViewFun"
+                android:layout_width="450dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:ems="10"
