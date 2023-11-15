@@ -128,14 +128,12 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     }
 
     /**
-     *  sets the card image to match a specific card
+     *  sets card image based on passed in card
      *
-     * @param card
-     * @param card -
-     * @param color - color of the card
-     * @param num - number of the card
+     * @param cardImage - card View to change
+     * @param card - card that we are setting the card image to
      */
-    public void setImage(ImageView cardImage, UnoCard card, char color, int num) {
+    public void setImage(ImageView cardImage, UnoCard card) {
         if(card instanceof UnoCardSkip){
             if(card.getCardColor() == 'r') {
                 cardImage.setImageResource(R.drawable.redskip);
