@@ -29,6 +29,11 @@ public class UnoLocalGame extends LocalGame {
         state = new UnoGameState(getNumPlayers());
     }
 
+    @Override
+    protected void sendUpdatedStateTo(GamePlayer p) {
+
+    }
+
 
     /**
      * check if it is given players turn
@@ -40,6 +45,11 @@ public class UnoLocalGame extends LocalGame {
         } else {
             return false;
         }
+    }
+
+    @Override
+    protected String checkIfGameOver() {
+        return null;
     }
 
     /**
@@ -70,10 +80,12 @@ public class UnoLocalGame extends LocalGame {
                     // if id 0 turn
                     if (id == 0) {
                         unoGameStateRef.setPlayerTurn(1);
+                        return true;
                     }
                     // if id 1 turn
                     else if (id == 1) {
                         unoGameStateRef.setPlayerTurn(0);
+                        return true;
                     }
 
                 }
@@ -83,15 +95,18 @@ public class UnoLocalGame extends LocalGame {
                     // if id 0 turn
                     if (id == 0) {
                         unoGameStateRef.setPlayerTurn(1);
+                        return true;
                     }
                     // if id 1 turn
                     else if (id == 1) {
                         unoGameStateRef.setPlayerTurn(2);
+                        return true;
                     }
 
                     // if id 2 turn
                     else if (id == 2) {
                         unoGameStateRef.setPlayerTurn(0);
+                        return true;
                     }
 
                 }
@@ -117,10 +132,12 @@ public class UnoLocalGame extends LocalGame {
                     // if id 0 turn
                     if (id == 0) {
                         unoGameStateRef.setPlayerTurn(1);
+                        return true;
                     }
                     // if id 1 turn
                     else if (id == 1) {
                         unoGameStateRef.setPlayerTurn(0);
+                        return true;
                     }
 
                 }
@@ -130,46 +147,30 @@ public class UnoLocalGame extends LocalGame {
                     // if id 0 turn
                     if (id == 0) {
                         unoGameStateRef.setPlayerTurn(1);
+                        return true;
                     }
                     // if id 1 turn
                     else if (id == 1) {
                         unoGameStateRef.setPlayerTurn(2);
+                        return true;
                     }
 
                     // if id 2 turn
                     else if (id == 2) {
                         unoGameStateRef.setPlayerTurn(0);
+                        return true;
                     }
 
                 }
             }
         }
+        return false;
+    }
 
-        /**
-         * send updated state to a given player
-         *
-         * @param p
-         * 			the player to notify
-         */
-        @Override
-        protected void sendUpdatedStateTo (GamePlayer p){
-
-        }
-
-        /**
-         * check if game is over
-         *
-         * @return
-         *      a message that tells who has won the game,
-         *      or null if the game is not over
-         */
-        @Override
-        protected String checkIfGameOver () {
-            return null;
-        }
 
         // check if passed in card has at least one
         // element of card at beginning of discard arraylist
 
-    }
+
+
 }
