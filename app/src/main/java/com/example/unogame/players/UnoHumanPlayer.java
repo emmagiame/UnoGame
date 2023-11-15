@@ -49,6 +49,17 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     }
 
     /**
+     *  used for testing. i think???
+     *
+     * @return
+     *      - returns the activity
+     */
+    @Override
+    public GameMainActivity getActivity() {
+        return null;
+    }
+
+    /**
      * receives the info for the current game state
      *
      * @param info - state of current game
@@ -56,25 +67,61 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     @Override
     public void receiveInfo(GameInfo info) {
         if (info instanceof UnoGameState) {
+
+            //similar to onClick below maybe goes there?
             firstInstance = (UnoGameState) info;
             setCardView();
             setPlayedCard();
-            System.out.println(((UnoGameState) info).getPlayerID());
-            status.setText("");
+            System.out.println(((UnoGameState) info).getPlayerTurn());
+            editText.setText("");
             for(int k = 0; k < firstInstance.getPlayerNum();k++){
                 String playerText = "Player " + k + " hand size: " + firstInstance.getHandArray().get(k).size();
-                status.append(playerText + "\n");
+                editText.append(playerText + "\n");
             }
+
+            /* we don't want this because we want the uno button visible at all times
             if (firstInstance.getHandArray().get(playerNum).size() <= 2){
                 unoButton.setVisibility(View.VISIBLE);
             }
             else{
                 unoButton.setVisibility(View.INVISIBLE);
             }
+             */
         }
 
     }
 
+    /**
+     *  sends a message to the player
+     *
+     * @param info - game info
+     */
+    @Override
+    public void sendInfo(GameInfo info) {
+
+    }
+
+    /**
+     *  whether this player requires a GUI
+     *
+     * @return
+     *      - true or false
+     */
+    @Override
+    public boolean requiresGui() {
+        return false;
+    }
+
+    /**
+     *  whether this player supports a GUI
+     *
+     * @return
+     *      - true or false
+     */
+    @Override
+    public boolean supportsGui() {
+        return false;
+    }
 
     /**
      * finds button and edit text in given player view
@@ -96,7 +143,15 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     }
 
-    //
+    /**
+     *  sets the card image to match a specific card
+     *
+     * @param cardSlot
+     * @param card -
+     * @param color - color of the card
+     * @param num - number of the card
+     * @param ability -
+     */
     public void setImage(ImageButton cardSlot, UnoCard card, char color, int num, int ability) {
         if (color == card.getCardColor() && ability == -1) {
             switch (num) {
@@ -143,7 +198,11 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     cardSlot.setImageResource(R.drawable.redreverse);
                     break;
             }
-        } else if (color == card.getCardColor() && ability == -1) {
+        }
+
+        // wouldnt need all these because getCardColor() gets the color so we dont need to check for every color
+        /*
+        else if (color == card.getCardColor() && ability == -1) {
             switch (num) {
                 case 0:
                     cardSlot.setImageResource(R.drawable.green0);
@@ -176,7 +235,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     cardSlot.setImageResource(R.drawable.green9);
                     break;
             }
-        } else if (color == UnoCard.GREEN) {
+        } else if (color == card.getCardColor()) {
             switch (ability) {
                 case UnoSpecialCard.SKIP:
                     cardSlot.setImageResource(R.drawable.greenskip);
@@ -188,7 +247,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     cardSlot.setImageResource(R.drawable.greenreverse);
                     break;
             }
-        } else if (color == UnoCard.BLUE && ability == -1) {
+        } else if (color == card.getCardColor() && ability == -1) {
             switch (num) {
                 case 0:
                     cardSlot.setImageResource(R.drawable.blue0);
@@ -221,7 +280,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                     cardSlot.setImageResource(R.drawable.blue9);
                     break;
             }
-        } else if (color == UnoCard.BLUE) {
+        } else if (color == card.getCardColor()) {
             switch (ability) {
                 case UnoSpecialCard.SKIP:
                     cardSlot.setImageResource(R.drawable.blueskip);
@@ -291,6 +350,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         else{
             cardSlot.setImageResource(R.drawable.backgrey);
         }
+         */
     }
 
     /**
