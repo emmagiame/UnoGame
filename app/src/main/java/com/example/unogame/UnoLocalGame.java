@@ -172,10 +172,8 @@ public class UnoLocalGame extends LocalGame {
                 }
             }
         }
-        else {
             //no unos for alpha <3
             return false;
-        }
     }
 
 
