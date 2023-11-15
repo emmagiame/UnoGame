@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.example.game.GameFramework.GameMainActivity;
 import com.example.game.GameFramework.infoMessage.GameInfo;
@@ -135,14 +136,29 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         myActivity = activity;
         myActivity.setContentView(layoutId);
 
-        // setting view to run test Button
+        // all the onClicks for every button/ card on layout
         Button runTestButton = myActivity.findViewById(R.id.runTestButton);
-        editText = myActivity.findViewById(R.id.editTextTextMultiLine);
-
-
-        // OnClick for button
         runTestButton.setOnClickListener(this);
 
+        editText = myActivity.findViewById(R.id.editTextTextMultiLine);
+
+        ImageView drawCardPile = myActivity.findViewById(R.id.drawCardPile);
+        drawCardPile.setOnClickListener(this);
+
+        ImageView discardCardPile = myActivity.findViewById(R.id.discardCardPile);
+        discardCardPile.setOnClickListener(this);
+
+        Button declareUnoButton = myActivity.findViewById(R.id.declareUnoButton);
+        declareUnoButton.setOnClickListener(this);
+
+        Button callOutUnoButton = myActivity.findViewById(R.id.callOutUnoButton);
+        callOutUnoButton.setOnClickListener(this);
+
+        Button drawButton = myActivity.findViewById(R.id.drawButton);
+        drawButton.setOnClickListener(this);
+
+        Button playButton = myActivity.findViewById(R.id.playButton);
+        playButton.setOnClickListener(this);
     }
 
     /**
