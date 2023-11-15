@@ -143,12 +143,12 @@ public abstract class GameHumanPlayer implements GamePlayer, Tickable {
      */
 
 
-    public void setCardView(){
+    public void setCardView() {
         ArrayList<UnoCard> playerHand = firstInstance.getHandArray().get(this.playerNum);
         int arrayLength = Math.min(playerHand.size(), 4);
-        for (int i = handCounter ; i < arrayLength + handCounter; i++) {
+        for (int i = handCounter; i < arrayLength + handCounter; i++) {
             //The game crashes if there are less than four cards to display.
-            if(i >= playerHand.size()){
+            if (i >= playerHand.size()) {
                 break;
             }
             int cardColor = playerHand.get(i).getColor();
@@ -159,7 +159,7 @@ public abstract class GameHumanPlayer implements GamePlayer, Tickable {
             } else if (playerHand.get(i) instanceof UnoSpecialCard) {
                 ability = ((UnoSpecialCard) playerHand.get(i)).getAbility();
             }
-            switch (i-handCounter) {
+            switch (i - handCounter) {
                 case 0:
                     setImage(cardSlotOne, cardColor, cardNum, ability);
                     break;
@@ -173,6 +173,8 @@ public abstract class GameHumanPlayer implements GamePlayer, Tickable {
                     setImage(cardSlotFour, cardColor, cardNum, ability);
                     break;
             }
+        }
+    }
 
 
     /**

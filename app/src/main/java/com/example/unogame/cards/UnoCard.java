@@ -11,6 +11,11 @@ public class UnoCard {
     protected int cardNumber;
 
 
+
+    // instance variables
+    protected int color;
+    protected int number;
+
     /**
      * constructor
      */
