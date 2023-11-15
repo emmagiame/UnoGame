@@ -22,6 +22,8 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private GameMainActivity myActivity;
     private EditText editText;
 
+    protected int indexOfPlayedCard;
+
     //layout id of given layout
     private int layoutId;
 
