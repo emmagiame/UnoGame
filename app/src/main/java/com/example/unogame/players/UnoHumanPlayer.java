@@ -1,16 +1,16 @@
 package com.example.unogame.players;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.example.game.GameFramework.GameMainActivity;
 import com.example.game.GameFramework.infoMessage.GameInfo;
 import com.example.game.GameFramework.players.GameHumanPlayer;
 import com.example.unogame.R;
+import com.example.unogame.UnoDrawCardAction;
+import com.example.unogame.UnoPlayCardAction;
 import com.example.unogame.cards.UnoCard;
 import com.example.unogame.cards.UnoCardPlus2;
 import com.example.unogame.cards.UnoCardPlus4;
@@ -19,13 +19,13 @@ import com.example.unogame.cards.UnoCardSkip;
 import com.example.unogame.cards.UnoCardWild;
 import com.example.unogame.info.UnoGameState;
 
-import java.util.logging.Handler;
-
 public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListener {
 
     //android activity that we are running
     private GameMainActivity myActivity;
     private EditText editText;
+
+    private EditText editTextFun;
 
     //layout id of given layout
     private int layoutId;
@@ -107,12 +107,13 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         runTestButton.setOnClickListener(this);
 
         editText = myActivity.findViewById(R.id.editTextTextMultiLine);
+        editTextFun = myActivity.findViewById(R.id.editTextFun);
 
-        ImageView drawCardPile = myActivity.findViewById(R.id.drawCardPile);
-        drawCardPile.setOnClickListener(this);
+        ImageView drawCardPileButton = myActivity.findViewById(R.id.drawCardPileImage);
+        drawCardPileButton.setOnClickListener(this);
 
-        ImageView discardCardPile = myActivity.findViewById(R.id.discardCardPile);
-        discardCardPile.setOnClickListener(this);
+        ImageView discardCardPileButton = myActivity.findViewById(R.id.discardCardPileImage);
+        discardCardPileButton.setOnClickListener(this);
 
         Button declareUnoButton = myActivity.findViewById(R.id.declareUnoButton);
         declareUnoButton.setOnClickListener(this);
@@ -333,35 +334,53 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      */
     @Override
     public void onClick(View view) {
-        //clear text in edit text
-        editText.setText("");
+        if(view.getId() == R.id.runTestButton){
+            //clear text in edit text
+            //editText.setText("");
+            editText.getText().clear();
 
-        //make new instance of game state
-        UnoGameState firstInstance = new UnoGameState(2);
+            //make new instance of game state
+            UnoGameState firstInstance = new UnoGameState(2);
 
-        //make deep copy from the perspective of player one (player 0 in the array)
-        UnoGameState secondInstance = new UnoGameState(firstInstance);
+            //make deep copy from the perspective of player one (player 0 in the array)
+            UnoGameState secondInstance = new UnoGameState(firstInstance);
 
-        //call each method in game state class at least once, making a legal move and printing a
-        //description of the action to multiLine EditText
+            //call each method in game state class at least once, making a legal move and printing a
+            //description of the action to multiLine EditText
 
-        //draw a card to player 0
-        firstInstance.drawCardFromDrawPile(0, firstInstance.getDrawPile().get(0));
-        editText.append("Player 0 played the first card in their hand (card at index 0)\n");
+            //draw a card to player 0
+            firstInstance.drawCardFromDrawPile(0, firstInstance.getDrawPile().get(0));
+            editText.append("Player 0 played the first card in their hand (card at index 0)\n");
 
-        //player 0 plays a card
-        firstInstance.playCard(0, firstInstance.getPlayer0Hand().get(0));
-        editText.append("Player 0 drew a card from the draw pile \n");
+            //player 0 plays a card
+            firstInstance.playCard(0, firstInstance.getPlayer0Hand().get(0));
+            editText.append("Player 0 drew a card from the draw pile \n");
 
-        //new instance of game state
-        UnoGameState thirdInstance = new UnoGameState(2);
+            //new instance of game state
+            UnoGameState thirdInstance = new UnoGameState(2);
 
-        //new deep copy from the perspective of player one (player 0 in the array)
-        UnoGameState fourthInstance = new UnoGameState(thirdInstance);
+            //new deep copy from the perspective of player one (player 0 in the array)
+            UnoGameState fourthInstance = new UnoGameState(thirdInstance);
 
-        //call to string and append to text in textview
-        editText.append(secondInstance.toString());
-        editText.append(fourthInstance.toString());
+            //call to string and append to text in textview
+            editText.append(secondInstance.toString());
+            editText.append(fourthInstance.toString());
+        }
+        else if(view.getId() == R.id.drawButton){
+            UnoDrawCardAction actionDraw = new UnoDrawCardAction(this);
+            game.sendAction(actionDraw);
+            String inputS = editTextFun.getText().toString();
+            int input = Integer.parseInt(inputS);
+            GameState gamie = game.getGameState();
+        }
+        else if(view.getId() == R.id.playButton){
+            UnoPlayCardAction actionPlay = new UnoPlayCardAction(this);
+            game.sendAction(actionPlay);
+        }
+        else{
+
+        }
+
     }
 
 }
