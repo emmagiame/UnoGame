@@ -314,7 +314,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             }
         }
         else{
-          cardImage.setImageResource(R.drawable.backgrey);
+          cardImage.setImageResource(R.drawable.blank);
         }
     }
 

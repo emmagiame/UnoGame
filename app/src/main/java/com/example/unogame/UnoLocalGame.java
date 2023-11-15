@@ -70,20 +70,20 @@ public class UnoLocalGame extends LocalGame {
 
                 // get player id
                 int id = unoGameStateRef.getPlayerTurn();
-                // play card DOES NOT WORK BC IDK HOW TO GET
-                // THE CARD
-                // unoGameStateRef.playCard(id, card);
+                // play a card
                 // change the current player to the next player
-
                 // if two players
                 if (numPlayers == 2) {
                     // if id 0 turn
                     if (id == 0) {
+                        //get index that card is at
+                        unoGameStateRef.playCard(id, unoGameStateRef.getPlayer0Hand().get(unoGameStateRef.getIndexOfPlayedCard()));
                         unoGameStateRef.setPlayerTurn(1);
                         return true;
                     }
                     // if id 1 turn
                     else if (id == 1) {
+                        unoGameStateRef.playCard(id, unoGameStateRef.getPlayer1Hand().get(unoGameStateRef.getIndexOfPlayedCard()));
                         unoGameStateRef.setPlayerTurn(0);
                         return true;
                     }
@@ -94,17 +94,20 @@ public class UnoLocalGame extends LocalGame {
                 if (numPlayers == 3) {
                     // if id 0 turn
                     if (id == 0) {
+                        unoGameStateRef.playCard(id, unoGameStateRef.getPlayer0Hand().get(unoGameStateRef.getIndexOfPlayedCard()));
                         unoGameStateRef.setPlayerTurn(1);
                         return true;
                     }
                     // if id 1 turn
                     else if (id == 1) {
+                        unoGameStateRef.playCard(id, unoGameStateRef.getPlayer1Hand().get(unoGameStateRef.getIndexOfPlayedCard()));
                         unoGameStateRef.setPlayerTurn(2);
                         return true;
                     }
 
                     // if id 2 turn
                     else if (id == 2) {
+                        unoGameStateRef.playCard(id, unoGameStateRef.getPlayer2Hand().get(unoGameStateRef.getIndexOfPlayedCard()));
                         unoGameStateRef.setPlayerTurn(0);
                         return true;
                     }
@@ -131,11 +134,13 @@ public class UnoLocalGame extends LocalGame {
                 if (numPlayers == 2) {
                     // if id 0 turn
                     if (id == 0) {
+                        unoGameStateRef.drawCardFromDrawPile(id, unoGameStateRef.getDrawPile().get(0));
                         unoGameStateRef.setPlayerTurn(1);
                         return true;
                     }
                     // if id 1 turn
                     else if (id == 1) {
+                        unoGameStateRef.drawCardFromDrawPile(id, unoGameStateRef.getDrawPile().get(0));
                         unoGameStateRef.setPlayerTurn(0);
                         return true;
                     }
@@ -146,17 +151,20 @@ public class UnoLocalGame extends LocalGame {
                 if (numPlayers == 3) {
                     // if id 0 turn
                     if (id == 0) {
+                        unoGameStateRef.drawCardFromDrawPile(id, unoGameStateRef.getDrawPile().get(0));
                         unoGameStateRef.setPlayerTurn(1);
                         return true;
                     }
                     // if id 1 turn
                     else if (id == 1) {
+                        unoGameStateRef.drawCardFromDrawPile(id, unoGameStateRef.getDrawPile().get(0));
                         unoGameStateRef.setPlayerTurn(2);
                         return true;
                     }
 
                     // if id 2 turn
                     else if (id == 2) {
+                        unoGameStateRef.drawCardFromDrawPile(id, unoGameStateRef.getDrawPile().get(0));
                         unoGameStateRef.setPlayerTurn(0);
                         return true;
                     }
@@ -164,7 +172,10 @@ public class UnoLocalGame extends LocalGame {
                 }
             }
         }
-        return false;
+        else {
+            //no unos for alpha <3
+            return false;
+        }
     }
 
 
