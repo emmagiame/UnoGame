@@ -23,8 +23,6 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private GameMainActivity myActivity;
     private EditText editText;
 
-    protected int indexOfPlayedCard;
-
     //layout id of given layout
     private int layoutId;
 
@@ -102,28 +100,6 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     @Override
     public void sendInfo(GameInfo info) {
 
-    }
-
-    /**
-     *  whether this player requires a GUI
-     *
-     * @return
-     *      - true or false
-     */
-    @Override
-    public boolean requiresGui() {
-        return false;
-    }
-
-    /**
-     *  whether this player supports a GUI
-     *
-     * @return
-     *      - true or false
-     */
-    @Override
-    public boolean supportsGui() {
-        return false;
     }
 
     /**
