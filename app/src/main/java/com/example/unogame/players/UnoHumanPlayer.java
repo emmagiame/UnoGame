@@ -12,7 +12,11 @@ import com.example.game.GameFramework.infoMessage.GameInfo;
 import com.example.game.GameFramework.players.GameHumanPlayer;
 import com.example.unogame.R;
 import com.example.unogame.cards.UnoCard;
+import com.example.unogame.cards.UnoCardPlus2;
+import com.example.unogame.cards.UnoCardPlus4;
+import com.example.unogame.cards.UnoCardReverse;
 import com.example.unogame.cards.UnoCardSkip;
+import com.example.unogame.cards.UnoCardWild;
 import com.example.unogame.info.UnoGameState;
 
 import java.util.logging.Handler;
@@ -126,58 +130,193 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     /**
      *  sets the card image to match a specific card
      *
-     * @param cardSlot
+     * @param card
      * @param card -
      * @param color - color of the card
      * @param num - number of the card
-     * @param ability -
      */
-    public void setImage(ImageButton cardSlot, UnoCard card, char color, int num, int ability) {
-        if (color == card.getCardColor() && ability == -1) {
-            switch (num) {
-                case 0:
-                    cardSlot.setImageResource(R.drawable.red0);
-                    break;
-                case 1:
-                    cardSlot.setImageResource(R.drawable.red1);
-                    break;
-                case 2:
-                    cardSlot.setImageResource(R.drawable.red2);
-                    break;
-                case 3:
-                    cardSlot.setImageResource(R.drawable.red3);
-                    break;
-                case 4:
-                    cardSlot.setImageResource(R.drawable.red4);
-                    break;
-                case 5:
-                    cardSlot.setImageResource(R.drawable.red5);
-                    break;
-                case 6:
-                    cardSlot.setImageResource(R.drawable.red6);
-                    break;
-                case 7:
-                    cardSlot.setImageResource(R.drawable.red7);
-                    break;
-                case 8:
-                    cardSlot.setImageResource(R.drawable.red8);
-                    break;
-                case 9:
-                    cardSlot.setImageResource(R.drawable.red9);
-                    break;
+    public void setImage(ImageView cardImage, UnoCard card, char color, int num) {
+        if(card instanceof UnoCardSkip){
+            if(card.getCardColor() == 'r') {
+                cardImage.setImageResource(R.drawable.redskip);
             }
-        } else if (color == card.getCardColor()) {
-            switch (ability) {
-                case card.UnoCardSkip:
-                    cardSlot.setImageResource(R.drawable.redskip);
-                    break;
-                case UnoSpecialCard.DRAWTWO:
-                    cardSlot.setImageResource(R.drawable.reddraw2);
-                    break;
-                case UnoSpecialCard.REVERSE:
-                    cardSlot.setImageResource(R.drawable.redreverse);
-                    break;
+            else if(card.getCardColor() =='y'){
+                cardImage.setImageResource(R.drawable.yellowskip);
             }
+            else if(card.getCardColor() =='g'){
+                cardImage.setImageResource(R.drawable.greenskip);
+            }
+            else if(card.getCardColor() =='b'){
+                cardImage.setImageResource(R.drawable.blueskip);
+            }
+        }
+        else if(card instanceof UnoCardPlus2){
+            if(card.getCardColor() == 'r') {
+                cardImage.setImageResource(R.drawable.reddraw2);
+            }
+            else if(card.getCardColor() =='y'){
+                cardImage.setImageResource(R.drawable.yellowdraw2);
+            }
+            else if(card.getCardColor() =='g'){
+                cardImage.setImageResource(R.drawable.greendraw2);
+            }
+            else if(card.getCardColor() =='b'){
+                cardImage.setImageResource(R.drawable.bluedraw2);
+            }
+        }
+        else if(card instanceof UnoCardWild){
+            cardImage.setImageResource(R.drawable.wild);
+        }
+        else if(card instanceof UnoCardPlus4){
+            cardImage.setImageResource(R.drawable.draw4);
+        }
+        else if(card instanceof UnoCardReverse){
+            if(card.getCardColor() == 'r') {
+                cardImage.setImageResource(R.drawable.redreverse);
+            }
+            else if(card.getCardColor() =='y'){
+                cardImage.setImageResource(R.drawable.yellowreverse);
+            }
+            else if(card.getCardColor() =='g'){
+                cardImage.setImageResource(R.drawable.greenreverse);
+            }
+            else if(card.getCardColor() =='b'){
+                cardImage.setImageResource(R.drawable.bluereverse);
+            }
+        }
+        else if(card instanceof UnoCard){
+            if(card.getCardColor() == 'r') {
+                if(card.getCardNumber() == 0){
+                    cardImage.setImageResource(R.drawable.red0);
+                }
+                if(card.getCardNumber() == 1){
+                    cardImage.setImageResource(R.drawable.red1);
+                }
+                if(card.getCardNumber() == 2){
+                    cardImage.setImageResource(R.drawable.red2);
+                }
+                if(card.getCardNumber() == 3){
+                    cardImage.setImageResource(R.drawable.red3);
+                }
+                if(card.getCardNumber() == 4){
+                    cardImage.setImageResource(R.drawable.red4);
+                }
+                if(card.getCardNumber() == 5){
+                    cardImage.setImageResource(R.drawable.red5);
+                }
+                if(card.getCardNumber() == 6){
+                    cardImage.setImageResource(R.drawable.red6);
+                }
+                if(card.getCardNumber() == 7){
+                    cardImage.setImageResource(R.drawable.red7);
+                }
+                if(card.getCardNumber() == 8){
+                    cardImage.setImageResource(R.drawable.red8);
+                }
+                if(card.getCardNumber() == 9){
+                    cardImage.setImageResource(R.drawable.red9);
+                }
+
+            }
+            else if(card.getCardColor() =='y'){
+                if(card.getCardNumber() == 0){
+                    cardImage.setImageResource(R.drawable.yellow0);
+                }
+                if(card.getCardNumber() == 1){
+                    cardImage.setImageResource(R.drawable.yellow1);
+                }
+                if(card.getCardNumber() == 2){
+                    cardImage.setImageResource(R.drawable.yellow2);
+                }
+                if(card.getCardNumber() == 3){
+                    cardImage.setImageResource(R.drawable.yellow3);
+                }
+                if(card.getCardNumber() == 4){
+                    cardImage.setImageResource(R.drawable.yellow4);
+                }
+                if(card.getCardNumber() == 5){
+                    cardImage.setImageResource(R.drawable.yellow5);
+                }
+                if(card.getCardNumber() == 6){
+                    cardImage.setImageResource(R.drawable.yellow6);
+                }
+                if(card.getCardNumber() == 7){
+                    cardImage.setImageResource(R.drawable.yellow7);
+                }
+                if(card.getCardNumber() == 8){
+                    cardImage.setImageResource(R.drawable.yellow8);
+                }
+                if(card.getCardNumber() == 9){
+                    cardImage.setImageResource(R.drawable.yellow9);
+                }
+            }
+            else if(card.getCardColor() =='g'){
+                if(card.getCardNumber() == 0){
+                    cardImage.setImageResource(R.drawable.green0);
+                }
+                if(card.getCardNumber() == 1){
+                    cardImage.setImageResource(R.drawable.green1);
+                }
+                if(card.getCardNumber() == 2){
+                    cardImage.setImageResource(R.drawable.green2);
+                }
+                if(card.getCardNumber() == 3){
+                    cardImage.setImageResource(R.drawable.green3);
+                }
+                if(card.getCardNumber() == 4){
+                    cardImage.setImageResource(R.drawable.green4);
+                }
+                if(card.getCardNumber() == 5){
+                    cardImage.setImageResource(R.drawable.green5);
+                }
+                if(card.getCardNumber() == 6){
+                    cardImage.setImageResource(R.drawable.green6);
+                }
+                if(card.getCardNumber() == 7){
+                    cardImage.setImageResource(R.drawable.green7);
+                }
+                if(card.getCardNumber() == 8){
+                    cardImage.setImageResource(R.drawable.green8);
+                }
+                if(card.getCardNumber() == 9){
+                    cardImage.setImageResource(R.drawable.green9);
+                }
+            }
+            else if(card.getCardColor() =='b'){
+                if(card.getCardNumber() == 0){
+                    cardImage.setImageResource(R.drawable.blue0);
+                }
+                if(card.getCardNumber() == 1){
+                    cardImage.setImageResource(R.drawable.blue1);
+                }
+                if(card.getCardNumber() == 2){
+                    cardImage.setImageResource(R.drawable.blue2);
+                }
+                if(card.getCardNumber() == 3){
+                    cardImage.setImageResource(R.drawable.blue3);
+                }
+                if(card.getCardNumber() == 4){
+                    cardImage.setImageResource(R.drawable.blue4);
+                }
+                if(card.getCardNumber() == 5){
+                    cardImage.setImageResource(R.drawable.blue5);
+                }
+                if(card.getCardNumber() == 6){
+                    cardImage.setImageResource(R.drawable.blue6);
+                }
+                if(card.getCardNumber() == 7){
+                    cardImage.setImageResource(R.drawable.blue7);
+                }
+                if(card.getCardNumber() == 8){
+                    cardImage.setImageResource(R.drawable.blue8);
+                }
+                if(card.getCardNumber() == 9){
+                    cardImage.setImageResource(R.drawable.blue9);
+                }
+            }
+        }
+        else{
+          cardImage.setImageResource(R.drawable.backgrey);
         }
     }
 
