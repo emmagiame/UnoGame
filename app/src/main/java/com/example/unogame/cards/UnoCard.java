@@ -98,7 +98,7 @@ public class UnoCard {
         int num = rand.nextInt(10);
 
         //return the number
-        return num;
+        return num + 1;
     }
 
     /**
@@ -110,7 +110,7 @@ public class UnoCard {
     @Override
     //print current card
     public String toString() {
-        return "Card Number: " + this.cardNumber + ", Card Color: " + this.cardColor;
+        return "Card Number: " + this.getCardNumber() + ", Card Color: " + this.getCardColor();
     }
 
 
