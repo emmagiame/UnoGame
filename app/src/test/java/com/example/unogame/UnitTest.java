@@ -23,7 +23,7 @@ public class UnitTest {
     public void checkIfCardNumIsRandomized(){
         for(int i = 0; i <= 15; i++){
             UnoCard tester = new UnoCard();
-            assertTrue(tester.getCardNumber() <= 10 && tester.getCardNumber() > 0);
+            assertTrue(tester.getCardNumber() < 10 && tester.getCardNumber() >= 0);
         }
     }
 

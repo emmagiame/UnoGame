@@ -98,7 +98,7 @@ public class UnoCard {
         int num = rand.nextInt(10);
 
         //return the number
-        return num + 1;
+        return num;
     }
 
     /**
