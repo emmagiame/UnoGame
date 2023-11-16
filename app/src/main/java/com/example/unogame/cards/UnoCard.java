@@ -110,7 +110,7 @@ public class UnoCard {
     @Override
     //print current card
     public String toString() {
-        return "Card Number: " + this.cardNumber + ", Card Color: " + this.cardColor;
+        return "Card Number: " + this.getCardNumber() + ", Card Color: " + this.getCardColor();
     }
 
 
