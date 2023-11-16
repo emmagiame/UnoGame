@@ -182,8 +182,17 @@ public class UnoGameState extends GameState {
         //copy current color
         this.currentPlayableColor = originalGame.currentPlayableColor;
 
+        //copy current number
+        this.currentPlayableNumber = originalGame.currentPlayableNumber;
+
         //copy if reversed or not
         this.isReversed = originalGame.isReversed;
+
+        //copy number of players
+        this.numPlayers = originalGame.numPlayers;
+
+        //copy index of played card
+        this.indexOfPlayedCard = originalGame.indexOfPlayedCard;
     }
 
 
