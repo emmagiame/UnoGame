@@ -48,6 +48,19 @@ public class UnoLocalGame extends LocalGame {
 
     @Override
     protected String checkIfGameOver() {
+
+        if(unoGameStateRef.gameOver() == 0)  {
+            return "Player 0 won!";
+        }
+
+       else if(unoGameStateRef.gameOver() == 1)  {
+            return "Player 1 won!";
+        }
+
+        else if(unoGameStateRef.gameOver() == 2)  {
+            return "Player 2 won!";
+        }
+
         return null;
     }
 
