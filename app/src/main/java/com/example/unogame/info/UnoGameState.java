@@ -532,6 +532,23 @@ public class UnoGameState extends GameState {
         return prevPlayerId;
     }
 
+    public int gameOver(){
+        if(player0Hand.size() == 0)  {
+            return 0;
+        }
+
+        else if(player1Hand.size() == 0)  {
+            return 1;
+        }
+
+        else if(player2Hand.size() == 0)  {
+            return 2;
+        }
+
+        return -1;
+    }
+
+
     /**
      * when a given player plays a card
      *
