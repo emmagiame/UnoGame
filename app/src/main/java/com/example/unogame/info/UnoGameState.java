@@ -572,19 +572,19 @@ public class UnoGameState extends GameState {
                         drawCardFromDrawPile(1, this.drawPile.get(0));
                         drawCardFromDrawPile(1, this.drawPile.get(0));
                         drawCardFromDrawPile(1, this.drawPile.get(0));
-                        this.playerTurn = 1;
+                        //this.playerTurn = 1;
                     } else if (playerId == 1) {
                         drawCardFromDrawPile(2, this.drawPile.get(0));
                         drawCardFromDrawPile(2, this.drawPile.get(0));
                         drawCardFromDrawPile(2, this.drawPile.get(0));
                         drawCardFromDrawPile(2, this.drawPile.get(0));
-                        this.playerTurn = 2;
+                        //this.playerTurn = 2;
                     } else if (playerId == 2) {
                         drawCardFromDrawPile(0, this.drawPile.get(0));
                         drawCardFromDrawPile(0, this.drawPile.get(0));
                         drawCardFromDrawPile(0, this.drawPile.get(0));
                         drawCardFromDrawPile(0, this.drawPile.get(0));
-                        this.playerTurn = 0;
+                        //this.playerTurn = 0;
                     }
                 } else if (this.numPlayers == 2) {
                     if (playerId == 0) {
@@ -592,13 +592,13 @@ public class UnoGameState extends GameState {
                         drawCardFromDrawPile(1, this.drawPile.get(0));
                         drawCardFromDrawPile(1, this.drawPile.get(0));
                         drawCardFromDrawPile(1, this.drawPile.get(0));
-                        this.playerTurn = 1;
+                        //this.playerTurn = 1;
                     } else if (playerId == 1) {
                         drawCardFromDrawPile(0, this.drawPile.get(0));
                         drawCardFromDrawPile(0, this.drawPile.get(0));
                         drawCardFromDrawPile(0, this.drawPile.get(0));
                         drawCardFromDrawPile(0, this.drawPile.get(0));
-                        this.playerTurn = 0;
+                        //this.playerTurn = 0;
                     }
                 }
                 //if its the wild card that adds 2
@@ -607,25 +607,25 @@ public class UnoGameState extends GameState {
                         if (playerId == 0) {
                             drawCardFromDrawPile(1, this.drawPile.get(0));
                             drawCardFromDrawPile(1, this.drawPile.get(0));
-                            this.playerTurn = 1;
+                            //this.playerTurn = 1;
                         } else if (playerId == 1) {
                             drawCardFromDrawPile(2, this.drawPile.get(0));
                             drawCardFromDrawPile(2, this.drawPile.get(0));
-                            this.playerTurn = 2;
+                            //this.playerTurn = 2;
                         } else if (playerId == 2) {
                             drawCardFromDrawPile(0, this.drawPile.get(0));
                             drawCardFromDrawPile(0, this.drawPile.get(0));
-                            this.playerTurn = 0;
+                            //this.playerTurn = 0;
                         }
                     } else if (this.numPlayers == 2) {
                         if (playerId == 0) {
                             drawCardFromDrawPile(1, this.drawPile.get(0));
                             drawCardFromDrawPile(1, this.drawPile.get(0));
-                            this.playerTurn = 1;
+                            //this.playerTurn = 1;
                         } else if (playerId == 1) {
                             drawCardFromDrawPile(0, this.drawPile.get(0));
                             drawCardFromDrawPile(0, this.drawPile.get(0));
-                            this.playerTurn = 0;
+                            //this.playerTurn = 0;
                         }
                     }
                 }
@@ -633,7 +633,7 @@ public class UnoGameState extends GameState {
             //change the playable color
             this.currentPlayableColor = card.getCardColor();
 
-            return true;
+            //return true;
 
         } else if (card instanceof UnoCardPlus2) {
             if (card.getCardNumber() == 2) {
@@ -641,49 +641,48 @@ public class UnoGameState extends GameState {
                     if (playerId == 0) {
                         drawCardFromDrawPile(1, this.drawPile.get(0));
                         drawCardFromDrawPile(1, this.drawPile.get(0));
-                        this.playerTurn = 1;
+                        //this.playerTurn = 1;
                     } else if (playerId == 1) {
                         drawCardFromDrawPile(2, this.drawPile.get(0));
                         drawCardFromDrawPile(2, this.drawPile.get(0));
-                        this.playerTurn = 2;
+                        //this.playerTurn = 2;
                     } else if (playerId == 2) {
                         drawCardFromDrawPile(0, this.drawPile.get(0));
                         drawCardFromDrawPile(0, this.drawPile.get(0));
-                        this.playerTurn = 0;
+                        //this.playerTurn = 0;
                     }
                 } else if (this.numPlayers == 2) {
                     if (playerId == 0) {
                         drawCardFromDrawPile(1, this.drawPile.get(0));
                         drawCardFromDrawPile(1, this.drawPile.get(0));
-                        this.playerTurn = 1;
+                        //this.playerTurn = 1;
                     } else if (playerId == 1) {
                         drawCardFromDrawPile(0, this.drawPile.get(0));
                         drawCardFromDrawPile(0, this.drawPile.get(0));
-                        this.playerTurn = 0;
+                        //this.playerTurn = 0;
                     }
                 }
-                return true;
+                //return true;
             } else if (card instanceof UnoCardPlus4) {
-                if (card.getCardNumber() == 4) {
                     if (this.numPlayers == 3) {
                         if (playerId == 0) {
                             drawCardFromDrawPile(1, this.drawPile.get(0));
                             drawCardFromDrawPile(1, this.drawPile.get(0));
                             drawCardFromDrawPile(1, this.drawPile.get(0));
                             drawCardFromDrawPile(1, this.drawPile.get(0));
-                            this.playerTurn = 1;
+                            //this.playerTurn = 1;
                         } else if (playerId == 1) {
                             drawCardFromDrawPile(2, this.drawPile.get(0));
                             drawCardFromDrawPile(2, this.drawPile.get(0));
                             drawCardFromDrawPile(2, this.drawPile.get(0));
                             drawCardFromDrawPile(2, this.drawPile.get(0));
-                            this.playerTurn = 2;
+                            //this.playerTurn = 2;
                         } else if (playerId == 2) {
                             drawCardFromDrawPile(0, this.drawPile.get(0));
                             drawCardFromDrawPile(0, this.drawPile.get(0));
                             drawCardFromDrawPile(0, this.drawPile.get(0));
                             drawCardFromDrawPile(0, this.drawPile.get(0));
-                            this.playerTurn = 0;
+                            //this.playerTurn = 0;
                         }
                     } else if (this.numPlayers == 2) {
                         if (playerId == 0) {
@@ -691,31 +690,30 @@ public class UnoGameState extends GameState {
                             drawCardFromDrawPile(1, this.drawPile.get(0));
                             drawCardFromDrawPile(1, this.drawPile.get(0));
                             drawCardFromDrawPile(1, this.drawPile.get(0));
-                            this.playerTurn = 1;
+                            //this.playerTurn = 1;
                         } else if (playerId == 1) {
                             drawCardFromDrawPile(0, this.drawPile.get(0));
                             drawCardFromDrawPile(0, this.drawPile.get(0));
                             drawCardFromDrawPile(0, this.drawPile.get(0));
                             drawCardFromDrawPile(0, this.drawPile.get(0));
-                            this.playerTurn = 0;
+                            //this.playerTurn = 0;
                         }
                         //change the playable color
                         this.currentPlayableColor = card.getCardColor();
-                        return true;
+                        //return true;
                     }
-                } else if (card instanceof UnoCardSkip) {
-                    //needs an instance of the class, how do I get that?
+                } else if (card instanceof UnoCardSkip) {//keep the returns here
                     if (this.numPlayers == 2) {
-                        this.playerTurn = playerId;
+                        this.setPlayerTurn(playerId);
                     } else if (this.numPlayers == 3) {
                         if (playerId == 0) {
-                            this.playerTurn = 2;
+                            this.setPlayerTurn(2);
                             return true;
                         } else if (playerId == 1) {
-                            this.playerTurn = 0;
+                            this.setPlayerTurn(0);
                             return true;
                         } else if (playerId == 2) {
-                            this.playerTurn = 1;
+                            this.setPlayerTurn(1);
                             return true;
                         }
                     }
@@ -724,32 +722,73 @@ public class UnoGameState extends GameState {
                     //for now just a boolean, not super sure how to implement
                     if (this.isReversed == true) {
                         this.isReversed = false;
-                        return true;
                     } else if (this.isReversed == false) {
                         this.isReversed = true;
-                        return true;
-                    }
-
-                } else {
-                    if (this.currentPlayableColor != card.getCardColor()) {
-                        this.currentPlayableColor = card.getCardColor();
-                        return true;
-                    } else if (this.currentPlayableNumber != card.getCardNumber()) {
-                        this.currentPlayableNumber = card.getCardNumber();
-                        return true;
                     }
 
                 }
-                //something went wrong so return false
-                return false;
+            }
+        }
+        //change turn
+        if(this.isReversed == false){
+            if(this.getNumPlayers() == 2){
+                if(this.getPlayerTurn() == 0){
+                    this.setPlayerTurn(1);
+                    return true;
+                }
+                else{
+                    this.setPlayerTurn(0);
+                    return true;
+                }
+            }
+            else if (this.getNumPlayers() == 3) {
+                    if(this.getPlayerTurn() == 0){
+                        this.setPlayerTurn(1);
+                        return true;
+                    }
+                    else if(this.getPlayerTurn() == 1){
+                        this.setPlayerTurn(2);
+                        return true;
+                    }
+                    else {
+                        this.setPlayerTurn(0);
+                        return true;
+                    }
+            }
+        }
+        else if(this.isReversed == true){
+            if(this.getNumPlayers() == 2){
+                if(this.getPlayerTurn() == 0){
+                    this.setPlayerTurn(1);
+                    return true;
+                }
+                else{
+                    this.setPlayerTurn(0);
+                    return true;
+                }
+            }
+            else if (this.getNumPlayers() == 3) {
+                if(this.getPlayerTurn() == 0){
+                    this.setPlayerTurn(2);
+                    return true;
+                }
+                else if(this.getPlayerTurn() == 1){
+                    this.setPlayerTurn(0);
+                    return true;
+                }
+                else {
+                    this.setPlayerTurn(1);
+                    return true;
+                }
             }
         }
 
-    }
         //wasn't a playable card
         return false;
+
+    }
 }
 
 
-}
+
 
