@@ -8,19 +8,18 @@ import com.example.unogame.players.UnoHumanPlayer;
 
 public class UnoLocalGame extends LocalGame {
 
-    UnoGameState unoGameStateRef;
     //needs to be like ttt, the state will have a variable keeping track of the player whose turn it it and number of players
     //(x + 2) % 3 will skip a turn
     //state.setwhosemove() = line above this
-    //
 
-    private UnoGameState refOfficialGame;
+    private UnoGameState unoGameStateRef;
+    //private UnoGameState refOfficialGame;
 
     /**
      * constructor
      */
-    public UnoLocalGame() { //this wont work past alpha
-        refOfficialGame = new UnoGameState(2);
+    public UnoLocalGame() { //not sure if the casting works, replaced refOfficialGame with unoGameStateRef, not sure why we had 2
+        unoGameStateRef = (UnoGameState)super.state;
     }
 
     @Override
@@ -38,7 +37,7 @@ public class UnoLocalGame extends LocalGame {
     /**
      * check if it is given players turn
      */
-    protected boolean canMove(int player) {
+    protected boolean canMove(int player) {//may need ((UnoGameState)super.state) instead
         UnoGameState gameStateRef = (UnoGameState) state;
         if (player == gameStateRef.getCurrentSetupTurn()) {
             return true;
@@ -66,10 +65,11 @@ public class UnoLocalGame extends LocalGame {
             // check if it's that players turn
             if (canMove(getPlayerIdx(action.getPlayer())) == true) {
                 // get num players
-                int numPlayers = getNumPlayers();
+                //
+                int numPlayers = ((UnoGameState)super.state).getNumPlayers();
 
                 // get player id
-                int id = unoGameStateRef.getPlayerTurn();
+                int id = ((UnoGameState)super.state).getPlayerTurn();
                 // play a card
                 // change the current player to the next player
                 // if two players
@@ -77,14 +77,14 @@ public class UnoLocalGame extends LocalGame {
                     // if id 0 turn
                     if (id == 0) {
                         //get index that card is at
-                        unoGameStateRef.playCard(id, unoGameStateRef.getPlayer0Hand().get(unoGameStateRef.getIndexOfPlayedCard()));
-                        unoGameStateRef.setPlayerTurn(1);
+                        ((UnoGameState)super.state).playCard(id, ((UnoGameState)super.state).getPlayer0Hand().get(((UnoGameState)super.state).getIndexOfPlayedCard()));
+                        ((UnoGameState)super.state).setPlayerTurn(1);
                         return true;
                     }
                     // if id 1 turn
                     else if (id == 1) {
-                        unoGameStateRef.playCard(id, unoGameStateRef.getPlayer1Hand().get(unoGameStateRef.getIndexOfPlayedCard()));
-                        unoGameStateRef.setPlayerTurn(0);
+                        ((UnoGameState)super.state).playCard(id, ((UnoGameState)super.state).getPlayer1Hand().get(((UnoGameState)super.state).getIndexOfPlayedCard()));
+                        ((UnoGameState)super.state).setPlayerTurn(0);
                         return true;
                     }
 
@@ -94,21 +94,21 @@ public class UnoLocalGame extends LocalGame {
                 if (numPlayers == 3) {
                     // if id 0 turn
                     if (id == 0) {
-                        unoGameStateRef.playCard(id, unoGameStateRef.getPlayer0Hand().get(unoGameStateRef.getIndexOfPlayedCard()));
-                        unoGameStateRef.setPlayerTurn(1);
+                        ((UnoGameState)super.state).playCard(id, ((UnoGameState)super.state).getPlayer0Hand().get(((UnoGameState)super.state).getIndexOfPlayedCard()));
+                        ((UnoGameState)super.state).setPlayerTurn(1);
                         return true;
                     }
                     // if id 1 turn
                     else if (id == 1) {
-                        unoGameStateRef.playCard(id, unoGameStateRef.getPlayer1Hand().get(unoGameStateRef.getIndexOfPlayedCard()));
-                        unoGameStateRef.setPlayerTurn(2);
+                        ((UnoGameState)super.state).playCard(id, ((UnoGameState)super.state).getPlayer1Hand().get(((UnoGameState)super.state).getIndexOfPlayedCard()));
+                        ((UnoGameState)super.state).setPlayerTurn(2);
                         return true;
                     }
 
                     // if id 2 turn
                     else if (id == 2) {
-                        unoGameStateRef.playCard(id, unoGameStateRef.getPlayer2Hand().get(unoGameStateRef.getIndexOfPlayedCard()));
-                        unoGameStateRef.setPlayerTurn(0);
+                        ((UnoGameState)super.state).playCard(id, ((UnoGameState)super.state).getPlayer2Hand().get(((UnoGameState)super.state).getIndexOfPlayedCard()));
+                        ((UnoGameState)super.state).setPlayerTurn(0);
                         return true;
                     }
 
@@ -124,7 +124,7 @@ public class UnoLocalGame extends LocalGame {
                 int numPlayers = getNumPlayers();
 
                 // get player id
-                int id = unoGameStateRef.getPlayerTurn();
+                int id = ((UnoGameState)super.state).getPlayerTurn();
                 // draw card
                 // unoGameStateRef.drawCardFromDrawPile(id,card);
 
@@ -134,14 +134,14 @@ public class UnoLocalGame extends LocalGame {
                 if (numPlayers == 2) {
                     // if id 0 turn
                     if (id == 0) {
-                        unoGameStateRef.drawCardFromDrawPile(id, unoGameStateRef.getDrawPile().get(0));
-                        unoGameStateRef.setPlayerTurn(1);
+                        ((UnoGameState)super.state).drawCardFromDrawPile(id, ((UnoGameState)super.state).getDrawPile().get(0));
+                        ((UnoGameState)super.state).setPlayerTurn(1);
                         return true;
                     }
                     // if id 1 turn
                     else if (id == 1) {
-                        unoGameStateRef.drawCardFromDrawPile(id, unoGameStateRef.getDrawPile().get(0));
-                        unoGameStateRef.setPlayerTurn(0);
+                        ((UnoGameState)super.state).drawCardFromDrawPile(id, ((UnoGameState)super.state).getDrawPile().get(0));
+                        ((UnoGameState)super.state).setPlayerTurn(0);
                         return true;
                     }
 
@@ -151,21 +151,21 @@ public class UnoLocalGame extends LocalGame {
                 if (numPlayers == 3) {
                     // if id 0 turn
                     if (id == 0) {
-                        unoGameStateRef.drawCardFromDrawPile(id, unoGameStateRef.getDrawPile().get(0));
-                        unoGameStateRef.setPlayerTurn(1);
+                        ((UnoGameState)super.state).drawCardFromDrawPile(id, ((UnoGameState)super.state).getDrawPile().get(0));
+                        ((UnoGameState)super.state).setPlayerTurn(1);
                         return true;
                     }
                     // if id 1 turn
                     else if (id == 1) {
-                        unoGameStateRef.drawCardFromDrawPile(id, unoGameStateRef.getDrawPile().get(0));
-                        unoGameStateRef.setPlayerTurn(2);
+                        ((UnoGameState)super.state).drawCardFromDrawPile(id, ((UnoGameState)super.state).getDrawPile().get(0));
+                        ((UnoGameState)super.state).setPlayerTurn(2);
                         return true;
                     }
 
                     // if id 2 turn
                     else if (id == 2) {
-                        unoGameStateRef.drawCardFromDrawPile(id, unoGameStateRef.getDrawPile().get(0));
-                        unoGameStateRef.setPlayerTurn(0);
+                        ((UnoGameState)super.state).drawCardFromDrawPile(id, ((UnoGameState)super.state).getDrawPile().get(0));
+                        ((UnoGameState)super.state).setPlayerTurn(0);
                         return true;
                     }
 

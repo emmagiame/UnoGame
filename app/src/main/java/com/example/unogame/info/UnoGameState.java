@@ -250,6 +250,8 @@ public class UnoGameState extends GameState {
      */
     public int getIndexOfPlayedCard() { return indexOfPlayedCard; }
 
+    public int getNumPlayers() { return numPlayers;}
+
     /**
      * gets player 0's hand
      *
@@ -747,5 +749,7 @@ public class UnoGameState extends GameState {
         //wasn't a playable card
         return false;
 }
+
+
 }
 

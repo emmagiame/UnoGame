@@ -83,16 +83,6 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     }
 
     /**
-     *  sends a message to the player
-     *
-     * @param info - game info
-     */
-    @Override
-    public void sendInfo(GameInfo info) {
-
-    }
-
-    /**
      * finds button and edit text in given player view
      *
      * @param activity
