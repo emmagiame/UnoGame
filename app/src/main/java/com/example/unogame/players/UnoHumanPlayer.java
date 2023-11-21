@@ -2,6 +2,7 @@ package com.example.unogame.players;
 
 import android.media.Image;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -63,6 +64,9 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private Button declareUnoButton = null;
     private Button callOutUnoButton = null;
     private Button runTestButton = null;
+
+    private int cardClickedIdx = -1;
+
 
     /**
      * constructor
@@ -412,7 +416,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      */
     @Override
     public void onClick(View view) {
-        if(view.getId() == R.id.runTestButton){
+        /*if(view.getId() == R.id.runTestButton){
             //clear text in edit text
             //editText.setText("");
             editText.getText().clear();
@@ -443,21 +447,44 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             //call to string and append to text in textview
             editText.append(secondInstance.toString());
             editText.append(fourthInstance.toString());
-        }
-        else if(view.getId() == R.id.drawButton){
+            return;
+        }*/
+        if(view.getId() == R.id.drawButton){
+            Log.i("action was clicked", "sending a draw card action");
             UnoDrawCardAction actionDraw = new UnoDrawCardAction(this);
             game.sendAction(actionDraw);
+            return;
+        }
+        else if(view.getId() == R.id.cardSlot1){
+            cardClickedIdx = 0 + offset;
+            Log.i("changed card clicked id", "card clicked id is " + cardClickedIdx);
+        }
+        else if(view.getId() == R.id.cardSlot2){
+            cardClickedIdx = 1 + offset;
+            Log.i("changed card clicked id", "card clicked id is " + cardClickedIdx);
+        }
+        else if(view.getId() == R.id.cardSlot3){
+            cardClickedIdx = 2 + offset;
+            Log.i("changed card clicked id", "card clicked id is " + cardClickedIdx);
+        }
+        else if(view.getId() == R.id.cardSlot4){
+            cardClickedIdx = 3 + offset;
+            Log.i("changed card clicked id", "card clicked id is " + cardClickedIdx);
+        }
+        else if(view.getId() == R.id.cardSlot5){
+            cardClickedIdx = 4 + offset;
+            Log.i("changed card clicked id", "card clicked id is " + cardClickedIdx);
         }
         else if(view.getId() == R.id.playButton){
-            UnoPlayCardAction actionPlay = new UnoPlayCardAction(this);
+            if(cardClickedIdx == -1){
+                //error
+                Log.w("card clicked error", "card clicked id is -1");
+                return;
+            }
+            Log.i("action was clicked", "sending a play card action, card clicked id is " + cardClickedIdx);
+            UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, cardClickedIdx);
             game.sendAction(actionPlay);
-            //String inputS = editTextFun.getText().toString();
-            //int input = Integer.parseInt(inputS);
-            UnoGameState gamie = (UnoGameState) game.getGameState();
-            gamie.setIndexOfPlayedCard(0);
-        }
-        else{
-
+            return;
         }
 
     }
