@@ -47,7 +47,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private Button rightButton = null;
     private Button playButton = null;
     private Button drawButton = null;
-    private Button discardCardPileButton = null;
+    private ImageView discardCardPileButton = null;
     private Button declareUnoButton = null;
     private Button callOutUnoButton = null;
     private Button runTestButton = null;
@@ -118,6 +118,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         this.runTestButton = myActivity.findViewById(R.id.runTestButton);
         runTestButton.setOnClickListener(this);
 
+        cardImageView = myActivity.findViewById(R.id.cardSlot1);
 //        editText = myActivity.findViewById(R.id.editTextTextMultiLine);
 //        textViewFun = myActivity.findViewById(R.id.textViewFun);
 //        textViewFun.setText("Your hand: ");

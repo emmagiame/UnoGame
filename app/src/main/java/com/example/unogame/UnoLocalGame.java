@@ -12,14 +12,15 @@ public class UnoLocalGame extends LocalGame {
     //(x + 2) % 3 will skip a turn
     //state.setwhosemove() = line above this
 
-    private final UnoGameState unoGameStateRef;
+    //private final UnoGameState unoGameStateRef;
     //private UnoGameState refOfficialGame;
 
     /**
      * constructor
      */
     public UnoLocalGame() { //not sure if the casting works, replaced refOfficialGame with unoGameStateRef, not sure why we had 2
-        unoGameStateRef = (UnoGameState)super.state;
+        super();
+        //unoGameStateRef = (UnoGameState)super.state;
     }
 
     @Override
@@ -47,8 +48,8 @@ public class UnoLocalGame extends LocalGame {
 
     @Override
     protected String checkIfGameOver() {
-
-        if(unoGameStateRef.gyameOver() == 0)  {
+        UnoGameState unoGameStateRef = (UnoGameState) state;
+        if(unoGameStateRef.gameOver() == 0)  {
             return "Player 0 won!";
         }
 
