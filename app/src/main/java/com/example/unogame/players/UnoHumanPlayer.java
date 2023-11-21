@@ -34,9 +34,17 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private UnoGameState firstInstance;
     //layout id of given layout
     private int layoutId;
+    private int offset = 0;
 
     //image view to display uno card
-    private ImageView cardImageView;
+    private ArrayList<ImageView> cardSlotArray = null;
+    private ImageView cardImageView1;
+    private ImageView cardImageView2;
+    private ImageView cardImageView3;
+    private ImageView cardImageView4;
+    private ImageView cardImageView5;
+    private ImageView cardImageView6;
+
     private ImageView drawCardPileButton = null;
     private ImageView cardSlot1 = null;
     private ImageView cardSlot2 = null;
@@ -99,7 +107,11 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
             ArrayList<UnoCard> cards = currGame.getPlayer0Hand();
             if (cards.size() > 0) {
-                setImage(this.cardImageView, cards.get(0));
+                setImage(this.cardImageView1, cards.get(offset+0));
+                setImage(this.cardImageView2, cards.get(offset+1));
+                setImage(this.cardImageView3, cards.get(offset+2));
+                setImage(this.cardImageView4, cards.get(offset+3));
+                setImage(this.cardImageView5, cards.get(offset+4));
             }
         }
     }
@@ -118,7 +130,20 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         this.runTestButton = myActivity.findViewById(R.id.runTestButton);
         runTestButton.setOnClickListener(this);
 
-        cardImageView = myActivity.findViewById(R.id.cardSlot1);
+        //add cardslots on playing field
+        cardImageView1 = myActivity.findViewById(R.id.cardSlot1);
+        cardImageView2 = myActivity.findViewById(R.id.cardSlot2);
+        cardImageView3 = myActivity.findViewById(R.id.cardSlot3);
+        cardImageView4 = myActivity.findViewById(R.id.cardSlot4);
+        cardImageView5 = myActivity.findViewById(R.id.cardSlot5);
+
+        cardImageView6 = myActivity.findViewById(R.id.discardCardPileImage);
+        //broken assumes player 0 is human player
+
+        cardSlotArray = new ArrayList<>();
+        cardSlotArray.add((myActivity.findViewById(R.id.cardSlot1)));
+
+
 //        editText = myActivity.findViewById(R.id.editTextTextMultiLine);
 //        textViewFun = myActivity.findViewById(R.id.textViewFun);
 //        textViewFun.setText("Your hand: ");
