@@ -12,7 +12,7 @@ public class UnoLocalGame extends LocalGame {
     //(x + 2) % 3 will skip a turn
     //state.setwhosemove() = line above this
 
-    private UnoGameState unoGameStateRef;
+    private final UnoGameState unoGameStateRef;
     //private UnoGameState refOfficialGame;
 
     /**
@@ -30,9 +30,8 @@ public class UnoLocalGame extends LocalGame {
 
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
-
+        p.sendInfo(new UnoGameState((UnoGameState) super.state));
     }
-
 
     /**
      * check if it is given players turn
@@ -49,7 +48,7 @@ public class UnoLocalGame extends LocalGame {
     @Override
     protected String checkIfGameOver() {
 
-        if(unoGameStateRef.gameOver() == 0)  {
+        if(unoGameStateRef.gyameOver() == 0)  {
             return "Player 0 won!";
         }
 

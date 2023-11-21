@@ -31,6 +31,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     private TextView textViewFun;
 
+    private UnoGameState firstInstance;
     //layout id of given layout
     private int layoutId;
 
@@ -117,9 +118,9 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         this.runTestButton = myActivity.findViewById(R.id.runTestButton);
         runTestButton.setOnClickListener(this);
 
-        editText = myActivity.findViewById(R.id.editTextTextMultiLine);
-        textViewFun = myActivity.findViewById(R.id.textViewFun);
-        textViewFun.setText("Your hand: ");
+//        editText = myActivity.findViewById(R.id.editTextTextMultiLine);
+//        textViewFun = myActivity.findViewById(R.id.textViewFun);
+//        textViewFun.setText("Your hand: ");
 
         this.drawCardPileButton = myActivity.findViewById(R.id.drawCardPileImage);
         drawCardPileButton.setOnClickListener(this);
