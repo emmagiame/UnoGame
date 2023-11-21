@@ -397,10 +397,13 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             //call to string and append to text in textview
             editText.append(secondInstance.toString());
             editText.append(fourthInstance.toString());
+            return;
         }
         else if(view.getId() == R.id.drawButton){
             UnoDrawCardAction actionDraw = new UnoDrawCardAction(this);
             game.sendAction(actionDraw);
+            view.invalidate();
+            return;
         }
         else if(view.getId() == R.id.playButton){
             UnoPlayCardAction actionPlay = new UnoPlayCardAction(this);
@@ -409,6 +412,8 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             //int input = Integer.parseInt(inputS);
             UnoGameState gamie = (UnoGameState) game.getGameState();
             gamie.setIndexOfPlayedCard(0);
+            view.invalidate();
+            return;
         }
         else{
 
