@@ -3,6 +3,7 @@ package com.example.unogame.players;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +21,8 @@ import com.example.unogame.cards.UnoCardSkip;
 import com.example.unogame.cards.UnoCardWild;
 import com.example.unogame.info.UnoGameState;
 
+import java.util.ArrayList;
+
 public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListener {
 
     //android activity that we are running
@@ -30,6 +33,23 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     //layout id of given layout
     private int layoutId;
+
+    //image view to display uno card
+    private ImageView cardImageView;
+    private ImageView drawCardPileButton = null;
+    private ImageView cardSlot1 = null;
+    private ImageView cardSlot2 = null;
+    private ImageView cardSlot3 = null;
+    private ImageView cardSlot4 = null;
+    private ImageView cardSlot5 = null;
+    private Button leftButton = null;
+    private Button rightButton = null;
+    private Button playButton = null;
+    private Button drawButton = null;
+    private Button discardCardPileButton = null;
+    private Button declareUnoButton = null;
+    private Button callOutUnoButton = null;
+    private Button runTestButton = null;
 
     /**
      * constructor
@@ -76,9 +96,10 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             //make an instance of UnoGame based off of info
             UnoGameState currGame = (UnoGameState) info;
 
-
-
-
+            ArrayList<UnoCard> cards = currGame.getPlayer0Hand();
+            if (cards.size() > 0) {
+                setImage(this.cardImageView, cards.get(0));
+            }
         }
     }
 
@@ -93,30 +114,48 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         myActivity.setContentView(layoutId);
 
         // all the onClicks for every button/ card on layout
-        Button runTestButton = myActivity.findViewById(R.id.runTestButton);
+        this.runTestButton = myActivity.findViewById(R.id.runTestButton);
         runTestButton.setOnClickListener(this);
 
         editText = myActivity.findViewById(R.id.editTextTextMultiLine);
         textViewFun = myActivity.findViewById(R.id.textViewFun);
         textViewFun.setText("Your hand: ");
 
-        ImageView drawCardPileButton = myActivity.findViewById(R.id.drawCardPileImage);
+        this.drawCardPileButton = myActivity.findViewById(R.id.drawCardPileImage);
         drawCardPileButton.setOnClickListener(this);
 
-        ImageView discardCardPileButton = myActivity.findViewById(R.id.discardCardPileImage);
+        this.discardCardPileButton = myActivity.findViewById(R.id.discardCardPileImage);
         discardCardPileButton.setOnClickListener(this);
 
-        Button declareUnoButton = myActivity.findViewById(R.id.declareUnoButton);
+        this.declareUnoButton = myActivity.findViewById(R.id.declareUnoButton);
         declareUnoButton.setOnClickListener(this);
 
-        Button callOutUnoButton = myActivity.findViewById(R.id.callOutUnoButton);
+        this.callOutUnoButton = myActivity.findViewById(R.id.callOutUnoButton);
         callOutUnoButton.setOnClickListener(this);
 
-        Button drawButton = myActivity.findViewById(R.id.drawButton);
+        this.drawButton = myActivity.findViewById(R.id.drawButton);
         drawButton.setOnClickListener(this);
 
-        Button playButton = myActivity.findViewById(R.id.playButton);
+        this.playButton = myActivity.findViewById(R.id.playButton);
         playButton.setOnClickListener(this);
+
+        //onClickListeners for left and right scroll buttons
+        this.leftButton = activity.findViewById(R.id.leftButton);
+        leftButton.setOnClickListener(this);
+        this.rightButton = activity.findViewById(R.id.rightButton);
+        rightButton.setOnClickListener(this);
+
+        //onClickListeners for all the card slots
+        this.cardSlot1 = myActivity.findViewById(R.id.cardSlot1);
+        cardSlot1.setOnClickListener(this);
+        this.cardSlot2 = myActivity.findViewById(R.id.cardSlot2);
+        cardSlot2.setOnClickListener(this);
+        this.cardSlot3 = myActivity.findViewById(R.id.cardSlot3);
+        cardSlot3.setOnClickListener(this);
+        this.cardSlot4 = myActivity.findViewById(R.id.cardSlot4);
+        cardSlot4.setOnClickListener(this);
+        this.cardSlot5 = myActivity.findViewById(R.id.cardSlot5);
+        cardSlot5.setOnClickListener(this);
     }
 
     /**
