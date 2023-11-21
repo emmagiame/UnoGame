@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent">
 
     <!-- playing field -->
 
@@ -130,7 +130,7 @@
         <LinearLayout
             android:id="@+id/pileText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_gravity="left">
 
             <TextView
@@ -204,57 +204,57 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/gameTextLayout"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/leftButton"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="left"
-                android:textSize="10sp"
-                android:visibility="visible" />
-
-            <Button
-                android:id="@+id/rightButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="right"
-                android:visibility="visible"
-                android:layout_weight="1"
-                android:textSize="10sp" />
-
-<!--            <TextView-->
-<!--                android:id="@+id/textViewFun"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_weight="1"-->
-<!--                android:ems="10"-->
-<!--                android:gravity="start|top"-->
-<!--                android:inputType="textMultiLine"-->
-<!--                android:overScrollMode="always"-->
-<!--                android:textSize="10sp" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/gameText"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_weight="1"-->
-<!--                android:ems="10"-->
-<!--                android:gravity="start|top"-->
-<!--                android:inputType="textMultiLine"-->
-<!--                android:overScrollMode="always"-->
-<!--                android:textSize="15sp" />-->
-
-        </LinearLayout>
 
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/gameTextLayout"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/leftButton"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="left"
+            android:textSize="10sp"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/rightButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="right"
+            android:visibility="visible"
+            android:layout_weight="1"
+            android:textSize="10sp" />
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/textViewFun"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:layout_weight="1"-->
+        <!--                android:ems="10"-->
+        <!--                android:gravity="start|top"-->
+        <!--                android:inputType="textMultiLine"-->
+        <!--                android:overScrollMode="always"-->
+        <!--                android:textSize="10sp" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/gameText"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:layout_weight="1"-->
+        <!--                android:ems="10"-->
+        <!--                android:gravity="start|top"-->
+        <!--                android:inputType="textMultiLine"-->
+        <!--                android:overScrollMode="always"-->
+        <!--                android:textSize="15sp" />-->
+
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/playButtonLayout"
         android:layout_width="match_parent"
@@ -288,6 +288,7 @@
             android:layout_weight="1" />
     </LinearLayout>
 
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

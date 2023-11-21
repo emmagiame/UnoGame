@@ -20,7 +20,6 @@ public class UnoLocalGame extends LocalGame {
      */
     public UnoLocalGame() { //not sure if the casting works, replaced refOfficialGame with unoGameStateRef, not sure why we had 2
         super();
-        //unoGameStateRef = (UnoGameState)super.state;
     }
 
     @Override
