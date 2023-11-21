@@ -1,5 +1,7 @@
 package com.example.unogame.players;
 
+import android.media.Image;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,7 +45,9 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private ImageView cardImageView3;
     private ImageView cardImageView4;
     private ImageView cardImageView5;
-    private ImageView cardImageView6;
+    private ImageView discardPileImage;
+    private ImageView drawPileImage;
+    private ImageView aiPlayerImage;
 
     private ImageView drawCardPileButton = null;
     private ImageView cardSlot1 = null;
@@ -105,14 +109,28 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             //make an instance of UnoGame based off of info
             UnoGameState currGame = (UnoGameState) info;
 
+            //only works assuming human player is player0
+            //displaying human player's hand in the card slots
             ArrayList<UnoCard> cards = currGame.getPlayer0Hand();
             if (cards.size() > 0) {
-                setImage(this.cardImageView1, cards.get(offset+0));
-                setImage(this.cardImageView2, cards.get(offset+1));
-                setImage(this.cardImageView3, cards.get(offset+2));
-                setImage(this.cardImageView4, cards.get(offset+3));
-                setImage(this.cardImageView5, cards.get(offset+4));
+                setImage(this.cardImageView1, cards.get(offset + 0));
             }
+            if (cards.size() > 1) {
+                setImage(this.cardImageView2, cards.get(offset + 1));
+            }
+            if (cards.size() > 2) {
+                setImage(this.cardImageView3, cards.get(offset + 2));
+            }
+            if (cards.size() > 3) {
+                setImage(this.cardImageView4, cards.get(offset + 3));
+            }
+            if (cards.size() > 4) {
+                setImage(this.cardImageView5, cards.get(offset + 4));
+            }
+
+            this.discardPileImage.setImageResource(R.drawable.blank);
+            this.aiPlayerImage.setImageResource(R.drawable.back);
+            this.drawPileImage.setImageResource(R.drawable.back);
         }
     }
 
@@ -137,7 +155,10 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         cardImageView4 = myActivity.findViewById(R.id.cardSlot4);
         cardImageView5 = myActivity.findViewById(R.id.cardSlot5);
 
-        cardImageView6 = myActivity.findViewById(R.id.discardCardPileImage);
+        discardPileImage = myActivity.findViewById(R.id.discardCardPileImage);
+        drawPileImage = myActivity.findViewById(R.id.drawCardPileImage);
+        aiPlayerImage = myActivity.findViewById(R.id.opponentHand);
+
         //broken assumes player 0 is human player
 
         cardSlotArray = new ArrayList<>();
