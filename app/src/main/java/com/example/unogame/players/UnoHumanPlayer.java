@@ -1,5 +1,6 @@
 package com.example.unogame.players;
 
+import android.graphics.Color;
 import android.media.Image;
 import android.provider.ContactsContract;
 import android.util.Log;
@@ -414,6 +415,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         super.initAfterReady();
     }
 
+
     /**
      * onClick method
      *
@@ -492,14 +494,20 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             game.sendAction(actionPlay);
             return;
         }
-        else if(view.getId() == R.id.rightButton){
-            offset = offset +1;
-            return;
-        }
+
         else if(view.getId() == R.id.leftButton){
-            offset = offset -1;
+            //offset = offset -1;
+            offset--;
+        }
+
+        else if(view.getId() == R.id.rightButton){
+            offset++;
+
+            //flash(Color.WHITE,200);
+            //flash(Color.RED,200);
             return;
         }
+
 
     }
 
