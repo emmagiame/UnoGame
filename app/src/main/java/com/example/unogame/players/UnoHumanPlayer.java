@@ -109,13 +109,16 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      */
     @Override
     public void receiveInfo(GameInfo info) {
+        Log.i("reciveInfo", "entered reciveIno");
         if (info instanceof UnoGameState) {
+            Log.i("reciveInfo", "info is an instance of UnoGameState");
             //make an instance of UnoGame based off of info
             UnoGameState currGame = (UnoGameState) info;
 
             //only works assuming human player is player0
             //displaying human player's hand in the card slots
             ArrayList<UnoCard> cards = currGame.getPlayer0Hand();
+            ArrayList<UnoCard> currentDiscard = currGame.getDiscardPile();
             if (cards.size() > 0) {
                 setImage(this.cardImageView1, cards.get(offset + 0));
             }
@@ -132,7 +135,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 setImage(this.cardImageView5, cards.get(offset + 4));
             }
 
-            this.discardPileImage.setImageResource(R.drawable.blank);
+            setImage(this.discardPileImage, currentDiscard.get(0));
             this.aiPlayerImage.setImageResource(R.drawable.back);
             this.drawPileImage.setImageResource(R.drawable.back);
         }
@@ -145,6 +148,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      */
     @Override
     public void setAsGui(GameMainActivity activity) {
+        Log.i("setAsGui", "entered setAsGui");
         myActivity = activity;
         myActivity.setContentView(layoutId);
 
@@ -217,6 +221,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      * @param card - card that we are setting the card image to
      */
     public void setImage(ImageView cardImage, UnoCard card) {
+        Log.i("setImage", "entered setImage");
         if(card instanceof UnoCardSkip){
             if(card.getCardColor() == 'r') {
                 cardImage.setImageResource(R.drawable.redskip);
@@ -416,6 +421,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      */
     @Override
     public void onClick(View view) {
+        Log.i("onClick", "entered onClick");
         /*if(view.getId() == R.id.runTestButton){
             //clear text in edit text
             //editText.setText("");
@@ -484,6 +490,14 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             Log.i("action was clicked", "sending a play card action, card clicked id is " + cardClickedIdx);
             UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, cardClickedIdx);
             game.sendAction(actionPlay);
+            return;
+        }
+        else if(view.getId() == R.id.rightButton){
+            offset = offset +1;
+            return;
+        }
+        else if(view.getId() == R.id.leftButton){
+            offset = offset -1;
             return;
         }
 

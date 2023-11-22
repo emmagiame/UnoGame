@@ -1,5 +1,7 @@
 package com.example.unogame;
 
+import android.util.Log;
+
 import com.example.game.GameFramework.LocalGame;
 import com.example.game.GameFramework.actionMessage.GameAction;
 import com.example.game.GameFramework.players.GamePlayer;
@@ -71,9 +73,10 @@ public class UnoLocalGame extends LocalGame {
      */
     @Override
     protected boolean makeMove(GameAction action) {
-
+        Log.i("makeMove", "entered makeMove");
         // if action is play card
         if (action instanceof UnoPlayCardAction) {
+            Log.i("makeMove", "action is an instance of UnoPlayCardAction");
             // check if it's that players turn
             if (canMove(getPlayerIdx(action.getPlayer())) == true) {
                 // get num players
@@ -130,6 +133,7 @@ public class UnoLocalGame extends LocalGame {
 
         // if action is draw card
         if (action instanceof UnoDrawCardAction) {
+            Log.i("makeMove", "action is an instance of UnoDrawCardAction");
             // check if it's that players turn
             if (canMove(getPlayerIdx(action.getPlayer())) == true) {
                 // get num players
@@ -184,6 +188,7 @@ public class UnoLocalGame extends LocalGame {
                 }
             }
         }
+        Log.i("makeMove", "all done with makeMove, return");
             //no unos for alpha <3
             return false;
     }

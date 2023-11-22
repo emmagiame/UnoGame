@@ -237,6 +237,7 @@ public class UnoGameState extends GameState {
      */
     public ArrayList<UnoCard> startDiscardPile(){
         ArrayList<UnoCard> discard = new ArrayList<UnoCard>();
+        discard.add(new UnoCard());
         return discard;
     }
 
@@ -299,6 +300,7 @@ public class UnoGameState extends GameState {
      *      returns list of cards that make discard pile
      */
     public ArrayList<UnoCard> getDiscardPile() {
+
         return discardPile;
     }
 
@@ -349,6 +351,7 @@ public class UnoGameState extends GameState {
      *      returns the color that can be played
      */
     public char getCurrentPlayableColor(){
+        currentPlayableColor = this.getDiscardPile().get(0).getCardColor();
         return currentPlayableColor;
     }
 
@@ -359,6 +362,7 @@ public class UnoGameState extends GameState {
      *      returns the number that can be played
      */
     public int getCurrentPlayableNumber(){
+        currentPlayableNumber = this.getDiscardPile().get(0).getCardNumber();
         return currentPlayableNumber;
     }
 
@@ -561,7 +565,7 @@ public class UnoGameState extends GameState {
         //if it is not that players turn then the move is not valid so return false also
         //currently this method also changes the player turn but when we implement reverse I think we will want to change the turn outside of this method or write
         //a method to change the turn and call it in playCard instead
-        if (playerId == this.playerTurn && (card.getCardColor() == this.currentPlayableColor) || (card.getCardNumber() == this.currentPlayableNumber)) {
+        if (playerId == this.getPlayerTurn() && (card.getCardColor() == this.getCurrentPlayableColor()) || (card.getCardNumber() == this.getCurrentPlayableNumber())) {
 
         // remove card from players hand
         if (playerId == 0) {
