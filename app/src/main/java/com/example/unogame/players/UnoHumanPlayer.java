@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.game.GameFramework.GameMainActivity;
 import com.example.game.GameFramework.infoMessage.GameInfo;
+import com.example.game.GameFramework.infoMessage.GameState;
 import com.example.game.GameFramework.players.GameHumanPlayer;
 import com.example.unogame.R;
 import com.example.unogame.UnoDrawCardAction;
@@ -109,12 +110,12 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      */
     @Override
     public void receiveInfo(GameInfo info) {
-        Log.i("reciveInfo", "entered reciveIno");
+        Log.i("reciveInfo", "entered reciveInfo");
         if (info instanceof UnoGameState) {
             Log.i("reciveInfo", "info is an instance of UnoGameState");
             //make an instance of UnoGame based off of info
             UnoGameState currGame = (UnoGameState) info;
-
+            Log.i("playCard", "current color " + currGame.getCurrentPlayableColor() + " current number " + currGame.getCurrentPlayableNumber());
             //only works assuming human player is player0
             //displaying human player's hand in the card slots
             ArrayList<UnoCard> cards = currGame.getPlayer0Hand();
