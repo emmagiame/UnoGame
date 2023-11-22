@@ -1,5 +1,7 @@
 package com.example.unogame.info;
 
+import android.util.Log;
+
 import com.example.game.GameFramework.infoMessage.GameState;
 import com.example.unogame.cards.UnoCard;
 import com.example.unogame.cards.UnoCardPlus2;
@@ -366,6 +368,14 @@ public class UnoGameState extends GameState {
         return currentPlayableNumber;
     }
 
+    public void setCurrentPlayableColor(char color){
+        this.currentPlayableColor = color;
+    }
+
+    public void setCurrentPlayableNumber(int num){
+        this.currentPlayableNumber = num;
+    }
+
     /**
      * get if the rotation of turns is reversed
      *
@@ -442,15 +452,18 @@ public class UnoGameState extends GameState {
         //check who's turn it is and add a card to their hand
         if(playerId == 0){
             this.player0Hand.add(card);
+            this.drawPile.remove(0);
             return true;
         }
         else if(playerId == 1) {
             this.player1Hand.add(card);
+            this.drawPile.remove(0);
             return true;
         }
 
         else if(playerId == 2){
             this.player2Hand.add(card);
+            this.drawPile.remove(0);
             return true;
         }
         return false;
@@ -566,7 +579,7 @@ public class UnoGameState extends GameState {
         //currently this method also changes the player turn but when we implement reverse I think we will want to change the turn outside of this method or write
         //a method to change the turn and call it in playCard instead
         if (playerId == this.getPlayerTurn() && (card.getCardColor() == this.getCurrentPlayableColor()) || (card.getCardNumber() == this.getCurrentPlayableNumber())) {
-
+        Log.i("playCard", "current color " + this.getCurrentPlayableColor() + " current number " + this.getCurrentPlayableNumber());
         // remove card from players hand
         if (playerId == 0) {
             player0Hand.remove(card);
@@ -577,11 +590,11 @@ public class UnoGameState extends GameState {
         }
 
         // add card to discard pile
-        this.discardPile.add(card);
+        this.discardPile.add(0, card);
 
         // set new playable color and number
-        currentPlayableColor = card.getCardColor();
-        currentPlayableNumber = card.getCardNumber();
+        this.setCurrentPlayableColor(card.getCardColor());
+        this.setCurrentPlayableNumber(card.getCardNumber());
 
         // if wild card
         if (card instanceof UnoCardWild) {
@@ -651,8 +664,6 @@ public class UnoGameState extends GameState {
                     }
                 }
             }
-            //change the playable color
-            this.currentPlayableColor = card.getCardColor();
 
             //return true;
 
