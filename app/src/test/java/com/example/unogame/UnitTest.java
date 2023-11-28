@@ -19,6 +19,9 @@ import java.util.Random;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class UnitTest {
+
+    UnoGameState unoGameStateRef;
+    UnoCard unoCardRef;
     @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
@@ -111,4 +114,60 @@ public class UnitTest {
         String testerString = "Card Number: " + tester.getCardNumber() + ", Card Color: " + tester.getCardColor();
         assertTrue(testerString.equals(tester.toString()));
     }
+
+    @Test
+    public void cardColorMatches(){
+
+        char discardColor = unoGameStateRef.getCurrentPlayableColor();
+
+        if(unoGameStateRef.playCard(0, new UnoCard()) == true) {
+            assertEquals(discardColor,unoGameStateRef.getCurrentPlayableColor());
+        }
+
+        else {
+            System.out.println("Card trying to be played did not match color of discard pile");
+        }
+    }
+
+
+    @Test
+    public void cardNumberMatches() {
+
+        char discardNumber = unoGameStateRef.getCurrentPlayableColor();
+        if(unoGameStateRef.playCard(0, new UnoCard()) == true) {
+            assertEquals(discardNumber,unoGameStateRef.getCurrentPlayableColor());
+        }
+
+        else {
+            System.out.println("Card trying to be played did not match number of discard pile");
+        }
+
+
+
+    }
+
+    @Test
+    public void cardIsRemoved() {
+
+        // num cards in players hand before discard
+        int beforeDiscard = unoGameStateRef.getPlayer0Hand().size();
+
+        // go through players card in their hands
+        for(int i = 0; i < unoGameStateRef.getPlayer0Hand().size(); i++){
+
+            UnoCard card = unoGameStateRef.getPlayer0Hand().get(i);
+
+            // loop until they are able to play a card
+            while(unoGameStateRef.playCard(0, card) == false) {
+                unoGameStateRef.playCard(0, card);
+            }
+
+            // get num cards in players hand after discard
+            int afterDiscard = unoGameStateRef.getPlayer0Hand().size();
+
+            // make sure num cards in their hand after is one less than before
+            assertEquals(afterDiscard, beforeDiscard - 1);
+        }
+    }
+
 }
