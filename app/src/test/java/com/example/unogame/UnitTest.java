@@ -56,36 +56,36 @@ public class UnitTest {
         //check drawPile was copied correctly
         ArrayList<UnoCard> ogDrawPile = ogGame.getDrawPile();
         ArrayList<UnoCard> newDrawPile = copyGame.getDrawPile();
-        for (int i = 0; i <= ogDrawPile.size(); i++) {
-            assertSame(newDrawPile.get(i), ogDrawPile.get(i));
+        for (int i = 0; i < ogDrawPile.size(); i++) {
+            assertTrue(newDrawPile.get(i).equals(ogDrawPile.get(i)));
         }
 
         //check discardPile was copied correctly
         ArrayList<UnoCard> ogDiscardPile = ogGame.getDiscardPile();
         ArrayList<UnoCard> newDiscardPile = copyGame.getDiscardPile();
-        for (int i = 0; i <= ogDiscardPile.size(); i++) {
-            assertSame(newDiscardPile.get(i), ogDiscardPile.get(i));
+        for (int i = 0; i < ogDiscardPile.size(); i++) {
+            assertTrue(newDiscardPile.get(i).equals(ogDiscardPile.get(i)));
         }
 
         //check player 0 hand was copied correctly
         ArrayList<UnoCard> ogPlayer0Hand = ogGame.getPlayer0Hand();
         ArrayList<UnoCard> newPlayer0Hand = copyGame.getPlayer0Hand();
-        for (int i = 0; i <= ogPlayer0Hand.size(); i++) {
-            assertSame(newPlayer0Hand.get(i), ogPlayer0Hand.get(i));
+        for (int i = 0; i < ogPlayer0Hand.size(); i++) {
+            assertTrue(newPlayer0Hand.get(i).equals(ogPlayer0Hand.get(i)));
         }
 
         //check player 1 hand was copied correctly
         ArrayList<UnoCard> ogPlayer1Hand = ogGame.getPlayer1Hand();
         ArrayList<UnoCard> newPlayer1Hand = copyGame.getPlayer1Hand();
-        for (int i = 0; i <= ogPlayer1Hand.size(); i++) {
-            assertSame(newPlayer1Hand.get(i), ogPlayer1Hand.get(i));
+        for (int i = 0; i < ogPlayer1Hand.size(); i++) {
+            assertTrue(newPlayer1Hand.get(i).equals(ogPlayer1Hand.get(i)));
         }
 
         //check player 2 hand was copied correctly
         ArrayList<UnoCard> ogPlayer2Hand = ogGame.getPlayer2Hand();
         ArrayList<UnoCard> newPlayer2Hand = copyGame.getPlayer2Hand();
-        for (int i = 0; i <= ogPlayer2Hand.size(); i++) {
-            assertSame(newPlayer2Hand.get(i), ogPlayer2Hand.get(i));
+        for (int i = 0; i < ogPlayer2Hand.size(); i++) {
+            assertTrue(newPlayer2Hand.get(i).equals(ogPlayer2Hand.get(i)));
         }
     }
 

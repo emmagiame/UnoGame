@@ -1,5 +1,7 @@
 package com.example.unogame.cards;
 
+import androidx.annotation.Nullable;
+
 import java.util.Random;
 
 public class UnoCard {
@@ -113,5 +115,12 @@ public class UnoCard {
         return "Card Number: " + this.getCardNumber() + ", Card Color: " + this.getCardColor();
     }
 
-
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if(obj instanceof UnoCard){
+            UnoCard card = (UnoCard) obj;
+            return (this.getCardNumber() == card.getCardNumber() && this.getCardColor() == card.getCardColor());
+        }
+        return super.equals(obj);
+    }
 }
