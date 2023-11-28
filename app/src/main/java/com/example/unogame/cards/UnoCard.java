@@ -21,19 +21,21 @@ public class UnoCard {
     /**
      * constructor
      */
+    /*
     public UnoCard(){
         cardColor = randomizeCardColor();
         cardNumber = randomizeCardNumber();
     }
+    */
 
     /**
      * copy constructor
      *
      * @param card - card to copy
      */
-    public UnoCard(UnoCard card){
-        this.cardColor = card.cardColor;
-        this.cardNumber = card.cardNumber;
+    public UnoCard(char cardColor, int cardNumber){
+        this.cardColor = cardColor;
+        this.cardNumber = cardNumber;
     }
 
     /**
@@ -59,6 +61,8 @@ public class UnoCard {
      * @return
      *      returns the first char of the color of the card
      */
+
+    /*
     public char randomizeCardColor(){
         //randomize a number 1 through 4
         Random rand = new Random();
@@ -85,6 +89,8 @@ public class UnoCard {
         else return 'n';
     }
 
+     */
+
     /**
      * randomizes card number
      * setter method
@@ -92,6 +98,8 @@ public class UnoCard {
      * @return
      *      return cards number
      */
+
+    /*
     public int randomizeCardNumber(){
         //randomize a number 0 though 9
         Random rand = new Random();
@@ -102,6 +110,8 @@ public class UnoCard {
         //return the number
         return num;
     }
+
+     */
 
     /**
      * prints current card number and color
