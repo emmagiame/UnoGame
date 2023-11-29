@@ -11,7 +11,6 @@ import com.example.unogame.cards.UnoCardSkip;
 import com.example.unogame.cards.UnoCardWild;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class UnoGameState extends GameState {
     //instance variables
@@ -198,187 +197,6 @@ public class UnoGameState extends GameState {
         this.indexOfPlayedCard = originalGame.indexOfPlayedCard;
     }
 
-    /**
-     *  creates list of all 19 number cards (will add others later) in the "pack" of cards
-     *  ensures we have the correct number of each suit and can then divy
-     *  out to the draw/discard pile and player start hands
-     *
-     * @return
-     *      shuffled deck of number cards
-     */
-
-    public ArrayList<UnoCard> unoDeck() {
-
-        ArrayList<UnoCard> deck = new ArrayList<UnoCard>();
-
-        // create red cards
-        deck.add(new UnoCard('r',0));
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('r',1));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('r',2));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('r',3));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('r',4));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('r',5));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('r',6));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('r',7));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('r',8));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('r',9));
-        }
-
-        // create blue cards
-        unoDeck().add(new UnoCard('b',0));
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('b',1));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('b',2));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('b',3));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('b',4));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('b',5));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('b',6));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('b',7));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('b',8));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('b',9));
-        }
-
-        // create green cards
-        unoDeck().add(new UnoCard('g',0));
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('g',1));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('g',2));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('g',3));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('g',4));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('g',5));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('g',6));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('g',7));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('g',8));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('g',9));
-        }
-
-        // create yellow cards
-        unoDeck().add(new UnoCard('y',0));
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('y',1));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('y',2));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('y',3));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('y',4));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('y',5));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('y',6));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('y',7));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('y',8));
-        }
-
-        for(int i = 0; i <=2; i++) {
-            deck.add(new UnoCard('y',9));
-        }
-
-        // shuffle deck
-        ArrayList <UnoCard> shuffledDeck = new ArrayList<UnoCard>();
-
-
-        for(int i = 0; i < deck.size(); i ++){
-            int index = (int) (Math.random() * deck.size());
-            shuffledDeck.add(deck.remove(index));
-        }
-
-        return shuffledDeck;
-    }
-
 
     /**
      *  gives a given player their starting hand of 7 cards
@@ -388,44 +206,40 @@ public class UnoGameState extends GameState {
      */
     public ArrayList<UnoCard> startHand() {
         ArrayList<UnoCard> playerCards = new ArrayList<UnoCard>();
-        ArrayList<UnoCard> deck = unoDeck();
-
         for (int i = 0; i <= 7; i++) {
-            playerCards.add(deck.remove(i));
+            playerCards.add(new UnoCard());
         }
         return playerCards;
     }
+    //
+    //
 
     /**
-     * creates initial draw pile with all but one of the remaining cards (saving for first discard card)
-     * in deck after initial player cards have been dealt
+     * creates initial draw pile of 87
+     * (max cards used by players initially is 21 bc 7*3 and max num of cards is 108 so draw = 108-21)
+     * cards for start of game
      *
      * @return
      *      returns list of cards that is draw pile
      */
     public ArrayList<UnoCard> startDrawPile() {
-        ArrayList<UnoCard> drawPile = new ArrayList<UnoCard>();
-        ArrayList<UnoCard> deck = unoDeck();
+        ArrayList<UnoCard> drawCards = new ArrayList<UnoCard>();
 
-        for(int i = 0; i < deck.size() ; i++) {
-            drawPile.add(deck.remove(i));
+        for(int i = 0; i <= 87; i++) {
+            drawCards.add(new UnoCard());
         }
-        return drawPile;
+        return drawCards;
     }
 
     /**
-     * puts the last remaining card from the orginal deck as the first discard card
+     * starter for discard pile
      *
      * @return
      *     list of cards that represent the discard pile
      */
     public ArrayList<UnoCard> startDiscardPile(){
         ArrayList<UnoCard> discard = new ArrayList<UnoCard>();
-        ArrayList<UnoCard> deck = unoDeck();
-
-        for(int i = 0; i < deck.size(); i++) {
-            discard.add(deck.remove(i));
-        }
+        discard.add(new UnoCard());
         return discard;
     }
 
@@ -625,32 +439,31 @@ public class UnoGameState extends GameState {
      * adds one card to the given players hand because they draw a card
      *
      * @param playerId - player drawing a card
-     *
+     * @param card - card added to their hand
      * @return
      *      return true if card is added, false otherwise
      */
-    public boolean drawCardFromDrawPile(int playerId){
+    public boolean drawCardFromDrawPile(int playerId, UnoCard card){
         //if it is not that players turn then the move is not valid so return false
         if(playerId != this.playerTurn){
             return false;
         }
 
-        // index of last card in draw pile array
-        int index = drawPile.size();
-
-        // check who's turn it is
+        //check who's turn it is and add a card to their hand
         if(playerId == 0){
-            // add card to their hand/remove it from draw pile
-            this.player0Hand.add(drawPile.remove(index));
+            this.player0Hand.add(card);
+            this.drawPile.remove(0);
             return true;
         }
         else if(playerId == 1) {
-            this.player0Hand.add(drawPile.remove(index));
+            this.player1Hand.add(card);
+            this.drawPile.remove(0);
             return true;
         }
 
         else if(playerId == 2){
-            this.player0Hand.add(drawPile.remove(index));
+            this.player2Hand.add(card);
+            this.drawPile.remove(0);
             return true;
         }
         return false;
@@ -789,36 +602,36 @@ public class UnoGameState extends GameState {
             if (card.getCardNumber() == 4) {
                 if (this.numPlayers == 3) {
                     if (playerId == 0) {
-                        drawCardFromDrawPile(1);
-                        drawCardFromDrawPile(1);
-                        drawCardFromDrawPile(1);
-                        drawCardFromDrawPile(1);
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
                         //this.playerTurn = 1;
                     } else if (playerId == 1) {
-                        drawCardFromDrawPile(2);
-                        drawCardFromDrawPile(2);
-                        drawCardFromDrawPile(2);
-                        drawCardFromDrawPile(2);
+                        drawCardFromDrawPile(2, this.drawPile.get(0));
+                        drawCardFromDrawPile(2, this.drawPile.get(0));
+                        drawCardFromDrawPile(2, this.drawPile.get(0));
+                        drawCardFromDrawPile(2, this.drawPile.get(0));
                         //this.playerTurn = 2;
                     } else if (playerId == 2) {
-                        drawCardFromDrawPile(0);
-                        drawCardFromDrawPile(0);
-                        drawCardFromDrawPile(0);
-                        drawCardFromDrawPile(0);
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
                         //this.playerTurn = 0;
                     }
                 } else if (this.numPlayers == 2) {
                     if (playerId == 0) {
-                        drawCardFromDrawPile(1);
-                        drawCardFromDrawPile(1);
-                        drawCardFromDrawPile(1);
-                        drawCardFromDrawPile(1);
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
                         //this.playerTurn = 1;
                     } else if (playerId == 1) {
-                        drawCardFromDrawPile(0);
-                        drawCardFromDrawPile(0);
-                        drawCardFromDrawPile(0);
-                        drawCardFromDrawPile(0);
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
                         //this.playerTurn = 0;
                     }
                 }
@@ -826,26 +639,26 @@ public class UnoGameState extends GameState {
                 else if (card.getCardNumber() == 2) {
                     if (this.numPlayers == 3) {
                         if (playerId == 0) {
-                            drawCardFromDrawPile(1);
-                            drawCardFromDrawPile(1);
+                            drawCardFromDrawPile(1, this.drawPile.get(0));
+                            drawCardFromDrawPile(1, this.drawPile.get(0));
                             //this.playerTurn = 1;
                         } else if (playerId == 1) {
-                            drawCardFromDrawPile(2);
-                            drawCardFromDrawPile(2);
+                            drawCardFromDrawPile(2, this.drawPile.get(0));
+                            drawCardFromDrawPile(2, this.drawPile.get(0));
                             //this.playerTurn = 2;
                         } else if (playerId == 2) {
-                            drawCardFromDrawPile(0);
-                            drawCardFromDrawPile(0);
+                            drawCardFromDrawPile(0, this.drawPile.get(0));
+                            drawCardFromDrawPile(0, this.drawPile.get(0));
                             //this.playerTurn = 0;
                         }
                     } else if (this.numPlayers == 2) {
                         if (playerId == 0) {
-                            drawCardFromDrawPile(1);
-                            drawCardFromDrawPile(1);
+                            drawCardFromDrawPile(1, this.drawPile.get(0));
+                            drawCardFromDrawPile(1, this.drawPile.get(0));
                             //this.playerTurn = 1;
                         } else if (playerId == 1) {
-                            drawCardFromDrawPile(0);
-                            drawCardFromDrawPile(0);
+                            drawCardFromDrawPile(0, this.drawPile.get(0));
+                            drawCardFromDrawPile(0, this.drawPile.get(0));
                             //this.playerTurn = 0;
                         }
                     }
@@ -858,26 +671,26 @@ public class UnoGameState extends GameState {
             if (card.getCardNumber() == 2) {
                 if (this.numPlayers == 3) {
                     if (playerId == 0) {
-                        drawCardFromDrawPile(1);
-                        drawCardFromDrawPile(1);
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
                         //this.playerTurn = 1;
                     } else if (playerId == 1) {
-                        drawCardFromDrawPile(2);
-                        drawCardFromDrawPile(2);
+                        drawCardFromDrawPile(2, this.drawPile.get(0));
+                        drawCardFromDrawPile(2, this.drawPile.get(0));
                         //this.playerTurn = 2;
                     } else if (playerId == 2) {
-                        drawCardFromDrawPile(0);
-                        drawCardFromDrawPile(0);
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
                         //this.playerTurn = 0;
                     }
                 } else if (this.numPlayers == 2) {
                     if (playerId == 0) {
-                        drawCardFromDrawPile(1);
-                        drawCardFromDrawPile(1);
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
+                        drawCardFromDrawPile(1, this.drawPile.get(0));
                         //this.playerTurn = 1;
                     } else if (playerId == 1) {
-                        drawCardFromDrawPile(0);
-                        drawCardFromDrawPile(0);
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
+                        drawCardFromDrawPile(0, this.drawPile.get(0));
                         //this.playerTurn = 0;
                     }
                 }
@@ -885,36 +698,36 @@ public class UnoGameState extends GameState {
             } else if (card instanceof UnoCardPlus4) {
                     if (this.numPlayers == 3) {
                         if (playerId == 0) {
-                            drawCardFromDrawPile(1);
-                            drawCardFromDrawPile(1);
-                            drawCardFromDrawPile(1);
-                            drawCardFromDrawPile(1);
+                            drawCardFromDrawPile(1, this.drawPile.get(0));
+                            drawCardFromDrawPile(1, this.drawPile.get(0));
+                            drawCardFromDrawPile(1, this.drawPile.get(0));
+                            drawCardFromDrawPile(1, this.drawPile.get(0));
                             //this.playerTurn = 1;
                         } else if (playerId == 1) {
-                            drawCardFromDrawPile(2);
-                            drawCardFromDrawPile(2);
-                            drawCardFromDrawPile(2);
-                            drawCardFromDrawPile(2);
+                            drawCardFromDrawPile(2, this.drawPile.get(0));
+                            drawCardFromDrawPile(2, this.drawPile.get(0));
+                            drawCardFromDrawPile(2, this.drawPile.get(0));
+                            drawCardFromDrawPile(2, this.drawPile.get(0));
                             //this.playerTurn = 2;
                         } else if (playerId == 2) {
-                            drawCardFromDrawPile(0);
-                            drawCardFromDrawPile(0);
-                            drawCardFromDrawPile(0);
-                            drawCardFromDrawPile(0);
+                            drawCardFromDrawPile(0, this.drawPile.get(0));
+                            drawCardFromDrawPile(0, this.drawPile.get(0));
+                            drawCardFromDrawPile(0, this.drawPile.get(0));
+                            drawCardFromDrawPile(0, this.drawPile.get(0));
                             //this.playerTurn = 0;
                         }
                     } else if (this.numPlayers == 2) {
                         if (playerId == 0) {
-                            drawCardFromDrawPile(1);
-                            drawCardFromDrawPile(1);
-                            drawCardFromDrawPile(1);
-                            drawCardFromDrawPile(1);
+                            drawCardFromDrawPile(1, this.drawPile.get(0));
+                            drawCardFromDrawPile(1, this.drawPile.get(0));
+                            drawCardFromDrawPile(1, this.drawPile.get(0));
+                            drawCardFromDrawPile(1, this.drawPile.get(0));
                             //this.playerTurn = 1;
                         } else if (playerId == 1) {
-                            drawCardFromDrawPile(0);
-                            drawCardFromDrawPile(0);
-                            drawCardFromDrawPile(0);
-                            drawCardFromDrawPile(0);
+                            drawCardFromDrawPile(0, this.drawPile.get(0));
+                            drawCardFromDrawPile(0, this.drawPile.get(0));
+                            drawCardFromDrawPile(0, this.drawPile.get(0));
+                            drawCardFromDrawPile(0, this.drawPile.get(0));
                             //this.playerTurn = 0;
                         }
                         //change the playable color

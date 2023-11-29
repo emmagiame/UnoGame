@@ -6,98 +6,98 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    <!-- playing field -->
-
-    <LinearLayout
-        android:id="@+id/runTestButtonLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-
-    <LinearLayout
-            android:id="@+id/testRunningLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0"
-            android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/editTextTextMultiLine"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine"
-            android:overScrollMode="always"
-            android:textSize="10sp" />
-
-            <Button
-                android:id="@+id/runTestButton"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Run Test"
-                android:textSize="10sp" />
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:id="@+id/playingAreaLayout"
-            android:layout_width="match_parent"
-            android:layout_height="550dp"
-            android:layout_weight="0"
-            android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-              <!-- The opponent's cards -->
+        <!-- playing field -->
 
         <LinearLayout
-            android:id="@+id/opponentHandLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
+            android:id="@+id/runTestButtonLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+
+            <LinearLayout
+                android:id="@+id/testRunningLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="0"
-                android:text="Opponent's hand size: " />
+                android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/opponentHand"
-                android:layout_width="333dp"
-                android:layout_height="150dp"
-                android:layout_gravity="bottom"
-                android:layout_weight="200"
-                app:srcCompat="@drawable/back" />
+                <EditText
+                    android:id="@+id/editTextTextMultiLine"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine"
+                    android:overScrollMode="always"
+                    android:textSize="10sp" />
 
-            <Button
-                android:id="@+id/callOutUnoButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_weight="0"
-                android:text="Uno?" />
+                <Button
+                    android:id="@+id/runTestButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Run Test"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
 
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/playingAreaLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- The opponent's cards -->
+
+            <LinearLayout
+                android:id="@+id/opponentHandLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0"
+                    android:text="Opponent's hand size: " />
+
+                <ImageView
+                    android:id="@+id/opponentHand"
+                    android:layout_width="333dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="200"
+                    app:srcCompat="@drawable/back" />
+
+                <Button
+                    android:id="@+id/callOutUnoButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="0"
+                    android:text="Uno?" />
+
+            </LinearLayout>
 
 
             <!-- The card piles -->
@@ -127,166 +127,175 @@
             </LinearLayout>
 
 
-        <LinearLayout
-            android:id="@+id/pileText"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_gravity="left">
-
-            <TextView
-                android:id="@+id/drawpile"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/pileText"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Draw Pile"
-                android:textColor="#000000"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_marginEnd="150dp" />
+                android:layout_gravity="left">
 
-            <TextView
-                android:id="@+id/discardpile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:text="Discard Pile"
-                android:textColor="#000000"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/drawpile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="100dp"
+                    android:text="Draw Pile"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/discardpile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:text="Discard Pile"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
             <!-- The players cards -->
 
-        <LinearLayout
-            android:id="@+id/playerHandLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="bottom"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/cardSlot1"
-                android:layout_width="wrap_content"
-                android:layout_height="150dp"
-                android:layout_gravity="bottom"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/blank" />
-
-            <ImageView
-                android:id="@+id/cardSlot2"
-                android:layout_width="wrap_content"
-                android:layout_height="150dp"
-                android:layout_gravity="bottom"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/blank" />
-
-            <ImageView
-                android:id="@+id/cardSlot3"
-                android:layout_width="wrap_content"
-                android:layout_height="150dp"
-                android:layout_gravity="bottom"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/blank" />
-            <ImageView
-                android:id="@+id/cardSlot4"
-                android:layout_width="wrap_content"
-                android:layout_height="150dp"
-                android:layout_gravity="bottom"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/blank" />
-            <ImageView
-                android:id="@+id/cardSlot5"
-                android:layout_width="wrap_content"
-                android:layout_height="150dp"
-                android:layout_gravity="bottom"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/blank" />
 
         </LinearLayout>
 
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/gameTextLayout"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_gravity="bottom"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/leftButton"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="left"
-            android:textSize="10sp"
-            android:visibility="visible" />
-
-        <Button
-            android:id="@+id/rightButton"
+        <LinearLayout
+            android:id="@+id/yourPlayAreaLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="right"
-            android:visibility="visible"
-            android:layout_weight="1"
-            android:textSize="10sp" />
+            android:orientation="vertical">
 
-        <!--            <TextView-->
-        <!--                android:id="@+id/textViewFun"-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="match_parent"-->
-        <!--                android:layout_weight="1"-->
-        <!--                android:ems="10"-->
-        <!--                android:gravity="start|top"-->
-        <!--                android:inputType="textMultiLine"-->
-        <!--                android:overScrollMode="always"-->
-        <!--                android:textSize="10sp" />-->
+            <LinearLayout
+                android:id="@+id/playerHandLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-        <!--            <TextView-->
-        <!--                android:id="@+id/gameText"-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="match_parent"-->
-        <!--                android:layout_weight="1"-->
-        <!--                android:ems="10"-->
-        <!--                android:gravity="start|top"-->
-        <!--                android:inputType="textMultiLine"-->
-        <!--                android:overScrollMode="always"-->
-        <!--                android:textSize="15sp" />-->
+                <ImageView
+                    android:id="@+id/cardSlot1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/blank" />
 
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/playButtonLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom"
-        android:layout_weight="0"
-        android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/cardSlot2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/blank" />
 
-        <Button
-            android:id="@+id/declareUnoButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="UNO!"
-            android:textSize="10sp" />
+                <ImageView
+                    android:id="@+id/cardSlot3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/blank" />
 
-        <Button
-            android:id="@+id/drawButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="DRAW"
-            android:textSize="10sp"
-            android:layout_weight="1" />
+                <ImageView
+                    android:id="@+id/cardSlot4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/blank" />
 
-        <Button
-            android:id="@+id/playButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="PLAY"
-            android:textSize="10sp"
-            android:layout_weight="1" />
-    </LinearLayout>
+                <ImageView
+                    android:id="@+id/cardSlot5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/blank" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/gameTextLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/leftButton"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="left"
+                    android:textSize="10sp"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/rightButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="right"
+                    android:textSize="10sp"
+                    android:visibility="visible" />
+
+                <!--            <TextView-->
+                <!--                android:id="@+id/textViewFun"-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="match_parent"-->
+                <!--                android:layout_weight="1"-->
+                <!--                android:ems="10"-->
+                <!--                android:gravity="start|top"-->
+                <!--                android:inputType="textMultiLine"-->
+                <!--                android:overScrollMode="always"-->
+                <!--                android:textSize="10sp" />-->
+
+                <!--            <TextView-->
+                <!--                android:id="@+id/gameText"-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="match_parent"-->
+                <!--                android:layout_weight="1"-->
+                <!--                android:ems="10"-->
+                <!--                android:gravity="start|top"-->
+                <!--                android:inputType="textMultiLine"-->
+                <!--                android:overScrollMode="always"-->
+                <!--                android:textSize="15sp" />-->
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/playButtonLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/declareUnoButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="UNO!"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/drawButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="DRAW"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/playButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="PLAY"
+                android:textSize="10sp" />
+        </LinearLayout>
 
     </LinearLayout>
 

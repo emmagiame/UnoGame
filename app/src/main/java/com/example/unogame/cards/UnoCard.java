@@ -21,10 +21,9 @@ public class UnoCard {
     /**
      * constructor
      */
-
-    public UnoCard(char color, int number){
-        cardColor = color;
-        cardNumber = number;
+    public UnoCard(){
+        cardColor = randomizeCardColor();
+        cardNumber = randomizeCardNumber();
     }
 
 
@@ -34,8 +33,8 @@ public class UnoCard {
      * @param card - card to copy
      */
     public UnoCard(UnoCard card){
-        this.cardColor = cardColor;
-        this.cardNumber = cardNumber;
+        this.cardColor = card.cardColor;
+        this.cardNumber = card.cardNumber;
     }
 
     /**
@@ -54,7 +53,6 @@ public class UnoCard {
      */
     public int getCardNumber() { return this.cardNumber; }
 
-
     /**
      * randomizes the cards color
      * setter method
@@ -62,7 +60,6 @@ public class UnoCard {
      * @return
      *      returns the first char of the color of the card
      */
-    /*
     public char randomizeCardColor(){
         //randomize a number 1 through 4
         Random rand = new Random();
@@ -88,8 +85,6 @@ public class UnoCard {
         //if you hit this theres a problem
         else return 'n';
     }
-    */
-
 
     /**
      * randomizes card number
@@ -98,7 +93,6 @@ public class UnoCard {
      * @return
      *      return cards number
      */
-    /*
     public int randomizeCardNumber(){
         //randomize a number 0 though 9
         Random rand = new Random();
@@ -109,10 +103,6 @@ public class UnoCard {
         //return the number
         return num;
     }
-
-    */
-
-
 
     /**
      * prints current card number and color
@@ -126,12 +116,5 @@ public class UnoCard {
         return "Card Number: " + this.getCardNumber() + ", Card Color: " + this.getCardColor();
     }
 
-    @Override
-    public boolean equals(@Nullable Object obj) {
-        if(obj instanceof UnoCard){
-            UnoCard card = (UnoCard) obj;
-            return (this.getCardNumber() == card.getCardNumber() && this.getCardColor() == card.getCardColor());
-        }
-        return super.equals(obj);
-    }
+
 }
