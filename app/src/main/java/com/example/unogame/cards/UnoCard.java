@@ -1,5 +1,7 @@
 package com.example.unogame.cards;
 
+import androidx.annotation.Nullable;
+
 import java.util.Random;
 
 public class UnoCard {
@@ -23,6 +25,7 @@ public class UnoCard {
         cardColor = randomizeCardColor();
         cardNumber = randomizeCardNumber();
     }
+
 
     /**
      * copy constructor
