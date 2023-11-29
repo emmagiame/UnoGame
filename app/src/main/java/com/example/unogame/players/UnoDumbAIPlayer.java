@@ -4,7 +4,10 @@ import com.example.game.GameFramework.infoMessage.GameInfo;
 import com.example.game.GameFramework.players.GameComputerPlayer;
 import com.example.unogame.UnoDrawCardAction;
 import com.example.unogame.UnoPlayCardAction;
+import com.example.unogame.action.UnoDeclareUnoAction;
 import com.example.unogame.info.UnoGameState;
+
+import java.util.Random;
 
 public class UnoDumbAIPlayer extends GameComputerPlayer {
     //dory will only play first card in her hand right now
@@ -34,11 +37,18 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
                 //if it has a playable card and more than one card, play the first playable card it has
                 //if one card left, %50 chance to call uno, else do nothing - need to write a call uno function (in UnoGameState)
                 if (((playerNum == 0) && (curGame.getPlayer0Hand().size() == 1)) || ((playerNum == 1) && ((curGame.getPlayer1Hand().size() == 1))) || ((playerNum == 2) && (curGame.getPlayer2Hand().size() == 1))) {
-                    //
-                    //
                     // cant be done until call uno action is done
-                    //
-                    //
+                    Random rand = new Random();
+                    int randomNum = rand.nextInt(5);
+                    if(randomNum % 2 == 0) {
+                        UnoDeclareUnoAction declareUno = new UnoDeclareUnoAction(this);
+                        sleep(1000);
+                        game.sendAction(declareUno);
+                    }
+                    else{
+                        return;
+                    }
+
                 } else {
                     if (playerNum == 0) {
                         for (int i = 0; i > curGame.getPlayer0Hand().size(); i++) {
