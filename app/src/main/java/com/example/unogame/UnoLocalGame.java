@@ -193,7 +193,7 @@ public class UnoLocalGame extends LocalGame {
 
                     // if id 2 turn
                     else if (id == 2) {
-                        ((UnoGameState)super.state).drawCardFromDrawPile(id, ((UnoGameState) super.state).getDrawPile().get(0)fiz );
+                        ((UnoGameState)super.state).drawCardFromDrawPile(id, ((UnoGameState) super.state).getDrawPile().get(0));
                         ((UnoGameState)super.state).setPlayerTurn(0);
                         return true;
                     }
