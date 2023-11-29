@@ -84,7 +84,7 @@
             <ImageView
                 android:id="@+id/opponentHand"
                 android:layout_width="333dp"
-                android:layout_height="100dp"
+                android:layout_height="150dp"
                 android:layout_gravity="bottom"
                 android:layout_weight="200"
                 app:srcCompat="@drawable/back" />
@@ -112,7 +112,7 @@
                 <ImageView
                     android:id="@+id/drawCardPileImage"
                     android:layout_width="wrap_content"
-                    android:layout_height="100dp"
+                    android:layout_height="150dp"
                     android:layout_gravity="bottom"
                     android:layout_weight="200"
                     app:srcCompat="@drawable/back" />
@@ -120,7 +120,7 @@
                 <ImageView
                     android:id="@+id/discardCardPileImage"
                     android:layout_width="wrap_content"
-                    android:layout_height="100dp"
+                    android:layout_height="150dp"
                     android:layout_gravity="bottom"
                     android:layout_weight="200"
                     app:srcCompat="@drawable/blue3" />
@@ -167,7 +167,7 @@
             <ImageView
                 android:id="@+id/cardSlot1"
                 android:layout_width="wrap_content"
-                android:layout_height="100dp"
+                android:layout_height="150dp"
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/blank" />
@@ -175,7 +175,7 @@
             <ImageView
                 android:id="@+id/cardSlot2"
                 android:layout_width="wrap_content"
-                android:layout_height="100dp"
+                android:layout_height="150dp"
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/blank" />
@@ -183,21 +183,21 @@
             <ImageView
                 android:id="@+id/cardSlot3"
                 android:layout_width="wrap_content"
-                android:layout_height="100dp"
+                android:layout_height="150dp"
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/blank" />
             <ImageView
                 android:id="@+id/cardSlot4"
                 android:layout_width="wrap_content"
-                android:layout_height="100dp"
+                android:layout_height="150dp"
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/blank" />
             <ImageView
                 android:id="@+id/cardSlot5"
                 android:layout_width="wrap_content"
-                android:layout_height="100dp"
+                android:layout_height="150dp"
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/blank" />

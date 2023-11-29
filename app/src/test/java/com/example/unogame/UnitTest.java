@@ -19,6 +19,9 @@ import java.util.Random;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class UnitTest {
+
+    UnoGameState unoGameStateRef;
+    UnoCard unoCardRef;
     @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
@@ -56,36 +59,36 @@ public class UnitTest {
         //check drawPile was copied correctly
         ArrayList<UnoCard> ogDrawPile = ogGame.getDrawPile();
         ArrayList<UnoCard> newDrawPile = copyGame.getDrawPile();
-        for (int i = 0; i <= ogDrawPile.size(); i++) {
-            assertSame(newDrawPile.get(i), ogDrawPile.get(i));
+        for (int i = 0; i < ogDrawPile.size(); i++) {
+            assertTrue(newDrawPile.get(i).equals(ogDrawPile.get(i)));
         }
 
         //check discardPile was copied correctly
         ArrayList<UnoCard> ogDiscardPile = ogGame.getDiscardPile();
         ArrayList<UnoCard> newDiscardPile = copyGame.getDiscardPile();
-        for (int i = 0; i <= ogDiscardPile.size(); i++) {
-            assertSame(newDiscardPile.get(i), ogDiscardPile.get(i));
+        for (int i = 0; i < ogDiscardPile.size(); i++) {
+            assertTrue(newDiscardPile.get(i).equals(ogDiscardPile.get(i)));
         }
 
         //check player 0 hand was copied correctly
         ArrayList<UnoCard> ogPlayer0Hand = ogGame.getPlayer0Hand();
         ArrayList<UnoCard> newPlayer0Hand = copyGame.getPlayer0Hand();
-        for (int i = 0; i <= ogPlayer0Hand.size(); i++) {
-            assertSame(newPlayer0Hand.get(i), ogPlayer0Hand.get(i));
+        for (int i = 0; i < ogPlayer0Hand.size(); i++) {
+            assertTrue(newPlayer0Hand.get(i).equals(ogPlayer0Hand.get(i)));
         }
 
         //check player 1 hand was copied correctly
         ArrayList<UnoCard> ogPlayer1Hand = ogGame.getPlayer1Hand();
         ArrayList<UnoCard> newPlayer1Hand = copyGame.getPlayer1Hand();
-        for (int i = 0; i <= ogPlayer1Hand.size(); i++) {
-            assertSame(newPlayer1Hand.get(i), ogPlayer1Hand.get(i));
+        for (int i = 0; i < ogPlayer1Hand.size(); i++) {
+            assertTrue(newPlayer1Hand.get(i).equals(ogPlayer1Hand.get(i)));
         }
 
         //check player 2 hand was copied correctly
         ArrayList<UnoCard> ogPlayer2Hand = ogGame.getPlayer2Hand();
         ArrayList<UnoCard> newPlayer2Hand = copyGame.getPlayer2Hand();
-        for (int i = 0; i <= ogPlayer2Hand.size(); i++) {
-            assertSame(newPlayer2Hand.get(i), ogPlayer2Hand.get(i));
+        for (int i = 0; i < ogPlayer2Hand.size(); i++) {
+            assertTrue(newPlayer2Hand.get(i).equals(ogPlayer2Hand.get(i)));
         }
     }
 
@@ -111,4 +114,110 @@ public class UnitTest {
         String testerString = "Card Number: " + tester.getCardNumber() + ", Card Color: " + tester.getCardColor();
         assertTrue(testerString.equals(tester.toString()));
     }
+
+    /*
+    @Test
+    public void cardColorMatches(){
+
+        char discardColor = unoGameStateRef.getCurrentPlayableColor();
+
+        if(unoGameStateRef.playCard(0, new UnoCard()) == true) {
+            assertEquals(discardColor,unoGameStateRef.getCurrentPlayableColor());
+        }
+
+        else {
+            System.out.println("Card trying to be played did not match color of discard pile");
+        }
+    }
+
+     */
+
+
+    /*
+    @Test
+    public void cardNumberMatches() {
+
+        char discardNumber = unoGameStateRef.getCurrentPlayableColor();
+        if(unoGameStateRef.playCard(0, new UnoCard()) == true) {
+            assertEquals(discardNumber,unoGameStateRef.getCurrentPlayableColor());
+        }
+
+        else {
+            System.out.println("Card trying to be played did not match number of discard pile");
+        }
+
+
+
+    }
+
+    @Test
+    public void cardIsRemoved() {
+
+        // num cards in players hand before discard
+        int beforeDiscard = unoGameStateRef.getPlayer0Hand().size();
+
+        // go through players card in their hands
+        for(int i = 0; i < unoGameStateRef.getPlayer0Hand().size(); i++){
+
+            UnoCard card = unoGameStateRef.getPlayer0Hand().get(i);
+
+            // loop until they are able to play a card
+            while(unoGameStateRef.playCard(0, card) == false) {
+                unoGameStateRef.playCard(0, card);
+            }
+
+            // get num cards in players hand after discard
+            int afterDiscard = unoGameStateRef.getPlayer0Hand().size();
+
+            // make sure num cards in their hand after is one less than before
+            assertEquals(afterDiscard, beforeDiscard - 1);
+        }
+    }
+
+     */
+
+    // ensures there is exactly one remaining card in deck<> after startPlayerHand is called
+    @Test
+    public void testStartHand(){
+        ArrayList<UnoCard> deck = unoGameStateRef.unoDeck();
+        unoGameStateRef.startHand();
+        assertEquals(deck.size(), 1);
+    }
+
+    // ensures every player starts with exactly seven cards
+    @Test
+    public void initialPlayerCardNumber(){
+        assertEquals(unoGameStateRef.startHand().size(), 7);
+    }
+
+    // ensures the intial discard pile contains exactly one card
+    @Test
+    public void testStartDiscardPile(){
+        assertEquals(unoGameStateRef.startDiscardPile().size(), 1);
+    }
+
+    /*
+    // ensures card is removed from draw pile array and added to player hand array
+    @Test
+    public void testDrawCard() {
+
+        // create draw pile
+        ArrayList<UnoCard> drawPile = unoGameStateRef.startDrawPile();
+
+        // get last index of draw pile
+        int cardAboutToBeDrawn = drawPile.size();
+
+        unoGameStateRef.drawCardFromDrawPile(0);
+
+        int cardAddedToPlayerHand = unoGameStateRef.getPlayer0Hand().size();
+
+        // will never be true using this statement
+        assertEquals(cardAboutToBeDrawn, cardAddedToPlayerHand);
+
+
+
+     */
+
+    }
+
 }
