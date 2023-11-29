@@ -137,9 +137,8 @@
                     android:id="@+id/drawpile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_marginLeft="150dp"
                     android:text="Draw Pile"
+                    android:layout_marginStart="150dp"
                     android:textColor="#000000"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -148,9 +147,8 @@
                     android:id="@+id/discardpile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_marginStart="525dp"
                     android:text="Discard Pile"
+                    android:layout_marginStart="525dp"
                     android:textColor="#000000"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -226,7 +224,7 @@
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="left"
+                    android:text="leftt"
                     android:textSize="20sp"
                     android:visibility="visible" />
 
@@ -240,7 +238,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="right"
+                    android:text="rightt"
                     android:textSize="20sp"
                     android:visibility="visible" />
 
