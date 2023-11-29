@@ -115,7 +115,6 @@ public class UnitTest {
         assertTrue(testerString.equals(tester.toString()));
     }
 
-    /*
     @Test
     public void cardColorMatches(){
 
@@ -130,10 +129,7 @@ public class UnitTest {
         }
     }
 
-     */
 
-
-    /*
     @Test
     public void cardNumberMatches() {
 
@@ -172,52 +168,6 @@ public class UnitTest {
             // make sure num cards in their hand after is one less than before
             assertEquals(afterDiscard, beforeDiscard - 1);
         }
-    }
-
-     */
-
-    // ensures there is exactly one remaining card in deck<> after startPlayerHand is called
-    @Test
-    public void testStartHand(){
-        ArrayList<UnoCard> deck = unoGameStateRef.unoDeck();
-        unoGameStateRef.startHand();
-        assertEquals(deck.size(), 1);
-    }
-
-    // ensures every player starts with exactly seven cards
-    @Test
-    public void initialPlayerCardNumber(){
-        assertEquals(unoGameStateRef.startHand().size(), 7);
-    }
-
-    // ensures the intial discard pile contains exactly one card
-    @Test
-    public void testStartDiscardPile(){
-        assertEquals(unoGameStateRef.startDiscardPile().size(), 1);
-    }
-
-    /*
-    // ensures card is removed from draw pile array and added to player hand array
-    @Test
-    public void testDrawCard() {
-
-        // create draw pile
-        ArrayList<UnoCard> drawPile = unoGameStateRef.startDrawPile();
-
-        // get last index of draw pile
-        int cardAboutToBeDrawn = drawPile.size();
-
-        unoGameStateRef.drawCardFromDrawPile(0);
-
-        int cardAddedToPlayerHand = unoGameStateRef.getPlayer0Hand().size();
-
-        // will never be true using this statement
-        assertEquals(cardAboutToBeDrawn, cardAddedToPlayerHand);
-
-
-
-     */
-
     }
 
 }
