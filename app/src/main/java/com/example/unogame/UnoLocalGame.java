@@ -163,13 +163,13 @@ public class UnoLocalGame extends LocalGame {
                 if (numPlayers == 2) {
                     // if id 0 turn
                     if (id == 0) {
-                        ((UnoGameState)super.state).drawCardFromDrawPile(id);
+                        ((UnoGameState)super.state).drawCardFromDrawPile(id, ((UnoGameState) super.state).getDrawPile().get(0));
                         ((UnoGameState)super.state).setPlayerTurn(1);
                         return true;
                     }
                     // if id 1 turn
                     else if (id == 1) {
-                        ((UnoGameState)super.state).drawCardFromDrawPile(id);
+                        ((UnoGameState)super.state).drawCardFromDrawPile(id, ((UnoGameState) super.state).getDrawPile().get(0));
                         ((UnoGameState)super.state).setPlayerTurn(0);
                         return true;
                     }
@@ -180,20 +180,20 @@ public class UnoLocalGame extends LocalGame {
                 if (numPlayers == 3) {
                     // if id 0 turn
                     if (id == 0) {
-                        ((UnoGameState)super.state).drawCardFromDrawPile(id);
+                        ((UnoGameState)super.state).drawCardFromDrawPile(id, ((UnoGameState) super.state).getDrawPile().get(0));
                         ((UnoGameState)super.state).setPlayerTurn(1);
                         return true;
                     }
                     // if id 1 turn
                     else if (id == 1) {
-                        ((UnoGameState)super.state).drawCardFromDrawPile(id);
+                        ((UnoGameState)super.state).drawCardFromDrawPile(id, ((UnoGameState) super.state).getDrawPile().get(0));
                         ((UnoGameState)super.state).setPlayerTurn(2);
                         return true;
                     }
 
                     // if id 2 turn
                     else if (id == 2) {
-                        ((UnoGameState)super.state).drawCardFromDrawPile(id);
+                        ((UnoGameState)super.state).drawCardFromDrawPile(id, ((UnoGameState) super.state).getDrawPile().get(0)fiz);
                         ((UnoGameState)super.state).setPlayerTurn(0);
                         return true;
                     }
