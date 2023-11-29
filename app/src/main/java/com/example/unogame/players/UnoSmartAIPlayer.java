@@ -4,6 +4,8 @@ import com.example.game.GameFramework.infoMessage.GameInfo;
 import com.example.game.GameFramework.players.GameComputerPlayer;
 import com.example.unogame.UnoDrawCardAction;
 import com.example.unogame.UnoPlayCardAction;
+import com.example.unogame.cards.UnoCardPlus2;
+import com.example.unogame.cards.UnoCardPlus4;
 import com.example.unogame.info.UnoGameState;
 
 public class UnoSmartAIPlayer extends GameComputerPlayer {
@@ -26,7 +28,15 @@ public class UnoSmartAIPlayer extends GameComputerPlayer {
             UnoGameState curGame = (UnoGameState) info;
 
             if (playerNum == 0) {
+                //if you have a plus two or plus 4
                 for (int i = 0; i > curGame.getPlayer0Hand().size(); i++) {
+                    if(curGame.getPlayer0Hand().get(i) instanceof UnoCardPlus2 || curGame.getPlayer0Hand().get(i) instanceof UnoCardPlus4){
+                        UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, 0);
+                        sleep(1000);
+                        game.sendAction(actionPlay);
+                    }
+                }
+                for (int i = 0; i > curGame.getPlayer0Hand().size(); i++){
                     //play first playable card
                     if ((curGame.getPlayer0Hand().get(i).getCardNumber() == curGame.getCurrentPlayableNumber()) || (curGame.getPlayer0Hand().get(i).getCardColor() == curGame.getCurrentPlayableColor())) {
                         UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, 0);

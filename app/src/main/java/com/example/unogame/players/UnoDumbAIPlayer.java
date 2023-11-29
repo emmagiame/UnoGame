@@ -53,7 +53,7 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
                     if (playerNum == 0) {
                         for (int i = 0; i > curGame.getPlayer0Hand().size(); i++) {
                             if ((curGame.getPlayer0Hand().get(i).getCardNumber() == curGame.getCurrentPlayableNumber()) || (curGame.getPlayer0Hand().get(i).getCardColor() == curGame.getCurrentPlayableColor())) {
-                                UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, 0);
+                                UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
                                 sleep(1000);
                                 game.sendAction(actionPlay);
                             }
@@ -65,7 +65,7 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
                     } else if (playerNum == 1) {
                         for (int i = 0; i > curGame.getPlayer1Hand().size(); i++) {
                             if ((curGame.getPlayer1Hand().get(i).getCardNumber() == curGame.getCurrentPlayableNumber()) || (curGame.getPlayer1Hand().get(i).getCardColor() == curGame.getCurrentPlayableColor())) {
-                                UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, 0);
+                                UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
                                 sleep(1000);
                                 game.sendAction(actionPlay);
                             }
@@ -77,7 +77,7 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
                     } else if (playerNum == 2) {
                         for (int i = 0; i > curGame.getPlayer2Hand().size(); i++) {
                             if ((curGame.getPlayer2Hand().get(i).getCardNumber() == curGame.getCurrentPlayableNumber()) || (curGame.getPlayer2Hand().get(i).getCardColor() == curGame.getCurrentPlayableColor())) {
-                                UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, 0);
+                                UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
                                 sleep(1000);
                                 game.sendAction(actionPlay);
                             }
