@@ -6,13 +6,11 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <!-- playing field -->
 
         <LinearLayout
             android:id="@+id/runTestButtonLayout"
@@ -27,20 +25,21 @@
             <LinearLayout
                 android:id="@+id/testRunningLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/editTextTextMultiLine"
-                    android:layout_width="200dp"
+                    android:layout_width="600dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0"
                     android:ems="10"
                     android:gravity="start|top"
                     android:inputType="textMultiLine"
                     android:overScrollMode="always"
-                    android:textSize="10sp" />
+                    android:textSize="20sp"
+                    android:autofillHints=""/>
 
                 <Button
                     android:id="@+id/runTestButton"
@@ -48,7 +47,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="Run Test"
-                    android:textSize="10sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
 
@@ -57,8 +56,8 @@
         <LinearLayout
             android:id="@+id/playingAreaLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -79,7 +78,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="0"
-                    android:text="Opponent's hand size: " />
+                    android:text="Opponent's hand size: "
+                    android:textSize="20sp" />
 
                 <ImageView
                     android:id="@+id/opponentHand"
@@ -95,7 +95,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_weight="0"
-                    android:text="Uno?" />
+                    android:background="#CCFF90"
+                    android:text="Uno?"
+                    android:textSize="30sp" />
 
             </LinearLayout>
 
@@ -112,7 +114,7 @@
                 <ImageView
                     android:id="@+id/drawCardPileImage"
                     android:layout_width="wrap_content"
-                    android:layout_height="150dp"
+                    android:layout_height="200dp"
                     android:layout_gravity="bottom"
                     android:layout_weight="200"
                     app:srcCompat="@drawable/back" />
@@ -120,7 +122,7 @@
                 <ImageView
                     android:id="@+id/discardCardPileImage"
                     android:layout_width="wrap_content"
-                    android:layout_height="150dp"
+                    android:layout_height="200dp"
                     android:layout_gravity="bottom"
                     android:layout_weight="200"
                     app:srcCompat="@drawable/blue3" />
@@ -131,15 +133,13 @@
                 android:id="@+id/pileText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left">
+                android:layout_gravity="center">
 
                 <TextView
                     android:id="@+id/drawpile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginEnd="100dp"
+                    android:layout_marginStart="150dp"
                     android:text="Draw Pile"
                     android:textColor="#000000"
                     android:textSize="24sp"
@@ -149,7 +149,7 @@
                     android:id="@+id/discardpile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="top"
+                    android:layout_marginStart="525dp"
                     android:text="Discard Pile"
                     android:textColor="#000000"
                     android:textSize="24sp"
@@ -176,7 +176,7 @@
                 <ImageView
                     android:id="@+id/cardSlot1"
                     android:layout_width="wrap_content"
-                    android:layout_height="150dp"
+                    android:layout_height="200dp"
                     android:layout_gravity="bottom"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/blank" />
@@ -184,7 +184,7 @@
                 <ImageView
                     android:id="@+id/cardSlot2"
                     android:layout_width="wrap_content"
-                    android:layout_height="150dp"
+                    android:layout_height="200dp"
                     android:layout_gravity="bottom"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/blank" />
@@ -192,7 +192,7 @@
                 <ImageView
                     android:id="@+id/cardSlot3"
                     android:layout_width="wrap_content"
-                    android:layout_height="150dp"
+                    android:layout_height="200dp"
                     android:layout_gravity="bottom"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/blank" />
@@ -200,7 +200,7 @@
                 <ImageView
                     android:id="@+id/cardSlot4"
                     android:layout_width="wrap_content"
-                    android:layout_height="150dp"
+                    android:layout_height="200dp"
                     android:layout_gravity="bottom"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/blank" />
@@ -208,7 +208,7 @@
                 <ImageView
                     android:id="@+id/cardSlot5"
                     android:layout_width="wrap_content"
-                    android:layout_height="150dp"
+                    android:layout_height="200dp"
                     android:layout_gravity="bottom"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/blank" />
@@ -223,20 +223,27 @@
 
                 <Button
                     android:id="@+id/leftButton"
-                    android:layout_width="50dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="#EA80FC"
                     android:text="left"
-                    android:textSize="10sp"
+                    android:textSize="20sp"
                     android:visibility="visible" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
                 <Button
                     android:id="@+id/rightButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="#EA80FC"
                     android:text="right"
-                    android:textSize="10sp"
+                    android:textSize="20sp"
                     android:visibility="visible" />
 
                 <!--            <TextView-->
@@ -267,8 +274,8 @@
         <LinearLayout
             android:id="@+id/playButtonLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.05"
             android:gravity="bottom"
             android:orientation="horizontal">
 
@@ -277,26 +284,38 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="#FF9E80"
                 android:text="UNO!"
-                android:textSize="10sp" />
+                android:textSize="30sp" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5" />
 
             <Button
                 android:id="@+id/drawButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="#FFFF8D"
                 android:text="DRAW"
-                android:textSize="10sp" />
+                android:textSize="30sp" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5" />
 
             <Button
                 android:id="@+id/playButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="#84FFFF"
                 android:text="PLAY"
-                android:textSize="10sp" />
+                android:textSize="30sp" />
         </LinearLayout>
-
     </LinearLayout>
 
 

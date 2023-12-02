@@ -8,6 +8,7 @@ import com.example.game.GameFramework.infoMessage.GameState;
 import com.example.game.GameFramework.players.GamePlayer;
 import com.example.unogame.players.UnoDumbAIPlayer;
 import com.example.unogame.players.UnoHumanPlayer;
+import com.example.unogame.players.UnoSmartAIPlayer;
 
 import java.util.ArrayList;
 
@@ -31,13 +32,13 @@ public class MainActivity extends GameMainActivity {
         ArrayList<GamePlayerType> playerTypes = new ArrayList<>();
 
         // add players types
-        //only human for now
         playerTypes.add(new GamePlayerType("Human Player") {
             @Override
             public GamePlayer createPlayer(String name) {
                 return new UnoHumanPlayer(name, R.layout.uno_human_player);
             }
         });
+        // add dumb ai player type
         playerTypes.add(new GamePlayerType("Dory Ai") {
             @Override
             public GamePlayer createPlayer(String name) {
@@ -45,9 +46,18 @@ public class MainActivity extends GameMainActivity {
             }
         });
 
+        // add smart ai player type
+        playerTypes.add(new GamePlayerType("Marlin Ai") {
+            @Override
+            public GamePlayer createPlayer(String name) {
+                return new UnoSmartAIPlayer(name, R.layout.uno_human_player);
+            }
+        });
+
         //create game configuration
         GameConfig defaultConfig = new GameConfig(playerTypes, 1, 3, "Uno", PORT_NUMBER);
         defaultConfig.addPlayer("Human", 0); //player 1: human player
+        defaultConfig.addPlayer("Dory Ai", 1); // player 2: dumb ai
 
         return defaultConfig;
     }
