@@ -9,6 +9,13 @@ import com.example.unogame.cards.UnoCard;
 import com.example.unogame.info.UnoGameState;
 import com.example.unogame.players.UnoHumanPlayer;
 
+/*
+
+Tags
+@author - Isabella Horstmanshof
+
+ */
+
 public class UnoLocalGame extends LocalGame {
 
     //needs to be like ttt, the state will have a variable keeping track of the player whose turn it it and number of players

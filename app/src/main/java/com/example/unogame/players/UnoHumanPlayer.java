@@ -28,6 +28,16 @@ import com.example.unogame.info.UnoGameState;
 
 import java.util.ArrayList;
 
+/*
+
+Tags
+@author - Isabella Horstmanshof
+@author - Emma Giamello
+@author - Malissa Chen
+@author - Kaitlyn Atalig
+
+ */
+
 public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListener {
 
     //android activity that we are running
@@ -118,7 +128,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             UnoGameState currGame = (UnoGameState) info;
             Log.i("playCard", "current color " + currGame.getCurrentPlayableColor() + " current number " + currGame.getCurrentPlayableNumber());
             //only works assuming human player is player0
-            //displaying human player's hand in the card slots
+            //displaying human player's hand in the card slots -
             ArrayList<UnoCard> cards = currGame.getPlayer0Hand();
             ArrayList<UnoCard> currentDiscard = currGame.getDiscardPile();
             if (cards.size() > 0) {

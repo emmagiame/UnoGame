@@ -12,6 +12,15 @@ import com.example.unogame.cards.UnoCardWild;
 
 import java.util.ArrayList;
 
+/*
+
+Tags
+@author - Isabella Horstmanshof
+@author - Emma Giamello
+@author - Rhiannon McKinley
+
+ */
+
 public class UnoGameState extends GameState {
     //instance variables
     //player 0's hand
@@ -137,9 +146,9 @@ public class UnoGameState extends GameState {
         this.isReversed = false;
 
 
-        //need to radomize this
-        this.currentPlayableColor = 'y';
-        this.currentPlayableNumber = 1;
+        //need to randomize this
+        //this.currentPlayableColor = 'r';
+        //this.currentPlayableNumber = 1;
     }
 
     /**

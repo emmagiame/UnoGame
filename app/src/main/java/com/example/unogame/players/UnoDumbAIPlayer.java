@@ -9,6 +9,13 @@ import com.example.unogame.info.UnoGameState;
 
 import java.util.Random;
 
+/*
+
+Tags
+@author - Isabella Horstmanshof
+
+ */
+
 public class UnoDumbAIPlayer extends GameComputerPlayer {
     //dory will only play first card in her hand right now
 

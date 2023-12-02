@@ -13,6 +13,13 @@ import com.example.unogame.cards.UnoCardSkip;
 import com.example.unogame.cards.UnoCardWild;
 import com.example.unogame.info.UnoGameState;
 
+/*
+
+Tags
+@author - Isabella Horstmanshof
+
+ */
+
 public class UnoSmartAIPlayer extends GameComputerPlayer {
 
     private int layoutId;

@@ -12,6 +12,13 @@ import com.example.unogame.players.UnoSmartAIPlayer;
 
 import java.util.ArrayList;
 
+/*
+
+Tags
+@author - Emma Giamello
+
+ */
+
 public class MainActivity extends GameMainActivity {
     //port number to use when playing game over network
     //used same num as lab idk if its right
