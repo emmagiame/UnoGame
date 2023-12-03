@@ -509,6 +509,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             return;
         }
 
+        //scroll left and right buttons
         else if (view.getId() == R.id.leftButton) {
             if (offset <= 0) {
                 flash(Color.RED,100);
@@ -520,12 +521,11 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         } else if (view.getId() == R.id.rightButton) {
             UnoGameState gameState = (UnoGameState) game.getGameState();
             ArrayList<UnoCard> hand = gameState.getPlayer0Hand();
-            if (offset <= offset + 3) {
-                offset++;
-                receiveInfo(game.getGameState());
-            }
-             else{
+            if (offset + 1 >= hand.size() - 5) {
                 flash(Color.RED, 100);
+            } else {
+                offset++;
+                receiveInfo(gameState);
             }
         }
     }
