@@ -76,6 +76,11 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private Button declareUnoButton = null;
     private Button callOutUnoButton = null;
     private Button runTestButton = null;
+    private Button yellow = null;
+    private Button green = null;
+    private Button blue = null;
+    private Button red = null;
+
 
 
     private int cardClickedIdx = -1;
@@ -226,6 +231,17 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         cardSlot4.setOnClickListener(this);
         this.cardSlot5 = myActivity.findViewById(R.id.cardSlot5);
         cardSlot5.setOnClickListener(this);
+
+        //onClickListeners for all color buttons (for wild cards)
+        this.yellow = myActivity.findViewById(R.id.yellow);
+        yellow.setOnClickListener(this);
+        this.green = myActivity.findViewById(R.id.green);
+        green.setOnClickListener(this);
+        this.red = myActivity.findViewById(R.id.red);
+        red.setOnClickListener(this);
+        this.blue = myActivity.findViewById(R.id.blue);
+        blue.setOnClickListener(this);
+
     }
 
     /**

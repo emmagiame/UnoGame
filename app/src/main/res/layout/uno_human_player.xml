@@ -121,11 +121,50 @@
 
                 <ImageView
                     android:id="@+id/discardCardPileImage"
-                    android:layout_width="wrap_content"
+                    android:layout_width="400dp"
                     android:layout_height="200dp"
                     android:layout_gravity="bottom"
                     android:layout_weight="200"
                     app:srcCompat="@drawable/blue3" />
+
+                <Button
+                    android:id="@+id/yellow"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="200"
+                    android:layout_gravity="center"
+                    android:background="#ECD407"
+                    android:text="Yellow" />
+
+                <Button
+                    android:id="@+id/green"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="#379711"
+                    android:layout_weight="200"
+                    android:layout_marginStart="10dp"
+                    android:text="Green" />
+
+                <Button
+                    android:id="@+id/red"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="#D72600"
+                    android:layout_weight="200"
+                    android:layout_marginStart="10dp"
+                    android:text="Red" />
+
+                <Button
+                    android:id="@+id/blue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="#418FDE"
+                    android:layout_weight="200"
+                    android:layout_marginStart="10dp"
+                    android:text="Blue" />
             </LinearLayout>
 
 
@@ -149,7 +188,7 @@
                     android:id="@+id/discardpile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="525dp"
+                    android:layout_marginStart="350dp"
                     android:text="Discard Pile"
                     android:textColor="#000000"
                     android:textSize="24sp"
