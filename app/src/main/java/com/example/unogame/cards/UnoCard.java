@@ -133,6 +133,4 @@ public class UnoCard {
     public String toString() {
         return "Card Number: " + this.getCardNumber() + ", Card Color: " + this.getCardColor();
     }
-
-
 }

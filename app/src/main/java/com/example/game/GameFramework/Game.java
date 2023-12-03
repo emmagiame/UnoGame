@@ -1,6 +1,7 @@
 package com.example.game.GameFramework;
 
 import com.example.game.GameFramework.actionMessage.GameAction;
+import com.example.game.GameFramework.infoMessage.GameInfo;
 import com.example.game.GameFramework.infoMessage.GameState;
 import com.example.game.GameFramework.players.GamePlayer;
 
@@ -40,5 +41,4 @@ public interface Game {
      * @return GameState
      */
     GameState getGameState();
-
 }

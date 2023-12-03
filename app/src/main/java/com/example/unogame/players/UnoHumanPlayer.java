@@ -77,6 +77,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private Button callOutUnoButton = null;
     private Button runTestButton = null;
 
+
     private int cardClickedIdx = -1;
 
 
@@ -131,6 +132,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             //displaying human player's hand in the card slots -
             ArrayList<UnoCard> cards = currGame.getPlayer0Hand();
             ArrayList<UnoCard> currentDiscard = currGame.getDiscardPile();
+
             if (cards.size() > 0) {
                 setImage(this.cardImageView1, cards.get(offset + 0));
             }
@@ -468,6 +470,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             editText.append(fourthInstance.toString());
             return;
         }*/
+
         if(view.getId() == R.id.drawButton){
             Log.i("action was clicked", "sending a draw card action");
             UnoDrawCardAction actionDraw = new UnoDrawCardAction(this);
@@ -506,21 +509,27 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             return;
         }
 
-        else if(view.getId() == R.id.leftButton){
-            //offset = offset -1;
-            offset--;
+        else if (view.getId() == R.id.leftButton) {
+            if (offset <= 0) {
+                flash(Color.RED,100);
+            }
+            else{
+                offset--;
+                receiveInfo(game.getGameState());
+            }
+        } else if (view.getId() == R.id.rightButton) {
+            UnoGameState gameState = (UnoGameState) game.getGameState();
+            ArrayList<UnoCard> hand = gameState.getPlayer0Hand();
+            if (offset <= offset + 3) {
+                offset++;
+                receiveInfo(game.getGameState());
+            }
+             else{
+                flash(Color.RED, 100);
+            }
         }
-
-        else if(view.getId() == R.id.rightButton){
-            offset++;
-
-            //flash(Color.WHITE,200);
-            //flash(Color.RED,200);
-            return;
-        }
-
-
     }
+
 
 }
 
