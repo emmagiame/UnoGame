@@ -3,7 +3,12 @@ package com.example.unogame.cards;
 import androidx.annotation.Nullable;
 
 import java.util.Random;
+/*
 
+Tags
+@author - Isabella Horstmanshof
+
+ */
 public class UnoCard {
 
     //card color
@@ -21,9 +26,9 @@ public class UnoCard {
     /**
      * constructor
      */
-    public UnoCard(){
-        cardColor = randomizeCardColor();
-        cardNumber = randomizeCardNumber();
+    public UnoCard() {
+        cardColor = 'r';
+        cardNumber = 0;
     }
 
 
@@ -35,6 +40,19 @@ public class UnoCard {
     public UnoCard(UnoCard card){
         this.cardColor = card.cardColor;
         this.cardNumber = card.cardNumber;
+    }
+
+    public void setCardColor(char c){
+        this.cardColor = c;
+    }
+
+    public void setCardNumber(int n){
+        this.cardNumber = n;
+    }
+
+    public void setCard(char c, int n){
+        this.cardNumber = n;
+        this.cardColor = c;
     }
 
     /**
