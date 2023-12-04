@@ -49,7 +49,7 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
                     int randomNum = rand.nextInt(5);
                     if(randomNum % 2 == 0) {
                         UnoDeclareUnoAction declareUno = new UnoDeclareUnoAction(this);
-                        sleep(1000);
+                        sleep(100);
                         game.sendAction(declareUno);
                     }
                     else{
@@ -61,38 +61,38 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
                         for (int i = 0; i < curGame.getPlayer0Hand().size(); i++) {
                             if ((curGame.getPlayer0Hand().get(i).getCardNumber() == curGame.getCurrentPlayableNumber()) || (curGame.getPlayer0Hand().get(i).getCardColor() == curGame.getCurrentPlayableColor())) {
                                 UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
-                                sleep(1000);
+                                sleep(100);
                                 game.sendAction(actionPlay);
                             }
                         }
                         //if it doesnt have a playable card, draw a card
                         UnoDrawCardAction actionDraw = new UnoDrawCardAction(this);
-                        sleep(1000);
+                        sleep(100);
                         game.sendAction(actionDraw);
                     } else if (playerNum == 1) {
                         for (int i = 0; i < curGame.getPlayer1Hand().size(); i++) {
                             if ((curGame.getPlayer1Hand().get(i).getCardNumber() == curGame.getCurrentPlayableNumber()) || (curGame.getPlayer1Hand().get(i).getCardColor() == curGame.getCurrentPlayableColor())) {
                                 UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
-                                sleep(1000);
+                                sleep(100);
                                 game.sendAction(actionPlay);
                             }
                         }
                         //if it doesnt have a playable card, draw a card
                         UnoDrawCardAction actionDraw = new UnoDrawCardAction(this);
-                        sleep(1000);
+                        sleep(100);
                         game.sendAction(actionDraw);
                     } else if (playerNum == 2) {
                         for (int i = 0; i < curGame.getPlayer2Hand().size(); i++) {
                             if ((curGame.getPlayer2Hand().get(i).getCardNumber() == curGame.getCurrentPlayableNumber()) || (curGame.getPlayer2Hand().get(i).getCardColor() == curGame.getCurrentPlayableColor())) {
                                 UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
-                                sleep(1000);
+                                sleep(100);
                                 game.sendAction(actionPlay);
                             }
                         }
                     }
                         //if it doesnt have a playable card, draw a card
                         UnoDrawCardAction actionDraw = new UnoDrawCardAction(this);
-                        sleep(1000);
+                        sleep(100);
                         game.sendAction(actionDraw);
 
 

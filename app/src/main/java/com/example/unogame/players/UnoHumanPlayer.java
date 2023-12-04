@@ -489,28 +489,34 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
         if(view.getId() == R.id.drawButton){
             Log.i("action was clicked", "sending a draw card action");
+            flash(Color.GREEN, 100);
             UnoDrawCardAction actionDraw = new UnoDrawCardAction(this);
             game.sendAction(actionDraw);
             return;
         }
         else if(view.getId() == R.id.cardSlot1){
             cardClickedIdx = 0 + offset;
+            flash(Color.GREEN, 100);
             Log.i("changed card clicked id", "card clicked id is " + cardClickedIdx);
         }
         else if(view.getId() == R.id.cardSlot2){
             cardClickedIdx = 1 + offset;
+            flash(Color.GREEN, 100);
             Log.i("changed card clicked id", "card clicked id is " + cardClickedIdx);
         }
         else if(view.getId() == R.id.cardSlot3){
             cardClickedIdx = 2 + offset;
+            flash(Color.GREEN, 100);
             Log.i("changed card clicked id", "card clicked id is " + cardClickedIdx);
         }
         else if(view.getId() == R.id.cardSlot4){
             cardClickedIdx = 3 + offset;
+            flash(Color.GREEN, 100);
             Log.i("changed card clicked id", "card clicked id is " + cardClickedIdx);
         }
         else if(view.getId() == R.id.cardSlot5){
             cardClickedIdx = 4 + offset;
+            flash(Color.GREEN, 100);
             Log.i("changed card clicked id", "card clicked id is " + cardClickedIdx);
         }
         else if(view.getId() == R.id.playButton){
@@ -522,9 +528,9 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             Log.i("action was clicked", "sending a play card action, card clicked id is " + cardClickedIdx);
             UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, cardClickedIdx);
             game.sendAction(actionPlay);
+            flash(Color.GREEN, 100);
             return;
         }
-
         //scroll left and right buttons
         else if (view.getId() == R.id.leftButton) {
             if (offset <= 0) {
@@ -544,8 +550,28 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 receiveInfo(gameState);
             }
         }
+
+        //color buttons for wild card
+        else if (view.getId() == R.id.yellow) {
+
+
+        }
+        else if (view.getId() == R.id.green) {
+
+
+        }
+        else if (view.getId() == R.id.red) {
+
+        }
+
+        else if (view.getId() == R.id.blue) {
+        }
+
+        //flash red if button is invalid
+        else {
+            flash(Color.RED, 100);
+        }
+        }
     }
-
-
 }
 
