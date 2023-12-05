@@ -158,37 +158,30 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 this.cardImageView1.setImageResource(R.drawable.blank);
             }
 
-            if (cards.size() > 1) {
-                setImage(this.cardImageView2, cards.get(offset + 1));
-            }
-            else{ //displays a greyed out card
-                this.cardImageView2.setImageResource(R.drawable.blank);
-            }
-            if (cards.size() > 2) {
-                setImage(this.cardImageView3, cards.get(offset + 2));
-            }
-            else{ //displays a greyed out card
-                this.cardImageView3.setImageResource(R.drawable.blank);
-            }
-            if (cards.size() > 3) {
-                setImage(this.cardImageView4, cards.get(offset + 3));
-            }
-            else{ //displays a greyed out card
-                this.cardImageView4.setImageResource(R.drawable.blank);
-            }
-            if (cards.size() > 4) {
-                setImage(this.cardImageView5, cards.get(offset + 4));
-            }
-            else{ //displays a greyed out card
-                this.cardImageView5.setImageResource(R.drawable.blank);
-            }
+            //display cards in card slots 1-5
+            displayCardInImageView(cards, offset + 0, cardImageView1);
+            displayCardInImageView(cards, offset + 1, cardImageView2);
+            displayCardInImageView(cards, offset + 2, cardImageView3);
+            displayCardInImageView(cards, offset + 3, cardImageView4);
+            displayCardInImageView(cards, offset + 4, cardImageView5);
 
+            //display discard pile image
             setImage(this.discardPileImage, currentDiscard.get(0));
+
+            //display default images for ai player and draw pile
             this.aiPlayerImage.setImageResource(R.drawable.back);
             this.drawPileImage.setImageResource(R.drawable.back);
+        }
+    }
 
-
-            //            firstInstance = (UnoGameState) info;
+    // Method to display a card in a cardImageView
+    private void displayCardInImageView(ArrayList<UnoCard> cards, int index, ImageView imageView) {
+        int cardIndex = offset + index;
+        if (cardIndex < cards.size()) {
+            setImage(imageView, cards.get(cardIndex));
+        } else {
+            Log.e("CardImageView", "Index out of bounds: " + cardIndex);
+            imageView.setImageResource(R.drawable.blank);
         }
     }
 
