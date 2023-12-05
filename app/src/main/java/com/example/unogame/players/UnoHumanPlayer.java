@@ -571,7 +571,6 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         else {
             flash(Color.RED, 100);
         }
-        }
     }
-}
 
+}
