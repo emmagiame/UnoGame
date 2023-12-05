@@ -56,7 +56,7 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
                     if(randomNum % 2 == 0) {
                         Log.i("dumb ai", "calling declareUno ");
                         UnoDeclareUnoAction declareUno = new UnoDeclareUnoAction(this);
-                        sleep(100);
+                        sleep(1);
                         game.sendAction(declareUno);
                     }
                     else{
@@ -64,16 +64,18 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
                         return;
                     }
 
-                } else {
+                }}
+                else {
                     if (playerNum == 0) {
                         Log.i("dumb ai0", "player 0");
                         for (int i = 0; i < curGame.getPlayer0Hand().size(); i++) {
                             if ((curGame.getPlayer0Hand().get(i).getCardNumber() == curGame.getCurrentPlayableNumber()) || (curGame.getPlayer0Hand().get(i).getCardColor() == curGame.getCurrentPlayableColor())) {
                                 Log.i("dumb ai0", "playing a card");
                                 UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
-                                sleep(100);
+                                sleep(1);
                                 game.sendAction(actionPlay);
-                                Log.i("dumb ai0", "sent a play card action");
+                                Log.i("dumb ai0", "sent a play card action for a " + curGame.getPlayer0Hand().get(i).getCardColor() + " " +  curGame.getPlayer0Hand().get(i).getCardNumber());
+                                return;
 
                             }
                         }
@@ -82,6 +84,7 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
                         sleep(100);
                         game.sendAction(actionDraw);
                         Log.i("dumb ai0", "sent a draw card action");
+                        return;
 
                     } else if (playerNum == 1) {
                         Log.i("dumb ai1", "player 1");
@@ -89,33 +92,36 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
                             if ((curGame.getPlayer1Hand().get(i).getCardNumber() == curGame.getCurrentPlayableNumber()) || (curGame.getPlayer1Hand().get(i).getCardColor() == curGame.getCurrentPlayableColor())) {
                                 Log.i("dumb ai1", "playing a card");
                                 UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
-                                sleep(100);
+                                sleep(1);
                                 game.sendAction(actionPlay);
-                                Log.i("dumb ai1", "sent a play card action");
+                                Log.i("dumb ai1", "sent a play card action for a " + curGame.getPlayer1Hand().get(i).getCardColor() + " " +  curGame.getPlayer1Hand().get(i).getCardNumber());
+                                return;
                             }
                         }
                         //if it doesnt have a playable card, draw a card
                         UnoDrawCardAction actionDraw = new UnoDrawCardAction(this);
-                        sleep(100);
+                        sleep(1);
                         game.sendAction(actionDraw);
                         Log.i("dumb ai1", "sent a draw card action");
+                        return;
                     } else if (playerNum == 2) {
                         Log.i("dumb ai2", "player 2");
                         for (int i = 0; i < curGame.getPlayer2Hand().size(); i++) {
                             if ((curGame.getPlayer2Hand().get(i).getCardNumber() == curGame.getCurrentPlayableNumber()) || (curGame.getPlayer2Hand().get(i).getCardColor() == curGame.getCurrentPlayableColor())) {
                                 Log.i("dumb ai2", "playing a card");
                                 UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
-                                sleep(100);
+                                sleep(1);
                                 game.sendAction(actionPlay);
-                                Log.i("dumb ai2", "sent a play card action");
+                                Log.i("dumb ai2", "sent a play card action for a " + curGame.getPlayer2Hand().get(i).getCardColor() + " " +  curGame.getPlayer2Hand().get(i).getCardNumber());
+                                return;
                             }
                         }
-                    }
                         //if it doesnt have a playable card, draw a card
                         UnoDrawCardAction actionDraw = new UnoDrawCardAction(this);
-                        sleep(100);
+                        sleep(1);
                         game.sendAction(actionDraw);
-                    Log.i("dumb ai2", "sent a draw card action");
+                        Log.i("dumb ai2", "sent a draw card action");
+                        return;
 
 
                 }
