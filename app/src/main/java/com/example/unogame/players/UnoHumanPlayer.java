@@ -145,45 +145,19 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             ArrayList<UnoCard> cards = currGame.getPlayer0Hand();
             ArrayList<UnoCard> currentDiscard = currGame.getDiscardPile();
 
-
-//            clear the status text
-//            status.setText("");
-
-//            for (int k = 0; k < currGame.getNumPlayers(); k++) {
-//                String playerText = "Player " + k + " hand size: " + currGame.getPlayer1Hand().get(k).size();
-//                status.append(playerText + "\n");
-//            }
-            //iterate over the players and will display their hand sizes
-//            for (int k = 0; k < currGame.getNumPlayers(); k++) {
-//                List<UnoCard> playerHand = (List<UnoCard>) currGame.getPlayer1Hand().get(k);
-//
-//                //check if playerHand is not null and is a list
-//                if (playerHand != null) {
-//                    int handSize = playerHand.size();
-//                    String playerText = "Player " + k + " hand size: " + handSize;
-//                    status.append(playerText + "\n");
-//                } else {
-//                    status.append("Error: getPlayer1Hand() returned null\n");
-//                }
-//
-//            }
-
-//            //Update the UI elements based on the new game state
-//            ArrayList<UnoCard> cards = currGame.getPlayer0Hand();
-//            ArrayList<UnoCard> currentDiscard = currGame.getDiscardPile();
-
-
             //if the deck has less than 5 cards
-            if(offset > 0 && cards.size() < 6){
+            if(offset > 0 && cards.size() < 6) {
                 offset = 0;
-                }
-
-            if (cards.size() > 0) {
-                setImage(this.cardImageView1, cards.get(offset + 0));
             }
-            else{ //displays a greyed out card
+
+            int cardIndex1 = offset + 0;
+            if (cardIndex1 < cards.size()) {
+                setImage(this.cardImageView1, cards.get(cardIndex1));
+            } else {
+                Log.e("CardImageView1", "Index out of bounds: " + cardIndex1);
                 this.cardImageView1.setImageResource(R.drawable.blank);
             }
+
             if (cards.size() > 1) {
                 setImage(this.cardImageView2, cards.get(offset + 1));
             }
@@ -217,56 +191,6 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             //            firstInstance = (UnoGameState) info;
         }
     }
-//            ArrayList<UnoCard> cards = currGame.getPlayer0Hand();
-//            ArrayList<UnoCard> currentDiscard = currGame.getDiscardPile();
-//
-//            // Update the UI elements based on the new game state
-//            runOnUiThread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    //clear the status text
-//                    status.setText("");
-//
-//                    for (int k = 0; k < currGame.getNumPlayers(); k++) {
-//                        List<UnoCard> playerHand = (List<UnoCard>) currGame.getPlayer1Hand().get(k);
-//
-//                        // Check if playerHand is not null and is a list
-//                        if (playerHand != null) {
-//                            int handSize = playerHand.size();
-//                            String playerText = "Player " + k + " hand size: " + handSize;
-//                            status.append(playerText + "\n");
-//                        } else {
-//                            status.append("Error: getPlayer1Hand() returned null\n");
-//                        }
-//
-//                    }//);
-//
-//                    if (cards.size() > 0) {
-//                        setImage(cardImageView1, cards.get(offset + 0));
-//                    }
-//                    if (cards.size() > 1) {
-//                        setImage(cardImageView2, cards.get(offset + 1));
-//                    }
-//                    if (cards.size() > 2) {
-//                        setImage(cardImageView3, cards.get(offset + 2));
-//                    }
-//                    if (cards.size() > 3) {
-//                        setImage(cardImageView4, cards.get(offset + 3));
-//                    }
-//                    if (cards.size() > 4) {
-//                        setImage(cardImageView5, cards.get(offset + 4));
-//                    }
-//
-//                    setImage(discardPileImage, currentDiscard.get(0));
-//                    aiPlayerImage.setImageResource(R.drawable.back);
-//                    drawPileImage.setImageResource(R.drawable.back);
-//
-//                    firstInstance = (UnoGameState) info;
-//                }
-//            });
-//        }
-//    }
-
 
     /**
      * finds button and edit text in given player view
