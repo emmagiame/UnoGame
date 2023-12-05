@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ImageView;
+
 
 import com.example.game.GameFramework.GameMainActivity;
 import com.example.game.GameFramework.infoMessage.GameInfo;
@@ -27,6 +29,7 @@ import com.example.unogame.cards.UnoCardWild;
 import com.example.unogame.info.UnoGameState;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /*
 
@@ -61,6 +64,9 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private ImageView discardPileImage;
     private ImageView drawPileImage;
     private ImageView aiPlayerImage;
+    private ImageView blank;
+
+
 
     private ImageView drawCardPileButton = null;
     private ImageView cardSlot1 = null;
@@ -80,6 +86,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private Button green = null;
     private Button blue = null;
     private Button red = null;
+    private TextView status = null;
 
 
 
@@ -138,27 +145,128 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             ArrayList<UnoCard> cards = currGame.getPlayer0Hand();
             ArrayList<UnoCard> currentDiscard = currGame.getDiscardPile();
 
+
+//            clear the status text
+//            status.setText("");
+
+//            for (int k = 0; k < currGame.getNumPlayers(); k++) {
+//                String playerText = "Player " + k + " hand size: " + currGame.getPlayer1Hand().get(k).size();
+//                status.append(playerText + "\n");
+//            }
+            //iterate over the players and will display their hand sizes
+//            for (int k = 0; k < currGame.getNumPlayers(); k++) {
+//                List<UnoCard> playerHand = (List<UnoCard>) currGame.getPlayer1Hand().get(k);
+//
+//                //check if playerHand is not null and is a list
+//                if (playerHand != null) {
+//                    int handSize = playerHand.size();
+//                    String playerText = "Player " + k + " hand size: " + handSize;
+//                    status.append(playerText + "\n");
+//                } else {
+//                    status.append("Error: getPlayer1Hand() returned null\n");
+//                }
+//
+//            }
+
+//            //Update the UI elements based on the new game state
+//            ArrayList<UnoCard> cards = currGame.getPlayer0Hand();
+//            ArrayList<UnoCard> currentDiscard = currGame.getDiscardPile();
+
+
+            //if the deck has less than 5 cards
+            if(offset > 0 && cards.size() < 6){
+                offset = 0;
+                }
+
             if (cards.size() > 0) {
                 setImage(this.cardImageView1, cards.get(offset + 0));
+            }
+            else{ //displays a greyed out card
+                this.cardImageView1.setImageResource(R.drawable.blank);
             }
             if (cards.size() > 1) {
                 setImage(this.cardImageView2, cards.get(offset + 1));
             }
+            else{ //displays a greyed out card
+                this.cardImageView2.setImageResource(R.drawable.blank);
+            }
             if (cards.size() > 2) {
                 setImage(this.cardImageView3, cards.get(offset + 2));
+            }
+            else{ //displays a greyed out card
+                this.cardImageView3.setImageResource(R.drawable.blank);
             }
             if (cards.size() > 3) {
                 setImage(this.cardImageView4, cards.get(offset + 3));
             }
+            else{ //displays a greyed out card
+                this.cardImageView4.setImageResource(R.drawable.blank);
+            }
             if (cards.size() > 4) {
                 setImage(this.cardImageView5, cards.get(offset + 4));
+            }
+            else{ //displays a greyed out card
+                this.cardImageView5.setImageResource(R.drawable.blank);
             }
 
             setImage(this.discardPileImage, currentDiscard.get(0));
             this.aiPlayerImage.setImageResource(R.drawable.back);
             this.drawPileImage.setImageResource(R.drawable.back);
+
+
+            //            firstInstance = (UnoGameState) info;
         }
     }
+//            ArrayList<UnoCard> cards = currGame.getPlayer0Hand();
+//            ArrayList<UnoCard> currentDiscard = currGame.getDiscardPile();
+//
+//            // Update the UI elements based on the new game state
+//            runOnUiThread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    //clear the status text
+//                    status.setText("");
+//
+//                    for (int k = 0; k < currGame.getNumPlayers(); k++) {
+//                        List<UnoCard> playerHand = (List<UnoCard>) currGame.getPlayer1Hand().get(k);
+//
+//                        // Check if playerHand is not null and is a list
+//                        if (playerHand != null) {
+//                            int handSize = playerHand.size();
+//                            String playerText = "Player " + k + " hand size: " + handSize;
+//                            status.append(playerText + "\n");
+//                        } else {
+//                            status.append("Error: getPlayer1Hand() returned null\n");
+//                        }
+//
+//                    }//);
+//
+//                    if (cards.size() > 0) {
+//                        setImage(cardImageView1, cards.get(offset + 0));
+//                    }
+//                    if (cards.size() > 1) {
+//                        setImage(cardImageView2, cards.get(offset + 1));
+//                    }
+//                    if (cards.size() > 2) {
+//                        setImage(cardImageView3, cards.get(offset + 2));
+//                    }
+//                    if (cards.size() > 3) {
+//                        setImage(cardImageView4, cards.get(offset + 3));
+//                    }
+//                    if (cards.size() > 4) {
+//                        setImage(cardImageView5, cards.get(offset + 4));
+//                    }
+//
+//                    setImage(discardPileImage, currentDiscard.get(0));
+//                    aiPlayerImage.setImageResource(R.drawable.back);
+//                    drawPileImage.setImageResource(R.drawable.back);
+//
+//                    firstInstance = (UnoGameState) info;
+//                }
+//            });
+//        }
+//    }
+
 
     /**
      * finds button and edit text in given player view
@@ -531,6 +639,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             flash(Color.GREEN, 100);
             return;
         }
+
         //scroll left and right buttons
         else if (view.getId() == R.id.leftButton) {
             if (offset <= 0) {
@@ -551,20 +660,28 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             }
         }
 
-        //color buttons for wild card
+        //color picker buttons for wild cards
         else if (view.getId() == R.id.yellow) {
-
-
+            UnoGameState gameState = (UnoGameState) game.getGameState();
+            gameState.setChangedPlayableColor('y');
+            Log.i("yellow button clicked id", "color clicked id is yellow") ;
         }
         else if (view.getId() == R.id.green) {
-
+            UnoGameState gameState = (UnoGameState) game.getGameState();
+            gameState.setChangedPlayableColor('g');
+            Log.i("green button clicked id", "color clicked id is green") ;
 
         }
         else if (view.getId() == R.id.red) {
-
+            UnoGameState gameState = (UnoGameState) game.getGameState();
+            gameState.setChangedPlayableColor('r');
+            Log.i("red button clicked id", "color clicked id is red") ;
         }
 
         else if (view.getId() == R.id.blue) {
+            UnoGameState gameState = (UnoGameState) game.getGameState();
+            gameState.setChangedPlayableColor('b');
+            Log.i("blue button clicked id", "color clicked id is blue") ;
         }
 
         //flash red if button is invalid
