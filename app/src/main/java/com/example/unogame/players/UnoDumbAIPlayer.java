@@ -81,7 +81,7 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
                         }
                         //if it doesnt have a playable card, draw a card
                         UnoDrawCardAction actionDraw = new UnoDrawCardAction(this);
-                        sleep(100);
+                        sleep(1);
                         game.sendAction(actionDraw);
                         Log.i("dumb ai0", "sent a draw card action");
                         return;
@@ -122,7 +122,6 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
                         game.sendAction(actionDraw);
                         Log.i("dumb ai2", "sent a draw card action");
                         return;
-
 
                 }
             }
