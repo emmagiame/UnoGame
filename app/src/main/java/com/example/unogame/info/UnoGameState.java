@@ -158,6 +158,8 @@ public class UnoGameState extends GameState {
             this.player2Hand = startHand();
             Log.i("UnoGameState", "card 0 in player 2 hand is " + this.player2Hand.get(0).getCardColor() + " " + this.player2Hand.get(0).getCardNumber());
             this.player2Score = 0;
+        } else {
+            this.player2Hand = new ArrayList<>();
         }
         this.isReversed = false;
         this.changedPlayableColor = 'r';
@@ -204,6 +206,8 @@ public class UnoGameState extends GameState {
                 player2Hand.add(new UnoCard(card));
             }
             this.player2Score = originalGame.player2Score;
+        } else {
+            this.player2Hand = new ArrayList<>();
         }
 
         this.shuffledDeck = new ArrayList<UnoCard>();
@@ -305,9 +309,7 @@ public class UnoGameState extends GameState {
     }
 
     /**
-     * get player 1's hand
      *
-     * @return
      *      return player 1's hand
      */
     public ArrayList<UnoCard> getPlayer1Hand() {
@@ -623,6 +625,7 @@ public class UnoGameState extends GameState {
      *      return true if card is played, false otherwise
      */
     public boolean playCard(int playerId, UnoCard card) {
+        Log.i("playCard", "current player turn: " + this.getPlayerTurn());
         //if number is -1 that means any card number can be played because a wild card was played
         //if it is not that players turn then the move is not valid so return false also
         //currently this method also changes the player turn but when we implement reverse I think we will want to change the turn outside of this method or write
