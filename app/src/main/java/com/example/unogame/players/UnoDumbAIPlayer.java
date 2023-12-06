@@ -39,12 +39,12 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
     protected void receiveInfo(GameInfo info) {
         Log.i("dumb ai", "entered dumb ai receive info");
         //check if instance of UnoGameStat
-        if(info instanceof UnoGameState){
+        if (info instanceof UnoGameState) {
             UnoGameState curGame = (UnoGameState) info;
             Log.i("dumb ai", "entered instance of unogame state");
 
             //if it is your turn
-            if(curGame.getPlayerTurn() == this.playerNum) {
+            if (curGame.getPlayerTurn() == this.playerNum) {
                 Log.i("dumb ai", "entered if playerNum if statement");
                 //if it has a playable card and more than one card, play the first playable card it has
                 //if one card left, %50 chance to call uno, else do nothing - need to write a call uno function (in UnoGameState)
@@ -53,19 +53,17 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
                     Log.i("dumb ai", "entered if hand size is 0");
                     Random rand = new Random();
                     int randomNum = rand.nextInt(5);
-                    if(randomNum % 2 == 0) {
+                    if (randomNum % 2 == 0) {
                         Log.i("dumb ai", "calling declareUno ");
                         UnoDeclareUnoAction declareUno = new UnoDeclareUnoAction(this);
                         sleep(3);
                         game.sendAction(declareUno);
-                    }
-                    else{
+                    } else {
                         Log.i("dumb ai", "not calling declare uno");
                         return;
                     }
 
-                }}
-                else {
+                } else {
                     if (this.playerNum == 0) {
                         Log.i("dumb ai0", "player 0");
                         for (int i = 0; i < curGame.getPlayer0Hand().size(); i++) {
@@ -74,7 +72,7 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
                                 UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
                                 sleep(3);
                                 game.sendAction(actionPlay);
-                                Log.i("dumb ai0", "sent a play card action for a " + curGame.getPlayer0Hand().get(i).getCardColor() + " " +  curGame.getPlayer0Hand().get(i).getCardNumber());
+                                Log.i("dumb ai0", "sent a play card action for a " + curGame.getPlayer0Hand().get(i).getCardColor() + " " + curGame.getPlayer0Hand().get(i).getCardNumber());
                                 return;
 
                             }
@@ -94,7 +92,7 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
                                 UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
                                 sleep(3);
                                 game.sendAction(actionPlay);
-                                Log.i("dumb ai1", "sent a play card action for a " + curGame.getPlayer1Hand().get(i).getCardColor() + " " +  curGame.getPlayer1Hand().get(i).getCardNumber());
+                                Log.i("dumb ai1", "sent a play card action for a " + curGame.getPlayer1Hand().get(i).getCardColor() + " " + curGame.getPlayer1Hand().get(i).getCardNumber());
                                 return;
                             }
                         }
@@ -112,7 +110,7 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
                                 UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
                                 sleep(3);
                                 game.sendAction(actionPlay);
-                                Log.i("dumb ai2", "sent a play card action for a " + curGame.getPlayer2Hand().get(i).getCardColor() + " " +  curGame.getPlayer2Hand().get(i).getCardNumber());
+                                Log.i("dumb ai2", "sent a play card action for a " + curGame.getPlayer2Hand().get(i).getCardColor() + " " + curGame.getPlayer2Hand().get(i).getCardNumber());
                                 return;
                             }
                         }
@@ -124,11 +122,12 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
                         return;
 
 
+                    }
                 }
-            }
-
 
             }
+
 
         }
     }
+}

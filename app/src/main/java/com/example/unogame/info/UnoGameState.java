@@ -158,6 +158,8 @@ public class UnoGameState extends GameState {
             this.player2Hand = startHand();
             Log.i("UnoGameState", "card 0 in player 2 hand is " + this.player2Hand.get(0).getCardColor() + " " + this.player2Hand.get(0).getCardNumber());
             this.player2Score = 0;
+        } else {
+            this.player2Hand = new ArrayList<>();
         }
         this.isReversed = false;
         this.changedPlayableColor = 'r';
@@ -204,6 +206,8 @@ public class UnoGameState extends GameState {
                 player2Hand.add(new UnoCard(card));
             }
             this.player2Score = originalGame.player2Score;
+        } else {
+            this.player2Hand = new ArrayList<>();
         }
 
         this.shuffledDeck = new ArrayList<UnoCard>();
