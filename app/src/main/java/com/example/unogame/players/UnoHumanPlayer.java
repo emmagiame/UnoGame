@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ImageView;
+
 
 import com.example.game.GameFramework.GameMainActivity;
 import com.example.game.GameFramework.infoMessage.GameInfo;
@@ -27,6 +29,7 @@ import com.example.unogame.cards.UnoCardWild;
 import com.example.unogame.info.UnoGameState;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /*
 
@@ -61,6 +64,9 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private ImageView discardPileImage;
     private ImageView drawPileImage;
     private ImageView aiPlayerImage;
+    private ImageView blank;
+
+
 
     private ImageView drawCardPileButton = null;
     private ImageView cardSlot1 = null;
@@ -80,6 +86,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private Button green = null;
     private Button blue = null;
     private Button red = null;
+    private TextView status = null;
 
 
 
@@ -138,25 +145,43 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             ArrayList<UnoCard> cards = currGame.getPlayer0Hand();
             ArrayList<UnoCard> currentDiscard = currGame.getDiscardPile();
 
-            if (cards.size() > 0) {
-                setImage(this.cardImageView1, cards.get(offset + 0));
-            }
-            if (cards.size() > 1) {
-                setImage(this.cardImageView2, cards.get(offset + 1));
-            }
-            if (cards.size() > 2) {
-                setImage(this.cardImageView3, cards.get(offset + 2));
-            }
-            if (cards.size() > 3) {
-                setImage(this.cardImageView4, cards.get(offset + 3));
-            }
-            if (cards.size() > 4) {
-                setImage(this.cardImageView5, cards.get(offset + 4));
+            //if the deck has less than 5 cards
+            if(offset > 0 && cards.size() < 6) {
+                offset = 0;
             }
 
+            int cardIndex1 = offset + 0;
+            if (cardIndex1 < cards.size()) {
+                setImage(this.cardImageView1, cards.get(cardIndex1));
+            } else {
+                Log.e("CardImageView1", "Index out of bounds: " + cardIndex1);
+                this.cardImageView1.setImageResource(R.drawable.blank);
+            }
+
+            //display cards in card slots 1-5
+            displayCardInImageView(cards, offset + 0, cardImageView1);
+            displayCardInImageView(cards, offset + 1, cardImageView2);
+            displayCardInImageView(cards, offset + 2, cardImageView3);
+            displayCardInImageView(cards, offset + 3, cardImageView4);
+            displayCardInImageView(cards, offset + 4, cardImageView5);
+
+            //display discard pile image
             setImage(this.discardPileImage, currentDiscard.get(0));
+
+            //display default images for ai player and draw pile
             this.aiPlayerImage.setImageResource(R.drawable.back);
             this.drawPileImage.setImageResource(R.drawable.back);
+        }
+    }
+
+    // Method to display a card in a cardImageView
+    private void displayCardInImageView(ArrayList<UnoCard> cards, int index, ImageView imageView) {
+        int cardIndex = offset + index;
+        if (cardIndex < cards.size()) {
+            setImage(imageView, cards.get(cardIndex));
+        } else {
+            Log.e("CardImageView", "Index out of bounds: " + cardIndex);
+            imageView.setImageResource(R.drawable.blank);
         }
     }
 
@@ -531,6 +556,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             flash(Color.GREEN, 100);
             return;
         }
+
         //scroll left and right buttons
         else if (view.getId() == R.id.leftButton) {
             if (offset <= 0) {
@@ -551,20 +577,28 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             }
         }
 
-        //color buttons for wild card
+        //color picker buttons for wild cards
         else if (view.getId() == R.id.yellow) {
-
-
+            UnoGameState gameState = (UnoGameState) game.getGameState();
+            gameState.setChangedPlayableColor('y');
+            Log.i("yellow button clicked id", "color clicked id is yellow") ;
         }
         else if (view.getId() == R.id.green) {
-
+            UnoGameState gameState = (UnoGameState) game.getGameState();
+            gameState.setChangedPlayableColor('g');
+            Log.i("green button clicked id", "color clicked id is green") ;
 
         }
         else if (view.getId() == R.id.red) {
-
+            UnoGameState gameState = (UnoGameState) game.getGameState();
+            gameState.setChangedPlayableColor('r');
+            Log.i("red button clicked id", "color clicked id is red") ;
         }
 
         else if (view.getId() == R.id.blue) {
+            UnoGameState gameState = (UnoGameState) game.getGameState();
+            gameState.setChangedPlayableColor('b');
+            Log.i("blue button clicked id", "color clicked id is blue") ;
         }
 
         //flash red if button is invalid

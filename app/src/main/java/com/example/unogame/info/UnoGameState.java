@@ -305,9 +305,7 @@ public class UnoGameState extends GameState {
     }
 
     /**
-     * get player 1's hand
      *
-     * @return
      *      return player 1's hand
      */
     public ArrayList<UnoCard> getPlayer1Hand() {
