@@ -491,28 +491,67 @@ public class UnoGameState extends GameState {
      * @return
      *      return true if card is added, false otherwise
      */
-    public boolean drawCardFromDrawPile(int playerId, UnoCard card){
+    public boolean drawCardFromDrawPile(int playerId, UnoCard card) {
         //if it is not that players turn then the move is not valid so return false
-        if(playerId != this.playerTurn){
+        if (playerId != this.playerTurn) {
             return false;
         }
 
         //check who's turn it is and add a card to their hand
-        if(playerId == 0){
+        if (playerId == 0) {
             this.player0Hand.add(card);
             this.drawPile.remove(0);
-            return true;
-        }
-        else if(playerId == 1) {
+        } else if (playerId == 1) {
             this.player1Hand.add(card);
             this.drawPile.remove(0);
-            return true;
-        }
-
-        else if(playerId == 2){
+        } else if (playerId == 2) {
             this.player2Hand.add(card);
             this.drawPile.remove(0);
-            return true;
+        }
+
+        //change turn
+        if (this.isReversed == false) {
+            if (this.getNumPlayers() == 2) {
+                if (this.getPlayerTurn() == 0) {
+                    this.setPlayerTurn(1);
+                    return true;
+                } else {
+                    this.setPlayerTurn(0);
+                    return true;
+                }
+            } else if (this.getNumPlayers() == 3) {
+                if (this.getPlayerTurn() == 0) {
+                    this.setPlayerTurn(1);
+                    return true;
+                } else if (this.getPlayerTurn() == 1) {
+                    this.setPlayerTurn(2);
+                    return true;
+                } else {
+                    this.setPlayerTurn(0);
+                    return true;
+                }
+            }
+        } else if (this.isReversed == true) {
+            if (this.getNumPlayers() == 2) {
+                if (this.getPlayerTurn() == 0) {
+                    this.setPlayerTurn(1);
+                    return true;
+                } else {
+                    this.setPlayerTurn(0);
+                    return true;
+                }
+            } else if (this.getNumPlayers() == 3) {
+                if (this.getPlayerTurn() == 0) {
+                    this.setPlayerTurn(2);
+                    return true;
+                } else if (this.getPlayerTurn() == 1) {
+                    this.setPlayerTurn(0);
+                    return true;
+                } else {
+                    this.setPlayerTurn(1);
+                    return true;
+                }
+            }
         }
         return false;
     }
