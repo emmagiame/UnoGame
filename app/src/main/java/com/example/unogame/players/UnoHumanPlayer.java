@@ -132,7 +132,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             Log.i("reciveInfo", "info is an instance of UnoGameState");
             //make an instance of UnoGame based off of info
             UnoGameState currGame = (UnoGameState) info;
-            Log.i("playCard", "current color " + currGame.getCurrentPlayableColor() + " current number " + currGame.getCurrentPlayableNumber());
+            Log.i("reciveInfo", "current color " + currGame.getCurrentPlayableColor() + " current number " + currGame.getCurrentPlayableNumber());
             //only works assuming human player is player0
             //displaying human player's hand in the card slots -
             ArrayList<UnoCard> cards = currGame.getPlayer0Hand();
