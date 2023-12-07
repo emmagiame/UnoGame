@@ -140,12 +140,12 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      */
     @Override
     public void receiveInfo(GameInfo info) {
-        Log.i("reciveInfo", "entered reciveInfo");
+        Log.i("receiveInfo", "entered receiveInfo");
         if (info instanceof UnoGameState) {
-            Log.i("reciveInfo", "info is an instance of UnoGameState");
+            Log.i("receiveInfo", "info is an instance of UnoGameState");
             //make an instance of UnoGame based off of info
             UnoGameState currGame = (UnoGameState) info;
-            Log.i("reciveInfo", "current color " + currGame.getCurrentPlayableColor() + " current number " + currGame.getCurrentPlayableNumber());
+            Log.i("receiveInfo", "current color " + currGame.getCurrentPlayableColor() + " current number " + currGame.getCurrentPlayableNumber());
             //only works assuming human player is player0
             //displaying human player's hand in the card slots -
             ArrayList<UnoCard> cards = currGame.getPlayer0Hand();
@@ -159,11 +159,14 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             opponentHandNum = myActivity.findViewById(R.id.opponentHandNum);
             ourHand = myActivity.findViewById(R.id.ourHand);
             playerTurn = myActivity.findViewById(R.id.playerTurn);
-            opponentHandNum.setText("Opponent has " + currGame.getPlayer1Hand().size() + " cards.");
+            int player1HandSize = currGame.getPlayer1Hand().size() - 1;
+            opponentHandNum.setText("Opponent has " + player1HandSize + " cards.");
             opponentHandNum.setTextSize(30);
-            ourHand.setText("You have " + currGame.getPlayer0Hand().size() + " cards.");
+            int player0HandSize = currGame.getPlayer0Hand().size() - 1;
+            ourHand.setText("You have " + player0HandSize + " cards.");
             ourHand.setTextSize(30);
-            playerTurn.setText("It's player " + currGame.getPlayerTurn() + " turn.");
+            int currPlayer = currGame.getPlayerTurn();
+            playerTurn.setText("It's " + allPlayerNames[currPlayer] + "'s turn.");
             playerTurn.setTextSize(30);
 
             int cardIndex1 = offset + 0;
@@ -216,7 +219,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         this.runTestButton = myActivity.findViewById(R.id.runTestButton);
         runTestButton.setOnClickListener(this);
 
-        //add cardslots on playing field
+        //add card slots on playing field
         cardImageView1 = myActivity.findViewById(R.id.cardSlot1);
         cardImageView2 = myActivity.findViewById(R.id.cardSlot2);
         cardImageView3 = myActivity.findViewById(R.id.cardSlot3);
@@ -227,15 +230,11 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         drawPileImage = myActivity.findViewById(R.id.drawCardPileImage);
         aiPlayerImage = myActivity.findViewById(R.id.opponentHand);
 
-        //broken assumes player 0 is human player
+        //broken assumes player 0 is human player !!!!!!!!!!!!!!
 
         cardSlotArray = new ArrayList<>();
         cardSlotArray.add((myActivity.findViewById(R.id.cardSlot1)));
 
-
-//        editText = myActivity.findViewById(R.id.editTextTextMultiLine);
-//        textViewFun = myActivity.findViewById(R.id.textViewFun);
-//        textViewFun.setText("Your hand: ");
 
         this.drawCardPileButton = myActivity.findViewById(R.id.drawCardPileImage);
         drawCardPileButton.setOnClickListener(this);
@@ -495,39 +494,6 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     @Override
     public void onClick(View view) {
         Log.i("onClick", "entered onClick");
-        /*if(view.getId() == R.id.runTestButton){
-            //clear text in edit text
-            //editText.setText("");
-            editText.getText().clear();
-
-            //make new instance of game state
-            UnoGameState firstInstance = new UnoGameState(2);
-
-            //make deep copy from the perspective of player one (player 0 in the array)
-            UnoGameState secondInstance = new UnoGameState(firstInstance);
-
-            //call each method in game state class at least once, making a legal move and printing a
-            //description of the action to multiLine EditText
-
-            //draw a card to player 0
-            firstInstance.drawCardFromDrawPile(0, firstInstance.getDrawPile().get(0));
-            editText.append("Player 0 played the first card in their hand (card at index 0)\n");
-
-            //player 0 plays a card
-            firstInstance.playCard(0, firstInstance.getPlayer0Hand().get(0));
-            editText.append("Player 0 drew a card from the draw pile \n");
-
-            //new instance of game state
-            UnoGameState thirdInstance = new UnoGameState(2);
-
-            //new deep copy from the perspective of player one (player 0 in the array)
-            UnoGameState fourthInstance = new UnoGameState(thirdInstance);
-
-            //call to string and append to text in textview
-            editText.append(secondInstance.toString());
-            editText.append(fourthInstance.toString());
-            return;
-        }*/
 
         if(view.getId() == R.id.drawButton){
             Log.i("action was clicked", "sending a draw card action");

@@ -472,6 +472,11 @@ public class UnoGameState extends GameState {
         this.changedPlayableColor = colorIn;
     }
 
+    public char getChangedPlayableColor(){
+        return this.changedPlayableColor;
+    }
+
+
     /**
      * sets who's turn it is
      *
@@ -570,6 +575,7 @@ public class UnoGameState extends GameState {
 
             if(playerId == 0 && player0Hand.size() == 1){
                 return true;
+                
             }
             else if(playerId == 1 && player1Hand.size() == 1){
                 return true;
@@ -669,7 +675,7 @@ public class UnoGameState extends GameState {
         //if it is not that players turn then the move is not valid so return false also
         //currently this method also changes the player turn but when we implement reverse I think we will want to change the turn outside of this method or write
         //a method to change the turn and call it in playCard instead
-        if (playerId == this.getPlayerTurn() && (card.getCardColor() == this.getCurrentPlayableColor()) || (card.getCardNumber() == this.getCurrentPlayableNumber()) || (card.getCardNumber() == -1) || (card.getCardColor() == 'n')) {
+        if ((playerId == this.getPlayerTurn()) && ((card.getCardColor() == this.getCurrentPlayableColor()) || (card.getCardNumber() == this.getCurrentPlayableNumber()) || (card.getCardNumber() == -1) || (card.getCardColor() == 'n'))) {
         Log.i("playCard", "current color " + this.getCurrentPlayableColor() + " current number " + this.getCurrentPlayableNumber());
         // remove card from players hand
         if (playerId == 0) {
@@ -789,7 +795,7 @@ public class UnoGameState extends GameState {
                             //this.playerTurn = 0;
                         }
                         //change the playable color
-                        this.currentPlayableColor = card.getCardColor();
+                        this.currentPlayableColor = this.getChangedPlayableColor();
 
                     } else if (this.numPlayers == 2) {
                         if (playerId == 0) {
@@ -806,21 +812,25 @@ public class UnoGameState extends GameState {
                             //this.playerTurn = 0;
                         }
                         //change the playable color
-                        this.currentPlayableColor = card.getCardColor();
+                        this.currentPlayableColor = this.getChangedPlayableColor();
                         //return true;
                     }
                 } else if (card instanceof UnoCardSkip) {//keep the returns here
                     if (this.numPlayers == 2) {
                         this.setPlayerTurn(playerId);
+                        this.currentPlayableColor = card.getCardColor();
                     } else if (this.numPlayers == 3) {
                         if (playerId == 0) {
                             this.setPlayerTurn(2);
+                            this.currentPlayableColor = card.getCardColor();
                             return true;
                         } else if (playerId == 1) {
                             this.setPlayerTurn(0);
+                            this.currentPlayableColor = card.getCardColor();
                             return true;
                         } else if (playerId == 2) {
                             this.setPlayerTurn(1);
+                            this.currentPlayableColor = card.getCardColor();
                             return true;
                         }
                     }
@@ -828,8 +838,10 @@ public class UnoGameState extends GameState {
                 } else if (card instanceof UnoCardReverse) {
                     //for now just a boolean, not super sure how to implement
                     if (this.isReversed == true) {
+                        this.currentPlayableColor = card.getCardColor();
                         this.isReversed = false;
                     } else if (this.isReversed == false) {
+                        this.currentPlayableColor = card.getCardColor();
                         this.isReversed = true;
                     }
 
