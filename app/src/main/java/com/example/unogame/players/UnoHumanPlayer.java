@@ -49,6 +49,12 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     private TextView textViewFun;
 
+    private TextView opponentHandNum;
+
+    private TextView ourHand;
+
+    private TextView playerTurn;
+
     private UnoGameState firstInstance;
     //layout id of given layout
     private int layoutId;
@@ -149,6 +155,16 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             if(offset > 0 && cards.size() < 6) {
                 offset = 0;
             }
+
+            opponentHandNum = myActivity.findViewById(R.id.opponentHandNum);
+            ourHand = myActivity.findViewById(R.id.ourHand);
+            playerTurn = myActivity.findViewById(R.id.playerTurn);
+            opponentHandNum.setText("Opponent has " + currGame.getPlayer1Hand().size() + " cards.");
+            opponentHandNum.setTextSize(30);
+            ourHand.setText("You have " + currGame.getPlayer0Hand().size() + " cards.");
+            ourHand.setTextSize(30);
+            playerTurn.setText("It's player " + currGame.getPlayerTurn() + " turn.");
+            playerTurn.setTextSize(30);
 
             int cardIndex1 = offset + 0;
             if (cardIndex1 < cards.size()) {
