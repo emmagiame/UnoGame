@@ -575,7 +575,7 @@ public class UnoGameState extends GameState {
 
             if(playerId == 0 && player0Hand.size() == 1){
                 return true;
-                
+
             }
             else if(playerId == 1 && player1Hand.size() == 1){
                 return true;
@@ -671,7 +671,7 @@ public class UnoGameState extends GameState {
      */
     public boolean playCard(int playerId, UnoCard card) {
         Log.i("playCard", "current player turn: " + this.getPlayerTurn());
-        //if number is -1 that means any card number can be played because a wild card was played
+        //if number is -1 that means any card number can be played because a wild card or special card was played
         //if it is not that players turn then the move is not valid so return false also
         //currently this method also changes the player turn but when we implement reverse I think we will want to change the turn outside of this method or write
         //a method to change the turn and call it in playCard instead

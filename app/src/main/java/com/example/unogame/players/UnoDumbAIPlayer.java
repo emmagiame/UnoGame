@@ -48,7 +48,7 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
                 Log.i("dumb ai", "entered if playerNum if statement");
                 //if it has a playable card and more than one card, play the first playable card it has
                 //if one card left, %50 chance to call uno, else do nothing - need to write a call uno function (in UnoGameState)
-                if (((this.playerNum == 0) && (curGame.getPlayer0Hand().size() == 1)) || ((this.playerNum == 1) && ((curGame.getPlayer1Hand().size() == 1))) || ((this.playerNum == 2) && (curGame.getPlayer2Hand().size() == 1))) {
+                /*if (((this.playerNum == 0) && (curGame.getPlayer0Hand().size() == 1)) || ((this.playerNum == 1) && ((curGame.getPlayer1Hand().size() == 1))) || ((this.playerNum == 2) && (curGame.getPlayer2Hand().size() == 1))) {
                     // cant be done until call uno action is done
                     Log.i("dumb ai", "entered if hand size is 0");
                     Random rand = new Random();
@@ -63,7 +63,7 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
                         return;
                     }
 
-                } else {
+                } else {*/
                     if (this.playerNum == 0) {
                         Log.i("dumb ai0", "player 0");
                         for (int i = 0; i < curGame.getPlayer0Hand().size(); i++) {
@@ -130,4 +130,4 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
 
         }
     }
-}
+//}

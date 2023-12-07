@@ -13,6 +13,8 @@ import com.example.unogame.players.UnoHumanPlayer;
 
 Tags
 @author - Isabella Horstmanshof
+@author - Emma Giamello
+@author - Rhiannon McKinley
 
  */
 
