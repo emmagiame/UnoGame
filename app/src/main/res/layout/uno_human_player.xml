@@ -1,58 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/wholeGameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:id="@+id/runTestButtonLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-
-            <LinearLayout
-                android:id="@+id/testRunningLayout"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/editTextTextMultiLine"
-                    android:layout_width="600dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0"
-                    android:autofillHints=""
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:inputType="textMultiLine"
-                    android:overScrollMode="always"
-                    android:textSize="20sp" />
-
-                <Button
-                    android:id="@+id/runTestButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Run Test"
-                    android:textSize="20sp" />
-            </LinearLayout>
-
-
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/playingAreaLayout"
@@ -64,7 +25,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <!-- The opponent's cards -->
 
             <LinearLayout
                 android:id="@+id/opponentHandLayout"
@@ -144,8 +104,8 @@
                     android:id="@+id/yellow"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_weight="200"
                     android:layout_gravity="center"
+                    android:layout_weight="200"
                     android:background="#ECD407"
                     android:text="Yellow" />
 
@@ -154,9 +114,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="#379711"
-                    android:layout_weight="200"
                     android:layout_marginStart="10dp"
+                    android:layout_weight="200"
+                    android:background="#379711"
                     android:text="Green" />
 
                 <Button
@@ -164,9 +124,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="#D72600"
-                    android:layout_weight="200"
                     android:layout_marginStart="10dp"
+                    android:layout_weight="200"
+                    android:background="#D72600"
                     android:text="Red" />
 
                 <Button
@@ -174,9 +134,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="#418FDE"
-                    android:layout_weight="200"
                     android:layout_marginStart="10dp"
+                    android:layout_weight="200"
+                    android:background="#418FDE"
                     android:text="Blue" />
             </LinearLayout>
 

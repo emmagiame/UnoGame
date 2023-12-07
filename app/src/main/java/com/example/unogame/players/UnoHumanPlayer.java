@@ -1,21 +1,14 @@
 package com.example.unogame.players;
 
 import android.graphics.Color;
-import android.media.Image;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.ImageView;
-
 
 import com.example.game.GameFramework.GameMainActivity;
 import com.example.game.GameFramework.infoMessage.GameInfo;
-import com.example.game.GameFramework.infoMessage.GameState;
 import com.example.game.GameFramework.players.GameHumanPlayer;
 import com.example.unogame.R;
 import com.example.unogame.UnoDrawCardAction;
@@ -27,9 +20,8 @@ import com.example.unogame.cards.UnoCardReverse;
 import com.example.unogame.cards.UnoCardSkip;
 import com.example.unogame.cards.UnoCardWild;
 import com.example.unogame.info.UnoGameState;
-
 import java.util.ArrayList;
-import java.util.List;
+
 
 /*
 
@@ -45,9 +37,6 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     //android activity that we are running
     private GameMainActivity myActivity;
-    private EditText editText;
-
-    private TextView textViewFun;
 
     private TextView opponentHandNum;
 
@@ -55,9 +44,8 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     private TextView playerTurn;
 
-    private UnoGameState firstInstance;
     //layout id of given layout
-    private int layoutId;
+    private final int layoutId;
     private int offset = 0;
 
     //image view to display uno card
@@ -70,10 +58,6 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private ImageView discardPileImage;
     private ImageView drawPileImage;
     private ImageView aiPlayerImage;
-    private ImageView blank;
-
-
-
     private ImageView drawCardPileButton = null;
     private ImageView cardSlot1 = null;
     private ImageView cardSlot2 = null;
@@ -87,15 +71,11 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private ImageView discardCardPileButton = null;
     private Button declareUnoButton = null;
     private Button callOutUnoButton = null;
-    private Button runTestButton = null;
+    //private Button runTestButton = null;
     private Button yellow = null;
     private Button green = null;
     private Button blue = null;
     private Button red = null;
-    private TextView status = null;
-
-
-
     private int cardClickedIdx = -1;
 
 
@@ -119,7 +99,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     @Override
     public View getTopView() {
 
-        return myActivity.findViewById(R.id.runTestButtonLayout);
+        return myActivity.findViewById(R.id.wholeGameLayout);
     }
 
     /**
@@ -169,7 +149,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             playerTurn.setText("It's " + allPlayerNames[currPlayer] + "'s turn.");
             playerTurn.setTextSize(30);
 
-            int cardIndex1 = offset + 0;
+            int cardIndex1 = offset;
             if (cardIndex1 < cards.size()) {
                 setImage(this.cardImageView1, cards.get(cardIndex1));
             } else { //if cards are less than 5, display a greyed out card
@@ -178,7 +158,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             }
 
             //display cards in card slots 1-5
-            displayCardInImageView(cards, offset + 0, cardImageView1);
+            displayCardInImageView(cards, offset, cardImageView1);
             displayCardInImageView(cards, offset + 1, cardImageView2);
             displayCardInImageView(cards, offset + 2, cardImageView3);
             displayCardInImageView(cards, offset + 3, cardImageView4);
@@ -207,7 +187,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     /**
      * finds button and edit text in given player view
      *
-     * @param activity
+     * @param activity - idk
      */
     @Override
     public void setAsGui(GameMainActivity activity) {
@@ -216,8 +196,8 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         myActivity.setContentView(layoutId);
 
         // all the onClicks for every button/ card on layout
-        this.runTestButton = myActivity.findViewById(R.id.runTestButton);
-        runTestButton.setOnClickListener(this);
+        //this.runTestButton = myActivity.findViewById(R.id.runTestButton);
+        //runTestButton.setOnClickListener(this);
 
         //add card slots on playing field
         cardImageView1 = myActivity.findViewById(R.id.cardSlot1);
@@ -489,7 +469,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     /**
      * onClick method
      *
-     * @param view
+     * @param view - game view
      */
     @Override
     public void onClick(View view) {
@@ -503,7 +483,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             return;
         }
         else if(view.getId() == R.id.cardSlot1){
-            cardClickedIdx = 0 + offset;
+            cardClickedIdx = offset;
             flash(Color.GREEN, 100);
             Log.i("changed card clicked id", "card clicked id is " + cardClickedIdx);
         }
