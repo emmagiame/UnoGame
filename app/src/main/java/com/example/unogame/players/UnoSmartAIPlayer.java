@@ -21,7 +21,6 @@ Tags
  */
 
 public class UnoSmartAIPlayer extends GameComputerPlayer {
-    //ignore this comment
 
     private int layoutId;
 
@@ -46,7 +45,7 @@ public class UnoSmartAIPlayer extends GameComputerPlayer {
                     if (curGame.getPlayer0Hand().get(i) instanceof UnoCardPlus2 || curGame.getPlayer0Hand().get(i) instanceof UnoCardPlus4) {
                         Log.i("SmartAI0", "played a +2 or +4 card");
                         UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
-                        sleep(3);
+                        sleep(1);
                         game.sendAction(actionPlay);
                         return;
                     }
@@ -112,7 +111,7 @@ public class UnoSmartAIPlayer extends GameComputerPlayer {
                         //play the card
                         Log.i("SmartAI0", "played a wildcard and set new playable color to " + curGame.getCurrentPlayableColor());
                         UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
-                        sleep(3);
+                        sleep(1);
                         game.sendAction(actionPlay);
                         return;
                     }
@@ -125,7 +124,7 @@ public class UnoSmartAIPlayer extends GameComputerPlayer {
                         if (curGame.getPlayer0Hand().size() <= curGame.getPlayer1Hand().size()) {
                             Log.i("SmartAI0", "played a skip or reverse card");
                             UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
-                            sleep(3);
+                            sleep(1);
                             game.sendAction(actionPlay);
                             return;
                         }
@@ -138,7 +137,7 @@ public class UnoSmartAIPlayer extends GameComputerPlayer {
                         if ((!(curGame.getPlayer0Hand().get(i) instanceof UnoCardPlus2)) && (!(curGame.getPlayer0Hand().get(i) instanceof UnoCardPlus4)) && (!(curGame.getPlayer0Hand().get(i) instanceof UnoCardReverse)) && (!(curGame.getPlayer0Hand().get(i) instanceof UnoCardSkip)) && (!(curGame.getPlayer0Hand().get(i) instanceof UnoCardWild))) {
                             Log.i("SmartAI0", "played a normal card");
                             UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
-                            sleep(3);
+                            sleep(1);
                             game.sendAction(actionPlay);
                             return;
                         }
@@ -148,7 +147,7 @@ public class UnoSmartAIPlayer extends GameComputerPlayer {
                 //if it doesnt have a playable card, draw a card
                 Log.i("SmartAI0", "drew a card");
                 UnoDrawCardAction actionDraw = new UnoDrawCardAction(this);
-                sleep(3);
+                sleep(1);
                 game.sendAction(actionDraw);
                 return;
 
@@ -159,7 +158,7 @@ public class UnoSmartAIPlayer extends GameComputerPlayer {
                     if (curGame.getPlayer1Hand().get(i) instanceof UnoCardPlus2 || curGame.getPlayer1Hand().get(i) instanceof UnoCardPlus4) {
                         Log.i("SmartAI1", "played a +2 or +4 card");
                         UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
-                        sleep(3);
+                        sleep(1);
                         game.sendAction(actionPlay);
                         return;
                     }
@@ -225,7 +224,7 @@ public class UnoSmartAIPlayer extends GameComputerPlayer {
                         //play the card
                         Log.i("SmartAI1", "played a wildcard and set new playable color to " + curGame.getCurrentPlayableColor());
                         UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
-                        sleep(3);
+                        sleep(1);
                         game.sendAction(actionPlay);
                         return;
                     }
@@ -239,7 +238,7 @@ public class UnoSmartAIPlayer extends GameComputerPlayer {
                             if (curGame.getPlayer1Hand().size() <= curGame.getPlayer0Hand().size()) {
                                 Log.i("SmartAI1", "played a skip or reverse card");
                                 UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
-                                sleep(3);
+                                sleep(1);
                                 game.sendAction(actionPlay);
                                 return;
                             }
@@ -248,7 +247,7 @@ public class UnoSmartAIPlayer extends GameComputerPlayer {
                             if (curGame.getPlayer1Hand().size() <= curGame.getPlayer2Hand().size()) {
                                 Log.i("SmartAI1", "played a skip or reverse card");
                                 UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
-                                sleep(3);
+                                sleep(1);
                                 game.sendAction(actionPlay);
                                 return;
                             }
@@ -262,7 +261,7 @@ public class UnoSmartAIPlayer extends GameComputerPlayer {
                         if ((!(curGame.getPlayer1Hand().get(i) instanceof UnoCardPlus2)) && (!(curGame.getPlayer1Hand().get(i) instanceof UnoCardPlus4)) && (!(curGame.getPlayer1Hand().get(i) instanceof UnoCardReverse)) && (!(curGame.getPlayer1Hand().get(i) instanceof UnoCardSkip)) && (!(curGame.getPlayer1Hand().get(i) instanceof UnoCardWild))) {
                             Log.i("SmartAI1", "played a normal card");
                             UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
-                            sleep(3);
+                            sleep(1);
                             game.sendAction(actionPlay);
                             return;
                         }
@@ -273,7 +272,7 @@ public class UnoSmartAIPlayer extends GameComputerPlayer {
                 //if it doesnt have a playable card, draw a card
                 Log.i("SmartAI1", "no playable cards so drew a card");
                 UnoDrawCardAction actionDraw = new UnoDrawCardAction(this);
-                sleep(3);
+                sleep(1);
                 game.sendAction(actionDraw);
                 return;
 
@@ -284,7 +283,7 @@ public class UnoSmartAIPlayer extends GameComputerPlayer {
                     if (curGame.getPlayer2Hand().get(i) instanceof UnoCardPlus2 || curGame.getPlayer2Hand().get(i) instanceof UnoCardPlus4) {
                         Log.i("SmartAI2", "played a +2 or +4 card");
                         UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
-                        sleep(3);
+                        sleep(1);
                         game.sendAction(actionPlay);
                         return;
                     }
@@ -364,7 +363,7 @@ public class UnoSmartAIPlayer extends GameComputerPlayer {
                         //play the card
                         Log.i("SmartAI2", "played a wildcard and set new playable color to " + curGame.getCurrentPlayableColor());
                         UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
-                        sleep(3);
+                        sleep(1);
                         game.sendAction(actionPlay);
                         return;
                     }
@@ -378,7 +377,7 @@ public class UnoSmartAIPlayer extends GameComputerPlayer {
                             if (curGame.getPlayer2Hand().size() <= curGame.getPlayer0Hand().size()) {
                                 Log.i("SmartAI2", "played a skip or reverse card");
                                 UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
-                                sleep(3);
+                                sleep(1);
                                 game.sendAction(actionPlay);
                                 return;
                             }
@@ -392,7 +391,7 @@ public class UnoSmartAIPlayer extends GameComputerPlayer {
                         if((!(curGame.getPlayer2Hand().get(i) instanceof UnoCardPlus2)) && (!(curGame.getPlayer2Hand().get(i) instanceof UnoCardPlus4)) && (!(curGame.getPlayer2Hand().get(i) instanceof UnoCardReverse)) && (!(curGame.getPlayer2Hand().get(i) instanceof UnoCardSkip)) && (!(curGame.getPlayer2Hand().get(i) instanceof UnoCardWild))){
                             Log.i("SmartAI2", "played a normal card");
                             UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
-                            sleep(3);
+                            sleep(1);
                             game.sendAction(actionPlay);
                             return;
                         }
@@ -402,11 +401,9 @@ public class UnoSmartAIPlayer extends GameComputerPlayer {
                 //if it doesnt have a playable card, draw a card
                 Log.i("SmartAI2", "drew a card");
                 UnoDrawCardAction actionDraw = new UnoDrawCardAction(this);
-                sleep(3);
+                sleep(1);
                 game.sendAction(actionDraw);
                 return;
-
-
             }
         }
     }

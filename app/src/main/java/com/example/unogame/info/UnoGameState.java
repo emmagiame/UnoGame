@@ -575,7 +575,7 @@ public class UnoGameState extends GameState {
 
             if(playerId == 0 && player0Hand.size() == 1){
                 return true;
-                
+
             }
             else if(playerId == 1 && player1Hand.size() == 1){
                 return true;
@@ -671,12 +671,14 @@ public class UnoGameState extends GameState {
      */
     public boolean playCard(int playerId, UnoCard card) {
         Log.i("playCard", "current player turn: " + this.getPlayerTurn());
-        //if number is -1 that means any card number can be played because a wild card was played
+        //if number is -1 that means any card number can be played because a wild card or special card was played
         //if it is not that players turn then the move is not valid so return false also
         //currently this method also changes the player turn but when we implement reverse I think we will want to change the turn outside of this method or write
         //a method to change the turn and call it in playCard instead
-        if ((playerId == this.getPlayerTurn()) && ((card.getCardColor() == this.getCurrentPlayableColor()) || (card.getCardNumber() == this.getCurrentPlayableNumber()) || (card.getCardNumber() == -1) || (card.getCardColor() == 'n'))) {
-        Log.i("playCard", "current color " + this.getCurrentPlayableColor() + " current number " + this.getCurrentPlayableNumber());
+        if ((playerId == this.getPlayerTurn())){
+            if((card.getCardColor() == this.getCurrentPlayableColor()) || (card.getCardNumber() == this.getCurrentPlayableNumber()) || (card.getCardNumber() == -1) || (card.getCardColor() == 'n')){
+
+                Log.i("playCard", "current color " + this.getCurrentPlayableColor() + " current number " + this.getCurrentPlayableNumber());
         // remove card from players hand
         if (playerId == 0) {
             player0Hand.remove(card);
@@ -847,7 +849,7 @@ public class UnoGameState extends GameState {
 
                 }
             }
-        }
+        }}
         //change turn
         if(this.isReversed == false){
             if(this.getNumPlayers() == 2){
