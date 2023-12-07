@@ -153,7 +153,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             int cardIndex1 = offset + 0;
             if (cardIndex1 < cards.size()) {
                 setImage(this.cardImageView1, cards.get(cardIndex1));
-            } else {
+            } else { //if cards are less than 5, display a greyed out card
                 Log.e("CardImageView1", "Index out of bounds: " + cardIndex1);
                 this.cardImageView1.setImageResource(R.drawable.blank);
             }
@@ -174,7 +174,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         }
     }
 
-    // Method to display a card in a cardImageView
+    //method to display a card in a cardImageView
     private void displayCardInImageView(ArrayList<UnoCard> cards, int index, ImageView imageView) {
         int cardIndex = offset + index;
         if (cardIndex < cards.size()) {
@@ -459,6 +459,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         else{
           cardImage.setImageResource(R.drawable.blank);
         }
+        cardImage.invalidate();
     }
 
     /**
