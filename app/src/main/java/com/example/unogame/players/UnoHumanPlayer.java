@@ -49,6 +49,12 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     private TextView textViewFun;
 
+    private TextView opponentHandNum;
+
+    private TextView ourHand;
+
+    private TextView playerTurn;
+
     private UnoGameState firstInstance;
     //layout id of given layout
     private int layoutId;
@@ -150,10 +156,20 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 offset = 0;
             }
 
+            opponentHandNum = myActivity.findViewById(R.id.opponentHandNum);
+            ourHand = myActivity.findViewById(R.id.ourHand);
+            playerTurn = myActivity.findViewById(R.id.playerTurn);
+            opponentHandNum.setText("Opponent has " + currGame.getPlayer1Hand().size() + " cards.");
+            opponentHandNum.setTextSize(30);
+            ourHand.setText("You have " + currGame.getPlayer0Hand().size() + " cards.");
+            ourHand.setTextSize(30);
+            playerTurn.setText("It's player " + currGame.getPlayerTurn() + " turn.");
+            playerTurn.setTextSize(30);
+
             int cardIndex1 = offset + 0;
             if (cardIndex1 < cards.size()) {
                 setImage(this.cardImageView1, cards.get(cardIndex1));
-            } else {
+            } else { //if cards are less than 5, display a greyed out card
                 Log.e("CardImageView1", "Index out of bounds: " + cardIndex1);
                 this.cardImageView1.setImageResource(R.drawable.blank);
             }
@@ -174,7 +190,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         }
     }
 
-    // Method to display a card in a cardImageView
+    //method to display a card in a cardImageView
     private void displayCardInImageView(ArrayList<UnoCard> cards, int index, ImageView imageView) {
         int cardIndex = offset + index;
         if (cardIndex < cards.size()) {
@@ -459,6 +475,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         else{
           cardImage.setImageResource(R.drawable.blank);
         }
+        cardImage.invalidate();
     }
 
     /**
