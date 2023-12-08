@@ -20,13 +20,6 @@ Tags
 
 public class UnoLocalGame extends LocalGame {
 
-    //needs to be like ttt, the state will have a variable keeping track of the player whose turn it it and number of players
-    //(x + 2) % 3 will skip a turn
-    //state.setwhosemove() = line above this
-
-    //private final UnoGameState unoGameStateRef;
-    //private UnoGameState refOfficialGame;
-
     /**
      * constructor
      */
@@ -34,19 +27,33 @@ public class UnoLocalGame extends LocalGame {
         super();
     }
 
+    /**
+     * starts the game based on the the number of players and their names
+     * @param players
+     * 			the list of players who are playing in the game
+     */
     @Override
     public void start(GamePlayer[] players) {
         super.start(players);
         state = new UnoGameState(getNumPlayers());
     }
 
+    /**
+     * sends updated state to a given player
+     * @param p
+     * 			the player to notify
+     */
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
         p.sendInfo(new UnoGameState((UnoGameState) super.state));
     }
 
     /**
-     * check if it is given players turn
+     * tells a player that they can move
+     * @param player
+     * 		the player's player-number (ID)
+     * @return
+     *      true if the player can move false if they can't
      */
     protected boolean canMove(int player) {//may need ((UnoGameState)super.state) instead
         UnoGameState gameStateRef = (UnoGameState) state;
@@ -58,19 +65,24 @@ public class UnoLocalGame extends LocalGame {
         }
     }
 
+    /**
+     * checks if the game is over and sends a message that its over
+     * @return
+     *      returns a message saying who won
+     */
     @Override
     protected String checkIfGameOver() {
         UnoGameState unoGameStateRef = (UnoGameState) state;
         if(unoGameStateRef.gameOver() == 0)  {
-            return "Player 0 won!";
+            return playerNames[0] + " won!";
         }
 
        else if(unoGameStateRef.gameOver() == 1)  {
-            return "Player 1 won!";
+            return playerNames[1] +" won!";
         }
 
         else if(unoGameStateRef.gameOver() == 2)  {
-            return "Player 2 won!";
+            return playerNames[2] + " won!";
         }
 
         return null;
@@ -79,8 +91,10 @@ public class UnoLocalGame extends LocalGame {
     /**
      * Makes move dependant on the action passed through
      *
-     * @param action The move that the player has sent to the game
-     * @return true if action was taken or false if action was invalid/illegal
+     * @param action
+     *      The move that the player has sent to the game
+     * @return
+     *      true if action was taken or false if action was invalid/illegal
      */
     @Override
     protected boolean makeMove(GameAction action) {
@@ -212,14 +226,10 @@ public class UnoLocalGame extends LocalGame {
             }
         }
         Log.i("makeMove", "all done with makeMove, return");
-            //no unos for alpha <3
-            return false;
+        return false;
     }
-
 
         // check if passed in card has at least one
         // element of card at beginning of discard arraylist
-
-
 
 }

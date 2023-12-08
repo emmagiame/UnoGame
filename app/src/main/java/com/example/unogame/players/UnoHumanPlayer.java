@@ -44,6 +44,10 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     private TextView playerTurn;
 
+    private TextView currentPlayableColorInfo;
+
+    private TextView currentPlayableNumInfo;
+
     //layout id of given layout
     private final int layoutId;
     private int offset = 0;
@@ -136,18 +140,55 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 offset = 0;
             }
 
+            // finding all the id of the text box
             opponentHandNum = myActivity.findViewById(R.id.opponentHandNum);
             ourHand = myActivity.findViewById(R.id.ourHand);
             playerTurn = myActivity.findViewById(R.id.playerTurn);
+            currentPlayableColorInfo = myActivity.findViewById(R.id.currentPlayableColorInfo);
+            currentPlayableNumInfo = myActivity.findViewById(R.id.currentPlayableNumInfo);
+
+            // sends message about how many cards opponent has
             int player1HandSize = currGame.getPlayer1Hand().size() - 1;
             opponentHandNum.setText("Opponent has " + player1HandSize + " cards.");
             opponentHandNum.setTextSize(30);
+
+            // sends message about how many cards human player has
             int player0HandSize = currGame.getPlayer0Hand().size() - 1;
             ourHand.setText("You have " + player0HandSize + " cards.");
             ourHand.setTextSize(30);
+            //ourHand.setTextColor(Color.BLACK);
+
+            // sends message about who's turn it is
             int currPlayer = currGame.getPlayerTurn();
             playerTurn.setText("It's " + allPlayerNames[currPlayer] + "'s turn.");
             playerTurn.setTextSize(30);
+
+            // sends message about current playable color
+            currentPlayableColorInfo.setTextSize(30);
+            // changes from only a character to the proper color name
+            if(currGame.getCurrentPlayableColor() == 'y'){
+                currentPlayableColorInfo.setText("The color is yellow.");
+            }
+            else if(currGame.getCurrentPlayableColor() == 'r'){
+                currentPlayableColorInfo.setText("The color is red.");
+            }
+            else if(currGame.getCurrentPlayableColor() == 'g'){
+                currentPlayableColorInfo.setText("The color is green.");
+            }
+            else if(currGame.getCurrentPlayableColor() == 'b'){
+                currentPlayableColorInfo.setText("The color is blue.");
+            }
+
+            // sends message about current playable number
+            if(currGame.getCurrentPlayableNumber() == -1){
+                currentPlayableNumInfo.setText("The current card value is a special card.");
+            }
+            else{
+                currentPlayableNumInfo.setText("The current card value is " + currGame.getCurrentPlayableNumber() + ".");
+            }
+
+
+            currentPlayableNumInfo.setTextSize(30);
 
             int cardIndex1 = offset;
             if (cardIndex1 < cards.size()) {
@@ -519,7 +560,14 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             flash(Color.GREEN, 100);
             return;
         }
-
+        else if(view.getId() == R.id.callOutUnoButton){
+            UnoGameState gameState = (UnoGameState) game.getGameState();
+            gameState.callOut(gameState.getPlayerTurn());
+        }
+        else if(view.getId() == R.id.declareUnoButton){
+            UnoGameState gameState = (UnoGameState) game.getGameState();
+            gameState.declareUno(gameState.getPlayerTurn());
+        }
         //scroll left and right buttons
         else if (view.getId() == R.id.leftButton) {
             if (offset <= 0) {
@@ -539,7 +587,6 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 receiveInfo(gameState);
             }
         }
-
         //color picker buttons for wild cards
         else if (view.getId() == R.id.yellow) {
             UnoGameState gameState = (UnoGameState) game.getGameState();
