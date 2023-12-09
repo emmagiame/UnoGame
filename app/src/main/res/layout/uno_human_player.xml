@@ -118,7 +118,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/red"
+                            android:id="@+id/redPickButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -128,7 +128,7 @@
                             android:text="Red" />
 
                         <Button
-                            android:id="@+id/yellow"
+                            android:id="@+id/yellowPickButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -138,7 +138,7 @@
                             android:text="Yellow" />
 
                         <Button
-                            android:id="@+id/green"
+                            android:id="@+id/greenPickButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -148,7 +148,7 @@
                             android:text="Green" />
 
                         <Button
-                            android:id="@+id/blue"
+                            android:id="@+id/bluePickButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"

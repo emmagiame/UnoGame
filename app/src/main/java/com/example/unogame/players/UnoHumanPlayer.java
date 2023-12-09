@@ -20,6 +20,7 @@ import com.example.unogame.cards.UnoCardReverse;
 import com.example.unogame.cards.UnoCardSkip;
 import com.example.unogame.cards.UnoCardWild;
 import com.example.unogame.info.UnoGameState;
+
 import java.util.ArrayList;
 
 
@@ -38,15 +39,26 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     //android activity that we are running
     private GameMainActivity myActivity;
 
+    // text to display current number of cards in AI's hand
     private TextView opponentHandNum;
 
+    // text to display current number of cards in human's hand
     private TextView ourHand;
 
+    // text to display current player turn
     private TextView playerTurn;
 
+    // text to display current playable color
     private TextView currentPlayableColorInfo;
 
+    // text to display current playable number
     private TextView currentPlayableNumInfo;
+
+    // buttons to pick the color
+    private Button redPickButton;
+    private Button yellowPickButton;
+    private Button greenPickButton;
+    private Button bluePickButton;
 
     //layout id of given layout
     private final int layoutId;
@@ -76,10 +88,10 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     private Button declareUnoButton = null;
     private Button callOutUnoButton = null;
     //private Button runTestButton = null;
-    private Button yellow = null;
-    private Button green = null;
-    private Button blue = null;
-    private Button red = null;
+    //private Button yellow = null;
+    //private Button green = null;
+    //private Button blue = null;
+    //private Button red = null;
     private int cardClickedIdx = -1;
 
 
@@ -186,9 +198,10 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             else{
                 currentPlayableNumInfo.setText("The current card value is " + currGame.getCurrentPlayableNumber() + ".");
             }
-
-
             currentPlayableNumInfo.setTextSize(30);
+
+
+
 
             int cardIndex1 = offset;
             if (cardIndex1 < cards.size()) {
@@ -294,14 +307,14 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         cardSlot5.setOnClickListener(this);
 
         //onClickListeners for all color buttons (for wild cards)
-        this.yellow = myActivity.findViewById(R.id.yellow);
-        yellow.setOnClickListener(this);
-        this.green = myActivity.findViewById(R.id.green);
-        green.setOnClickListener(this);
-        this.red = myActivity.findViewById(R.id.red);
-        red.setOnClickListener(this);
-        this.blue = myActivity.findViewById(R.id.blue);
-        blue.setOnClickListener(this);
+        this.yellowPickButton = myActivity.findViewById(R.id.yellowPickButton);
+        yellowPickButton.setOnClickListener(this);
+        this.greenPickButton = myActivity.findViewById(R.id.greenPickButton);
+        greenPickButton.setOnClickListener(this);
+        this.redPickButton = myActivity.findViewById(R.id.redPickButton);
+        redPickButton.setOnClickListener(this);
+        this.bluePickButton = myActivity.findViewById(R.id.bluePickButton);
+        bluePickButton.setOnClickListener(this);
 
     }
 
@@ -588,24 +601,24 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             }
         }
         //color picker buttons for wild cards
-        else if (view.getId() == R.id.yellow) {
+        else if (view.getId() == R.id.yellowPickButton) {
             UnoGameState gameState = (UnoGameState) game.getGameState();
             gameState.setChangedPlayableColor('y');
             Log.i("yellow button clicked id", "color clicked id is yellow") ;
         }
-        else if (view.getId() == R.id.green) {
+        else if (view.getId() == R.id.greenPickButton) {
             UnoGameState gameState = (UnoGameState) game.getGameState();
             gameState.setChangedPlayableColor('g');
             Log.i("green button clicked id", "color clicked id is green") ;
 
         }
-        else if (view.getId() == R.id.red) {
+        else if (view.getId() == R.id.redPickButton) {
             UnoGameState gameState = (UnoGameState) game.getGameState();
             gameState.setChangedPlayableColor('r');
             Log.i("red button clicked id", "color clicked id is red") ;
         }
 
-        else if (view.getId() == R.id.blue) {
+        else if (view.getId() == R.id.bluePickButton) {
             UnoGameState gameState = (UnoGameState) game.getGameState();
             gameState.setChangedPlayableColor('b');
             Log.i("blue button clicked id", "color clicked id is blue") ;
