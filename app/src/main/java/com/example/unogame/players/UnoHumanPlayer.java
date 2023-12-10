@@ -227,7 +227,12 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         }
     }
 
-    //method to display a card in a cardImageView
+    /**
+     * displays a card in a cardImageView
+     * @param cards - cards to be displayed
+     * @param index - number of cards
+     * @param imageView - the image view
+     */
     private void displayCardInImageView(ArrayList<UnoCard> cards, int index, ImageView imageView) {
         int cardIndex = offset + index;
         if (cardIndex < cards.size()) {
@@ -536,6 +541,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             game.sendAction(actionDraw);
             return;
         }
+        // if the cards are clicked
         else if(view.getId() == R.id.cardSlot1){
             cardClickedIdx = offset;
             flash(Color.GREEN, 100);
@@ -561,6 +567,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             flash(Color.GREEN, 100);
             Log.i("changed card clicked id", "card clicked id is " + cardClickedIdx);
         }
+        // if the play button is clicked
         else if(view.getId() == R.id.playButton){
             if(cardClickedIdx == -1){
                 //error
@@ -573,6 +580,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             flash(Color.GREEN, 100);
             return;
         }
+        // if uno buttons are clicked
         else if(view.getId() == R.id.callOutUnoButton){
             UnoGameState gameState = (UnoGameState) game.getGameState();
             gameState.callOut(gameState.getPlayerTurn());
@@ -600,30 +608,31 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 receiveInfo(gameState);
             }
         }
-        //color picker buttons for wild cards
+        //color picker buttons for wild cards               ADDED: recieveInfo in each else if statement Needs to be tested
         else if (view.getId() == R.id.yellowPickButton) {
             UnoGameState gameState = (UnoGameState) game.getGameState();
             gameState.setChangedPlayableColor('y');
+            receiveInfo(gameState);
             Log.i("yellow button clicked id", "color clicked id is yellow") ;
         }
         else if (view.getId() == R.id.greenPickButton) {
             UnoGameState gameState = (UnoGameState) game.getGameState();
             gameState.setChangedPlayableColor('g');
+            receiveInfo(gameState);
             Log.i("green button clicked id", "color clicked id is green") ;
-
         }
         else if (view.getId() == R.id.redPickButton) {
             UnoGameState gameState = (UnoGameState) game.getGameState();
             gameState.setChangedPlayableColor('r');
+            receiveInfo(gameState);
             Log.i("red button clicked id", "color clicked id is red") ;
         }
-
         else if (view.getId() == R.id.bluePickButton) {
             UnoGameState gameState = (UnoGameState) game.getGameState();
             gameState.setChangedPlayableColor('b');
-            Log.i("blue button clicked id", "color clicked id is blue") ;
+            receiveInfo(gameState);
+            Log.i("blue button clicked id", "color clicked id is blue");
         }
-
         //flash red if button is invalid
         else {
             flash(Color.RED, 100);
