@@ -32,6 +32,9 @@ Tags
 @author - Malissa Chen
 @author - Kaitlyn Atalig
 
+This class handles the graphics, anything that shows up on screen is done here
+
+Significant help from Dr Libby and Dr Tribelhorn
  */
 
 public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListener {

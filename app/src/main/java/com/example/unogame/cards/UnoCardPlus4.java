@@ -1,5 +1,12 @@
 package com.example.unogame.cards;
 
+/*
+
+Tags
+@author - Isabella Horstmanshof
+
+ */
+
 public class UnoCardPlus4 extends UnoCard {
 
     //changes color and adds four to the next players hand

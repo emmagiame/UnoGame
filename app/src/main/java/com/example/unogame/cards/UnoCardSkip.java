@@ -1,5 +1,11 @@
 package com.example.unogame.cards;
 
+/*
+
+Tags
+@author - Isabella Horstmanshof
+
+ */
 public class UnoCardSkip extends UnoCard {
 
     //skips next players turn

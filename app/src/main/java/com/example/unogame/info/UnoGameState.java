@@ -21,6 +21,8 @@ Tags
 @author - Emma Giamello
 @author - Rhiannon McKinley
 
+Significant help from Dr Libby and Dr Tribelhorn
+
  */
 
 public class UnoGameState extends GameState {

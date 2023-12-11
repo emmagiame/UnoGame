@@ -1,5 +1,12 @@
 package com.example.unogame.cards;
 
+/*
+
+Tags
+@author - Isabella Horstmanshof
+
+ */
+
 public class UnoCardPlus2 extends UnoCard {
     //adds two to the next players hand
     //no constructor because it doesn't have any extra variables, will be used in if statements to call actions
