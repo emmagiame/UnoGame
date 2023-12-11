@@ -41,7 +41,7 @@ public class UnoCard {
         this.cardColor = card.cardColor;
         this.cardNumber = card.cardNumber;
     }
-
+        // idk if these are needed !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public void setCardColor(char c){
         this.cardColor = c;
     }

@@ -593,12 +593,11 @@ public class UnoGameState extends GameState {
      * they have uno but did not declare it on their turn
      *
      * @param playerId - player who's turn it is
-     * @param card - card on top of draw pile
      * @return
      *      return true if prev player was called out
      */
 
-    public boolean callOut(int playerId, UnoCard card) {
+    public boolean callOut(int playerId) {
 
         // get id of prev player
         int prevPlayerId = getPrevPlayer(playerId);
@@ -607,16 +606,16 @@ public class UnoGameState extends GameState {
         if (playerId == this.playerTurn) {
             if (prevPlayerId == 0 && player0Hand.size() == 1 && declareUno(prevPlayerId) == false) {
                 // add two cards to their hand
-                this.player0Hand.add(card);
-                this.player0Hand.add(card);
+                drawCardFromDrawPile(0, this.drawPile.get(0));
+                drawCardFromDrawPile(0, this.drawPile.get(0));
                 return true;
             } else if (prevPlayerId == 1 && player1Hand.size() == 1 && declareUno(prevPlayerId) == false) {
-                this.player1Hand.add(card);
-                this.player1Hand.add(card);
+                drawCardFromDrawPile(1, this.drawPile.get(0));
+                drawCardFromDrawPile(1, this.drawPile.get(0));
                 return true;
             } else if (prevPlayerId == 2 && player1Hand.size() == 2 && declareUno(prevPlayerId) == false) {
-                this.player2Hand.add(card);
-                this.player2Hand.add(card);
+                drawCardFromDrawPile(2, this.drawPile.get(0));
+                drawCardFromDrawPile(2, this.drawPile.get(0));
                 return true;
             }
 
