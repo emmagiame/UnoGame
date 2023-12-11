@@ -533,6 +533,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     @Override
     public void onClick(View view) {
         Log.i("onClick", "entered onClick");
+        UnoGameState gameState = (UnoGameState) game.getGameState();
 
         if(view.getId() == R.id.drawButton){
             Log.i("action was clicked", "sending a draw card action");
@@ -582,11 +583,11 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         }
         // if uno buttons are clicked
         else if(view.getId() == R.id.callOutUnoButton){
-            UnoGameState gameState = (UnoGameState) game.getGameState();
+            //UnoGameState gameState = (UnoGameState) game.getGameState();
             gameState.callOut(gameState.getPlayerTurn());
         }
         else if(view.getId() == R.id.declareUnoButton){
-            UnoGameState gameState = (UnoGameState) game.getGameState();
+            //UnoGameState gameState = (UnoGameState) game.getGameState();
             gameState.declareUno(gameState.getPlayerTurn());
         }
         //scroll left and right buttons
@@ -599,7 +600,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 receiveInfo(game.getGameState());
             }
         } else if (view.getId() == R.id.rightButton) {
-            UnoGameState gameState = (UnoGameState) game.getGameState();
+            //UnoGameState gameState = (UnoGameState) game.getGameState();
             ArrayList<UnoCard> hand = gameState.getPlayer0Hand();
             if (offset + 1 >= hand.size() - 5) {
                 flash(Color.RED, 100);
@@ -610,25 +611,25 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         }
         //color picker buttons for wild cards               ADDED: recieveInfo in each else if statement Needs to be tested
         else if (view.getId() == R.id.yellowPickButton) {
-            UnoGameState gameState = (UnoGameState) game.getGameState();
+            //UnoGameState gameState = (UnoGameState) game.getGameState();
             gameState.setChangedPlayableColor('y');
             receiveInfo(gameState);
             Log.i("yellow button clicked id", "color clicked id is yellow") ;
         }
         else if (view.getId() == R.id.greenPickButton) {
-            UnoGameState gameState = (UnoGameState) game.getGameState();
+            //UnoGameState gameState = (UnoGameState) game.getGameState();
             gameState.setChangedPlayableColor('g');
             receiveInfo(gameState);
             Log.i("green button clicked id", "color clicked id is green") ;
         }
         else if (view.getId() == R.id.redPickButton) {
-            UnoGameState gameState = (UnoGameState) game.getGameState();
+            //UnoGameState gameState = (UnoGameState) game.getGameState();
             gameState.setChangedPlayableColor('r');
             receiveInfo(gameState);
             Log.i("red button clicked id", "color clicked id is red") ;
         }
         else if (view.getId() == R.id.bluePickButton) {
-            UnoGameState gameState = (UnoGameState) game.getGameState();
+            //UnoGameState gameState = (UnoGameState) game.getGameState();
             gameState.setChangedPlayableColor('b');
             receiveInfo(gameState);
             Log.i("blue button clicked id", "color clicked id is blue");
