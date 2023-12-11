@@ -168,7 +168,6 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             int player0HandSize = currGame.getPlayer0Hand().size() - 1;
             ourHand.setText("You have " + player0HandSize + " cards.");
             ourHand.setTextSize(30);
-            //ourHand.setTextColor(Color.BLACK);
 
             // sends message about who's turn it is
             int currPlayer = currGame.getPlayerTurn();
@@ -224,6 +223,8 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             //display default images for ai player and draw pile
             this.aiPlayerImage.setImageResource(R.drawable.back);
             this.drawPileImage.setImageResource(R.drawable.back);
+
+
         }
     }
 
@@ -513,7 +514,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         else{
           cardImage.setImageResource(R.drawable.blank);
         }
-        cardImage.invalidate();
+        cardImage.postInvalidate();
     }
 
     /**
@@ -540,6 +541,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             flash(Color.GREEN, 100);
             UnoDrawCardAction actionDraw = new UnoDrawCardAction(this);
             game.sendAction(actionDraw);
+            view.postInvalidate();
             return;
         }
         // if the cards are clicked
@@ -547,66 +549,76 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             cardClickedIdx = offset;
             flash(Color.GREEN, 100);
             Log.i("changed card clicked id", "card clicked id is " + cardClickedIdx);
+            view.postInvalidate();
         }
         else if(view.getId() == R.id.cardSlot2){
             cardClickedIdx = 1 + offset;
             flash(Color.GREEN, 100);
             Log.i("changed card clicked id", "card clicked id is " + cardClickedIdx);
+            view.postInvalidate();
         }
         else if(view.getId() == R.id.cardSlot3){
             cardClickedIdx = 2 + offset;
             flash(Color.GREEN, 100);
             Log.i("changed card clicked id", "card clicked id is " + cardClickedIdx);
+            view.postInvalidate();
         }
         else if(view.getId() == R.id.cardSlot4){
             cardClickedIdx = 3 + offset;
             flash(Color.GREEN, 100);
             Log.i("changed card clicked id", "card clicked id is " + cardClickedIdx);
+            view.postInvalidate();
         }
         else if(view.getId() == R.id.cardSlot5){
             cardClickedIdx = 4 + offset;
             flash(Color.GREEN, 100);
             Log.i("changed card clicked id", "card clicked id is " + cardClickedIdx);
+            view.postInvalidate();
         }
         // if the play button is clicked
         else if(view.getId() == R.id.playButton){
             if(cardClickedIdx == -1){
                 //error
+                view.postInvalidate();
                 Log.w("card clicked error", "card clicked id is -1");
                 return;
             }
             Log.i("action was clicked", "sending a play card action, card clicked id is " + cardClickedIdx);
             UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, cardClickedIdx);
             game.sendAction(actionPlay);
+            view.postInvalidate();
             flash(Color.GREEN, 100);
             return;
         }
         // if uno buttons are clicked
         else if(view.getId() == R.id.callOutUnoButton){
-            //UnoGameState gameState = (UnoGameState) game.getGameState();
             gameState.callOut(gameState.getPlayerTurn());
+            view.postInvalidate();
         }
         else if(view.getId() == R.id.declareUnoButton){
-            //UnoGameState gameState = (UnoGameState) game.getGameState();
             gameState.declareUno(gameState.getPlayerTurn());
+            view.postInvalidate();
         }
         //scroll left and right buttons
         else if (view.getId() == R.id.leftButton) {
             if (offset <= 0) {
                 flash(Color.RED,100);
+                view.postInvalidate();
             }
             else{
                 offset--;
                 receiveInfo(game.getGameState());
+                view.postInvalidate();
             }
         } else if (view.getId() == R.id.rightButton) {
-            //UnoGameState gameState = (UnoGameState) game.getGameState();
             ArrayList<UnoCard> hand = gameState.getPlayer0Hand();
             if (offset + 1 >= hand.size() - 5) {
                 flash(Color.RED, 100);
+                view.postInvalidate();
             } else {
                 offset++;
                 receiveInfo(gameState);
+                view.postInvalidate();
             }
         }
         //color picker buttons for wild cards               ADDED: recieveInfo in each else if statement Needs to be tested
@@ -615,29 +627,35 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             gameState.setChangedPlayableColor('y');
             receiveInfo(gameState);
             Log.i("yellow button clicked id", "color clicked id is yellow") ;
+            view.postInvalidate();
         }
         else if (view.getId() == R.id.greenPickButton) {
             //UnoGameState gameState = (UnoGameState) game.getGameState();
             gameState.setChangedPlayableColor('g');
             receiveInfo(gameState);
             Log.i("green button clicked id", "color clicked id is green") ;
+            view.postInvalidate();
         }
         else if (view.getId() == R.id.redPickButton) {
             //UnoGameState gameState = (UnoGameState) game.getGameState();
             gameState.setChangedPlayableColor('r');
             receiveInfo(gameState);
             Log.i("red button clicked id", "color clicked id is red") ;
+            view.postInvalidate();
         }
         else if (view.getId() == R.id.bluePickButton) {
             //UnoGameState gameState = (UnoGameState) game.getGameState();
             gameState.setChangedPlayableColor('b');
             receiveInfo(gameState);
             Log.i("blue button clicked id", "color clicked id is blue");
+            view.postInvalidate();
         }
         //flash red if button is invalid
         else {
             flash(Color.RED, 100);
+            view.postInvalidate();
         }
+        view.postInvalidate();
     }
 
 }

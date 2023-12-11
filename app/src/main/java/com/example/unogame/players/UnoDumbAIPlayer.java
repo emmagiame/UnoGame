@@ -81,6 +81,7 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
                         UnoDrawCardAction actionDraw = new UnoDrawCardAction(this);
                         sleep(1);
                         game.sendAction(actionDraw);
+
                         Log.i("dumb ai0", "sent a draw card action");
                         return;
 
