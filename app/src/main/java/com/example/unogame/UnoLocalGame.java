@@ -76,15 +76,15 @@ public class UnoLocalGame extends LocalGame {
     protected String checkIfGameOver() {
         UnoGameState unoGameStateRef = (UnoGameState) state;
         if(unoGameStateRef.gameOver() == 0)  {
-            return playerNames[0] + " won!";
+            return playerNames[0] + " won! ";
         }
 
        else if(unoGameStateRef.gameOver() == 1)  {
-            return playerNames[1] +" won!";
+            return playerNames[1] +" won! ";
         }
 
         else if(unoGameStateRef.gameOver() == 2)  {
-            return playerNames[2] + " won!";
+            return playerNames[2] + " won! ";
         }
 
         return null;
