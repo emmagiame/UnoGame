@@ -57,6 +57,9 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     // text to display current playable number
     private TextView currentPlayableNumInfo;
 
+    // text with hints on how to play more smoothly
+    private TextView startGameHelp;
+
     // buttons to pick the color
     private Button redPickButton;
     private Button yellowPickButton;
@@ -161,6 +164,11 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             playerTurn = myActivity.findViewById(R.id.playerTurn);
             currentPlayableColorInfo = myActivity.findViewById(R.id.currentPlayableColorInfo);
             currentPlayableNumInfo = myActivity.findViewById(R.id.currentPlayableNumInfo);
+            startGameHelp = myActivity.findViewById(R.id.startGameHelp);
+
+            // hints on how to play game more smoothly
+            startGameHelp.setText("Helpful tips:\n - Try hitting the left or right buttons to refresh discard pile.\n - When you have two cards left press the uno button before playing the second card.\n");
+            startGameHelp.setTextSize(20);
 
             // sends message about how many cards opponent has
             int player1HandSize = currGame.getPlayer1Hand().size() - 1;
