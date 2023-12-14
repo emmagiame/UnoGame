@@ -104,7 +104,7 @@ public class UnoLocalGame extends LocalGame {
     protected boolean makeMove(GameAction action) {
         Log.i("makeMove", "entered makeMove");
 
-        // get player id
+        // get player id for all if statements
         int id = ((UnoGameState) super.state).getPlayerTurn();
 
         // if action is play card
