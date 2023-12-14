@@ -175,12 +175,12 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
             // sends message about how many cards opponent has
             int player1HandSize = currGame.getPlayer1Hand().size() - 1;
-            opponentHandNum.setText("Opponent has " + player1HandSize + " cards.");
+            opponentHandNum.setText("Opponent has " + (player1HandSize + 1) + " cards.");
             opponentHandNum.setTextSize(30);
 
             // sends message about how many cards human player has
             int player0HandSize = currGame.getPlayer0Hand().size() - 1;
-            ourHand.setText("You have " + player0HandSize + " cards.");
+            ourHand.setText("You have " + (player0HandSize + 1) + " cards.");
             ourHand.setTextSize(30);
 
             // sends message about who's turn it is

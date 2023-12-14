@@ -89,7 +89,6 @@ public class UnoLocalGame extends LocalGame {
         else if(unoGameStateRef.gameOver() == 2)  {
             return playerNames[2] + " won! ";
         }
-
         return null;
     }
 
@@ -107,6 +106,12 @@ public class UnoLocalGame extends LocalGame {
 
         // get player id for all if statements
         int id = ((UnoGameState) super.state).getPlayerTurn();
+
+        //if the deck is empty, or about to be empty restock and shuffle it
+        if(((UnoGameState) super.state).getShuffledDeck().size() <= 1){
+            ((UnoGameState) super.state).setShuffledDeck(((UnoGameState) super.state).unoDeck());
+            ((UnoGameState) super.state).startDrawPile();
+        }
 
         // if action is play card
         if (action instanceof UnoPlayCardAction) {

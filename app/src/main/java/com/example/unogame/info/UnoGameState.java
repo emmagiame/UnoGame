@@ -246,7 +246,7 @@ public class UnoGameState extends GameState {
      */
     public ArrayList<UnoCard> startHand() {
         ArrayList<UnoCard> playerCards = new ArrayList<UnoCard>();
-        for (int i = 0; i <= 7; i++) {
+        for (int i = 0; i < 7; i++) {
             Log.i("UnoGameState", "card 0 in shuffled deck is " + this.getShuffledDeck().get(0).getCardColor() + " " + this.getShuffledDeck().get(0).getCardNumber());
             playerCards.add(this.getShuffledDeck().get(0));
             this.getShuffledDeck().remove(0);
@@ -349,8 +349,16 @@ public class UnoGameState extends GameState {
         return discardPile;
     }
 
+    /**
+     * getter for the shuffled deck of cards
+     * @return
+     */
     public ArrayList<UnoCard> getShuffledDeck(){
         return shuffledDeck;
+    }
+
+    public void setShuffledDeck(ArrayList<UnoCard> newDeck){
+        this.shuffledDeck = newDeck;
     }
 
     /**
@@ -415,10 +423,20 @@ public class UnoGameState extends GameState {
         return currentPlayableNumber;
     }
 
+    /**
+     * setter for the card color that can be played
+     *
+     * @param color the new color
+     */
     public void setCurrentPlayableColor(char color){
         this.currentPlayableColor = color;
     }
 
+    /**
+     * setter for the card number that can be played
+     *
+     * @param num - the new number
+     */
     public void setCurrentPlayableNumber(int num){
         this.currentPlayableNumber = num;
     }
@@ -465,15 +483,26 @@ public class UnoGameState extends GameState {
      * sets player 2's score
      *
      * @param score2 - player 2's score
+     *               //needed for implementation of three player games
      */
     public void setPlayer2Score(int score2){
         this.player2Score = score2;
     }
 
+    /**
+     * sets the color variable used for wild cards
+     *
+     * @param colorIn - the new color
+     */
     public void setChangedPlayableColor(char colorIn){
         this.changedPlayableColor = colorIn;
     }
 
+    /**
+     * gets the color variable used for wild card
+     *
+     * @return
+     */
     public char getChangedPlayableColor(){
         return this.changedPlayableColor;
     }
@@ -488,7 +517,6 @@ public class UnoGameState extends GameState {
         this.playerTurn = turn;
     }
 
-    //do the array lists need setters?
 
     /**
      * adds one card to the given players hand because they draw a card
@@ -511,10 +539,10 @@ public class UnoGameState extends GameState {
         } else if (playerId == 1) {
             this.player1Hand.add(card);
             this.drawPile.remove(0);
-        } else if (playerId == 2) {
+        } /*else if (playerId == 2) { //needed for implementation of three player games
             this.player2Hand.add(card);
             this.drawPile.remove(0);
-        }
+        }*/
 
         //change turn
         if (this.isReversed == false) {
@@ -526,7 +554,7 @@ public class UnoGameState extends GameState {
                     this.setPlayerTurn(0);
                     return true;
                 }
-            } else if (this.getNumPlayers() == 3) {
+            } /*else if (this.getNumPlayers() == 3) { //needed for implementation of three player games
                 if (this.getPlayerTurn() == 0) {
                     this.setPlayerTurn(1);
                     return true;
@@ -537,7 +565,7 @@ public class UnoGameState extends GameState {
                     this.setPlayerTurn(0);
                     return true;
                 }
-            }
+            }*/
         } else if (this.isReversed == true) {
             if (this.getNumPlayers() == 2) {
                 if (this.getPlayerTurn() == 0) {
@@ -547,7 +575,7 @@ public class UnoGameState extends GameState {
                     this.setPlayerTurn(0);
                     return true;
                 }
-            } else if (this.getNumPlayers() == 3) {
+            } /*else if (this.getNumPlayers() == 3) { //needed for implementation of three player games
                 if (this.getPlayerTurn() == 0) {
                     this.setPlayerTurn(2);
                     return true;
@@ -558,7 +586,7 @@ public class UnoGameState extends GameState {
                     this.setPlayerTurn(1);
                     return true;
                 }
-            }
+            }*/
         }
         return false;
     }
@@ -593,14 +621,14 @@ public class UnoGameState extends GameState {
                 drawCardFromDrawPile(1, this.drawPile.get(0));
                 return true;
             }
-            else if (playerId == 2 && player2Hand.size() == 1){
+            /*else if (playerId == 2 && player2Hand.size() == 1){ //needed for implementation of three player games
                 return true;
             }
             else if(playerId == 2 && player2Hand.size() != 1){
                 drawCardFromDrawPile(2, this.drawPile.get(0));
                 drawCardFromDrawPile(2, this.drawPile.get(0));
                 return true;
-            }
+            }*/
         }
         return false;
     }
@@ -630,11 +658,11 @@ public class UnoGameState extends GameState {
                 drawCardFromDrawPile(1, this.drawPile.get(0));
                 drawCardFromDrawPile(1, this.drawPile.get(0));
                 return true;
-            } else if (prevPlayerId == 2 && player1Hand.size() == 2 && declareUno(prevPlayerId) == false) {
+            } /*else if (prevPlayerId == 2 && player1Hand.size() == 2 && declareUno(prevPlayerId) == false) { //needed for implementation of three player games
                 drawCardFromDrawPile(2, this.drawPile.get(0));
                 drawCardFromDrawPile(2, this.drawPile.get(0));
                 return true;
-            }
+            }*/
 
         }
         return false;
@@ -652,7 +680,8 @@ public class UnoGameState extends GameState {
         int prevPlayerId = playerId - 1;
 
         if(prevPlayerId == -1) {
-            prevPlayerId = 2;
+            //prevPlayerId = 2; //needed for implementation of three player games, and remove the other prevPlayer setter
+            prevPlayerId = 1;
         }
 
         return prevPlayerId;
@@ -667,11 +696,11 @@ public class UnoGameState extends GameState {
             return 1;
         }
 
-        if(this.getNumPlayers() > 2) {
+        /*if(this.getNumPlayers() > 2) { //needed for implementation of three player games
             if (this.getPlayer2Hand().size() == 0) {
                 return 2;
             }
-        }
+        }*/
 
         return -1;
     }
@@ -687,10 +716,10 @@ public class UnoGameState extends GameState {
      */
     public boolean playCard(int playerId, UnoCard card) {
         Log.i("playCard", "current player turn: " + this.getPlayerTurn());
+
         //if number is -1 that means any card number can be played because a wild card or special card was played
-        //if it is not that players turn then the move is not valid so return false also
-        //currently this method also changes the player turn but when we implement reverse I think we will want to change the turn outside of this method or write
-        //a method to change the turn and call it in playCard instead
+        //if it is not that players turn then the move is not valid so return false
+
         if ((playerId == this.getPlayerTurn())){
             if((card.getCardColor() == this.getCurrentPlayableColor()) || (card.getCardNumber() == this.getCurrentPlayableNumber()) || (card.getCardNumber() == -1) || (card.getCardColor() == 'n')){
 
@@ -700,9 +729,9 @@ public class UnoGameState extends GameState {
             player0Hand.remove(card);
         } else if (playerId == 1) {
             player1Hand.remove(card);
-        } else {
+        } /*else { //needed for implementation of three player games
             player2Hand.remove(card);
-        }
+        }*/
 
         // add card to discard pile
         this.discardPile.add(0, card);
@@ -714,7 +743,7 @@ public class UnoGameState extends GameState {
         // if wild card
         if (card instanceof UnoCardWild) {
             //if its the wild card
-                if (this.numPlayers == 3) {
+                /*if (this.numPlayers == 3) { //needed for implementation of three player games
                     if (playerId == 0) {
                         drawCardFromDrawPile(1, this.drawPile.get(0));
                         drawCardFromDrawPile(1, this.drawPile.get(0));
@@ -740,7 +769,7 @@ public class UnoGameState extends GameState {
                         this.setCurrentPlayableNumber(-1);
                         //this.playerTurn = 0;
                     }
-                } else if (this.numPlayers == 2) {
+                } else */if (this.numPlayers == 2) {
                     if (playerId == 0) {
                         drawCardFromDrawPile(1, this.drawPile.get(0));
                         drawCardFromDrawPile(1, this.drawPile.get(0));
@@ -765,7 +794,7 @@ public class UnoGameState extends GameState {
                 }
 
         } else if (card instanceof UnoCardPlus2) {
-                if (this.numPlayers == 3) {
+                /*if (this.numPlayers == 3) { //needed for implementation of three player games
                     if (playerId == 0) {
                         drawCardFromDrawPile(1, this.drawPile.get(0));
                         drawCardFromDrawPile(1, this.drawPile.get(0));
@@ -781,7 +810,7 @@ public class UnoGameState extends GameState {
                     }
                     //change the playable color
                     this.currentPlayableColor = card.getCardColor();
-                } else if (this.numPlayers == 2) {
+                } else */if (this.numPlayers == 2) {
                     if (playerId == 0) {
                         drawCardFromDrawPile(1, this.drawPile.get(0));
                         drawCardFromDrawPile(1, this.drawPile.get(0));
@@ -796,7 +825,7 @@ public class UnoGameState extends GameState {
                 }
                 //return true;
              else if (card instanceof UnoCardPlus4) {
-                    if (this.numPlayers == 3) {
+                    /*if (this.numPlayers == 3) { //needed for implementation of three player games
                         if (playerId == 0) {
                             drawCardFromDrawPile(1, this.drawPile.get(0));
                             drawCardFromDrawPile(1, this.drawPile.get(0));
@@ -819,7 +848,7 @@ public class UnoGameState extends GameState {
                         //change the playable color
                         this.currentPlayableColor = this.getChangedPlayableColor();
 
-                    } else if (this.numPlayers == 2) {
+                    } else */if (this.numPlayers == 2) {
                         if (playerId == 0) {
                             drawCardFromDrawPile(1, this.drawPile.get(0));
                             drawCardFromDrawPile(1, this.drawPile.get(0));
@@ -841,7 +870,7 @@ public class UnoGameState extends GameState {
                     if (this.numPlayers == 2) {
                         this.setPlayerTurn(playerId);
                         this.currentPlayableColor = card.getCardColor();
-                    } else if (this.numPlayers == 3) {
+                    } /*else if (this.numPlayers == 3) { //needed for implementation of three player games
                         if (playerId == 0) {
                             this.setPlayerTurn(2);
                             this.currentPlayableColor = card.getCardColor();
@@ -855,7 +884,7 @@ public class UnoGameState extends GameState {
                             this.currentPlayableColor = card.getCardColor();
                             return true;
                         }
-                    }
+                    }*/
 
                 } else if (card instanceof UnoCardReverse) {
                     //for now just a boolean, not super sure how to implement
@@ -882,7 +911,7 @@ public class UnoGameState extends GameState {
                     return true;
                 }
             }
-            else if (this.getNumPlayers() == 3) {
+            else if (this.getNumPlayers() == 3) { //needed for implementation of three player games
                     if(this.getPlayerTurn() == 0){
                         this.setPlayerTurn(1);
                         return true;
@@ -908,7 +937,7 @@ public class UnoGameState extends GameState {
                     return true;
                 }
             }
-            else if (this.getNumPlayers() == 3) {
+            else if (this.getNumPlayers() == 3) { //needed for implementation of three player games
                 if(this.getPlayerTurn() == 0){
                     this.setPlayerTurn(2);
                     return true;
