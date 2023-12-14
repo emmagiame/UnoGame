@@ -7,6 +7,9 @@ import com.example.game.GameFramework.players.GameComputerPlayer;
 import com.example.unogame.UnoDrawCardAction;
 import com.example.unogame.UnoPlayCardAction;
 import com.example.unogame.action.UnoDeclareUnoAction;
+import com.example.unogame.action.UnoWildCardColorChange;
+import com.example.unogame.cards.UnoCardPlus4;
+import com.example.unogame.cards.UnoCardWild;
 import com.example.unogame.info.UnoGameState;
 
 import java.util.Random;
@@ -19,7 +22,7 @@ Tags
  */
 
 public class UnoDumbAIPlayer extends GameComputerPlayer {
-    //dory will only play first card in her hand right now
+    //Dory (the ai) has three player functionality built in but it will not be triggered
 
     //layout id of given layout
     private int layoutId;
@@ -69,6 +72,11 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
                         for (int i = 0; i < curGame.getPlayer0Hand().size(); i++) {
                             if ((curGame.getPlayer0Hand().get(i).getCardNumber() == curGame.getCurrentPlayableNumber()) || (curGame.getPlayer0Hand().get(i).getCardColor() == curGame.getCurrentPlayableColor())) {
                                 Log.i("dumb ai0", "playing a card");
+                                if((curGame.getPlayer0Hand().get(i) instanceof UnoCardPlus4) || (curGame.getPlayer0Hand().get(i) instanceof UnoCardWild)){
+                                    UnoWildCardColorChange colorAction = new UnoWildCardColorChange(this, 'b'); // Dory's favorite color is blue so she always picks it
+                                    sleep(1);
+                                    game.sendAction(colorAction);
+                                }
                                 UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
                                 sleep(1);
                                 game.sendAction(actionPlay);
@@ -90,6 +98,11 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
                         for (int i = 0; i < curGame.getPlayer1Hand().size(); i++) {
                             if ((curGame.getPlayer1Hand().get(i).getCardNumber() == curGame.getCurrentPlayableNumber()) || (curGame.getPlayer1Hand().get(i).getCardColor() == curGame.getCurrentPlayableColor())) {
                                 Log.i("dumb ai1", "playing a card");
+                                if((curGame.getPlayer1Hand().get(i) instanceof UnoCardPlus4) || (curGame.getPlayer1Hand().get(i) instanceof UnoCardWild)){
+                                    UnoWildCardColorChange colorAction = new UnoWildCardColorChange(this, 'b'); // Dory's favorite color is blue so she always picks it
+                                    sleep(1);
+                                    game.sendAction(colorAction);
+                                }
                                 UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
                                 sleep(1);
                                 game.sendAction(actionPlay);
@@ -108,6 +121,11 @@ public class UnoDumbAIPlayer extends GameComputerPlayer {
                         for (int i = 0; i < curGame.getPlayer2Hand().size(); i++) {
                             if ((curGame.getPlayer2Hand().get(i).getCardNumber() == curGame.getCurrentPlayableNumber()) || (curGame.getPlayer2Hand().get(i).getCardColor() == curGame.getCurrentPlayableColor())) {
                                 Log.i("dumb ai2", "playing a card");
+                                if((curGame.getPlayer2Hand().get(i) instanceof UnoCardPlus4) || (curGame.getPlayer2Hand().get(i) instanceof UnoCardWild)){
+                                    UnoWildCardColorChange colorAction = new UnoWildCardColorChange(this, 'b'); // Dory's favorite color is blue so she always picks it
+                                    sleep(1);
+                                    game.sendAction(colorAction);
+                                }
                                 UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
                                 sleep(1);
                                 game.sendAction(actionPlay);
