@@ -800,6 +800,7 @@ public class UnoGameState extends GameState {
                 }
 
         } else if (card instanceof UnoCardPlus2) {
+            Log.i("playCard", "registered that a =2 card was played");
                 /*if (this.numPlayers == 3) { //needed for implementation of three player games
                     if (playerId == 0) {
                         drawCardFromDrawPile(1, this.drawPile.get(0));
@@ -851,8 +852,7 @@ public class UnoGameState extends GameState {
                             drawCardFromDrawPile(0, this.drawPile.get(0));
                             //this.playerTurn = 0;
                         }
-                        //change the playable color
-                        this.currentPlayableColor = this.getChangedPlayableColor();
+
 
                     } else */if (this.numPlayers == 2) {
                         if (playerId == 0) {
@@ -860,16 +860,22 @@ public class UnoGameState extends GameState {
                             drawCardFromDrawPile(1, this.drawPile.get(0));
                             drawCardFromDrawPile(1, this.drawPile.get(0));
                             drawCardFromDrawPile(1, this.drawPile.get(0));
+                            this.setCurrentPlayableColor(changedPlayableColor);
+                            Log.i("playCard", "changed playable color = " + this.getChangedPlayableColor());
+                            Log.i("playCard", "current playable color = " + this.getCurrentPlayableColor());
+                            this.setCurrentPlayableNumber(-1);
                             //this.playerTurn = 1;
                         } else if (playerId == 1) {
                             drawCardFromDrawPile(0, this.drawPile.get(0));
                             drawCardFromDrawPile(0, this.drawPile.get(0));
                             drawCardFromDrawPile(0, this.drawPile.get(0));
                             drawCardFromDrawPile(0, this.drawPile.get(0));
-                            //this.playerTurn = 0;
+                            this.setCurrentPlayableColor(changedPlayableColor);
+                            Log.i("playCard", "changed playable color = " + this.getChangedPlayableColor());
+                            Log.i("playCard", "current playable color = " + this.getCurrentPlayableColor());
+                            this.setCurrentPlayableNumber(-1);
                         }
-                        //change the playable color
-                        this.currentPlayableColor = this.getChangedPlayableColor();
+
                         //return true;
                     }
                 } else if (card instanceof UnoCardSkip) {//keep the returns here
