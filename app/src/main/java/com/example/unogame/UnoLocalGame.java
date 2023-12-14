@@ -90,6 +90,7 @@ public class UnoLocalGame extends LocalGame {
         else if(unoGameStateRef.gameOver() == 2)  {
             return playerNames[2] + " won! ";
         }
+
         return null;
     }
 
