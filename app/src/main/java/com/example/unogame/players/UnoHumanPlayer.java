@@ -1,5 +1,7 @@
 package com.example.unogame.players;
 
+import static com.example.unogame.info.UnoGameState.selectColor;
+
 import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
@@ -108,7 +110,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      * constructor
      *
      * @param name - name of player
-     * @param id - given player view layout id
+     * @param id   - given player view layout id
      */
     public UnoHumanPlayer(String name, int id) {
         super(name);
@@ -118,8 +120,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     /**
      * gets top view???
      *
-     * @return
-     *      returns top view
+     * @return returns top view
      */
     @Override
     public View getTopView() {
@@ -128,10 +129,9 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     }
 
     /**
-     *  used for testing. i think???
+     * used for testing. i think???
      *
-     * @return
-     *      - returns the activity
+     * @return - returns the activity
      */
     @Override
     public GameMainActivity getActivity() {
@@ -157,7 +157,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             ArrayList<UnoCard> currentDiscard = currGame.getDiscardPile();
 
             //if the deck has less than 5 cards
-            if(offset > 0 && cards.size() < 6) {
+            if (offset > 0 && cards.size() < 6) {
                 offset = 0;
             }
 
@@ -212,8 +212,6 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 currentPlayableNumInfo.setText("The current card value is " + currGame.getCurrentPlayableNumber() + ".");
             }
             currentPlayableNumInfo.setTextSize(30);
-
-
 
 
             int cardIndex1 = offset;
@@ -402,131 +400,127 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
                 if(card.getCardNumber() == 1){
                     cardImage.setImageResource(R.drawable.red1);
                 }
-                if(card.getCardNumber() == 2){
+                if (card.getCardNumber() == 2) {
                     cardImage.setImageResource(R.drawable.red2);
                 }
-                if(card.getCardNumber() == 3){
+                if (card.getCardNumber() == 3) {
                     cardImage.setImageResource(R.drawable.red3);
                 }
-                if(card.getCardNumber() == 4){
+                if (card.getCardNumber() == 4) {
                     cardImage.setImageResource(R.drawable.red4);
                 }
-                if(card.getCardNumber() == 5){
+                if (card.getCardNumber() == 5) {
                     cardImage.setImageResource(R.drawable.red5);
                 }
-                if(card.getCardNumber() == 6){
+                if (card.getCardNumber() == 6) {
                     cardImage.setImageResource(R.drawable.red6);
                 }
-                if(card.getCardNumber() == 7){
+                if (card.getCardNumber() == 7) {
                     cardImage.setImageResource(R.drawable.red7);
                 }
-                if(card.getCardNumber() == 8){
+                if (card.getCardNumber() == 8) {
                     cardImage.setImageResource(R.drawable.red8);
                 }
-                if(card.getCardNumber() == 9){
+                if (card.getCardNumber() == 9) {
                     cardImage.setImageResource(R.drawable.red9);
                 }
 
-            }
-            else if(card.getCardColor() =='y'){
-                if(card.getCardNumber() == 0){
+            } else if (card.getCardColor() == 'y') {
+                if (card.getCardNumber() == 0) {
                     cardImage.setImageResource(R.drawable.yellow0);
                 }
-                if(card.getCardNumber() == 1){
+                if (card.getCardNumber() == 1) {
                     cardImage.setImageResource(R.drawable.yellow1);
                 }
-                if(card.getCardNumber() == 2){
+                if (card.getCardNumber() == 2) {
                     cardImage.setImageResource(R.drawable.yellow2);
                 }
-                if(card.getCardNumber() == 3){
+                if (card.getCardNumber() == 3) {
                     cardImage.setImageResource(R.drawable.yellow3);
                 }
-                if(card.getCardNumber() == 4){
+                if (card.getCardNumber() == 4) {
                     cardImage.setImageResource(R.drawable.yellow4);
                 }
-                if(card.getCardNumber() == 5){
+                if (card.getCardNumber() == 5) {
                     cardImage.setImageResource(R.drawable.yellow5);
                 }
-                if(card.getCardNumber() == 6){
+                if (card.getCardNumber() == 6) {
                     cardImage.setImageResource(R.drawable.yellow6);
                 }
-                if(card.getCardNumber() == 7){
+                if (card.getCardNumber() == 7) {
                     cardImage.setImageResource(R.drawable.yellow7);
                 }
-                if(card.getCardNumber() == 8){
+                if (card.getCardNumber() == 8) {
                     cardImage.setImageResource(R.drawable.yellow8);
                 }
-                if(card.getCardNumber() == 9){
+                if (card.getCardNumber() == 9) {
                     cardImage.setImageResource(R.drawable.yellow9);
                 }
-            }
-            else if(card.getCardColor() =='g'){
-                if(card.getCardNumber() == 0){
+            } else if (card.getCardColor() == 'g') {
+                if (card.getCardNumber() == 0) {
                     cardImage.setImageResource(R.drawable.green0);
                 }
-                if(card.getCardNumber() == 1){
+                if (card.getCardNumber() == 1) {
                     cardImage.setImageResource(R.drawable.green1);
                 }
-                if(card.getCardNumber() == 2){
+                if (card.getCardNumber() == 2) {
                     cardImage.setImageResource(R.drawable.green2);
                 }
-                if(card.getCardNumber() == 3){
+                if (card.getCardNumber() == 3) {
                     cardImage.setImageResource(R.drawable.green3);
                 }
-                if(card.getCardNumber() == 4){
+                if (card.getCardNumber() == 4) {
                     cardImage.setImageResource(R.drawable.green4);
                 }
-                if(card.getCardNumber() == 5){
+                if (card.getCardNumber() == 5) {
                     cardImage.setImageResource(R.drawable.green5);
                 }
-                if(card.getCardNumber() == 6){
+                if (card.getCardNumber() == 6) {
                     cardImage.setImageResource(R.drawable.green6);
                 }
-                if(card.getCardNumber() == 7){
+                if (card.getCardNumber() == 7) {
                     cardImage.setImageResource(R.drawable.green7);
                 }
-                if(card.getCardNumber() == 8){
+                if (card.getCardNumber() == 8) {
                     cardImage.setImageResource(R.drawable.green8);
                 }
-                if(card.getCardNumber() == 9){
+                if (card.getCardNumber() == 9) {
                     cardImage.setImageResource(R.drawable.green9);
                 }
-            }
-            else if(card.getCardColor() =='b'){
-                if(card.getCardNumber() == 0){
+            } else if (card.getCardColor() == 'b') {
+                if (card.getCardNumber() == 0) {
                     cardImage.setImageResource(R.drawable.blue0);
                 }
-                if(card.getCardNumber() == 1){
+                if (card.getCardNumber() == 1) {
                     cardImage.setImageResource(R.drawable.blue1);
                 }
-                if(card.getCardNumber() == 2){
+                if (card.getCardNumber() == 2) {
                     cardImage.setImageResource(R.drawable.blue2);
                 }
-                if(card.getCardNumber() == 3){
+                if (card.getCardNumber() == 3) {
                     cardImage.setImageResource(R.drawable.blue3);
                 }
-                if(card.getCardNumber() == 4){
+                if (card.getCardNumber() == 4) {
                     cardImage.setImageResource(R.drawable.blue4);
                 }
-                if(card.getCardNumber() == 5){
+                if (card.getCardNumber() == 5) {
                     cardImage.setImageResource(R.drawable.blue5);
                 }
-                if(card.getCardNumber() == 6){
+                if (card.getCardNumber() == 6) {
                     cardImage.setImageResource(R.drawable.blue6);
                 }
-                if(card.getCardNumber() == 7){
+                if (card.getCardNumber() == 7) {
                     cardImage.setImageResource(R.drawable.blue7);
                 }
-                if(card.getCardNumber() == 8){
+                if (card.getCardNumber() == 8) {
                     cardImage.setImageResource(R.drawable.blue8);
                 }
-                if(card.getCardNumber() == 9){
+                if (card.getCardNumber() == 9) {
                     cardImage.setImageResource(R.drawable.blue9);
                 }
             }
-        }
-        else{
-          cardImage.setImageResource(R.drawable.blank);
+        } else {
+            cardImage.setImageResource(R.drawable.blank);
         }
         cardImage.postInvalidate();
     }
@@ -550,7 +544,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         Log.i("onClick", "entered onClick");
         UnoGameState gameState = (UnoGameState) game.getGameState();
 
-        if(view.getId() == R.id.drawButton){
+        if (view.getId() == R.id.drawButton) {
             Log.i("action was clicked", "sending a draw card action");
             flash(Color.GREEN, 100);
             UnoDrawCardAction actionDraw = new UnoDrawCardAction(this);
@@ -559,39 +553,35 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             return;
         }
         // if the cards are clicked
-        else if(view.getId() == R.id.cardSlot1){
+        else if (view.getId() == R.id.cardSlot1) {
             cardClickedIdx = offset;
             flash(Color.GREEN, 100);
             Log.i("changed card clicked id", "card clicked id is " + cardClickedIdx);
             view.postInvalidate();
-        }
-        else if(view.getId() == R.id.cardSlot2){
+        } else if (view.getId() == R.id.cardSlot2) {
             cardClickedIdx = 1 + offset;
             flash(Color.GREEN, 100);
             Log.i("changed card clicked id", "card clicked id is " + cardClickedIdx);
             view.postInvalidate();
-        }
-        else if(view.getId() == R.id.cardSlot3){
+        } else if (view.getId() == R.id.cardSlot3) {
             cardClickedIdx = 2 + offset;
             flash(Color.GREEN, 100);
             Log.i("changed card clicked id", "card clicked id is " + cardClickedIdx);
             view.postInvalidate();
-        }
-        else if(view.getId() == R.id.cardSlot4){
+        } else if (view.getId() == R.id.cardSlot4) {
             cardClickedIdx = 3 + offset;
             flash(Color.GREEN, 100);
             Log.i("changed card clicked id", "card clicked id is " + cardClickedIdx);
             view.postInvalidate();
-        }
-        else if(view.getId() == R.id.cardSlot5){
+        } else if (view.getId() == R.id.cardSlot5) {
             cardClickedIdx = 4 + offset;
             flash(Color.GREEN, 100);
             Log.i("changed card clicked id", "card clicked id is " + cardClickedIdx);
             view.postInvalidate();
         }
         // if the play button is clicked
-        else if(view.getId() == R.id.playButton){
-            if(cardClickedIdx == -1){
+        else if (view.getId() == R.id.playButton) {
+            if (cardClickedIdx == -1) {
                 //error
                 view.postInvalidate();
                 Log.w("card clicked error", "card clicked id is -1");
@@ -605,12 +595,11 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             return;
         }
         // if uno buttons are clicked
-        else if(view.getId() == R.id.callOutUnoButton){
+        else if (view.getId() == R.id.callOutUnoButton) {
             UnoCallOutAction callOutUno = new UnoCallOutAction(this);
             game.sendAction(callOutUno);
             view.postInvalidate();
-        }
-        else if(view.getId() == R.id.declareUnoButton){
+        } else if (view.getId() == R.id.declareUnoButton) {
             UnoDeclareUnoAction declareUno = new UnoDeclareUnoAction(this);
             game.sendAction(declareUno);
             view.postInvalidate();
@@ -618,10 +607,9 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         //scroll left and right buttons
         else if (view.getId() == R.id.leftButton) {
             if (offset <= 0) {
-                flash(Color.RED,100);
+                flash(Color.RED, 100);
                 view.postInvalidate();
-            }
-            else{
+            } else {
                 offset--;
                 receiveInfo(game.getGameState());
                 view.postInvalidate();
@@ -641,22 +629,19 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         else if (view.getId() == R.id.yellowPickButton) {
             UnoWildCardColorChange colorAction = new UnoWildCardColorChange(this, 'y');
             game.sendAction(colorAction);
-            Log.i("yellow button clicked id", "color clicked id is yellow") ;
+            Log.i("yellow button clicked id", "color clicked id is yellow");
             view.postInvalidate();
-        }
-        else if (view.getId() == R.id.greenPickButton) {
+        } else if (view.getId() == R.id.greenPickButton) {
             UnoWildCardColorChange colorAction = new UnoWildCardColorChange(this, 'g');
             game.sendAction(colorAction);
-            Log.i("green button clicked id", "color clicked id is green") ;
+            Log.i("green button clicked id", "color clicked id is green");
             view.postInvalidate();
-        }
-        else if (view.getId() == R.id.redPickButton) {
+        } else if (view.getId() == R.id.redPickButton) {
             UnoWildCardColorChange colorAction = new UnoWildCardColorChange(this, 'r');
             game.sendAction(colorAction);
-            Log.i("red button clicked id", "color clicked id is red") ;
+            Log.i("red button clicked id", "color clicked id is red");
             view.postInvalidate();
-        }
-        else if (view.getId() == R.id.bluePickButton) {
+        } else if (view.getId() == R.id.bluePickButton) {
             UnoWildCardColorChange colorAction = new UnoWildCardColorChange(this, 'b');
             game.sendAction(colorAction);
             Log.i("blue button clicked id", "color clicked id is blue");
@@ -668,6 +653,39 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             view.postInvalidate();
         }
         view.postInvalidate();
+
+        // color picker buttons for wild cards
+        if (view.getId() == R.id.yellowPickButton ||
+                view.getId() == R.id.greenPickButton ||
+                view.getId() == R.id.redPickButton ||
+                view.getId() == R.id.bluePickButton) {
+
+            // Get the color associated with the clicked button
+            char pickedColor = getColorFromButton(view.getId());
+
+            // Show a message or perform any additional UI updates
+            Log.i("Color Picker", "Color picked: " + pickedColor);
+
+            // Send a UnoColorPickerAction to inform the game about the selected color
+            selectColor(pickedColor);
+
+            view.postInvalidate();
+        }
     }
 
+    // Helper method to map button IDs to corresponding colors
+    private char getColorFromButton(int buttonId) {
+        switch (buttonId) {
+            case R.id.yellowPickButton:
+                return 'y';
+            case R.id.greenPickButton:
+                return 'g';
+            case R.id.redPickButton:
+                return 'r';
+            case R.id.bluePickButton:
+                return 'b';
+            default:
+                return ' ';
+        }
+    }
 }
