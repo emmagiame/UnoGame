@@ -1424,15 +1424,6 @@ public class UnoGameState extends GameState {
         currentPlayableColor = colorSelected;
         return true;
     }
-
-    public void wildCardColorChange(UnoWildCardColorChange action) {
-        // get the changed color from the action
-        char newColor = action.getChangedColor();
-
-        // set the changed playable color
-        setChangedPlayableColor(newColor);
-        Log.i("UnoGameState", "Wild card color changed to: " + newColor);
-    }
 }
 
 

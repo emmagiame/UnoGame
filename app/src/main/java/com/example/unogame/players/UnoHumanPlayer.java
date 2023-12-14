@@ -191,24 +191,20 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             // sends message about current playable color
             currentPlayableColorInfo.setTextSize(30);
             // changes from only a character to the proper color name
-            if(currGame.getCurrentPlayableColor() == 'y'){
+            if (currGame.getCurrentPlayableColor() == 'y') {
                 currentPlayableColorInfo.setText("The color is yellow.");
-            }
-            else if(currGame.getCurrentPlayableColor() == 'r'){
+            } else if (currGame.getCurrentPlayableColor() == 'r') {
                 currentPlayableColorInfo.setText("The color is red.");
-            }
-            else if(currGame.getCurrentPlayableColor() == 'g'){
+            } else if (currGame.getCurrentPlayableColor() == 'g') {
                 currentPlayableColorInfo.setText("The color is green.");
-            }
-            else if(currGame.getCurrentPlayableColor() == 'b'){
+            } else if (currGame.getCurrentPlayableColor() == 'b') {
                 currentPlayableColorInfo.setText("The color is blue.");
             }
 
             // sends message about current playable number
-            if(currGame.getCurrentPlayableNumber() == -1){
+            if (currGame.getCurrentPlayableNumber() == -1) {
                 currentPlayableNumInfo.setText("The current card value is a special card.");
-            }
-            else{
+            } else {
                 currentPlayableNumInfo.setText("The current card value is " + currGame.getCurrentPlayableNumber() + ".");
             }
             currentPlayableNumInfo.setTextSize(30);
@@ -242,8 +238,9 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
     /**
      * displays a card in a cardImageView
-     * @param cards - cards to be displayed
-     * @param index - number of cards
+     *
+     * @param cards     - cards to be displayed
+     * @param index     - number of cards
      * @param imageView - the image view
      */
     private void displayCardInImageView(ArrayList<UnoCard> cards, int index, ImageView imageView) {
@@ -337,67 +334,53 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
     }
 
     /**
-     *  sets card image based on passed in card
+     * sets card image based on passed in card
      *
      * @param cardImage - card View to change
-     * @param card - card that we are setting the card image to
+     * @param card      - card that we are setting the card image to
      */
     public void setImage(ImageView cardImage, UnoCard card) {
         Log.i("setImage", "entered setImage");
-        if(card instanceof UnoCardSkip){
-            if(card.getCardColor() == 'r') {
+        if (card instanceof UnoCardSkip) {
+            if (card.getCardColor() == 'r') {
                 cardImage.setImageResource(R.drawable.redskip);
-            }
-            else if(card.getCardColor() =='y'){
+            } else if (card.getCardColor() == 'y') {
                 cardImage.setImageResource(R.drawable.yellowskip);
-            }
-            else if(card.getCardColor() =='g'){
+            } else if (card.getCardColor() == 'g') {
                 cardImage.setImageResource(R.drawable.greenskip);
-            }
-            else if(card.getCardColor() =='b'){
+            } else if (card.getCardColor() == 'b') {
                 cardImage.setImageResource(R.drawable.blueskip);
             }
-        }
-        else if(card instanceof UnoCardPlus2){
-            if(card.getCardColor() == 'r') {
+        } else if (card instanceof UnoCardPlus2) {
+            if (card.getCardColor() == 'r') {
                 cardImage.setImageResource(R.drawable.reddraw2);
-            }
-            else if(card.getCardColor() =='y'){
+            } else if (card.getCardColor() == 'y') {
                 cardImage.setImageResource(R.drawable.yellowdraw2);
-            }
-            else if(card.getCardColor() =='g'){
+            } else if (card.getCardColor() == 'g') {
                 cardImage.setImageResource(R.drawable.greendraw2);
-            }
-            else if(card.getCardColor() =='b'){
+            } else if (card.getCardColor() == 'b') {
                 cardImage.setImageResource(R.drawable.bluedraw2);
             }
-        }
-        else if(card instanceof UnoCardWild){
+        } else if (card instanceof UnoCardWild) {
             cardImage.setImageResource(R.drawable.wild);
-        }
-        else if(card instanceof UnoCardPlus4){
+        } else if (card instanceof UnoCardPlus4) {
             cardImage.setImageResource(R.drawable.draw4);
-        }
-        else if(card instanceof UnoCardReverse){
-            if(card.getCardColor() == 'r') {
+        } else if (card instanceof UnoCardReverse) {
+            if (card.getCardColor() == 'r') {
                 cardImage.setImageResource(R.drawable.redreverse);
-            }
-            else if(card.getCardColor() =='y'){
+            } else if (card.getCardColor() == 'y') {
                 cardImage.setImageResource(R.drawable.yellowreverse);
-            }
-            else if(card.getCardColor() =='g'){
+            } else if (card.getCardColor() == 'g') {
                 cardImage.setImageResource(R.drawable.greenreverse);
-            }
-            else if(card.getCardColor() =='b'){
+            } else if (card.getCardColor() == 'b') {
                 cardImage.setImageResource(R.drawable.bluereverse);
             }
-        }
-        else if(card instanceof UnoCard){
-            if(card.getCardColor() == 'r') {
-                if(card.getCardNumber() == 0){
+        } else if (card instanceof UnoCard) {
+            if (card.getCardColor() == 'r') {
+                if (card.getCardNumber() == 0) {
                     cardImage.setImageResource(R.drawable.red0);
                 }
-                if(card.getCardNumber() == 1){
+                if (card.getCardNumber() == 1) {
                     cardImage.setImageResource(R.drawable.red1);
                 }
                 if (card.getCardNumber() == 2) {
@@ -653,37 +636,5 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             view.postInvalidate();
         }
         view.postInvalidate();
-
-        // color picker buttons for wild cards
-        if (view.getId() == R.id.yellowPickButton ||
-                view.getId() == R.id.greenPickButton ||
-                view.getId() == R.id.redPickButton ||
-                view.getId() == R.id.bluePickButton) {
-
-            // Get the color associated with the clicked button
-            char pickedColor = getColorFromButton(view.getId());
-            Log.i("Color Picker", "Color picked: " + pickedColor);
-
-            // Send a UnoColorPickerAction to inform the game about the selected color
-            selectColor(pickedColor);
-
-            view.postInvalidate();
-        }
-    }
-
-    // Helper method to map button IDs to corresponding colors
-    private char getColorFromButton(int buttonId) {
-        switch (buttonId) {
-            case R.id.yellowPickButton:
-                return 'y';
-            case R.id.greenPickButton:
-                return 'g';
-            case R.id.redPickButton:
-                return 'r';
-            case R.id.bluePickButton:
-                return 'b';
-            default:
-                return ' ';
-        }
     }
 }
