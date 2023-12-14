@@ -13,6 +13,8 @@ import com.example.game.GameFramework.players.GameHumanPlayer;
 import com.example.unogame.R;
 import com.example.unogame.UnoDrawCardAction;
 import com.example.unogame.UnoPlayCardAction;
+import com.example.unogame.action.UnoCallOutAction;
+import com.example.unogame.action.UnoDeclareUnoAction;
 import com.example.unogame.cards.UnoCard;
 import com.example.unogame.cards.UnoCardPlus2;
 import com.example.unogame.cards.UnoCardPlus4;
@@ -167,7 +169,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             startGameHelp = myActivity.findViewById(R.id.startGameHelp);
 
             // hints on how to play game more smoothly
-            startGameHelp.setText("Helpful tips:\n - Try hitting the left or right buttons to refresh discard pile.\n - When you have two cards left press the uno button before playing the second card.\n");
+            startGameHelp.setText("Helpful tips:\n - Try hitting the left or right buttons to refresh discard pile.\n - When you have one card left press the uno button before playing your last card.\n");
             startGameHelp.setTextSize(20);
 
             // sends message about how many cards opponent has
@@ -603,11 +605,13 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         }
         // if uno buttons are clicked
         else if(view.getId() == R.id.callOutUnoButton){
-            gameState.callOut(gameState.getPlayerTurn());
+            UnoCallOutAction callOutUno = new UnoCallOutAction(this);
+            game.sendAction(callOutUno);
             view.postInvalidate();
         }
         else if(view.getId() == R.id.declareUnoButton){
-            gameState.declareUno(gameState.getPlayerTurn());
+            UnoDeclareUnoAction declareUno = new UnoDeclareUnoAction(this);
+            game.sendAction(declareUno);
             view.postInvalidate();
         }
         //scroll left and right buttons

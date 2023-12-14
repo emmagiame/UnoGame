@@ -5,6 +5,8 @@ import android.util.Log;
 import com.example.game.GameFramework.LocalGame;
 import com.example.game.GameFramework.actionMessage.GameAction;
 import com.example.game.GameFramework.players.GamePlayer;
+import com.example.unogame.action.UnoCallOutAction;
+import com.example.unogame.action.UnoDeclareUnoAction;
 import com.example.unogame.cards.UnoCard;
 import com.example.unogame.info.UnoGameState;
 import com.example.unogame.players.UnoHumanPlayer;
@@ -101,6 +103,10 @@ public class UnoLocalGame extends LocalGame {
     @Override
     protected boolean makeMove(GameAction action) {
         Log.i("makeMove", "entered makeMove");
+
+        // get player id
+        int id = ((UnoGameState) super.state).getPlayerTurn();
+
         // if action is play card
         if (action instanceof UnoPlayCardAction) {
             Log.i("makeMove", "action is an instance of UnoPlayCardAction");
@@ -109,43 +115,42 @@ public class UnoLocalGame extends LocalGame {
             if (canMove(getPlayerIdx(action.getPlayer())) == true) {
                 // get num players
                 //
-                int numPlayers = ((UnoGameState)super.state).getNumPlayers();
+                int numPlayers = ((UnoGameState) super.state).getNumPlayers();
                 Log.i("makeMove", "numPlayers = " + numPlayers);
 
-                // get player id
-                int id = ((UnoGameState)super.state).getPlayerTurn();
-                // play a card
-                // change the current player to the next player
                 // if two players
                 if (numPlayers == 2) {
                     // if id 0 turn
                     if (id == 0) {
                         //get index that card is at
-                        UnoCard testCard = ((UnoGameState)super.state).getPlayer0Hand().get(((UnoPlayCardAction) action).getPlayedCardIdx());
+                        UnoCard testCard = ((UnoGameState) super.state).getPlayer0Hand().get(((UnoPlayCardAction) action).getPlayedCardIdx());
                         Log.i("makeMove", "card trying to play is " + testCard.getCardColor() + " " + testCard.getCardNumber());
-                        ((UnoGameState)super.state).playCard(id, testCard);
+                        ((UnoGameState) super.state).playCard(id, testCard);
                         //((UnoGameState)super.state).setPlayerTurn(1);
                         return true;
                     }
                     // if id 1 turn
                     else if (id == 1) {
-                        UnoCard testCard = ((UnoGameState)super.state).getPlayer1Hand().get(((UnoPlayCardAction) action).getPlayedCardIdx());
+                        UnoCard testCard = ((UnoGameState) super.state).getPlayer1Hand().get(((UnoPlayCardAction) action).getPlayedCardIdx());
                         Log.i("makeMove", "card trying to play is " + testCard.getCardColor() + " " + testCard.getCardNumber());
-                        ((UnoGameState)super.state).playCard(id, testCard);
+                        ((UnoGameState) super.state).playCard(id, testCard);
                         //((UnoGameState)super.state).setPlayerTurn(0);
                         return true;
                     }
 
                 }
+            }
+        }
 
-                // if three players
+                // if three players - this code is not used because we do not have a GUI set up for three players, it would add
+                // play card functionality to three player games
+                /*
                 if (numPlayers == 3) {
                     // if id 0 turn
                     if (id == 0) {
                         UnoCard testCard = ((UnoGameState)super.state).getPlayer0Hand().get(((UnoPlayCardAction) action).getPlayedCardIdx());
                         Log.i("makeMove", "card trying to play is " + testCard.getCardColor() + " " + testCard.getCardNumber());
                         ((UnoGameState)super.state).playCard(id, testCard);
-                        //((UnoGameState)super.state).setPlayerTurn(1);
                         return true;
                     }
                     // if id 1 turn
@@ -168,70 +173,39 @@ public class UnoLocalGame extends LocalGame {
 
                 }
             }
-        }
+            }*/
 
-        // if action is draw card
-        if (action instanceof UnoDrawCardAction) {
-            Log.i("makeMove", "action is an instance of UnoDrawCardAction");
-            // check if it's that players turn
-            if (canMove(getPlayerIdx(action.getPlayer())) == true) {
-                // get num players
-                int numPlayers = getNumPlayers();
+            // if action is draw card
+            if (action instanceof UnoDrawCardAction) {
+                Log.i("makeMove", "action is an instance of UnoDrawCardAction");
+                // check if it's that players turn
+                if (canMove(getPlayerIdx(action.getPlayer())) == true) {
 
-                // get player id
-                int id = ((UnoGameState)super.state).getPlayerTurn();
-                // draw card
-                // unoGameStateRef.drawCardFromDrawPile(id,card);
-
-                // change the current player to the next player
-
-                // if two players
-                if (numPlayers == 2) {
-                    // if id 0 turn
-                    if (id == 0) {
-                        ((UnoGameState)super.state).drawCardFromDrawPile(id, ((UnoGameState) super.state).getDrawPile().get(0));
-                        //((UnoGameState)super.state).setPlayerTurn(1);
-                        return true;
-                    }
-                    // if id 1 turn
-                    else if (id == 1) {
-                        ((UnoGameState)super.state).drawCardFromDrawPile(id, ((UnoGameState) super.state).getDrawPile().get(0));
-                        //((UnoGameState)super.state).setPlayerTurn(0);
-                        return true;
-                    }
-
-                }
-
-                // if three players
-                if (numPlayers == 3) {
-                    // if id 0 turn
-                    if (id == 0) {
-                        ((UnoGameState)super.state).drawCardFromDrawPile(id, ((UnoGameState) super.state).getDrawPile().get(0));
-                        //((UnoGameState)super.state).setPlayerTurn(1);
-                        return true;
-                    }
-                    // if id 1 turn
-                    else if (id == 1) {
-                        ((UnoGameState)super.state).drawCardFromDrawPile(id, ((UnoGameState) super.state).getDrawPile().get(0));
-                        //((UnoGameState)super.state).setPlayerTurn(2);
-                        return true;
-                    }
-
-                    // if id 2 turn
-                    else if (id == 2) {
-                        ((UnoGameState)super.state).drawCardFromDrawPile(id, ((UnoGameState) super.state).getDrawPile().get(0));
-                        //((UnoGameState)super.state).setPlayerTurn(0);
-                        return true;
-                    }
-
+                    ((UnoGameState) super.state).drawCardFromDrawPile(id, ((UnoGameState) super.state).getDrawPile().get(0));
+                    return true;
                 }
             }
-        }
+
+            //if its a declare uno action
+            if (action instanceof UnoDeclareUnoAction) {
+                if (canMove(getPlayerIdx(action.getPlayer())) == true) {
+
+                    ((UnoGameState) super.state).declareUno(id);
+                    return true;
+                }
+            }
+
+            //if its a callout uno button
+            if (action instanceof UnoCallOutAction) {
+                if (canMove(getPlayerIdx(action.getPlayer())) == true) {
+
+                    ((UnoGameState) super.state).callOut(id);
+                    return true;
+                }
+            }
+
         Log.i("makeMove", "all done with makeMove, return");
         return false;
+
     }
-
-        // check if passed in card has at least one
-        // element of card at beginning of discard arraylist
-
 }

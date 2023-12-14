@@ -572,6 +572,7 @@ public class UnoGameState extends GameState {
      */
 
     public boolean declareUno(int playerId) {
+        Log.i("declare uno", "made it into declare uno");
 
         if(playerId == this.playerTurn) {
 
@@ -579,11 +580,25 @@ public class UnoGameState extends GameState {
                 return true;
 
             }
+            else if(playerId == 0 && player0Hand.size() != 1){
+                drawCardFromDrawPile(0, this.drawPile.get(0));
+                drawCardFromDrawPile(0, this.drawPile.get(0));
+                return true;
+            }
             else if(playerId == 1 && player1Hand.size() == 1){
                 return true;
             }
-
-           else if (playerId == 2 && player2Hand.size() == 1){
+            else if(playerId == 1 && player1Hand.size() != 1){
+                drawCardFromDrawPile(1, this.drawPile.get(0));
+                drawCardFromDrawPile(1, this.drawPile.get(0));
+                return true;
+            }
+            else if (playerId == 2 && player2Hand.size() == 1){
+                return true;
+            }
+            else if(playerId == 2 && player2Hand.size() != 1){
+                drawCardFromDrawPile(2, this.drawPile.get(0));
+                drawCardFromDrawPile(2, this.drawPile.get(0));
                 return true;
             }
         }
