@@ -21,7 +21,13 @@ Tags
 @author - Emma Giamello
 @author - Rhiannon McKinley
 
-Significant help from Dr Libby and Dr Tribelhorn
+Significant help from Dr Libby and Dr Tribelhorn on every method in this class
+
+some pieces of code have been commented out, these are for implementing three player games but we were unable to set up a GUI for three player
+gameplay and so we didn't finish implementing it
+
+This class handles all the variable needed for a game of uno and their getters and setters. It also contains the methods the actions call in order
+for things to actually happen.
 
  */
 
