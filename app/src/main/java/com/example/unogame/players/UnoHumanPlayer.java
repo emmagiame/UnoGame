@@ -15,6 +15,7 @@ import com.example.unogame.UnoDrawCardAction;
 import com.example.unogame.UnoPlayCardAction;
 import com.example.unogame.action.UnoCallOutAction;
 import com.example.unogame.action.UnoDeclareUnoAction;
+import com.example.unogame.action.UnoWildCardColorChange;
 import com.example.unogame.cards.UnoCard;
 import com.example.unogame.cards.UnoCardPlus2;
 import com.example.unogame.cards.UnoCardPlus4;
@@ -638,30 +639,26 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
         }
         //color picker buttons for wild cards               ADDED: recieveInfo in each else if statement Needs to be tested
         else if (view.getId() == R.id.yellowPickButton) {
-            //UnoGameState gameState = (UnoGameState) game.getGameState();
-            gameState.setChangedPlayableColor('y');
-            receiveInfo(gameState);
+            UnoWildCardColorChange colorAction = new UnoWildCardColorChange(this, 'y');
+            game.sendAction(colorAction);
             Log.i("yellow button clicked id", "color clicked id is yellow") ;
             view.postInvalidate();
         }
         else if (view.getId() == R.id.greenPickButton) {
-            //UnoGameState gameState = (UnoGameState) game.getGameState();
-            gameState.setChangedPlayableColor('g');
-            receiveInfo(gameState);
+            UnoWildCardColorChange colorAction = new UnoWildCardColorChange(this, 'g');
+            game.sendAction(colorAction);
             Log.i("green button clicked id", "color clicked id is green") ;
             view.postInvalidate();
         }
         else if (view.getId() == R.id.redPickButton) {
-            //UnoGameState gameState = (UnoGameState) game.getGameState();
-            gameState.setChangedPlayableColor('r');
-            receiveInfo(gameState);
+            UnoWildCardColorChange colorAction = new UnoWildCardColorChange(this, 'r');
+            game.sendAction(colorAction);
             Log.i("red button clicked id", "color clicked id is red") ;
             view.postInvalidate();
         }
         else if (view.getId() == R.id.bluePickButton) {
-            //UnoGameState gameState = (UnoGameState) game.getGameState();
-            gameState.setChangedPlayableColor('b');
-            receiveInfo(gameState);
+            UnoWildCardColorChange colorAction = new UnoWildCardColorChange(this, 'b');
+            game.sendAction(colorAction);
             Log.i("blue button clicked id", "color clicked id is blue");
             view.postInvalidate();
         }

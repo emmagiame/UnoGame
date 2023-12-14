@@ -7,6 +7,7 @@ import com.example.game.GameFramework.actionMessage.GameAction;
 import com.example.game.GameFramework.players.GamePlayer;
 import com.example.unogame.action.UnoCallOutAction;
 import com.example.unogame.action.UnoDeclareUnoAction;
+import com.example.unogame.action.UnoWildCardColorChange;
 import com.example.unogame.cards.UnoCard;
 import com.example.unogame.info.UnoGameState;
 import com.example.unogame.players.UnoHumanPlayer;
@@ -201,6 +202,15 @@ public class UnoLocalGame extends LocalGame {
 
                     ((UnoGameState) super.state).callOut(id);
                     return true;
+                }
+            }
+
+            //if its a color change action
+            if (action instanceof UnoWildCardColorChange){
+                if (canMove(getPlayerIdx(action.getPlayer())) == true) {
+
+                    Log.i("makeMove", "changed color that can be played to " + ((UnoWildCardColorChange) action).getChangedColor());
+                    ((UnoGameState) super.state).setChangedPlayableColor(((UnoWildCardColorChange) action).getChangedColor());
                 }
             }
 

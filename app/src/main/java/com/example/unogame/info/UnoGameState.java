@@ -747,6 +747,8 @@ public class UnoGameState extends GameState {
                         drawCardFromDrawPile(1, this.drawPile.get(0));
                         drawCardFromDrawPile(1, this.drawPile.get(0));
                         this.setCurrentPlayableColor(changedPlayableColor);
+                        Log.i("playCard", "changed playable color = " + this.getChangedPlayableColor());
+                        Log.i("playCard", "current playable color = " + this.getCurrentPlayableColor());
                         this.setCurrentPlayableNumber(-1);
                         //this.playerTurn = 1;
                     } else if (playerId == 1) {
@@ -755,6 +757,8 @@ public class UnoGameState extends GameState {
                         drawCardFromDrawPile(0, this.drawPile.get(0));
                         drawCardFromDrawPile(0, this.drawPile.get(0));
                         this.setCurrentPlayableColor(changedPlayableColor);
+                        Log.i("playCard", "changed playable color = " + this.getChangedPlayableColor());
+                        Log.i("playCard", "current playable color = " + this.getCurrentPlayableColor());
                         this.setCurrentPlayableNumber(-1);
                         //this.playerTurn = 0;
                     }
