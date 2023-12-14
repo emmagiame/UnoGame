@@ -10,7 +10,6 @@ import com.example.unogame.action.UnoDeclareUnoAction;
 import com.example.unogame.action.UnoWildCardColorChange;
 import com.example.unogame.cards.UnoCard;
 import com.example.unogame.info.UnoGameState;
-import com.example.unogame.players.UnoHumanPlayer;
 
 /*
 
@@ -105,9 +104,10 @@ public class UnoLocalGame extends LocalGame {
     protected boolean makeMove(GameAction action) {
         Log.i("makeMove", "entered makeMove");
 
-        // get player id for all if statements
+        // get player id
         int id = ((UnoGameState) super.state).getPlayerTurn();
 
+        Log.i("makeMove", "entered makeMove");
         // if action is play card
         if (action instanceof UnoPlayCardAction) {
             Log.i("makeMove", "action is an instance of UnoPlayCardAction");
@@ -119,6 +119,8 @@ public class UnoLocalGame extends LocalGame {
                 int numPlayers = ((UnoGameState) super.state).getNumPlayers();
                 Log.i("makeMove", "numPlayers = " + numPlayers);
 
+                // play a card
+                // change the current player to the next player
                 // if two players
                 if (numPlayers == 2) {
                     // if id 0 turn

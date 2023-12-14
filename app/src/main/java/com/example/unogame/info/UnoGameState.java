@@ -3,6 +3,7 @@ package com.example.unogame.info;
 import android.util.Log;
 
 import com.example.game.GameFramework.infoMessage.GameState;
+import com.example.unogame.action.UnoWildCardColorChange;
 import com.example.unogame.cards.UnoCard;
 import com.example.unogame.cards.UnoCardPlus2;
 import com.example.unogame.cards.UnoCardPlus4;
@@ -64,7 +65,7 @@ public class UnoGameState extends GameState {
     private int player2Score;
 
     //current color that can be played
-    private char currentPlayableColor;
+    private static char currentPlayableColor;
 
     //current number that can be played
     private int currentPlayableNumber;
@@ -1381,6 +1382,21 @@ public class UnoGameState extends GameState {
 
         Log.i("UnoGameState", "deck size is " + deck.size());
         return deck;
+    }
+
+    // this method is for when a player selects a color
+    public static boolean selectColor(char colorSelected){
+        currentPlayableColor = colorSelected;
+        return true;
+    }
+
+    public void wildCardColorChange(UnoWildCardColorChange action) {
+        // get the changed color from the action
+        char newColor = action.getChangedColor();
+
+        // set the changed playable color
+        setChangedPlayableColor(newColor);
+        Log.i("UnoGameState", "Wild card color changed to: " + newColor);
     }
 }
 
