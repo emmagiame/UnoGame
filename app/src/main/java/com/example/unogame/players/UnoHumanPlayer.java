@@ -662,8 +662,6 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
 
             // Get the color associated with the clicked button
             char pickedColor = getColorFromButton(view.getId());
-
-            // Show a message or perform any additional UI updates
             Log.i("Color Picker", "Color picked: " + pickedColor);
 
             // Send a UnoColorPickerAction to inform the game about the selected color
