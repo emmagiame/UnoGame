@@ -6,6 +6,7 @@ import com.example.game.GameFramework.infoMessage.GameInfo;
 import com.example.game.GameFramework.players.GameComputerPlayer;
 import com.example.unogame.UnoDrawCardAction;
 import com.example.unogame.UnoPlayCardAction;
+import com.example.unogame.action.UnoWildCardColorChange;
 import com.example.unogame.cards.UnoCardPlus2;
 import com.example.unogame.cards.UnoCardPlus4;
 import com.example.unogame.cards.UnoCardReverse;
@@ -58,6 +59,7 @@ public class UnoSmartAIPlayer extends GameComputerPlayer {
                         int blue = 0;
                         int yellow = 0;
                         int green = 0;
+                        char newColor = 'g';
                         //check how many of each color you have
                         for (int j = 0; j < curGame.getPlayer0Hand().size(); i++) {
                             if (curGame.getPlayer0Hand().get(j).getCardColor() == 'r') {
@@ -73,41 +75,40 @@ public class UnoSmartAIPlayer extends GameComputerPlayer {
                         //if you have more cards of one color than cards of the current playable color, then switch the color to the one you have the most of
                         if ((curGame.getCurrentPlayableColor() == 'r') && ((blue > red) || (yellow > red) || (green > red))) {
                             if (blue > red) {
-                                //im not sure if this modifies the actual game
-                                curGame.setChangedPlayableColor('b');
+                                newColor = 'b';
                             } else if (yellow > red) {
-                                curGame.setChangedPlayableColor('y');
+                                newColor = 'y';
                             } else if (green > red) {
-                                curGame.setChangedPlayableColor('g');
+                                newColor = 'g';
                             }
                         } else if ((curGame.getCurrentPlayableColor() == 'b') && ((red > blue) || (yellow > blue) || (green > blue))) {
                             if (red > blue) {
-                                //im not sure if this modifies the actual game
-                                curGame.setChangedPlayableColor('r');
+                                newColor = 'r';
                             } else if (yellow > blue) {
-                                curGame.setChangedPlayableColor('y');
+                                newColor = 'y';
                             } else if (green > blue) {
-                                curGame.setChangedPlayableColor('g');
+                                newColor = 'g';
                             }
                         } else if ((curGame.getCurrentPlayableColor() == 'y') && ((blue > yellow) || (red > yellow) || (green > yellow))) {
                             if (red > yellow) {
-                                //im not sure if this modifies the actual game
-                                curGame.setChangedPlayableColor('r');
+                                newColor = 'r';
                             } else if (blue > yellow) {
-                                curGame.setChangedPlayableColor('b');
+                                newColor = 'b';
                             } else if (green > yellow) {
-                                curGame.setChangedPlayableColor('g');
+                                newColor = 'g';
                             }
                         } else if ((curGame.getCurrentPlayableColor() == 'g') && ((blue > green) || (yellow > green) || (red > green))) {
                             if (red > green) {
-                                //im not sure if this modifies the actual game
-                                curGame.setChangedPlayableColor('r');
+                                newColor = 'r';
                             } else if (blue > green) {
-                                curGame.setChangedPlayableColor('b');
+                                newColor = 'b';
                             } else if (yellow > green) {
-                                curGame.setChangedPlayableColor('y');
+                                newColor = 'y';
                             }
                         }
+                        //chance the color of the card
+                        UnoWildCardColorChange colorAction = new UnoWildCardColorChange(this, newColor);
+                        game.sendAction(colorAction);
                         //play the card
                         Log.i("SmartAI0", "played a wildcard and set new playable color to " + curGame.getCurrentPlayableColor());
                         UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
@@ -171,56 +172,56 @@ public class UnoSmartAIPlayer extends GameComputerPlayer {
                         int blue = 0;
                         int yellow = 0;
                         int green = 0;
+                        char newColor = 'g';
                         //check how many of each color you have
-                        for (int j = 0; j < curGame.getPlayer1Hand().size(); i++) {
-                            if (curGame.getPlayer1Hand().get(j).getCardColor() == 'r') {
+                        for (int j = 0; j < curGame.getPlayer0Hand().size(); i++) {
+                            if (curGame.getPlayer0Hand().get(j).getCardColor() == 'r') {
                                 red = red + 1;
-                            } else if (curGame.getPlayer1Hand().get(j).getCardColor() == 'b') {
+                            } else if (curGame.getPlayer0Hand().get(j).getCardColor() == 'b') {
                                 blue = blue + 1;
-                            } else if (curGame.getPlayer1Hand().get(j).getCardColor() == 'y') {
+                            } else if (curGame.getPlayer0Hand().get(j).getCardColor() == 'y') {
                                 yellow = yellow + 1;
-                            } else if (curGame.getPlayer1Hand().get(j).getCardColor() == 'g') {
+                            } else if (curGame.getPlayer0Hand().get(j).getCardColor() == 'g') {
                                 green = green + 1;
                             }
                         }
                         //if you have more cards of one color than cards of the current playable color, then switch the color to the one you have the most of
                         if ((curGame.getCurrentPlayableColor() == 'r') && ((blue > red) || (yellow > red) || (green > red))) {
                             if (blue > red) {
-                                //im not sure if this modifies the actual game
-                                curGame.setChangedPlayableColor('b');
+                                newColor = 'b';
                             } else if (yellow > red) {
-                                curGame.setChangedPlayableColor('y');
+                                newColor = 'y';
                             } else if (green > red) {
-                                curGame.setChangedPlayableColor('g');
+                                newColor = 'g';
                             }
                         } else if ((curGame.getCurrentPlayableColor() == 'b') && ((red > blue) || (yellow > blue) || (green > blue))) {
                             if (red > blue) {
-                                //im not sure if this modifies the actual game
-                                curGame.setChangedPlayableColor('r');
+                                newColor = 'r';
                             } else if (yellow > blue) {
-                                curGame.setChangedPlayableColor('y');
+                                newColor = 'y';
                             } else if (green > blue) {
-                                curGame.setChangedPlayableColor('g');
+                                newColor = 'g';
                             }
                         } else if ((curGame.getCurrentPlayableColor() == 'y') && ((blue > yellow) || (red > yellow) || (green > yellow))) {
                             if (red > yellow) {
-                                //im not sure if this modifies the actual game
-                                curGame.setChangedPlayableColor('r');
+                                newColor = 'r';
                             } else if (blue > yellow) {
-                                curGame.setChangedPlayableColor('b');
+                                newColor = 'b';
                             } else if (green > yellow) {
-                                curGame.setChangedPlayableColor('g');
+                                newColor = 'g';
                             }
                         } else if ((curGame.getCurrentPlayableColor() == 'g') && ((blue > green) || (yellow > green) || (red > green))) {
                             if (red > green) {
-                                //im not sure if this modifies the actual game
-                                curGame.setChangedPlayableColor('r');
+                                newColor = 'r';
                             } else if (blue > green) {
-                                curGame.setChangedPlayableColor('b');
+                                newColor = 'b';
                             } else if (yellow > green) {
-                                curGame.setChangedPlayableColor('y');
+                                newColor = 'y';
                             }
                         }
+                        //chance the color of the card
+                        UnoWildCardColorChange colorAction = new UnoWildCardColorChange(this, newColor);
+                        game.sendAction(colorAction);
                         //play the card
                         Log.i("SmartAI1", "played a wildcard and set new playable color to " + curGame.getCurrentPlayableColor());
                         UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);
@@ -296,70 +297,56 @@ public class UnoSmartAIPlayer extends GameComputerPlayer {
                         int blue = 0;
                         int yellow = 0;
                         int green = 0;
+                        char newColor = 'g';
                         //check how many of each color you have
-                        for(int j = 0; j < curGame.getPlayer2Hand().size(); i++){
-                            if(curGame.getPlayer2Hand().get(j).getCardColor() == 'r'){
+                        for (int j = 0; j < curGame.getPlayer0Hand().size(); i++) {
+                            if (curGame.getPlayer0Hand().get(j).getCardColor() == 'r') {
                                 red = red + 1;
-                            }
-                            else if(curGame.getPlayer2Hand().get(j).getCardColor() == 'b'){
+                            } else if (curGame.getPlayer0Hand().get(j).getCardColor() == 'b') {
                                 blue = blue + 1;
-                            }
-                            else if(curGame.getPlayer2Hand().get(j).getCardColor() == 'y'){
+                            } else if (curGame.getPlayer0Hand().get(j).getCardColor() == 'y') {
                                 yellow = yellow + 1;
-                            }
-                            else if(curGame.getPlayer2Hand().get(j).getCardColor() == 'g'){
+                            } else if (curGame.getPlayer0Hand().get(j).getCardColor() == 'g') {
                                 green = green + 1;
                             }
                         }
                         //if you have more cards of one color than cards of the current playable color, then switch the color to the one you have the most of
-                        if((curGame.getCurrentPlayableColor() == 'r') && ((blue > red) || (yellow > red) || (green > red))){
-                            if(blue > red){
-                                //im not sure if this modifies the actual game
-                                curGame.setChangedPlayableColor('b');
+                        if ((curGame.getCurrentPlayableColor() == 'r') && ((blue > red) || (yellow > red) || (green > red))) {
+                            if (blue > red) {
+                                newColor = 'b';
+                            } else if (yellow > red) {
+                                newColor = 'y';
+                            } else if (green > red) {
+                                newColor = 'g';
                             }
-                            else if(yellow > red){
-                                curGame.setChangedPlayableColor('y');
+                        } else if ((curGame.getCurrentPlayableColor() == 'b') && ((red > blue) || (yellow > blue) || (green > blue))) {
+                            if (red > blue) {
+                                newColor = 'r';
+                            } else if (yellow > blue) {
+                                newColor = 'y';
+                            } else if (green > blue) {
+                                newColor = 'g';
                             }
-                            else if(green > red){
-                                curGame.setChangedPlayableColor('g');
+                        } else if ((curGame.getCurrentPlayableColor() == 'y') && ((blue > yellow) || (red > yellow) || (green > yellow))) {
+                            if (red > yellow) {
+                                newColor = 'r';
+                            } else if (blue > yellow) {
+                                newColor = 'b';
+                            } else if (green > yellow) {
+                                newColor = 'g';
                             }
-                        }
-                        else if((curGame.getCurrentPlayableColor() == 'b') && ((red > blue) || (yellow > blue) || (green > blue))){
-                            if(red > blue){
-                                //im not sure if this modifies the actual game
-                                curGame.setChangedPlayableColor('r');
-                            }
-                            else if(yellow > blue){
-                                curGame.setChangedPlayableColor('y');
-                            }
-                            else if(green > blue){
-                                curGame.setChangedPlayableColor('g');
-                            }
-                        }
-                        else if((curGame.getCurrentPlayableColor() == 'y') && ((blue > yellow) || (red > yellow) || (green > yellow))){
-                            if(red > yellow){
-                                //im not sure if this modifies the actual game
-                                curGame.setChangedPlayableColor('r');
-                            }
-                            else if(blue > yellow){
-                                curGame.setChangedPlayableColor('b');
-                            }
-                            else if(green > yellow){
-                                curGame.setChangedPlayableColor('g');
+                        } else if ((curGame.getCurrentPlayableColor() == 'g') && ((blue > green) || (yellow > green) || (red > green))) {
+                            if (red > green) {
+                                newColor = 'r';
+                            } else if (blue > green) {
+                                newColor = 'b';
+                            } else if (yellow > green) {
+                                newColor = 'y';
                             }
                         }
-                        else if((curGame.getCurrentPlayableColor() == 'g') && ((blue > green) || (yellow > green) || (red > green))){
-                            if(red > green){
-                                //im not sure if this modifies the actual game
-                                curGame.setChangedPlayableColor('r');
-                            }
-                            else if(blue > green){
-                                curGame.setChangedPlayableColor('b');
-                            }
-                            else if(yellow > green){
-                                curGame.setChangedPlayableColor('y');
-                            }
-                        }
+                        //chance the color of the card
+                        UnoWildCardColorChange colorAction = new UnoWildCardColorChange(this, newColor);
+                        game.sendAction(colorAction);
                         //play the card
                         Log.i("SmartAI2", "played a wildcard and set new playable color to " + curGame.getCurrentPlayableColor());
                         UnoPlayCardAction actionPlay = new UnoPlayCardAction(this, i);

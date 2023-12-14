@@ -244,6 +244,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
      * @param imageView - the image view
      */
     private void displayCardInImageView(ArrayList<UnoCard> cards, int index, ImageView imageView) {
+        //the issue with the +2 and +4 cards is here, it hits the else statement, we aren't sure how to fix it
         int cardIndex = offset + index;
         if (cardIndex < cards.size()) {
             setImage(imageView, cards.get(cardIndex));
@@ -588,6 +589,7 @@ public class UnoHumanPlayer extends GameHumanPlayer implements View.OnClickListe
             view.postInvalidate();
         }
         //scroll left and right buttons
+        //there is an issue we know about where if your hand is size 6 or 7 you cannot use these buttons, we arent sure how to fix it
         else if (view.getId() == R.id.leftButton) {
             if (offset <= 0) {
                 flash(Color.RED, 100);
